@@ -56,30 +56,73 @@ public sealed class ShopeeClient(
         ShopeeRequest request,
         CancellationToken cancellationToken)
     {
-        if (!await rateLimiter.TryAcquireAsync(request, cancellationToken))
+        for (var attempt = 0; ; attempt++)
         {
-            throw new ShopeeApiException(
-                429,
-                null,
-                "rate_limit_exceeded",
-                "Local Shopee SDK rate limit exceeded.",
-                ShopeeErrorCategory.RateLimit,
-                request.Path);
+            try
+            {
+                return await SendForBytesOnceAsync(request, cancellationToken);
+            }
+            catch (ShopeeApiException exception) when (
+                attempt < _options.MaxTransientRetries
+                && (exception.Category is ShopeeErrorCategory.Transient or ShopeeErrorCategory.RateLimit))
+            {
+                _logger.LogWarning(
+                    exception,
+                    "Retrying Shopee binary request {Path} ShopId={ShopId} after transient error {Error} Category={Category}",
+                    request.Path,
+                    request.Auth?.ShopId,
+                    exception.Error,
+                    exception.Category);
+                await Task.Delay(_options.RetryBaseDelay * (attempt + 1), cancellationToken);
+            }
+            catch (HttpRequestException exception) when (attempt < _options.MaxTransientRetries)
+            {
+                _logger.LogWarning(exception, "Retrying Shopee binary request {Path} ShopId={ShopId} after HTTP failure", request.Path, request.Auth?.ShopId);
+                await Task.Delay(_options.RetryBaseDelay * (attempt + 1), cancellationToken);
+            }
+            catch (TaskCanceledException exception) when (!cancellationToken.IsCancellationRequested && attempt < _options.MaxTransientRetries)
+            {
+                _logger.LogWarning(exception, "Retrying Shopee binary request {Path} ShopId={ShopId} after timeout", request.Path, request.Auth?.ShopId);
+                await Task.Delay(_options.RetryBaseDelay * (attempt + 1), cancellationToken);
+            }
         }
+    }
+
+    private async Task<(byte[] Content, string? ContentType, string? FileName)> SendForBytesOnceAsync(
+        ShopeeRequest request,
+        CancellationToken cancellationToken)
+    {
+        await EnsureRateLimitPermitAsync(request, cancellationToken);
 
         using var httpRequest = BuildHttpRequest(request);
-        _logger.LogInformation("Sending Shopee request {Method} {Path}", request.Method, request.Path);
+        _logger.LogInformation("Sending Shopee request {Method} {Path} ShopId={ShopId}", request.Method, request.Path, request.Auth?.ShopId);
 
         using var timeoutCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
         timeoutCts.CancelAfter(_options.RequestTimeout);
 
         using var response = await httpClient.SendAsync(httpRequest, timeoutCts.Token);
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var category = response.StatusCode == System.Net.HttpStatusCode.TooManyRequests
+                ? ShopeeErrorCategory.RateLimit
+                : ShopeeErrorCategory.Transient;
+
+            throw new ShopeeApiException(
+                (int)response.StatusCode,
+                null,
+                $"http_{(int)response.StatusCode}",
+                $"Shopee binary request failed with HTTP status {(int)response.StatusCode}.",
+                category,
+                request.Path);
+        }
+
         var bytes = await response.Content.ReadAsByteArrayAsync(cancellationToken);
 
         _logger.LogInformation(
-            "Received Shopee binary response {Path} ContentType={ContentType} Length={Length}",
+            "Received Shopee binary response {Path} ShopId={ShopId} StatusCode={StatusCode} ContentType={ContentType} Length={Length}",
             request.Path,
+            request.Auth?.ShopId,
+            (int)response.StatusCode,
             response.Content.Headers.ContentType?.MediaType,
             bytes.Length);
 
@@ -93,16 +136,7 @@ public sealed class ShopeeClient(
         ShopeeRequest request,
         CancellationToken cancellationToken)
     {
-        if (!await rateLimiter.TryAcquireAsync(request, cancellationToken))
-        {
-            throw new ShopeeApiException(
-                429,
-                null,
-                "rate_limit_exceeded",
-                "Local Shopee SDK rate limit exceeded.",
-                ShopeeErrorCategory.RateLimit,
-                request.Path);
-        }
+        await EnsureRateLimitPermitAsync(request, cancellationToken);
 
         using var httpRequest = BuildHttpRequest(request);
         _logger.LogInformation("Sending Shopee request {Method} {Path}", request.Method, request.Path);
@@ -137,6 +171,20 @@ public sealed class ShopeeClient(
         }
 
         return envelope;
+    }
+
+    private async Task EnsureRateLimitPermitAsync(ShopeeRequest request, CancellationToken cancellationToken)
+    {
+        if (!await rateLimiter.TryAcquireAsync(request, cancellationToken))
+        {
+            throw new ShopeeApiException(
+                429,
+                null,
+                "rate_limit_exceeded",
+                "Local Shopee SDK rate limit exceeded.",
+                ShopeeErrorCategory.RateLimit,
+                request.Path);
+        }
     }
 
     private HttpRequestMessage BuildHttpRequest(ShopeeRequest request)
