@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopeeSdk.Storage.EntityFra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopeeSdk.Storage.EntityFramework.Tests", "tests\ShopeeSdk.Storage.EntityFramework.Tests\ShopeeSdk.Storage.EntityFramework.Tests.csproj", "{5D131C93-981E-4BAF-8898-AED757EB30CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopeeSdk.IntegrationTests", "tests\ShopeeSdk.IntegrationTests\ShopeeSdk.IntegrationTests.csproj", "{77830C30-5ED7-466F-8891-3BC63E1952E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +66,10 @@ Global
 		{5D131C93-981E-4BAF-8898-AED757EB30CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D131C93-981E-4BAF-8898-AED757EB30CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D131C93-981E-4BAF-8898-AED757EB30CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77830C30-5ED7-466F-8891-3BC63E1952E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77830C30-5ED7-466F-8891-3BC63E1952E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77830C30-5ED7-466F-8891-3BC63E1952E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77830C30-5ED7-466F-8891-3BC63E1952E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F6439B5B-EE34-4523-89A1-F788F3CF8271} = {12C3182A-4555-4EBB-9DB6-8405914C87EA}
@@ -74,5 +80,6 @@ Global
 		{4E6A551B-494E-4BD7-B975-66BAF6477CE3} = {05ACF83E-AC49-43F7-AB0B-8C4D8F9D857B}
 		{235F4217-F71A-458D-B756-3C863CD9772D} = {12C3182A-4555-4EBB-9DB6-8405914C87EA}
 		{5D131C93-981E-4BAF-8898-AED757EB30CD} = {05ACF83E-AC49-43F7-AB0B-8C4D8F9D857B}
+		{77830C30-5ED7-466F-8891-3BC63E1952E2} = {05ACF83E-AC49-43F7-AB0B-8C4D8F9D857B}
 	EndGlobalSection
 EndGlobal

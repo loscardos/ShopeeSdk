@@ -17,6 +17,9 @@ jobs:
       - run: dotnet restore ShopeeSdk.sln
       - run: dotnet build ShopeeSdk.sln --no-restore
       - run: dotnet test ShopeeSdk.sln --no-build
+        env:
+          SHOPEE_PARTNER_ID: ${{ secrets.SHOPEE_PARTNER_ID }}
+          SHOPEE_PARTNER_KEY: ${{ secrets.SHOPEE_PARTNER_KEY }}
       - run: dotnet pack ShopeeSdk.sln --no-build --output artifacts
       - name: Generator smoke test
         run: |
