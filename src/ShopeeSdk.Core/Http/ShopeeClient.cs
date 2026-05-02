@@ -139,7 +139,7 @@ public sealed class ShopeeClient(
         await EnsureRateLimitPermitAsync(request, cancellationToken);
 
         using var httpRequest = BuildHttpRequest(request);
-        _logger.LogInformation("Sending Shopee request {Method} {Path}", request.Method, request.Path);
+        _logger.LogInformation("Sending Shopee request {Method} {Path} ShopId={ShopId}", request.Method, request.Path, request.Auth?.ShopId);
 
         using var timeoutCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
         timeoutCts.CancelAfter(_options.RequestTimeout);
@@ -148,11 +148,18 @@ public sealed class ShopeeClient(
         var payload = await response.Content.ReadAsStringAsync(cancellationToken);
         var envelope = ShopeeResponseReader.ReadJsonEnvelope<TResponse>(payload);
 
+        ShopeeErrorCategory? category = string.IsNullOrWhiteSpace(envelope.Error)
+            ? null
+            : ShopeeErrorClassifier.Classify(envelope.Error);
+
         _logger.LogInformation(
-            "Received Shopee response {Path} RequestId={RequestId} Error={Error}",
+            "Received Shopee response {Path} ShopId={ShopId} StatusCode={StatusCode} RequestId={RequestId} Error={Error} Category={Category}",
             request.Path,
+            request.Auth?.ShopId,
+            (int)response.StatusCode,
             envelope.RequestId,
-            envelope.Error);
+            envelope.Error,
+            category);
 
         if (!response.IsSuccessStatusCode && string.IsNullOrWhiteSpace(envelope.Error))
         {
@@ -166,7 +173,7 @@ public sealed class ShopeeClient(
                 envelope.RequestId,
                 envelope.Error,
                 envelope.Message,
-                ShopeeErrorClassifier.Classify(envelope.Error),
+                category ?? ShopeeErrorCategory.Unknown,
                 request.Path);
         }
 

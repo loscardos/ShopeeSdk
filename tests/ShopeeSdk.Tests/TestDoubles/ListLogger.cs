@@ -5,6 +5,7 @@ namespace ShopeeSdk.Tests.TestDoubles;
 public sealed class ListLogger<T> : ILogger<T>
 {
     public List<string> Messages { get; } = [];
+    public List<LogLevel> Levels { get; } = [];
 
     public IDisposable BeginScope<TState>(TState state) where TState : notnull => NullScope.Instance;
 
@@ -17,6 +18,7 @@ public sealed class ListLogger<T> : ILogger<T>
         Exception? exception,
         Func<TState, Exception?, string> formatter)
     {
+        Levels.Add(logLevel);
         Messages.Add(formatter(state, exception));
     }
 
