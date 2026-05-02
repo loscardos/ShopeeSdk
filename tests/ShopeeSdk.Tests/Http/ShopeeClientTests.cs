@@ -6,7 +6,9 @@ using ShopeeSdk.Abstractions.Configuration;
 using ShopeeSdk.Abstractions.Errors;
 using ShopeeSdk.Abstractions.Http;
 using ShopeeSdk.Core.Http;
+using ShopeeSdk.Core.RateLimiting;
 using ShopeeSdk.Tests.TestDoubles;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace ShopeeSdk.Tests.Http;
 
@@ -112,6 +114,8 @@ public sealed class ShopeeClientTests
                 MaxTransientRetries = maxRetries,
                 RetryBaseDelay = TimeSpan.Zero
             }),
-            new FixedShopeeClock(DateTimeOffset.FromUnixTimeSeconds(1610000000)));
+            new FixedShopeeClock(DateTimeOffset.FromUnixTimeSeconds(1610000000)),
+            new NoopShopeeRateLimiter(),
+            NullLogger<ShopeeClient>.Instance);
     }
 }

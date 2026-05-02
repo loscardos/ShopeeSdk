@@ -4,7 +4,9 @@ using RichardSzalay.MockHttp;
 using ShopeeSdk.Abstractions.Configuration;
 using ShopeeSdk.Core.Auth;
 using ShopeeSdk.Core.Http;
+using ShopeeSdk.Core.RateLimiting;
 using ShopeeSdk.Tests.TestDoubles;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace ShopeeSdk.Tests.Auth;
 
@@ -65,7 +67,9 @@ public sealed class ShopeeAuthApiTests
         var client = new ShopeeClient(
             httpClient,
             options,
-            new FixedShopeeClock(DateTimeOffset.FromUnixTimeSeconds(1610000000)));
+            new FixedShopeeClock(DateTimeOffset.FromUnixTimeSeconds(1610000000)),
+            new NoopShopeeRateLimiter(),
+            NullLogger<ShopeeClient>.Instance);
 
         return new ShopeeAuthApi(client, options, new FixedShopeeClock(DateTimeOffset.FromUnixTimeSeconds(1610000000)), store ?? new InMemoryShopeeTokenStore());
     }

@@ -1,8 +1,10 @@
 using System.Net.Http.Json;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using ShopeeSdk.Abstractions.Configuration;
 using ShopeeSdk.Abstractions.Errors;
 using ShopeeSdk.Abstractions.Http;
+using ShopeeSdk.Abstractions.RateLimiting;
 using ShopeeSdk.Core.Crypto;
 using ShopeeSdk.Core.Time;
 
@@ -11,9 +13,12 @@ namespace ShopeeSdk.Core.Http;
 public sealed class ShopeeClient(
     HttpClient httpClient,
     IOptions<ShopeeOptions> options,
-    IShopeeClock clock) : IShopeeClient
+    IShopeeClock clock,
+    IShopeeRateLimiter rateLimiter,
+    ILogger<ShopeeClient> logger) : IShopeeClient
 {
     private readonly ShopeeOptions _options = options.Value;
+    private readonly ILogger<ShopeeClient> _logger = logger;
 
     public async Task<ShopeeEnvelope<TResponse>> SendAsync<TResponse>(
         ShopeeRequest request,
@@ -46,6 +51,17 @@ public sealed class ShopeeClient(
         ShopeeRequest request,
         CancellationToken cancellationToken)
     {
+        if (!await rateLimiter.TryAcquireAsync(request, cancellationToken))
+        {
+            throw new ShopeeApiException(
+                429,
+                null,
+                "rate_limit_exceeded",
+                "Local Shopee SDK rate limit exceeded.",
+                ShopeeErrorCategory.RateLimit,
+                request.Path);
+        }
+
         var timestamp = clock.UnixTimeSeconds;
         var baseUrl = _options.ResolveBaseUrl();
         var path = request.Path.StartsWith('/') ? request.Path : "/" + request.Path;

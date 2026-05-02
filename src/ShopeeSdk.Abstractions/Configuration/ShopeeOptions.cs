@@ -12,6 +12,10 @@ public sealed class ShopeeOptions
     public TimeSpan RequestTimeout { get; set; } = TimeSpan.FromSeconds(30);
     public int MaxTransientRetries { get; set; } = 2;
     public TimeSpan RetryBaseDelay { get; set; } = TimeSpan.FromMilliseconds(250);
+    public bool EnableRateLimiting { get; set; }
+    public int RateLimitPermitLimit { get; set; } = 60;
+    public int RateLimitQueueLimit { get; set; } = 120;
+    public TimeSpan RateLimitWindow { get; set; } = TimeSpan.FromMinutes(1);
     public string UserAgent { get; set; } = "InternalShopeeSdk/0.2";
 
     public Uri ResolveBaseUrl()

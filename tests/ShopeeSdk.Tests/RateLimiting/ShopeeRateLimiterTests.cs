@@ -1,0 +1,31 @@
+using FluentAssertions;
+using Microsoft.Extensions.Options;
+using ShopeeSdk.Abstractions.Configuration;
+using ShopeeSdk.Abstractions.Http;
+using ShopeeSdk.Core.RateLimiting;
+
+namespace ShopeeSdk.Tests.RateLimiting;
+
+public sealed class ShopeeRateLimiterTests
+{
+    [Fact]
+    public async Task PartitionedLimiter_AllowsConfiguredPermitCount()
+    {
+        var limiter = new PartitionedShopeeRateLimiter(Options.Create(new ShopeeOptions
+        {
+            RateLimitPermitLimit = 1,
+            RateLimitQueueLimit = 0,
+            RateLimitWindow = TimeSpan.FromMinutes(1)
+        }));
+
+        var first = await limiter.TryAcquireAsync(
+            new ShopeeRequest(ShopeeRequestMethod.Get, "/order/get_order_list", new Dictionary<string, object?>(), null, new ShopeeRequestAuth(600000, null)),
+            CancellationToken.None);
+        var second = await limiter.TryAcquireAsync(
+            new ShopeeRequest(ShopeeRequestMethod.Get, "/order/get_order_list", new Dictionary<string, object?>(), null, new ShopeeRequestAuth(600000, null)),
+            CancellationToken.None);
+
+        first.Should().BeTrue();
+        second.Should().BeFalse();
+    }
+}
