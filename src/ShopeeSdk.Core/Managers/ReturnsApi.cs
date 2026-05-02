@@ -1,6 +1,7 @@
 using ShopeeSdk.Abstractions.Http;
 using ShopeeSdk.Abstractions.Managers;
 using ShopeeSdk.Core.Auth;
+using ShopeeSdk.Core.Validation;
 using ShopeeSdk.Generated.Returns;
 
 namespace ShopeeSdk.Core.Managers;
@@ -9,6 +10,8 @@ public sealed class ReturnsApi(IShopeeClient client, ShopeeTokenService tokenSer
 {
     public async Task<GetReturnListResponse> GetReturnListAsync(long shopId, GetReturnListRequest request, CancellationToken cancellationToken)
     {
+        ShopeeRequestValidator.EnsurePageSize(request.PageSize, 1, 100, "page_size");
+
         var query = await ShopeeManagerAuth.CreateAuthQueryAsync(tokenService, shopId, cancellationToken);
         query["page_no"] = request.PageNo;
         query["page_size"] = request.PageSize;

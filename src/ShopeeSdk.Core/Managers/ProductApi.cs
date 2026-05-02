@@ -1,6 +1,7 @@
 using ShopeeSdk.Abstractions.Http;
 using ShopeeSdk.Abstractions.Managers;
 using ShopeeSdk.Core.Auth;
+using ShopeeSdk.Core.Validation;
 using ShopeeSdk.Generated.Product;
 
 namespace ShopeeSdk.Core.Managers;
@@ -9,6 +10,8 @@ public sealed class ProductApi(IShopeeClient client, ShopeeTokenService tokenSer
 {
     public async Task<GetItemListResponse> GetItemListAsync(long shopId, GetItemListRequest request, CancellationToken cancellationToken)
     {
+        ShopeeRequestValidator.EnsurePageSize(request.PageSize, 1, 100, "page_size");
+
         var query = await ShopeeManagerAuth.CreateAuthQueryAsync(tokenService, shopId, cancellationToken);
         query["offset"] = request.Offset;
         query["page_size"] = request.PageSize;
@@ -35,6 +38,8 @@ public sealed class ProductApi(IShopeeClient client, ShopeeTokenService tokenSer
 
     public async Task<GetItemBaseInfoResponse> GetItemBaseInfoAsync(long shopId, GetItemBaseInfoRequest request, CancellationToken cancellationToken)
     {
+        ShopeeRequestValidator.EnsureAny(request.ItemIdList, "item_id_list");
+
         var query = await ShopeeManagerAuth.CreateAuthQueryAsync(tokenService, shopId, cancellationToken);
         query["item_id_list"] = string.Join(",", request.ItemIdList);
         query["need_tax_info"] = request.NeedTaxInfo;

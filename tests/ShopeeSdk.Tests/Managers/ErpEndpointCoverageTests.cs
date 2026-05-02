@@ -37,7 +37,8 @@ public sealed class ErpEndpointCoverageTests
             "GetTrackingInfoAsync",
             "GetShippingDocumentParameterAsync",
             "CreateShippingDocumentAsync",
-            "DownloadShippingDocumentAsync"
+            "DownloadShippingDocumentAsync",
+            "DownloadShippingDocumentFileAsync"
         ]);
     }
 }

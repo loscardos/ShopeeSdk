@@ -1,6 +1,7 @@
 using ShopeeSdk.Abstractions.Http;
 using ShopeeSdk.Abstractions.Managers;
 using ShopeeSdk.Core.Auth;
+using ShopeeSdk.Core.Validation;
 using ShopeeSdk.Generated.Order;
 
 namespace ShopeeSdk.Core.Managers;
@@ -9,6 +10,9 @@ public sealed class OrderApi(IShopeeClient client, ShopeeTokenService tokenServi
 {
     public async Task<GetOrderListResponse> GetOrderListAsync(long shopId, GetOrderListRequest request, CancellationToken cancellationToken)
     {
+        ShopeeRequestValidator.EnsurePageSize(request.PageSize, 1, 100, "page_size");
+        ShopeeRequestValidator.EnsureTimeRange(request.TimeFrom, request.TimeTo, TimeSpan.FromDays(15), "order time range");
+
         var query = await ShopeeManagerAuth.CreateAuthQueryAsync(tokenService, shopId, cancellationToken);
         query["time_range_field"] = request.TimeRangeField;
         query["time_from"] = request.TimeFrom;

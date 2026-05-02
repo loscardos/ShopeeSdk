@@ -1,6 +1,7 @@
 using ShopeeSdk.Abstractions.Http;
 using ShopeeSdk.Abstractions.Managers;
 using ShopeeSdk.Core.Auth;
+using ShopeeSdk.Core.Validation;
 using ShopeeSdk.Generated.Logistics;
 
 namespace ShopeeSdk.Core.Managers;
@@ -9,6 +10,8 @@ public sealed class LogisticsApi(IShopeeClient client, ShopeeTokenService tokenS
 {
     public async Task<GetShippingParameterResponse> GetShippingParameterAsync(long shopId, GetShippingParameterRequest request, CancellationToken cancellationToken)
     {
+        ShopeeRequestValidator.EnsureRequiredString(request.OrderSn, "order_sn");
+
         var query = await ShopeeManagerAuth.CreateAuthQueryAsync(tokenService, shopId, cancellationToken);
         query["order_sn"] = request.OrderSn;
 
@@ -20,6 +23,8 @@ public sealed class LogisticsApi(IShopeeClient client, ShopeeTokenService tokenS
 
     public async Task<ShipOrderResponse> ShipOrderAsync(long shopId, ShipOrderRequest request, CancellationToken cancellationToken)
     {
+        ShopeeRequestValidator.EnsureRequiredString(request.OrderSn, "order_sn");
+
         var query = await ShopeeManagerAuth.CreateAuthQueryAsync(tokenService, shopId, cancellationToken);
         var envelope = await client.SendAsync<ShipOrderResponse>(
             new ShopeeRequest(ShopeeRequestMethod.Post, "/logistics/ship_order", query, request, new ShopeeRequestAuth(shopId, null)),
@@ -29,6 +34,8 @@ public sealed class LogisticsApi(IShopeeClient client, ShopeeTokenService tokenS
 
     public async Task<GetTrackingInfoResponse> GetTrackingInfoAsync(long shopId, GetTrackingInfoRequest request, CancellationToken cancellationToken)
     {
+        ShopeeRequestValidator.EnsureRequiredString(request.OrderSn, "order_sn");
+
         var query = await ShopeeManagerAuth.CreateAuthQueryAsync(tokenService, shopId, cancellationToken);
         query["order_sn"] = request.OrderSn;
         query["package_number"] = request.PackageNumber;
@@ -41,6 +48,8 @@ public sealed class LogisticsApi(IShopeeClient client, ShopeeTokenService tokenS
 
     public async Task<GetShippingDocumentParameterResponse> GetShippingDocumentParameterAsync(long shopId, GetShippingDocumentParameterRequest request, CancellationToken cancellationToken)
     {
+        ShopeeRequestValidator.EnsureRequiredString(request.OrderSn, "order_sn");
+
         var query = await ShopeeManagerAuth.CreateAuthQueryAsync(tokenService, shopId, cancellationToken);
         query["order_sn"] = request.OrderSn;
         query["package_number"] = request.PackageNumber;
@@ -53,6 +62,8 @@ public sealed class LogisticsApi(IShopeeClient client, ShopeeTokenService tokenS
 
     public async Task<CreateShippingDocumentResponse> CreateShippingDocumentAsync(long shopId, CreateShippingDocumentRequest request, CancellationToken cancellationToken)
     {
+        ShopeeRequestValidator.EnsureRequiredString(request.OrderSn, "order_sn");
+
         var query = await ShopeeManagerAuth.CreateAuthQueryAsync(tokenService, shopId, cancellationToken);
         var envelope = await client.SendAsync<CreateShippingDocumentResponse>(
             new ShopeeRequest(ShopeeRequestMethod.Post, "/logistics/create_shipping_document", query, request, new ShopeeRequestAuth(shopId, null)),
@@ -62,6 +73,8 @@ public sealed class LogisticsApi(IShopeeClient client, ShopeeTokenService tokenS
 
     public async Task<DownloadShippingDocumentResponse> DownloadShippingDocumentAsync(long shopId, DownloadShippingDocumentRequest request, CancellationToken cancellationToken)
     {
+        ShopeeRequestValidator.EnsureRequiredString(request.OrderSn, "order_sn");
+
         var query = await ShopeeManagerAuth.CreateAuthQueryAsync(tokenService, shopId, cancellationToken);
         query["order_sn"] = request.OrderSn;
         query["package_number"] = request.PackageNumber;
@@ -75,6 +88,8 @@ public sealed class LogisticsApi(IShopeeClient client, ShopeeTokenService tokenS
 
     public async Task<DownloadShippingDocumentFile> DownloadShippingDocumentFileAsync(long shopId, DownloadShippingDocumentRequest request, CancellationToken cancellationToken)
     {
+        ShopeeRequestValidator.EnsureRequiredString(request.OrderSn, "order_sn");
+
         var query = await ShopeeManagerAuth.CreateAuthQueryAsync(tokenService, shopId, cancellationToken);
         query["order_sn"] = request.OrderSn;
         query["package_number"] = request.PackageNumber;
