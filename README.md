@@ -35,3 +35,7 @@ var orders = await orderApi.GetOrderListAsync(
         PageSize: 50),
     cancellationToken);
 ```
+
+## Production Pilot Checklist
+
+See `docs/production-readiness.md` before using this SDK against live Shopee shops.
