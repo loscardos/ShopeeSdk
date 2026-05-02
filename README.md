@@ -59,3 +59,4 @@ Before enabling production shops, read:
 - `docs/production-readiness.md`
 - `docs/endpoint-coverage.md`
 - `docs/live-rollout-checklist.md`
+- `docs/nuget-publishing.md`
