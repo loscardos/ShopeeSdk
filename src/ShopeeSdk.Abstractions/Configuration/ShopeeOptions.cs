@@ -9,6 +9,10 @@ public sealed class ShopeeOptions
     public ShopeeRegion Region { get; set; } = ShopeeRegion.Global;
     public Uri? BaseUrl { get; set; }
     public TimeSpan TokenRefreshSkew { get; set; } = TimeSpan.FromMinutes(5);
+    public TimeSpan RequestTimeout { get; set; } = TimeSpan.FromSeconds(30);
+    public int MaxTransientRetries { get; set; } = 2;
+    public TimeSpan RetryBaseDelay { get; set; } = TimeSpan.FromMilliseconds(250);
+    public string UserAgent { get; set; } = "InternalShopeeSdk/0.2";
 
     public Uri ResolveBaseUrl()
     {
