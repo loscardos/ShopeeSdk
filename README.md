@@ -39,3 +39,10 @@ var orders = await orderApi.GetOrderListAsync(
 ## Production Pilot Checklist
 
 See `docs/production-readiness.md` before using this SDK against live Shopee shops.
+
+## Live Rollout
+
+Before enabling production shops, read:
+
+- `docs/production-readiness.md`
+- `docs/live-rollout-checklist.md`
