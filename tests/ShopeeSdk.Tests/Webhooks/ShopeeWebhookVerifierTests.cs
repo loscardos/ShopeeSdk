@@ -1,0 +1,32 @@
+using System.Security.Cryptography;
+using System.Text;
+using FluentAssertions;
+using Microsoft.Extensions.Options;
+using ShopeeSdk.Abstractions.Configuration;
+using ShopeeSdk.Core.Webhooks;
+
+namespace ShopeeSdk.Tests.Webhooks;
+
+public sealed class ShopeeWebhookVerifierTests
+{
+    [Fact]
+    public void Verify_ReturnsTrueForValidHmacSha256BodySignature()
+    {
+        const string body = """{"shop_id":600000,"code":3,"data":{"ordersn":"ORDER-1"}}""";
+        var signature = Convert.ToHexString(HMACSHA256.HashData(
+            Encoding.UTF8.GetBytes("partner-key"),
+            Encoding.UTF8.GetBytes(body))).ToLowerInvariant();
+
+        var verifier = new ShopeeWebhookVerifier(Options.Create(new ShopeeOptions { PartnerKey = "partner-key" }));
+
+        verifier.Verify(body, signature).Should().BeTrue();
+    }
+
+    [Fact]
+    public void Verify_ReturnsFalseForInvalidSignature()
+    {
+        var verifier = new ShopeeWebhookVerifier(Options.Create(new ShopeeOptions { PartnerKey = "partner-key" }));
+
+        verifier.Verify("""{"shop_id":600000}""", "bad-signature").Should().BeFalse();
+    }
+}

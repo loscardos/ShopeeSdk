@@ -1,0 +1,42 @@
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.Json;
+using Microsoft.Extensions.Options;
+using ShopeeSdk.Abstractions.Configuration;
+using ShopeeSdk.Abstractions.Errors;
+using ShopeeSdk.Abstractions.Webhooks;
+
+namespace ShopeeSdk.Core.Webhooks;
+
+public sealed class ShopeeWebhookVerifier(IOptions<ShopeeOptions> options) : IShopeeWebhookVerifier
+{
+    private static readonly JsonSerializerOptions JsonOptions = new(JsonSerializerDefaults.Web);
+    private readonly ShopeeOptions _options = options.Value;
+
+    public bool Verify(string rawBody, string signature)
+    {
+        if (string.IsNullOrWhiteSpace(signature))
+        {
+            return false;
+        }
+
+        var expected = Convert.ToHexString(HMACSHA256.HashData(
+            Encoding.UTF8.GetBytes(_options.PartnerKey),
+            Encoding.UTF8.GetBytes(rawBody))).ToLowerInvariant();
+
+        return CryptographicOperations.FixedTimeEquals(
+            Encoding.UTF8.GetBytes(expected),
+            Encoding.UTF8.GetBytes(signature.ToLowerInvariant()));
+    }
+
+    public ShopeeWebhookEvent ParseVerified(string rawBody, string signature)
+    {
+        if (!Verify(rawBody, signature))
+        {
+            throw new ShopeeSdkException("Invalid Shopee webhook signature.");
+        }
+
+        return JsonSerializer.Deserialize<ShopeeWebhookEvent>(rawBody, JsonOptions)
+            ?? throw new ShopeeSdkException("Shopee webhook payload was empty.");
+    }
+}
