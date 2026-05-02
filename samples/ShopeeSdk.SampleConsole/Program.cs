@@ -19,8 +19,8 @@ static string Required(string name)
 
 var options = Options.Create(new ShopeeOptions
 {
-    PartnerId = long.Parse(Required("SHOPEE_PARTNER_ID")),
-    PartnerKey = Required("SHOPEE_PARTNER_KEY"),
+    PartnerId = long.Parse(Environment.GetEnvironmentVariable("SHOPEE_PARTNER_ID") ?? "1"),
+    PartnerKey = Environment.GetEnvironmentVariable("SHOPEE_PARTNER_KEY") ?? "key",
     Region = Enum.TryParse<ShopeeRegion>(Environment.GetEnvironmentVariable("SHOPEE_REGION"), true, out var region)
         ? region
         : ShopeeRegion.TestGlobal,
@@ -39,6 +39,9 @@ var authApi = new ShopeeAuthApi(client, options, new SystemShopeeClock(), tokenS
 
 if (args is ["auth-url"])
 {
+    options.Value.PartnerId = long.Parse(Required("SHOPEE_PARTNER_ID"));
+    options.Value.PartnerKey = Required("SHOPEE_PARTNER_KEY");
+
     if (string.IsNullOrWhiteSpace(redirectUrl))
     {
         throw new InvalidOperationException("SHOPEE_REDIRECT_URL is required for auth-url.");
@@ -50,6 +53,9 @@ if (args is ["auth-url"])
 
 if (args is ["exchange-code"])
 {
+    options.Value.PartnerId = long.Parse(Required("SHOPEE_PARTNER_ID"));
+    options.Value.PartnerKey = Required("SHOPEE_PARTNER_KEY");
+
     var code = Required("SHOPEE_AUTH_CODE");
     var shopId = long.Parse(Required("SHOPEE_SHOP_ID"));
     var token = await authApi.ExchangeCodeAsync(code, shopId, null, CancellationToken.None);
@@ -62,6 +68,9 @@ if (args is ["exchange-code"])
 
 if (args is ["get-orders"])
 {
+    options.Value.PartnerId = long.Parse(Required("SHOPEE_PARTNER_ID"));
+    options.Value.PartnerKey = Required("SHOPEE_PARTNER_KEY");
+
     var shopId = long.Parse(Required("SHOPEE_SHOP_ID"));
     await tokenStore.StoreAsync(
         new ShopeeToken(
