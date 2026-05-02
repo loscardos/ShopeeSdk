@@ -10,4 +10,5 @@ public interface ILogisticsApi
     Task<GetShippingDocumentParameterResponse> GetShippingDocumentParameterAsync(long shopId, GetShippingDocumentParameterRequest request, CancellationToken cancellationToken);
     Task<CreateShippingDocumentResponse> CreateShippingDocumentAsync(long shopId, CreateShippingDocumentRequest request, CancellationToken cancellationToken);
     Task<DownloadShippingDocumentResponse> DownloadShippingDocumentAsync(long shopId, DownloadShippingDocumentRequest request, CancellationToken cancellationToken);
+    Task<DownloadShippingDocumentFile> DownloadShippingDocumentFileAsync(long shopId, DownloadShippingDocumentRequest request, CancellationToken cancellationToken);
 }

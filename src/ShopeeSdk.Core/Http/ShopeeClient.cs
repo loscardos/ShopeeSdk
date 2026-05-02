@@ -52,6 +52,43 @@ public sealed class ShopeeClient(
         }
     }
 
+    public async Task<(byte[] Content, string? ContentType, string? FileName)> SendForBytesAsync(
+        ShopeeRequest request,
+        CancellationToken cancellationToken)
+    {
+        if (!await rateLimiter.TryAcquireAsync(request, cancellationToken))
+        {
+            throw new ShopeeApiException(
+                429,
+                null,
+                "rate_limit_exceeded",
+                "Local Shopee SDK rate limit exceeded.",
+                ShopeeErrorCategory.RateLimit,
+                request.Path);
+        }
+
+        using var httpRequest = BuildHttpRequest(request);
+        _logger.LogInformation("Sending Shopee request {Method} {Path}", request.Method, request.Path);
+
+        using var timeoutCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        timeoutCts.CancelAfter(_options.RequestTimeout);
+
+        using var response = await httpClient.SendAsync(httpRequest, timeoutCts.Token);
+        response.EnsureSuccessStatusCode();
+        var bytes = await response.Content.ReadAsByteArrayAsync(cancellationToken);
+
+        _logger.LogInformation(
+            "Received Shopee binary response {Path} ContentType={ContentType} Length={Length}",
+            request.Path,
+            response.Content.Headers.ContentType?.MediaType,
+            bytes.Length);
+
+        return (
+            bytes,
+            response.Content.Headers.ContentType?.MediaType,
+            response.Content.Headers.ContentDisposition?.FileNameStar ?? response.Content.Headers.ContentDisposition?.FileName);
+    }
+
     private async Task<ShopeeEnvelope<TResponse>> SendOnceAsync<TResponse>(
         ShopeeRequest request,
         CancellationToken cancellationToken)
@@ -67,6 +104,43 @@ public sealed class ShopeeClient(
                 request.Path);
         }
 
+        using var httpRequest = BuildHttpRequest(request);
+        _logger.LogInformation("Sending Shopee request {Method} {Path}", request.Method, request.Path);
+
+        using var timeoutCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        timeoutCts.CancelAfter(_options.RequestTimeout);
+
+        using var response = await httpClient.SendAsync(httpRequest, timeoutCts.Token);
+        var payload = await response.Content.ReadAsStringAsync(cancellationToken);
+        var envelope = ShopeeResponseReader.ReadJsonEnvelope<TResponse>(payload);
+
+        _logger.LogInformation(
+            "Received Shopee response {Path} RequestId={RequestId} Error={Error}",
+            request.Path,
+            envelope.RequestId,
+            envelope.Error);
+
+        if (!response.IsSuccessStatusCode && string.IsNullOrWhiteSpace(envelope.Error))
+        {
+            throw new ShopeeSdkException($"Shopee HTTP request failed with status {(int)response.StatusCode}.");
+        }
+
+        if (!string.IsNullOrWhiteSpace(envelope.Error))
+        {
+            throw new ShopeeApiException(
+                (int)response.StatusCode,
+                envelope.RequestId,
+                envelope.Error,
+                envelope.Message,
+                ShopeeErrorClassifier.Classify(envelope.Error),
+                request.Path);
+        }
+
+        return envelope;
+    }
+
+    private HttpRequestMessage BuildHttpRequest(ShopeeRequest request)
+    {
         var timestamp = clock.UnixTimeSeconds;
         var baseUrl = _options.ResolveBaseUrl();
         var path = request.Path.StartsWith('/') ? request.Path : "/" + request.Path;
@@ -102,45 +176,14 @@ public sealed class ShopeeClient(
         var relative = path.TrimStart('/');
         var queryString = ShopeeQueryString.Build(query);
         var requestUri = new Uri(baseUrl, $"{relative}?{queryString}");
-        using var httpRequest = new HttpRequestMessage(ToHttpMethod(request.Method), requestUri);
+        var httpRequest = new HttpRequestMessage(ToHttpMethod(request.Method), requestUri);
 
         if (request.Body is not null)
         {
             httpRequest.Content = JsonContent.Create(request.Body);
         }
 
-        _logger.LogInformation("Sending Shopee request {Method} {Path}", request.Method, request.Path);
-
-        using var timeoutCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
-        timeoutCts.CancelAfter(_options.RequestTimeout);
-
-        using var response = await httpClient.SendAsync(httpRequest, timeoutCts.Token);
-        var payload = await response.Content.ReadAsStringAsync(cancellationToken);
-        var envelope = ShopeeResponseReader.ReadJsonEnvelope<TResponse>(payload);
-
-        _logger.LogInformation(
-            "Received Shopee response {Path} RequestId={RequestId} Error={Error}",
-            request.Path,
-            envelope.RequestId,
-            envelope.Error);
-
-        if (!response.IsSuccessStatusCode && string.IsNullOrWhiteSpace(envelope.Error))
-        {
-            throw new ShopeeSdkException($"Shopee HTTP request failed with status {(int)response.StatusCode}.");
-        }
-
-        if (!string.IsNullOrWhiteSpace(envelope.Error))
-        {
-            throw new ShopeeApiException(
-                (int)response.StatusCode,
-                envelope.RequestId,
-                envelope.Error,
-                envelope.Message,
-                ShopeeErrorClassifier.Classify(envelope.Error),
-                request.Path);
-        }
-
-        return envelope;
+        return httpRequest;
     }
 
     private static HttpMethod ToHttpMethod(ShopeeRequestMethod method)

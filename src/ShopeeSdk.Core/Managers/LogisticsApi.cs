@@ -72,4 +72,18 @@ public sealed class LogisticsApi(IShopeeClient client, ShopeeTokenService tokenS
             cancellationToken);
         return envelope.Response ?? new DownloadShippingDocumentResponse(null);
     }
+
+    public async Task<DownloadShippingDocumentFile> DownloadShippingDocumentFileAsync(long shopId, DownloadShippingDocumentRequest request, CancellationToken cancellationToken)
+    {
+        var query = await ShopeeManagerAuth.CreateAuthQueryAsync(tokenService, shopId, cancellationToken);
+        query["order_sn"] = request.OrderSn;
+        query["package_number"] = request.PackageNumber;
+        query["shipping_document_type"] = request.ShippingDocumentType;
+
+        var file = await client.SendForBytesAsync(
+            new ShopeeRequest(ShopeeRequestMethod.Get, "/logistics/download_shipping_document", query, null, new ShopeeRequestAuth(shopId, null)),
+            cancellationToken);
+
+        return new DownloadShippingDocumentFile(file.Content, file.ContentType, file.FileName);
+    }
 }

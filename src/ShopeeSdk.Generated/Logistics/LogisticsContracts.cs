@@ -58,3 +58,8 @@ public sealed record DownloadShippingDocumentRequest(
 
 public sealed record DownloadShippingDocumentResponse(
     [property: JsonPropertyName("download_url")] string? DownloadUrl);
+
+public sealed record DownloadShippingDocumentFile(
+    byte[] Content,
+    string? ContentType,
+    string? FileName);
