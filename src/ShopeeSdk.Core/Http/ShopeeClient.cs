@@ -1,5 +1,4 @@
 using System.Net.Http.Json;
-using System.Text.Json;
 using Microsoft.Extensions.Options;
 using ShopeeSdk.Abstractions.Configuration;
 using ShopeeSdk.Abstractions.Errors;
@@ -14,10 +13,36 @@ public sealed class ShopeeClient(
     IOptions<ShopeeOptions> options,
     IShopeeClock clock) : IShopeeClient
 {
-    private static readonly JsonSerializerOptions JsonOptions = new(JsonSerializerDefaults.Web);
     private readonly ShopeeOptions _options = options.Value;
 
     public async Task<ShopeeEnvelope<TResponse>> SendAsync<TResponse>(
+        ShopeeRequest request,
+        CancellationToken cancellationToken)
+    {
+        for (var attempt = 0; ; attempt++)
+        {
+            try
+            {
+                return await SendOnceAsync<TResponse>(request, cancellationToken);
+            }
+            catch (ShopeeApiException exception) when (
+                attempt < _options.MaxTransientRetries
+                && (exception.Category is ShopeeErrorCategory.Transient or ShopeeErrorCategory.RateLimit))
+            {
+                await Task.Delay(_options.RetryBaseDelay * (attempt + 1), cancellationToken);
+            }
+            catch (HttpRequestException) when (attempt < _options.MaxTransientRetries)
+            {
+                await Task.Delay(_options.RetryBaseDelay * (attempt + 1), cancellationToken);
+            }
+            catch (TaskCanceledException) when (!cancellationToken.IsCancellationRequested && attempt < _options.MaxTransientRetries)
+            {
+                await Task.Delay(_options.RetryBaseDelay * (attempt + 1), cancellationToken);
+            }
+        }
+    }
+
+    private async Task<ShopeeEnvelope<TResponse>> SendOnceAsync<TResponse>(
         ShopeeRequest request,
         CancellationToken cancellationToken)
     {
@@ -60,12 +85,15 @@ public sealed class ShopeeClient(
 
         if (request.Body is not null)
         {
-            httpRequest.Content = JsonContent.Create(request.Body, options: JsonOptions);
+            httpRequest.Content = JsonContent.Create(request.Body);
         }
 
-        using var response = await httpClient.SendAsync(httpRequest, cancellationToken);
+        using var timeoutCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        timeoutCts.CancelAfter(_options.RequestTimeout);
+
+        using var response = await httpClient.SendAsync(httpRequest, timeoutCts.Token);
         var payload = await response.Content.ReadAsStringAsync(cancellationToken);
-        var envelope = NormalizeEnvelope<TResponse>(payload);
+        var envelope = ShopeeResponseReader.ReadJsonEnvelope<TResponse>(payload);
 
         if (!response.IsSuccessStatusCode && string.IsNullOrWhiteSpace(envelope.Error))
         {
@@ -74,7 +102,13 @@ public sealed class ShopeeClient(
 
         if (!string.IsNullOrWhiteSpace(envelope.Error))
         {
-            throw new ShopeeApiException((int)response.StatusCode, envelope.RequestId, envelope.Error, envelope.Message);
+            throw new ShopeeApiException(
+                (int)response.StatusCode,
+                envelope.RequestId,
+                envelope.Error,
+                envelope.Message,
+                ShopeeErrorClassifier.Classify(envelope.Error),
+                request.Path);
         }
 
         return envelope;
@@ -88,30 +122,5 @@ public sealed class ShopeeClient(
             ShopeeRequestMethod.Post => HttpMethod.Post,
             _ => throw new ShopeeSdkException($"Unsupported Shopee request method: {method}")
         };
-    }
-
-    private static ShopeeEnvelope<TResponse> NormalizeEnvelope<TResponse>(string payload)
-    {
-        if (string.IsNullOrWhiteSpace(payload))
-        {
-            throw new ShopeeSdkException("Shopee returned an empty response.");
-        }
-
-        using var document = JsonDocument.Parse(payload);
-        var root = document.RootElement;
-        var requestId = root.TryGetProperty("request_id", out var requestIdElement) ? requestIdElement.GetString() : null;
-        var error = root.TryGetProperty("error", out var errorElement) ? errorElement.GetString() : null;
-        var message = root.TryGetProperty("message", out var messageElement) ? messageElement.GetString() : null;
-
-        if (root.TryGetProperty("response", out var responseElement))
-        {
-            var response = responseElement.ValueKind == JsonValueKind.Null
-                ? default
-                : responseElement.Deserialize<TResponse>(JsonOptions);
-            return new ShopeeEnvelope<TResponse>(requestId, error, message, response);
-        }
-
-        var topLevel = root.Deserialize<TResponse>(JsonOptions);
-        return new ShopeeEnvelope<TResponse>(requestId, error, message, topLevel);
     }
 }

@@ -70,9 +70,35 @@ public sealed class ShopeeClientTests
         var exception = await act.Should().ThrowAsync<ShopeeApiException>();
         exception.Which.Error.Should().Be("error_sign");
         exception.Which.RequestId.Should().Be("req-2");
+        exception.Which.Path.Should().Be("/product/get_item_list");
     }
 
-    private static ShopeeClient CreateClient(MockHttpMessageHandler mockHttp)
+    [Fact]
+    public async Task SendAsync_RetriesTransientHttpFailure()
+    {
+        var mockHttp = new MockHttpMessageHandler();
+        mockHttp
+            .Expect(HttpMethod.Get, "https://partner.test-stable.shopeemobile.com/api/v2/product/get_item_list*")
+            .Respond(HttpStatusCode.InternalServerError, "application/json", """
+            { "request_id": "req-fail", "error": "error_server", "message": "try later" }
+            """);
+        mockHttp
+            .Expect(HttpMethod.Get, "https://partner.test-stable.shopeemobile.com/api/v2/product/get_item_list*")
+            .Respond("application/json", """
+            { "request_id": "req-ok", "error": "", "message": "", "response": { "total_count": 0 } }
+            """);
+
+        var client = CreateClient(mockHttp, maxRetries: 1);
+
+        var response = await client.SendAsync<object>(
+            new ShopeeRequest(ShopeeRequestMethod.Get, "/product/get_item_list", new Dictionary<string, object?>(), null, null),
+            CancellationToken.None);
+
+        response.RequestId.Should().Be("req-ok");
+        mockHttp.VerifyNoOutstandingExpectation();
+    }
+
+    private static ShopeeClient CreateClient(MockHttpMessageHandler mockHttp, int maxRetries = 2)
     {
         var httpClient = mockHttp.ToHttpClient();
         httpClient.BaseAddress = new Uri("https://partner.test-stable.shopeemobile.com/api/v2/");
@@ -82,7 +108,9 @@ public sealed class ShopeeClientTests
             {
                 PartnerId = 123456,
                 PartnerKey = "test_partner_key",
-                Region = ShopeeRegion.TestGlobal
+                Region = ShopeeRegion.TestGlobal,
+                MaxTransientRetries = maxRetries,
+                RetryBaseDelay = TimeSpan.Zero
             }),
             new FixedShopeeClock(DateTimeOffset.FromUnixTimeSeconds(1610000000)));
     }
