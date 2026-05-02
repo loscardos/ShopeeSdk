@@ -26,6 +26,6 @@ public sealed class ShopeeAuthSandboxTests
 
         url.ToString().Should().Contain("partner_id=");
         url.ToString().Should().Contain("sign=");
-        url.ToString().Should().Contain("partner.test-stable.shopeemobile.com");
+        url.ToString().Should().Contain("openplatform.sandbox.test-stable.shopee.sg");
     }
 }

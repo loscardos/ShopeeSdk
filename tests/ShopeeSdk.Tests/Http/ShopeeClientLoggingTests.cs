@@ -16,14 +16,14 @@ public sealed class ShopeeClientLoggingTests
     {
         var mockHttp = new MockHttpMessageHandler();
         mockHttp
-            .When(HttpMethod.Get, "https://partner.test-stable.shopeemobile.com/api/v2/shop/get_shop_info*")
+            .When(HttpMethod.Get, "https://openplatform.sandbox.test-stable.shopee.sg/api/v2/shop/get_shop_info*")
             .Respond("application/json", """
             { "request_id": "req-log", "error": "", "message": "", "response": { } }
             """);
 
         var logger = new ListLogger<ShopeeClient>();
         var httpClient = mockHttp.ToHttpClient();
-        httpClient.BaseAddress = new Uri("https://partner.test-stable.shopeemobile.com/api/v2/");
+        httpClient.BaseAddress = new Uri("https://openplatform.sandbox.test-stable.shopee.sg/api/v2/");
 
         var client = new ShopeeClient(
             httpClient,

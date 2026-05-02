@@ -30,7 +30,7 @@ public sealed class ShopeeOptions
             ShopeeRegion.Global => new Uri("https://partner.shopeemobile.com/api/v2/"),
             ShopeeRegion.China => new Uri("https://openplatform.shopee.cn/api/v2/public/"),
             ShopeeRegion.Brazil => new Uri("https://openplatform.shopee.com.br/api/v2/"),
-            ShopeeRegion.TestGlobal => new Uri("https://partner.test-stable.shopeemobile.com/api/v2/"),
+            ShopeeRegion.TestGlobal => new Uri("https://openplatform.sandbox.test-stable.shopee.sg/api/v2/"),
             ShopeeRegion.TestChina => new Uri("https://openplatform.test-stable.shopee.cn/api/v2/"),
             _ => throw new ShopeeSdkException($"Unsupported Shopee region: {Region}")
         };

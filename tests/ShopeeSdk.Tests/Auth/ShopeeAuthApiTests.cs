@@ -19,7 +19,7 @@ public sealed class ShopeeAuthApiTests
 
         var url = api.BuildAuthorizationUrl(new Uri("https://omni.example.test/shopee/callback"));
 
-        url.ToString().Should().StartWith("https://partner.test-stable.shopeemobile.com/api/v2/shop/auth_partner?");
+        url.ToString().Should().StartWith("https://openplatform.sandbox.test-stable.shopee.sg/api/v2/shop/auth_partner?");
         url.Query.Should().Contain("partner_id=123456");
         url.Query.Should().Contain("timestamp=1610000000");
         url.Query.Should().Contain("redirect=https%3A%2F%2Fomni.example.test%2Fshopee%2Fcallback");
@@ -31,7 +31,7 @@ public sealed class ShopeeAuthApiTests
     {
         var mockHttp = new MockHttpMessageHandler();
         mockHttp
-            .When(HttpMethod.Post, "https://partner.test-stable.shopeemobile.com/api/v2/auth/token/get*")
+            .When(HttpMethod.Post, "https://openplatform.sandbox.test-stable.shopee.sg/api/v2/auth/token/get*")
             .Respond("application/json", """
             {
               "request_id": "auth-1",

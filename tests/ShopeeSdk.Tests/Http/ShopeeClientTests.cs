@@ -19,7 +19,7 @@ public sealed class ShopeeClientTests
     {
         var mockHttp = new MockHttpMessageHandler();
         mockHttp
-            .When(HttpMethod.Get, "https://partner.test-stable.shopeemobile.com/api/v2/product/get_item_list*")
+            .When(HttpMethod.Get, "https://openplatform.sandbox.test-stable.shopee.sg/api/v2/product/get_item_list*")
             .WithQueryString("partner_id", "123456")
             .WithQueryString("timestamp", "1610000000")
             .WithQueryString("offset", "0")
@@ -54,7 +54,7 @@ public sealed class ShopeeClientTests
     {
         var mockHttp = new MockHttpMessageHandler();
         mockHttp
-            .When(HttpMethod.Get, "https://partner.test-stable.shopeemobile.com/api/v2/product/get_item_list*")
+            .When(HttpMethod.Get, "https://openplatform.sandbox.test-stable.shopee.sg/api/v2/product/get_item_list*")
             .Respond(HttpStatusCode.OK, "application/json", """
             {
               "request_id": "req-2",
@@ -80,12 +80,12 @@ public sealed class ShopeeClientTests
     {
         var mockHttp = new MockHttpMessageHandler();
         mockHttp
-            .Expect(HttpMethod.Get, "https://partner.test-stable.shopeemobile.com/api/v2/product/get_item_list*")
+            .Expect(HttpMethod.Get, "https://openplatform.sandbox.test-stable.shopee.sg/api/v2/product/get_item_list*")
             .Respond(HttpStatusCode.InternalServerError, "application/json", """
             { "request_id": "req-fail", "error": "error_server", "message": "try later" }
             """);
         mockHttp
-            .Expect(HttpMethod.Get, "https://partner.test-stable.shopeemobile.com/api/v2/product/get_item_list*")
+            .Expect(HttpMethod.Get, "https://openplatform.sandbox.test-stable.shopee.sg/api/v2/product/get_item_list*")
             .Respond("application/json", """
             { "request_id": "req-ok", "error": "", "message": "", "response": { "total_count": 0 } }
             """);
@@ -103,7 +103,7 @@ public sealed class ShopeeClientTests
     private static ShopeeClient CreateClient(MockHttpMessageHandler mockHttp, int maxRetries = 2)
     {
         var httpClient = mockHttp.ToHttpClient();
-        httpClient.BaseAddress = new Uri("https://partner.test-stable.shopeemobile.com/api/v2/");
+        httpClient.BaseAddress = new Uri("https://openplatform.sandbox.test-stable.shopee.sg/api/v2/");
         return new ShopeeClient(
             httpClient,
             Options.Create(new ShopeeOptions

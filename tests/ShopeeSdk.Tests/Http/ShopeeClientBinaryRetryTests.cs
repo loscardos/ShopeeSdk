@@ -17,10 +17,10 @@ public sealed class ShopeeClientBinaryRetryTests
     {
         var mockHttp = new MockHttpMessageHandler();
         mockHttp
-            .Expect(HttpMethod.Get, "https://partner.test-stable.shopeemobile.com/api/v2/logistics/download_shipping_document*")
+            .Expect(HttpMethod.Get, "https://openplatform.sandbox.test-stable.shopee.sg/api/v2/logistics/download_shipping_document*")
             .Respond(System.Net.HttpStatusCode.InternalServerError);
         mockHttp
-            .Expect(HttpMethod.Get, "https://partner.test-stable.shopeemobile.com/api/v2/logistics/download_shipping_document*")
+            .Expect(HttpMethod.Get, "https://openplatform.sandbox.test-stable.shopee.sg/api/v2/logistics/download_shipping_document*")
             .Respond(_ => new HttpResponseMessage
             {
                 Content = new ByteArrayContent([1, 2, 3])
@@ -45,7 +45,7 @@ public sealed class ShopeeClientBinaryRetryTests
     {
         var mockHttp = new MockHttpMessageHandler();
         mockHttp
-            .Expect(HttpMethod.Get, "https://partner.test-stable.shopeemobile.com/api/v2/logistics/download_shipping_document*")
+            .Expect(HttpMethod.Get, "https://openplatform.sandbox.test-stable.shopee.sg/api/v2/logistics/download_shipping_document*")
             .Respond(System.Net.HttpStatusCode.TooManyRequests);
 
         var client = CreateClient(mockHttp, maxRetries: 0);
@@ -62,7 +62,7 @@ public sealed class ShopeeClientBinaryRetryTests
     private static ShopeeClient CreateClient(MockHttpMessageHandler mockHttp, int maxRetries)
     {
         var httpClient = mockHttp.ToHttpClient();
-        httpClient.BaseAddress = new Uri("https://partner.test-stable.shopeemobile.com/api/v2/");
+        httpClient.BaseAddress = new Uri("https://openplatform.sandbox.test-stable.shopee.sg/api/v2/");
 
         return new ShopeeClient(
             httpClient,

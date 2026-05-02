@@ -22,7 +22,7 @@ public sealed class LogisticsBinaryDownloadTests
     {
         var mockHttp = new MockHttpMessageHandler();
         mockHttp
-            .When(HttpMethod.Get, "https://partner.test-stable.shopeemobile.com/api/v2/logistics/download_shipping_document*")
+            .When(HttpMethod.Get, "https://openplatform.sandbox.test-stable.shopee.sg/api/v2/logistics/download_shipping_document*")
             .Respond(_ => new HttpResponseMessage
             {
                 Content = new ByteArrayContent([1, 2, 3])

@@ -18,7 +18,7 @@ public sealed class ShopeeClientObservabilityTests
     {
         var mockHttp = new MockHttpMessageHandler();
         mockHttp
-            .When(HttpMethod.Get, "https://partner.test-stable.shopeemobile.com/api/v2/order/get_order_list*")
+            .When(HttpMethod.Get, "https://openplatform.sandbox.test-stable.shopee.sg/api/v2/order/get_order_list*")
             .Respond(System.Net.HttpStatusCode.OK, "application/json", """
             { "request_id": "req-observe", "error": "error_param", "message": "bad param" }
             """);
@@ -47,7 +47,7 @@ public sealed class ShopeeClientObservabilityTests
     private static ShopeeClient CreateClient(MockHttpMessageHandler mockHttp, ListLogger<ShopeeClient> logger)
     {
         var httpClient = mockHttp.ToHttpClient();
-        httpClient.BaseAddress = new Uri("https://partner.test-stable.shopeemobile.com/api/v2/");
+        httpClient.BaseAddress = new Uri("https://openplatform.sandbox.test-stable.shopee.sg/api/v2/");
 
         return new ShopeeClient(
             httpClient,
