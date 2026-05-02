@@ -36,6 +36,18 @@ var orders = await orderApi.GetOrderListAsync(
     cancellationToken);
 ```
 
+## Sample Console
+
+The sample console can generate an authorization URL, exchange a sandbox code, and call a read-only order endpoint.
+
+```bash
+dotnet run --project samples/ShopeeSdk.SampleConsole -- auth-url
+dotnet run --project samples/ShopeeSdk.SampleConsole -- exchange-code
+dotnet run --project samples/ShopeeSdk.SampleConsole -- get-orders
+```
+
+Use ignored local environment files such as `.token/shopee-sandbox.env` for sandbox credentials. Do not commit access tokens or refresh tokens.
+
 ## Production Pilot Checklist
 
 See `docs/production-readiness.md` before using this SDK against live Shopee shops.
