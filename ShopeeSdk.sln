@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{12C3182A-4555-4EBB-9DB6-8405914C87EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopeeSdk.Abstractions", "src\ShopeeSdk.Abstractions\ShopeeSdk.Abstractions.csproj", "{F6439B5B-EE34-4523-89A1-F788F3CF8271}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopeeSdk.Core", "src\ShopeeSdk.Core\ShopeeSdk.Core.csproj", "{535D19A5-556B-4DDF-9442-1754261DB38C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopeeSdk.Extensions.DependencyInjection", "src\ShopeeSdk.Extensions.DependencyInjection\ShopeeSdk.Extensions.DependencyInjection.csproj", "{FB285F41-7EFA-4E1A-9476-2983CCF0796D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopeeSdk.Generated", "src\ShopeeSdk.Generated\ShopeeSdk.Generated.csproj", "{1041EB4B-3C6D-48F4-AC4A-6F5B5FBE3371}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopeeSdk.Generator", "src\ShopeeSdk.Generator\ShopeeSdk.Generator.csproj", "{64E55761-5035-456D-9095-2EA7811A817E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{05ACF83E-AC49-43F7-AB0B-8C4D8F9D857B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopeeSdk.Tests", "tests\ShopeeSdk.Tests\ShopeeSdk.Tests.csproj", "{4E6A551B-494E-4BD7-B975-66BAF6477CE3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6439B5B-EE34-4523-89A1-F788F3CF8271}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6439B5B-EE34-4523-89A1-F788F3CF8271}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6439B5B-EE34-4523-89A1-F788F3CF8271}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6439B5B-EE34-4523-89A1-F788F3CF8271}.Release|Any CPU.Build.0 = Release|Any CPU
+		{535D19A5-556B-4DDF-9442-1754261DB38C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{535D19A5-556B-4DDF-9442-1754261DB38C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{535D19A5-556B-4DDF-9442-1754261DB38C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{535D19A5-556B-4DDF-9442-1754261DB38C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB285F41-7EFA-4E1A-9476-2983CCF0796D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB285F41-7EFA-4E1A-9476-2983CCF0796D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB285F41-7EFA-4E1A-9476-2983CCF0796D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB285F41-7EFA-4E1A-9476-2983CCF0796D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1041EB4B-3C6D-48F4-AC4A-6F5B5FBE3371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1041EB4B-3C6D-48F4-AC4A-6F5B5FBE3371}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1041EB4B-3C6D-48F4-AC4A-6F5B5FBE3371}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1041EB4B-3C6D-48F4-AC4A-6F5B5FBE3371}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64E55761-5035-456D-9095-2EA7811A817E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64E55761-5035-456D-9095-2EA7811A817E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64E55761-5035-456D-9095-2EA7811A817E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64E55761-5035-456D-9095-2EA7811A817E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E6A551B-494E-4BD7-B975-66BAF6477CE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E6A551B-494E-4BD7-B975-66BAF6477CE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E6A551B-494E-4BD7-B975-66BAF6477CE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E6A551B-494E-4BD7-B975-66BAF6477CE3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F6439B5B-EE34-4523-89A1-F788F3CF8271} = {12C3182A-4555-4EBB-9DB6-8405914C87EA}
+		{535D19A5-556B-4DDF-9442-1754261DB38C} = {12C3182A-4555-4EBB-9DB6-8405914C87EA}
+		{FB285F41-7EFA-4E1A-9476-2983CCF0796D} = {12C3182A-4555-4EBB-9DB6-8405914C87EA}
+		{1041EB4B-3C6D-48F4-AC4A-6F5B5FBE3371} = {12C3182A-4555-4EBB-9DB6-8405914C87EA}
+		{64E55761-5035-456D-9095-2EA7811A817E} = {12C3182A-4555-4EBB-9DB6-8405914C87EA}
+		{4E6A551B-494E-4BD7-B975-66BAF6477CE3} = {05ACF83E-AC49-43F7-AB0B-8C4D8F9D857B}
+	EndGlobalSection
+EndGlobal
