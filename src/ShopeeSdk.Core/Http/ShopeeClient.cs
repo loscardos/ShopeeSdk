@@ -34,6 +34,11 @@ public sealed class ShopeeClient(
                 attempt < _options.MaxTransientRetries
                 && (exception.Category is ShopeeErrorCategory.Transient or ShopeeErrorCategory.RateLimit))
             {
+                _logger.LogWarning(
+                    exception,
+                    "Retrying Shopee request {Path} after transient error {Error}",
+                    request.Path,
+                    exception.Error);
                 await Task.Delay(_options.RetryBaseDelay * (attempt + 1), cancellationToken);
             }
             catch (HttpRequestException) when (attempt < _options.MaxTransientRetries)
@@ -104,12 +109,20 @@ public sealed class ShopeeClient(
             httpRequest.Content = JsonContent.Create(request.Body);
         }
 
+        _logger.LogInformation("Sending Shopee request {Method} {Path}", request.Method, request.Path);
+
         using var timeoutCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
         timeoutCts.CancelAfter(_options.RequestTimeout);
 
         using var response = await httpClient.SendAsync(httpRequest, timeoutCts.Token);
         var payload = await response.Content.ReadAsStringAsync(cancellationToken);
         var envelope = ShopeeResponseReader.ReadJsonEnvelope<TResponse>(payload);
+
+        _logger.LogInformation(
+            "Received Shopee response {Path} RequestId={RequestId} Error={Error}",
+            request.Path,
+            envelope.RequestId,
+            envelope.Error);
 
         if (!response.IsSuccessStatusCode && string.IsNullOrWhiteSpace(envelope.Error))
         {
