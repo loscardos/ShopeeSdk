@@ -14,6 +14,8 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackageId>Loscardos.ShopeeSdk.Storage.EntityFramework</PackageId>
+    <Description>Entity Framework Core token storage and ASP.NET Data Protection token encryption for the Loscardos Shopee SDK.</Description>
   </PropertyGroup>
 
 </Project>
