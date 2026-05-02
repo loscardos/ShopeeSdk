@@ -36,4 +36,27 @@ public sealed class OrderApi(IShopeeClient client, ShopeeTokenService tokenServi
 
         return envelope.Response ?? new GetOrderDetailResponse([]);
     }
+
+    public async Task<GetShipmentListResponse> GetShipmentListAsync(long shopId, GetShipmentListRequest request, CancellationToken cancellationToken)
+    {
+        var query = await ShopeeManagerAuth.CreateAuthQueryAsync(tokenService, shopId, cancellationToken);
+        query["cursor"] = request.Cursor;
+        query["page_size"] = request.PageSize;
+
+        var envelope = await client.SendAsync<GetShipmentListResponse>(
+            new ShopeeRequest(ShopeeRequestMethod.Get, "/order/get_shipment_list", query, null, new ShopeeRequestAuth(shopId, null)),
+            cancellationToken);
+
+        return envelope.Response ?? new GetShipmentListResponse(false, null, []);
+    }
+
+    public async Task<SetNoteResponse> SetNoteAsync(long shopId, SetNoteRequest request, CancellationToken cancellationToken)
+    {
+        var query = await ShopeeManagerAuth.CreateAuthQueryAsync(tokenService, shopId, cancellationToken);
+        var envelope = await client.SendAsync<SetNoteResponse>(
+            new ShopeeRequest(ShopeeRequestMethod.Post, "/order/set_note", query, request, new ShopeeRequestAuth(shopId, null)),
+            cancellationToken);
+
+        return envelope.Response ?? new SetNoteResponse(request.OrderSn);
+    }
 }

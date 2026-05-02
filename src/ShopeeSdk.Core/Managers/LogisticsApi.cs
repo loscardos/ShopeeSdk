@@ -26,4 +26,50 @@ public sealed class LogisticsApi(IShopeeClient client, ShopeeTokenService tokenS
             cancellationToken);
         return envelope.Response ?? new ShipOrderResponse(null, null);
     }
+
+    public async Task<GetTrackingInfoResponse> GetTrackingInfoAsync(long shopId, GetTrackingInfoRequest request, CancellationToken cancellationToken)
+    {
+        var query = await ShopeeManagerAuth.CreateAuthQueryAsync(tokenService, shopId, cancellationToken);
+        query["order_sn"] = request.OrderSn;
+        query["package_number"] = request.PackageNumber;
+
+        var envelope = await client.SendAsync<GetTrackingInfoResponse>(
+            new ShopeeRequest(ShopeeRequestMethod.Get, "/logistics/get_tracking_info", query, null, new ShopeeRequestAuth(shopId, null)),
+            cancellationToken);
+        return envelope.Response ?? new GetTrackingInfoResponse([]);
+    }
+
+    public async Task<GetShippingDocumentParameterResponse> GetShippingDocumentParameterAsync(long shopId, GetShippingDocumentParameterRequest request, CancellationToken cancellationToken)
+    {
+        var query = await ShopeeManagerAuth.CreateAuthQueryAsync(tokenService, shopId, cancellationToken);
+        query["order_sn"] = request.OrderSn;
+        query["package_number"] = request.PackageNumber;
+
+        var envelope = await client.SendAsync<GetShippingDocumentParameterResponse>(
+            new ShopeeRequest(ShopeeRequestMethod.Get, "/logistics/get_shipping_document_parameter", query, null, new ShopeeRequestAuth(shopId, null)),
+            cancellationToken);
+        return envelope.Response ?? new GetShippingDocumentParameterResponse(null);
+    }
+
+    public async Task<CreateShippingDocumentResponse> CreateShippingDocumentAsync(long shopId, CreateShippingDocumentRequest request, CancellationToken cancellationToken)
+    {
+        var query = await ShopeeManagerAuth.CreateAuthQueryAsync(tokenService, shopId, cancellationToken);
+        var envelope = await client.SendAsync<CreateShippingDocumentResponse>(
+            new ShopeeRequest(ShopeeRequestMethod.Post, "/logistics/create_shipping_document", query, request, new ShopeeRequestAuth(shopId, null)),
+            cancellationToken);
+        return envelope.Response ?? new CreateShippingDocumentResponse(null);
+    }
+
+    public async Task<DownloadShippingDocumentResponse> DownloadShippingDocumentAsync(long shopId, DownloadShippingDocumentRequest request, CancellationToken cancellationToken)
+    {
+        var query = await ShopeeManagerAuth.CreateAuthQueryAsync(tokenService, shopId, cancellationToken);
+        query["order_sn"] = request.OrderSn;
+        query["package_number"] = request.PackageNumber;
+        query["shipping_document_type"] = request.ShippingDocumentType;
+
+        var envelope = await client.SendAsync<DownloadShippingDocumentResponse>(
+            new ShopeeRequest(ShopeeRequestMethod.Get, "/logistics/download_shipping_document", query, null, new ShopeeRequestAuth(shopId, null)),
+            cancellationToken);
+        return envelope.Response ?? new DownloadShippingDocumentResponse(null);
+    }
 }

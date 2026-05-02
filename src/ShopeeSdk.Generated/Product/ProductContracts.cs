@@ -34,3 +34,39 @@ public sealed record SellerStock(
 public sealed record UpdateStockResponse(
     [property: JsonPropertyName("success_list")] IReadOnlyList<long>? SuccessList,
     [property: JsonPropertyName("failure_list")] IReadOnlyList<long>? FailureList);
+
+public sealed record GetItemBaseInfoRequest(
+    [property: JsonPropertyName("item_id_list")] IReadOnlyList<long> ItemIdList,
+    [property: JsonPropertyName("need_tax_info")] bool? NeedTaxInfo = null,
+    [property: JsonPropertyName("need_complaint_policy")] bool? NeedComplaintPolicy = null);
+
+public sealed record GetItemBaseInfoResponse(
+    [property: JsonPropertyName("item_list")] IReadOnlyList<ItemBaseInfo> ItemList);
+
+public sealed record ItemBaseInfo(
+    [property: JsonPropertyName("item_id")] long ItemId,
+    [property: JsonPropertyName("item_name")] string? ItemName,
+    [property: JsonPropertyName("item_sku")] string? ItemSku,
+    [property: JsonPropertyName("item_status")] string? ItemStatus);
+
+public sealed record GetModelListRequest(
+    [property: JsonPropertyName("item_id")] long ItemId);
+
+public sealed record GetModelListResponse(
+    [property: JsonPropertyName("model")] IReadOnlyList<ModelInfo> Model);
+
+public sealed record ModelInfo(
+    [property: JsonPropertyName("model_id")] long ModelId,
+    [property: JsonPropertyName("model_sku")] string? ModelSku);
+
+public sealed record UpdatePriceRequest(
+    [property: JsonPropertyName("item_id")] long ItemId,
+    [property: JsonPropertyName("price_list")] IReadOnlyList<UpdatePriceItem> PriceList);
+
+public sealed record UpdatePriceItem(
+    [property: JsonPropertyName("model_id")] long ModelId,
+    [property: JsonPropertyName("original_price")] decimal OriginalPrice);
+
+public sealed record UpdatePriceResponse(
+    [property: JsonPropertyName("success_list")] IReadOnlyList<long>? SuccessList,
+    [property: JsonPropertyName("failure_list")] IReadOnlyList<long>? FailureList);

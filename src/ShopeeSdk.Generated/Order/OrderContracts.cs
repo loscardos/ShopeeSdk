@@ -30,3 +30,23 @@ public sealed record OrderDetail(
     [property: JsonPropertyName("order_sn")] string OrderSn,
     [property: JsonPropertyName("order_status")] string OrderStatus,
     [property: JsonPropertyName("update_time")] long UpdateTime);
+
+public sealed record GetShipmentListRequest(
+    [property: JsonPropertyName("cursor")] string? Cursor,
+    [property: JsonPropertyName("page_size")] int PageSize);
+
+public sealed record GetShipmentListResponse(
+    [property: JsonPropertyName("more")] bool More,
+    [property: JsonPropertyName("next_cursor")] string? NextCursor,
+    [property: JsonPropertyName("order_list")] IReadOnlyList<ShipmentOrder> OrderList);
+
+public sealed record ShipmentOrder(
+    [property: JsonPropertyName("order_sn")] string OrderSn,
+    [property: JsonPropertyName("package_number")] string? PackageNumber);
+
+public sealed record SetNoteRequest(
+    [property: JsonPropertyName("order_sn")] string OrderSn,
+    [property: JsonPropertyName("note")] string Note);
+
+public sealed record SetNoteResponse(
+    [property: JsonPropertyName("order_sn")] string? OrderSn);
