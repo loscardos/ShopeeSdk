@@ -21,6 +21,7 @@ jobs:
           SHOPEE_PARTNER_ID: ${{ secrets.SHOPEE_PARTNER_ID }}
           SHOPEE_PARTNER_KEY: ${{ secrets.SHOPEE_PARTNER_KEY }}
       - run: dotnet pack ShopeeSdk.sln --no-build --output artifacts
+      - run: ./scripts/test-local-nuget.sh
       - name: Generator smoke test
         run: |
           if [ -d reference/schemas ]; then
