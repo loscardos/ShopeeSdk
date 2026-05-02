@@ -45,4 +45,5 @@ See `docs/production-readiness.md` before using this SDK against live Shopee sho
 Before enabling production shops, read:
 
 - `docs/production-readiness.md`
+- `docs/endpoint-coverage.md`
 - `docs/live-rollout-checklist.md`
