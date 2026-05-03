@@ -8,6 +8,7 @@ TMP="$ROOT/.tmp/local-nuget-consumer"
 rm -rf "$ARTIFACTS" "$TMP"
 rm -rf "$HOME/.nuget/packages/loscardos.shopeesdk."*
 dotnet pack "$ROOT/ShopeeSdk.sln" --output "$ARTIFACTS"
+"$ROOT/scripts/inspect-nuget.sh" "$ARTIFACTS"
 
 mkdir -p "$TMP"
 dotnet new console -n LocalNuGetConsumer -o "$TMP"
