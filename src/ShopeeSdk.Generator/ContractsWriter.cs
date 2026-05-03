@@ -62,19 +62,7 @@ public sealed class ContractsWriter
                 : childTypeName + "?";
         }
 
-        return parameter.Type switch
-        {
-            "string" => "string?",
-            "int" or "int32" or "integer" => "int?",
-            "int64" or "long" => "long?",
-            "float" or "double" or "decimal" => "decimal?",
-            "boolean" or "bool" => "bool?",
-            "string[]" => "IReadOnlyList<string>?",
-            "int[]" or "int32[]" => "IReadOnlyList<int>?",
-            "int64[]" => "IReadOnlyList<long>?",
-            "file" => "byte[]?",
-            _ => "JsonElement?"
-        };
+        return ShopeeTypeMapper.MapScalar(parameter.Type);
     }
 
     private static string GetChildTypeName(string parentTypeName, SchemaParameter parameter)
