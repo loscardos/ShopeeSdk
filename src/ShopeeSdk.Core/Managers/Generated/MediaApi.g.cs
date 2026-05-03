@@ -50,7 +50,7 @@ public sealed class MediaApi(IShopeeClient client) : IMediaApi
     {
         var query = new Dictionary<string, object?>();
         var envelope = await client.SendAsync<MediaUploadImageResponse>(
-            new ShopeeRequest(ShopeeRequestMethod.Post, "/media/upload_image", query, request, null),
+            new ShopeeRequest(ShopeeRequestMethod.Post, "/media/upload_image", query, request, null, ShopeeRequestContentKind.Multipart),
             cancellationToken);
         return envelope.Response ?? new MediaUploadImageResponse();
     }
@@ -59,7 +59,7 @@ public sealed class MediaApi(IShopeeClient client) : IMediaApi
     {
         var query = new Dictionary<string, object?>();
         var envelope = await client.SendAsync<MediaUploadVideoPartResponse>(
-            new ShopeeRequest(ShopeeRequestMethod.Post, "/media/upload_video_part", query, request, null),
+            new ShopeeRequest(ShopeeRequestMethod.Post, "/media/upload_video_part", query, request, null, ShopeeRequestContentKind.Multipart),
             cancellationToken);
         return envelope.Response ?? new MediaUploadVideoPartResponse();
     }

@@ -262,7 +262,7 @@ public sealed class OrderApi(IShopeeClient client, ShopeeTokenService tokenServi
         var token = await tokenService.GetValidTokenAsync(shopId, null, cancellationToken);
         query["access_token"] = token.AccessToken;
         var envelope = await client.SendAsync<OrderUploadInvoiceDocResponse>(
-            new ShopeeRequest(ShopeeRequestMethod.Post, "/order/upload_invoice_doc", query, request, new ShopeeRequestAuth(shopId, null)),
+            new ShopeeRequest(ShopeeRequestMethod.Post, "/order/upload_invoice_doc", query, request, new ShopeeRequestAuth(shopId, null), ShopeeRequestContentKind.Multipart),
             cancellationToken);
         return envelope.Response ?? new OrderUploadInvoiceDocResponse();
     }

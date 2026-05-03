@@ -57,7 +57,7 @@ public sealed class MediaSpaceApi(IShopeeClient client, ShopeeTokenService token
     {
         var query = new Dictionary<string, object?>();
         var envelope = await client.SendAsync<MediaSpaceUploadImageResponse>(
-            new ShopeeRequest(ShopeeRequestMethod.Post, "/media_space/upload_image", query, request, null),
+            new ShopeeRequest(ShopeeRequestMethod.Post, "/media_space/upload_image", query, request, null, ShopeeRequestContentKind.Multipart),
             cancellationToken);
         return envelope.Response ?? new MediaSpaceUploadImageResponse();
     }
@@ -66,7 +66,7 @@ public sealed class MediaSpaceApi(IShopeeClient client, ShopeeTokenService token
     {
         var query = new Dictionary<string, object?>();
         var envelope = await client.SendAsync<MediaSpaceUploadVideoPartResponse>(
-            new ShopeeRequest(ShopeeRequestMethod.Post, "/media_space/upload_video_part", query, request, null),
+            new ShopeeRequest(ShopeeRequestMethod.Post, "/media_space/upload_video_part", query, request, null, ShopeeRequestContentKind.Multipart),
             cancellationToken);
         return envelope.Response ?? new MediaSpaceUploadVideoPartResponse();
     }

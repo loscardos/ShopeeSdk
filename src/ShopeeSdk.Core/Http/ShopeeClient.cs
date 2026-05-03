@@ -214,16 +214,27 @@ public sealed class ShopeeClient(
             timestamp.ToString()
         };
 
-        if (request.Auth is { ShopId: not null } auth)
+        if (request.Auth is { ShopId: not null } shopAuth)
         {
             if (!query.TryGetValue("access_token", out var accessTokenValue) || accessTokenValue is null)
             {
                 throw new ShopeeSdkException("Authenticated Shopee request requires access_token in the query.");
             }
 
-            query["shop_id"] = auth.ShopId.Value;
+            query["shop_id"] = shopAuth.ShopId.Value;
             signParts.Add(accessTokenValue.ToString()!);
-            signParts.Add(auth.ShopId.Value.ToString());
+            signParts.Add(shopAuth.ShopId.Value.ToString());
+        }
+        else if (request.Auth is { MerchantId: not null } merchantAuth)
+        {
+            if (!query.TryGetValue("access_token", out var accessTokenValue) || accessTokenValue is null)
+            {
+                throw new ShopeeSdkException("Authenticated Shopee merchant request requires access_token in the query.");
+            }
+
+            query["merchant_id"] = merchantAuth.MerchantId.Value;
+            signParts.Add(accessTokenValue.ToString()!);
+            signParts.Add(merchantAuth.MerchantId.Value.ToString());
         }
 
         query["sign"] = ShopeeSigner.Sign(_options.PartnerKey, signParts);
@@ -235,10 +246,62 @@ public sealed class ShopeeClient(
 
         if (request.Body is not null)
         {
-            httpRequest.Content = JsonContent.Create(request.Body);
+            httpRequest.Content = request.ContentKind == ShopeeRequestContentKind.Multipart
+                ? BuildMultipartContent(request.Body)
+                : JsonContent.Create(request.Body);
         }
 
         return httpRequest;
+    }
+
+    private static HttpContent BuildMultipartContent(object body)
+    {
+        var multipart = new MultipartFormDataContent();
+        var values = body as IReadOnlyDictionary<string, object?>
+            ?? body.GetType()
+                .GetProperties()
+                .ToDictionary(property => property.Name, property => property.GetValue(body), StringComparer.Ordinal);
+
+        foreach (var (name, value) in values)
+        {
+            if (value is null)
+            {
+                continue;
+            }
+
+            if (value is ShopeeFilePart file)
+            {
+                AddFile(multipart, name, file);
+                continue;
+            }
+
+            if (value is IEnumerable<ShopeeFilePart> files)
+            {
+                foreach (var item in files)
+                {
+                    AddFile(multipart, name, item);
+                }
+
+                continue;
+            }
+
+            if (value is byte[] bytes)
+            {
+                AddFile(multipart, name, new ShopeeFilePart(name, "application/octet-stream", bytes));
+                continue;
+            }
+
+            multipart.Add(new StringContent(value.ToString()!), name);
+        }
+
+        return multipart;
+    }
+
+    private static void AddFile(MultipartFormDataContent multipart, string name, ShopeeFilePart file)
+    {
+        var content = new ByteArrayContent(file.Content);
+        content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(file.ContentType);
+        multipart.Add(content, name, file.FileName);
     }
 
     private static HttpMethod ToHttpMethod(ShopeeRequestMethod method)

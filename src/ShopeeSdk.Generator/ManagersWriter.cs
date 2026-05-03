@@ -89,6 +89,9 @@ public sealed class ManagersWriter
         };
         var method = endpoint.HttpMethod == ShopeeSchemaHttpMethod.Get ? "ShopeeRequestMethod.Get" : "ShopeeRequestMethod.Post";
         var bodyExpression = endpoint.RequestContentKind == ShopeeSchemaRequestContentKind.Query ? "null" : "request";
+        var contentKind = endpoint.RequestContentKind == ShopeeSchemaRequestContentKind.Multipart
+            ? ", ShopeeRequestContentKind.Multipart"
+            : string.Empty;
 
         builder.AppendLine();
         builder.AppendLine($"    public async Task<{responseType}> {methodName}({ownerParameter}{requestType} request, CancellationToken cancellationToken)");
@@ -112,7 +115,7 @@ public sealed class ManagersWriter
         }
 
         builder.AppendLine($"        var envelope = await client.SendAsync<{responseType}>(");
-        builder.AppendLine($"            new ShopeeRequest({method}, \"{endpoint.Path}\", query, {bodyExpression}, {authExpression}),");
+        builder.AppendLine($"            new ShopeeRequest({method}, \"{endpoint.Path}\", query, {bodyExpression}, {authExpression}{contentKind}),");
         builder.AppendLine("            cancellationToken);");
         builder.AppendLine($"        return envelope.Response ?? new {responseType}();");
         builder.AppendLine("    }");

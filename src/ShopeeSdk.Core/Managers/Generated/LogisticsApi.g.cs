@@ -499,7 +499,7 @@ public sealed class LogisticsApi(IShopeeClient client, ShopeeTokenService tokenS
         var token = await tokenService.GetValidTokenAsync(shopId, null, cancellationToken);
         query["access_token"] = token.AccessToken;
         var envelope = await client.SendAsync<LogisticsUploadServiceablePolygonResponse>(
-            new ShopeeRequest(ShopeeRequestMethod.Post, "/logistics/upload_serviceable_polygon", query, request, new ShopeeRequestAuth(shopId, null)),
+            new ShopeeRequest(ShopeeRequestMethod.Post, "/logistics/upload_serviceable_polygon", query, request, new ShopeeRequestAuth(shopId, null), ShopeeRequestContentKind.Multipart),
             cancellationToken);
         return envelope.Response ?? new LogisticsUploadServiceablePolygonResponse();
     }

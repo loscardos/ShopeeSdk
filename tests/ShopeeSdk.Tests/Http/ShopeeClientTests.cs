@@ -100,6 +100,38 @@ public sealed class ShopeeClientTests
         mockHttp.VerifyNoOutstandingExpectation();
     }
 
+    [Fact]
+    public async Task SendAsync_WithMerchantAuth_AddsMerchantIdToQuery()
+    {
+        var mockHttp = new MockHttpMessageHandler();
+        mockHttp
+            .When(HttpMethod.Get, "https://openplatform.sandbox.test-stable.shopee.sg/api/v2/merchant/get_shop_list_by_merchant*")
+            .WithQueryString("access_token", "merchant-token")
+            .WithQueryString("merchant_id", "900001")
+            .Respond("application/json", """
+            {
+              "request_id": "req-merchant",
+              "error": "",
+              "message": "",
+              "response": {}
+            }
+            """);
+
+        var client = CreateClient(mockHttp);
+
+        var response = await client.SendAsync<object>(
+            new ShopeeRequest(
+                ShopeeRequestMethod.Get,
+                "/merchant/get_shop_list_by_merchant",
+                new Dictionary<string, object?> { ["access_token"] = "merchant-token" },
+                null,
+                new ShopeeRequestAuth(null, 900001)),
+            CancellationToken.None);
+
+        response.RequestId.Should().Be("req-merchant");
+        mockHttp.VerifyNoOutstandingExpectation();
+    }
+
     private static ShopeeClient CreateClient(MockHttpMessageHandler mockHttp, int maxRetries = 2)
     {
         var httpClient = mockHttp.ToHttpClient();

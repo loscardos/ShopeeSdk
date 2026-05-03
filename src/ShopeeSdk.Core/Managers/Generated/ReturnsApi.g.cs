@@ -49,7 +49,7 @@ public sealed class ReturnsApi(IShopeeClient client, ShopeeTokenService tokenSer
         var token = await tokenService.GetValidTokenAsync(shopId, null, cancellationToken);
         query["access_token"] = token.AccessToken;
         var envelope = await client.SendAsync<ReturnsConvertImageResponse>(
-            new ShopeeRequest(ShopeeRequestMethod.Post, "/returns/convert_image", query, request, new ShopeeRequestAuth(shopId, null)),
+            new ShopeeRequest(ShopeeRequestMethod.Post, "/returns/convert_image", query, request, new ShopeeRequestAuth(shopId, null), ShopeeRequestContentKind.Multipart),
             cancellationToken);
         return envelope.Response ?? new ReturnsConvertImageResponse();
     }

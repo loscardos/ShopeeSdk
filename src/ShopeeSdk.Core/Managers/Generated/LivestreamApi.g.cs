@@ -252,7 +252,7 @@ public sealed class LivestreamApi(IShopeeClient client) : ILivestreamApi
     {
         var query = new Dictionary<string, object?>();
         var envelope = await client.SendAsync<LivestreamUploadImageResponse>(
-            new ShopeeRequest(ShopeeRequestMethod.Post, "/livestream/upload_image", query, request, null),
+            new ShopeeRequest(ShopeeRequestMethod.Post, "/livestream/upload_image", query, request, null, ShopeeRequestContentKind.Multipart),
             cancellationToken);
         return envelope.Response ?? new LivestreamUploadImageResponse();
     }
