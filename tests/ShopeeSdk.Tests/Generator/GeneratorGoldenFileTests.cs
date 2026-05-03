@@ -52,4 +52,29 @@ public sealed class GeneratorGoldenFileTests
         output.Should().Contain("public interface IProductApi");
         output.Should().Contain("Task<ProductGetCategoryResponse> GetCategoryAsync(long shopId, ProductGetCategoryRequest request, CancellationToken cancellationToken);");
     }
+
+    [Fact]
+    public void ContractsWriter_GeneratesRequiredRequestParametersWithoutNullDefaults()
+    {
+        var endpoint = new SchemaEndpoint(
+            "v2.payment.get_escrow_detail",
+            "Payment",
+            "payment",
+            "/payment/get_escrow_detail",
+            ShopeeSchemaHttpMethod.Get,
+            ShopeeSchemaAuthScope.Shop,
+            ShopeeSchemaRequestContentKind.Query,
+            [
+                new SchemaParameter("optional_note", "string", false, []),
+                new SchemaParameter("order_sn", "string", true, [])
+            ],
+            [new SchemaParameter("response", "object", false, [])]);
+
+        var output = new ContractsWriter().WriteModule("Payment", "payment", [endpoint]);
+
+        output.Should().Contain("public sealed record PaymentGetEscrowDetailRequest(");
+        output.Should().Contain("[property: JsonPropertyName(\"order_sn\")] string OrderSn,");
+        output.Should().Contain("[property: JsonPropertyName(\"optional_note\")] string? OptionalNote = null");
+        output.IndexOf("OrderSn", StringComparison.Ordinal).Should().BeLessThan(output.IndexOf("OptionalNote", StringComparison.Ordinal));
+    }
 }

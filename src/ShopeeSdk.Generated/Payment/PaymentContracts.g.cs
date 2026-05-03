@@ -7,8 +7,8 @@ using ShopeeSdk.Generated.Common;
 namespace ShopeeSdk.Generated.Payment;
 
 public sealed record PaymentGenerateIncomeReportRequest(
-    [property: JsonPropertyName("release_time_from")] long? ReleaseTimeFrom = null,
-    [property: JsonPropertyName("release_time_to")] long? ReleaseTimeTo = null
+    [property: JsonPropertyName("release_time_from")] long ReleaseTimeFrom,
+    [property: JsonPropertyName("release_time_to")] long ReleaseTimeTo
 );
 
 public sealed record PaymentGenerateIncomeReportResponse(
@@ -16,9 +16,9 @@ public sealed record PaymentGenerateIncomeReportResponse(
 );
 
 public sealed record PaymentGenerateIncomeStatementRequest(
-    [property: JsonPropertyName("release_time_from")] long? ReleaseTimeFrom = null,
-    [property: JsonPropertyName("release_time_to")] long? ReleaseTimeTo = null,
-    [property: JsonPropertyName("statement_type")] int? StatementType = null
+    [property: JsonPropertyName("release_time_from")] long ReleaseTimeFrom,
+    [property: JsonPropertyName("release_time_to")] long ReleaseTimeTo,
+    [property: JsonPropertyName("statement_type")] int StatementType
 );
 
 public sealed record PaymentGenerateIncomeStatementResponse(
@@ -26,10 +26,10 @@ public sealed record PaymentGenerateIncomeStatementResponse(
 );
 
 public sealed record PaymentGetBillingTransactionInfoRequest(
-    [property: JsonPropertyName("billing_transaction_info_type")] int? BillingTransactionInfoType = null,
-    [property: JsonPropertyName("encrypted_payout_ids")] IReadOnlyList<string>? EncryptedPayoutIds = null,
-    [property: JsonPropertyName("cursor")] string? Cursor = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null
+    [property: JsonPropertyName("billing_transaction_info_type")] int BillingTransactionInfoType,
+    [property: JsonPropertyName("cursor")] string Cursor,
+    [property: JsonPropertyName("page_size")] int PageSize,
+    [property: JsonPropertyName("encrypted_payout_ids")] IReadOnlyList<string>? EncryptedPayoutIds = null
 );
 
 public sealed record PaymentGetBillingTransactionInfoResponseTransactionsItem(
@@ -51,7 +51,7 @@ public sealed record PaymentGetBillingTransactionInfoResponse(
 );
 
 public sealed record PaymentGetEscrowDetailRequest(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null
+    [property: JsonPropertyName("order_sn")] string OrderSn
 );
 
 public sealed record PaymentGetEscrowDetailResponseOrderIncomeItemItemsItemKitItemsItem(
@@ -260,7 +260,7 @@ public sealed record PaymentGetEscrowDetailResponse(
 );
 
 public sealed record PaymentGetEscrowDetailBatchRequest(
-    [property: JsonPropertyName("order_sn_list")] IReadOnlyList<string>? OrderSnList = null
+    [property: JsonPropertyName("order_sn_list")] IReadOnlyList<string> OrderSnList
 );
 
 public sealed record PaymentGetEscrowDetailBatchResponseEscrowDetailItemOrderIncomeItemItemsItemKitItemsItem(
@@ -454,8 +454,8 @@ public sealed record PaymentGetEscrowDetailBatchResponse(
 );
 
 public sealed record PaymentGetEscrowListRequest(
-    [property: JsonPropertyName("release_time_from")] JsonElement? ReleaseTimeFrom = null,
-    [property: JsonPropertyName("release_time_to")] JsonElement? ReleaseTimeTo = null,
+    [property: JsonPropertyName("release_time_from")] JsonElement? ReleaseTimeFrom,
+    [property: JsonPropertyName("release_time_to")] JsonElement? ReleaseTimeTo,
     [property: JsonPropertyName("page_size")] int? PageSize = null,
     [property: JsonPropertyName("page_no")] int? PageNo = null
 );
@@ -472,11 +472,11 @@ public sealed record PaymentGetEscrowListResponse(
 );
 
 public sealed record PaymentGetIncomeDetailRequest(
-    [property: JsonPropertyName("date_from")] string? DateFrom = null,
-    [property: JsonPropertyName("date_to")] string? DateTo = null,
-    [property: JsonPropertyName("income_status")] int? IncomeStatus = null,
-    [property: JsonPropertyName("cursor")] string? Cursor = null,
-    [property: JsonPropertyName("page_size")] long? PageSize = null
+    [property: JsonPropertyName("date_from")] string DateFrom,
+    [property: JsonPropertyName("date_to")] string DateTo,
+    [property: JsonPropertyName("income_status")] int IncomeStatus,
+    [property: JsonPropertyName("page_size")] long PageSize,
+    [property: JsonPropertyName("cursor")] string? Cursor = null
 );
 
 public sealed record PaymentGetIncomeDetailResponse(
@@ -498,7 +498,7 @@ public sealed record PaymentGetIncomeOverviewResponse(
 );
 
 public sealed record PaymentGetIncomeReportRequest(
-    [property: JsonPropertyName("income_report_id")] long? IncomeReportId = null
+    [property: JsonPropertyName("income_report_id")] long IncomeReportId
 );
 
 public sealed record PaymentGetIncomeReportResponse(
@@ -510,7 +510,7 @@ public sealed record PaymentGetIncomeReportResponse(
 );
 
 public sealed record PaymentGetIncomeStatementRequest(
-    [property: JsonPropertyName("income_statement_id")] long? IncomeStatementId = null
+    [property: JsonPropertyName("income_statement_id")] long IncomeStatementId
 );
 
 public sealed record PaymentGetIncomeStatementResponse(
@@ -522,7 +522,7 @@ public sealed record PaymentGetIncomeStatementResponse(
 );
 
 public sealed record PaymentGetItemInstallmentStatusRequest(
-    [property: JsonPropertyName("item_id_list")] IReadOnlyList<int>? ItemIdList = null
+    [property: JsonPropertyName("item_id_list")] IReadOnlyList<int> ItemIdList
 );
 
 public sealed record PaymentGetItemInstallmentStatusResponseItemInstallmentListItem(
@@ -549,10 +549,10 @@ public sealed record PaymentGetPaymentMethodListResponse(
 );
 
 public sealed record PaymentGetPayoutDetailRequest(
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
-    [property: JsonPropertyName("page_no")] int? PageNo = null,
-    [property: JsonPropertyName("payout_time_from")] JsonElement? PayoutTimeFrom = null,
-    [property: JsonPropertyName("payout_time_to")] JsonElement? PayoutTimeTo = null
+    [property: JsonPropertyName("page_size")] int PageSize,
+    [property: JsonPropertyName("page_no")] int PageNo,
+    [property: JsonPropertyName("payout_time_from")] JsonElement? PayoutTimeFrom,
+    [property: JsonPropertyName("payout_time_to")] JsonElement? PayoutTimeTo
 );
 
 public sealed record PaymentGetPayoutDetailResponsePayoutListItemPayoutInfoItem(
@@ -593,10 +593,10 @@ public sealed record PaymentGetPayoutDetailResponse(
 );
 
 public sealed record PaymentGetPayoutInfoRequest(
-    [property: JsonPropertyName("payout_time_from")] JsonElement? PayoutTimeFrom = null,
-    [property: JsonPropertyName("payout_time_to")] JsonElement? PayoutTimeTo = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
-    [property: JsonPropertyName("cursor")] string? Cursor = null
+    [property: JsonPropertyName("payout_time_from")] JsonElement? PayoutTimeFrom,
+    [property: JsonPropertyName("payout_time_to")] JsonElement? PayoutTimeTo,
+    [property: JsonPropertyName("page_size")] int PageSize,
+    [property: JsonPropertyName("cursor")] string Cursor
 );
 
 public sealed record PaymentGetPayoutInfoResponsePayoutListItem(
@@ -625,8 +625,8 @@ public sealed record PaymentGetShopInstallmentStatusResponse(
 );
 
 public sealed record PaymentGetWalletTransactionListRequest(
-    [property: JsonPropertyName("page_no")] int? PageNo = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
+    [property: JsonPropertyName("page_no")] int PageNo,
+    [property: JsonPropertyName("page_size")] int PageSize,
     [property: JsonPropertyName("create_time_from")] int? CreateTimeFrom = null,
     [property: JsonPropertyName("create_time_to")] int? CreateTimeTo = null,
     [property: JsonPropertyName("wallet_type")] string? WalletType = null,
@@ -668,8 +668,8 @@ public sealed record PaymentGetWalletTransactionListResponse(
 );
 
 public sealed record PaymentSetItemInstallmentStatusRequest(
-    [property: JsonPropertyName("item_id_list")] IReadOnlyList<int>? ItemIdList = null,
-    [property: JsonPropertyName("tenure_list")] IReadOnlyList<int>? TenureList = null,
+    [property: JsonPropertyName("item_id_list")] IReadOnlyList<int> ItemIdList,
+    [property: JsonPropertyName("tenure_list")] IReadOnlyList<int> TenureList,
     [property: JsonPropertyName("participate_plan_ahora")] bool? ParticipatePlanAhora = null
 );
 
@@ -689,7 +689,7 @@ public sealed record PaymentSetItemInstallmentStatusResponse(
 );
 
 public sealed record PaymentSetShopInstallmentStatusRequest(
-    [property: JsonPropertyName("installment_status")] int? InstallmentStatus = null
+    [property: JsonPropertyName("installment_status")] int InstallmentStatus
 );
 
 public sealed record PaymentSetShopInstallmentStatusResponse(

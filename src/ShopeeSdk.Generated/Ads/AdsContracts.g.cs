@@ -15,9 +15,9 @@ public sealed record AdsCheckCreateGmsProductCampaignEligibilityResponse(
 );
 
 public sealed record AdsCreateGmsProductCampaignRequest(
-    [property: JsonPropertyName("start_date")] string? StartDate = null,
+    [property: JsonPropertyName("start_date")] string StartDate,
+    [property: JsonPropertyName("daily_budget")] decimal DailyBudget,
     [property: JsonPropertyName("end_date")] string? EndDate = null,
-    [property: JsonPropertyName("daily_budget")] decimal? DailyBudget = null,
     [property: JsonPropertyName("reference_id")] string? ReferenceId = null,
     [property: JsonPropertyName("roas_target")] decimal? RoasTarget = null
 );
@@ -27,23 +27,23 @@ public sealed record AdsCreateGmsProductCampaignResponse(
 );
 
 public sealed record AdsCreateManualProductAdsRequestSelectedKeywordsItem(
-    [property: JsonPropertyName("keyword")] string? Keyword = null,
-    [property: JsonPropertyName("match_type")] string? MatchType = null,
-    [property: JsonPropertyName("bid_price_per_click")] decimal? BidPricePerClick = null
+    [property: JsonPropertyName("keyword")] string Keyword,
+    [property: JsonPropertyName("match_type")] string MatchType,
+    [property: JsonPropertyName("bid_price_per_click")] decimal BidPricePerClick
 );
 
 public sealed record AdsCreateManualProductAdsRequestDiscoveryAdsLocationsItem(
-    [property: JsonPropertyName("location")] string? Location = null,
-    [property: JsonPropertyName("bid_price")] decimal? BidPrice = null
+    [property: JsonPropertyName("location")] string Location,
+    [property: JsonPropertyName("bid_price")] decimal BidPrice
 );
 
 public sealed record AdsCreateManualProductAdsRequest(
-    [property: JsonPropertyName("reference_id")] string? ReferenceId = null,
-    [property: JsonPropertyName("budget")] decimal? Budget = null,
-    [property: JsonPropertyName("start_date")] string? StartDate = null,
+    [property: JsonPropertyName("reference_id")] string ReferenceId,
+    [property: JsonPropertyName("budget")] decimal Budget,
+    [property: JsonPropertyName("start_date")] string StartDate,
+    [property: JsonPropertyName("bidding_method")] string BiddingMethod,
+    [property: JsonPropertyName("item_id")] long ItemId,
     [property: JsonPropertyName("end_date")] string? EndDate = null,
-    [property: JsonPropertyName("bidding_method")] string? BiddingMethod = null,
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
     [property: JsonPropertyName("roas_target")] decimal? RoasTarget = null,
     [property: JsonPropertyName("selected_keywords")] IReadOnlyList<AdsCreateManualProductAdsRequestSelectedKeywordsItem>? SelectedKeywords = null,
     [property: JsonPropertyName("discovery_ads_locations")] IReadOnlyList<AdsCreateManualProductAdsRequestDiscoveryAdsLocationsItem>? DiscoveryAdsLocations = null,
@@ -56,9 +56,9 @@ public sealed record AdsCreateManualProductAdsResponse(
 );
 
 public sealed record AdsEditGmsItemProductCampaignRequest(
-    [property: JsonPropertyName("campaign_id")] long? CampaignId = null,
-    [property: JsonPropertyName("edit_action")] string? EditAction = null,
-    [property: JsonPropertyName("item_id_list")] IReadOnlyList<long>? ItemIdList = null
+    [property: JsonPropertyName("edit_action")] string EditAction,
+    [property: JsonPropertyName("item_id_list")] IReadOnlyList<long> ItemIdList,
+    [property: JsonPropertyName("campaign_id")] long? CampaignId = null
 );
 
 public sealed record AdsEditGmsItemProductCampaignResponse(
@@ -66,8 +66,8 @@ public sealed record AdsEditGmsItemProductCampaignResponse(
 );
 
 public sealed record AdsEditGmsProductCampaignRequest(
+    [property: JsonPropertyName("edit_action")] string EditAction,
     [property: JsonPropertyName("campaign_id")] long? CampaignId = null,
-    [property: JsonPropertyName("edit_action")] string? EditAction = null,
     [property: JsonPropertyName("daily_budget")] decimal? DailyBudget = null,
     [property: JsonPropertyName("start_date")] string? StartDate = null,
     [property: JsonPropertyName("end_date")] string? EndDate = null,
@@ -80,16 +80,16 @@ public sealed record AdsEditGmsProductCampaignResponse(
 );
 
 public sealed record AdsEditManualProductAdKeywordsRequestSelectedKeywordsItem(
-    [property: JsonPropertyName("edit_action")] string? EditAction = null,
-    [property: JsonPropertyName("keyword")] string? Keyword = null,
+    [property: JsonPropertyName("edit_action")] string EditAction,
+    [property: JsonPropertyName("keyword")] string Keyword,
     [property: JsonPropertyName("match_type")] string? MatchType = null,
     [property: JsonPropertyName("bid_price_per_click")] decimal? BidPricePerClick = null
 );
 
 public sealed record AdsEditManualProductAdKeywordsRequest(
-    [property: JsonPropertyName("reference_id")] string? ReferenceId = null,
-    [property: JsonPropertyName("campaign_id")] long? CampaignId = null,
-    [property: JsonPropertyName("selected_keywords")] IReadOnlyList<AdsEditManualProductAdKeywordsRequestSelectedKeywordsItem>? SelectedKeywords = null
+    [property: JsonPropertyName("reference_id")] string ReferenceId,
+    [property: JsonPropertyName("campaign_id")] long CampaignId,
+    [property: JsonPropertyName("selected_keywords")] IReadOnlyList<AdsEditManualProductAdKeywordsRequestSelectedKeywordsItem> SelectedKeywords
 );
 
 public sealed record AdsEditManualProductAdKeywordsResponseFailedEditsItem(
@@ -104,15 +104,15 @@ public sealed record AdsEditManualProductAdKeywordsResponse(
 );
 
 public sealed record AdsEditManualProductAdsRequestDiscoveryAdsLocationsItem(
-    [property: JsonPropertyName("location")] string? Location = null,
-    [property: JsonPropertyName("status")] string? Status = null,
-    [property: JsonPropertyName("bid_price")] decimal? BidPrice = null
+    [property: JsonPropertyName("location")] string Location,
+    [property: JsonPropertyName("status")] string Status,
+    [property: JsonPropertyName("bid_price")] decimal BidPrice
 );
 
 public sealed record AdsEditManualProductAdsRequest(
-    [property: JsonPropertyName("reference_id")] string? ReferenceId = null,
-    [property: JsonPropertyName("campaign_id")] long? CampaignId = null,
-    [property: JsonPropertyName("edit_action")] string? EditAction = null,
+    [property: JsonPropertyName("reference_id")] string ReferenceId,
+    [property: JsonPropertyName("campaign_id")] long CampaignId,
+    [property: JsonPropertyName("edit_action")] string EditAction,
     [property: JsonPropertyName("budget")] decimal? Budget = null,
     [property: JsonPropertyName("start_date")] string? StartDate = null,
     [property: JsonPropertyName("end_date")] string? EndDate = null,
@@ -133,8 +133,8 @@ public sealed record AdsGetAdsFácilShopRateResponse(
 );
 
 public sealed record AdsGetAllCpcAdsDailyPerformanceRequest(
-    [property: JsonPropertyName("start_date")] string? StartDate = null,
-    [property: JsonPropertyName("end_date")] string? EndDate = null
+    [property: JsonPropertyName("start_date")] string StartDate,
+    [property: JsonPropertyName("end_date")] string EndDate
 );
 
 public sealed record AdsGetAllCpcAdsDailyPerformanceResponse(
@@ -157,7 +157,7 @@ public sealed record AdsGetAllCpcAdsDailyPerformanceResponse(
 );
 
 public sealed record AdsGetAllCpcAdsHourlyPerformanceRequest(
-    [property: JsonPropertyName("performance_date")] string? PerformanceDate = null
+    [property: JsonPropertyName("performance_date")] string PerformanceDate
 );
 
 public sealed record AdsGetAllCpcAdsHourlyPerformanceResponse(
@@ -181,10 +181,10 @@ public sealed record AdsGetAllCpcAdsHourlyPerformanceResponse(
 );
 
 public sealed record AdsGetCreateProductAdBudgetSuggestionRequest(
-    [property: JsonPropertyName("reference_id")] string? ReferenceId = null,
-    [property: JsonPropertyName("product_selection")] string? ProductSelection = null,
-    [property: JsonPropertyName("campaign_placement")] string? CampaignPlacement = null,
-    [property: JsonPropertyName("bidding_method")] string? BiddingMethod = null,
+    [property: JsonPropertyName("reference_id")] string ReferenceId,
+    [property: JsonPropertyName("product_selection")] string ProductSelection,
+    [property: JsonPropertyName("campaign_placement")] string CampaignPlacement,
+    [property: JsonPropertyName("bidding_method")] string BiddingMethod,
     [property: JsonPropertyName("enhanced_cpc")] string? EnhancedCpc = null,
     [property: JsonPropertyName("discovery_ads_location_names")] string? DiscoveryAdsLocationNames = null,
     [property: JsonPropertyName("roas_target")] decimal? RoasTarget = null,
@@ -202,9 +202,9 @@ public sealed record AdsGetCreateProductAdBudgetSuggestionResponse(
 );
 
 public sealed record AdsGetGmsCampaignPerformanceRequest(
-    [property: JsonPropertyName("campaign_id")] long? CampaignId = null,
-    [property: JsonPropertyName("start_date")] string? StartDate = null,
-    [property: JsonPropertyName("end_date")] string? EndDate = null
+    [property: JsonPropertyName("start_date")] string StartDate,
+    [property: JsonPropertyName("end_date")] string EndDate,
+    [property: JsonPropertyName("campaign_id")] long? CampaignId = null
 );
 
 public sealed record AdsGetGmsCampaignPerformanceResponseReportItem(
@@ -232,9 +232,9 @@ public sealed record AdsGetGmsCampaignPerformanceResponse(
 );
 
 public sealed record AdsGetGmsItemPerformanceRequest(
+    [property: JsonPropertyName("start_date")] string StartDate,
+    [property: JsonPropertyName("end_date")] string EndDate,
     [property: JsonPropertyName("campaign_id")] long? CampaignId = null,
-    [property: JsonPropertyName("start_date")] string? StartDate = null,
-    [property: JsonPropertyName("end_date")] string? EndDate = null,
     [property: JsonPropertyName("offset")] int? Offset = null,
     [property: JsonPropertyName("limit")] int? Limit = null
 );
@@ -271,9 +271,9 @@ public sealed record AdsGetGmsItemPerformanceResponse(
 );
 
 public sealed record AdsGetProductCampaignDailyPerformanceRequest(
-    [property: JsonPropertyName("start_date")] string? StartDate = null,
-    [property: JsonPropertyName("end_date")] string? EndDate = null,
-    [property: JsonPropertyName("campaign_id_list")] string? CampaignIdList = null
+    [property: JsonPropertyName("start_date")] string StartDate,
+    [property: JsonPropertyName("end_date")] string EndDate,
+    [property: JsonPropertyName("campaign_id_list")] string CampaignIdList
 );
 
 public sealed record AdsGetProductCampaignDailyPerformanceResponseCampaignListItemMetricsListItem(
@@ -313,8 +313,8 @@ public sealed record AdsGetProductCampaignDailyPerformanceResponse(
 );
 
 public sealed record AdsGetProductCampaignHourlyPerformanceRequest(
-    [property: JsonPropertyName("performance_date")] string? PerformanceDate = null,
-    [property: JsonPropertyName("campaign_id_list")] string? CampaignIdList = null
+    [property: JsonPropertyName("performance_date")] string PerformanceDate,
+    [property: JsonPropertyName("campaign_id_list")] string CampaignIdList
 );
 
 public sealed record AdsGetProductCampaignHourlyPerformanceResponseCampaignListItemMetricsListItem(
@@ -373,8 +373,8 @@ public sealed record AdsGetProductLevelCampaignIdListResponse(
 );
 
 public sealed record AdsGetProductLevelCampaignSettingInfoRequest(
-    [property: JsonPropertyName("info_type_list")] string? InfoTypeList = null,
-    [property: JsonPropertyName("campaign_id_list")] string? CampaignIdList = null
+    [property: JsonPropertyName("info_type_list")] string InfoTypeList,
+    [property: JsonPropertyName("campaign_id_list")] string CampaignIdList
 );
 
 public sealed record AdsGetProductLevelCampaignSettingInfoResponseCampaignListItemCommonInfoItemCampaignDurationItem(
@@ -437,8 +437,8 @@ public sealed record AdsGetProductLevelCampaignSettingInfoResponse(
 );
 
 public sealed record AdsGetProductRecommendedRoiTargetRequest(
-    [property: JsonPropertyName("reference_id")] string? ReferenceId = null,
-    [property: JsonPropertyName("item_id")] int? ItemId = null
+    [property: JsonPropertyName("reference_id")] string ReferenceId,
+    [property: JsonPropertyName("item_id")] int ItemId
 );
 
 public sealed record AdsGetProductRecommendedRoiTargetResponseLowerBoundItem(
@@ -473,7 +473,7 @@ public sealed record AdsGetRecommendedItemListResponse(
 );
 
 public sealed record AdsGetRecommendedKeywordListRequest(
-    [property: JsonPropertyName("item_id")] int? ItemId = null,
+    [property: JsonPropertyName("item_id")] int ItemId,
     [property: JsonPropertyName("input_keyword")] string? InputKeyword = null
 );
 

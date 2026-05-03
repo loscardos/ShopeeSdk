@@ -7,8 +7,8 @@ using ShopeeSdk.Generated.Common;
 namespace ShopeeSdk.Generated.ShopCategory;
 
 public sealed record ShopCategoryAddItemListRequest(
-    [property: JsonPropertyName("shop_category_id")] int? ShopCategoryId = null,
-    [property: JsonPropertyName("item_list")] IReadOnlyList<int>? ItemList = null
+    [property: JsonPropertyName("shop_category_id")] int ShopCategoryId,
+    [property: JsonPropertyName("item_list")] IReadOnlyList<int> ItemList
 );
 
 public sealed record ShopCategoryAddItemListResponseInvalidItemIdListItem(
@@ -24,7 +24,7 @@ public sealed record ShopCategoryAddItemListResponse(
 );
 
 public sealed record ShopCategoryAddShopCategoryRequest(
-    [property: JsonPropertyName("name")] string? Name = null,
+    [property: JsonPropertyName("name")] string Name,
     [property: JsonPropertyName("sort_weight")] int? SortWeight = null
 );
 
@@ -33,8 +33,8 @@ public sealed record ShopCategoryAddShopCategoryResponse(
 );
 
 public sealed record ShopCategoryDeleteItemListRequest(
-    [property: JsonPropertyName("shop_category_id")] int? ShopCategoryId = null,
-    [property: JsonPropertyName("item_list")] IReadOnlyList<int>? ItemList = null
+    [property: JsonPropertyName("shop_category_id")] int ShopCategoryId,
+    [property: JsonPropertyName("item_list")] IReadOnlyList<int> ItemList
 );
 
 public sealed record ShopCategoryDeleteItemListResponse(
@@ -44,7 +44,7 @@ public sealed record ShopCategoryDeleteItemListResponse(
 );
 
 public sealed record ShopCategoryDeleteShopCategoryRequest(
-    [property: JsonPropertyName("shop_category_id")] int? ShopCategoryId = null
+    [property: JsonPropertyName("shop_category_id")] int ShopCategoryId
 );
 
 public sealed record ShopCategoryDeleteShopCategoryResponse(
@@ -53,7 +53,7 @@ public sealed record ShopCategoryDeleteShopCategoryResponse(
 );
 
 public sealed record ShopCategoryGetItemListRequest(
-    [property: JsonPropertyName("shop_category_id")] int? ShopCategoryId = null,
+    [property: JsonPropertyName("shop_category_id")] int ShopCategoryId,
     [property: JsonPropertyName("page_size")] int? PageSize = null,
     [property: JsonPropertyName("page_no")] int? PageNo = null
 );
@@ -65,8 +65,8 @@ public sealed record ShopCategoryGetItemListResponse(
 );
 
 public sealed record ShopCategoryGetShopCategoryListRequest(
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
-    [property: JsonPropertyName("page_no")] int? PageNo = null
+    [property: JsonPropertyName("page_size")] int PageSize,
+    [property: JsonPropertyName("page_no")] int PageNo
 );
 
 public sealed record ShopCategoryGetShopCategoryListResponseShopCategorysItem(
@@ -83,7 +83,7 @@ public sealed record ShopCategoryGetShopCategoryListResponse(
 );
 
 public sealed record ShopCategoryUpdateShopCategoryRequest(
-    [property: JsonPropertyName("shop_category_id")] int? ShopCategoryId = null,
+    [property: JsonPropertyName("shop_category_id")] int ShopCategoryId,
     [property: JsonPropertyName("name")] string? Name = null,
     [property: JsonPropertyName("sort_weight")] int? SortWeight = null,
     [property: JsonPropertyName("status")] string? Status = null

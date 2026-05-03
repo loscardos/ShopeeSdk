@@ -7,10 +7,10 @@ using ShopeeSdk.Generated.Common;
 namespace ShopeeSdk.Generated.AddOnDeal;
 
 public sealed record AddOnDealAddAddOnDealRequest(
-    [property: JsonPropertyName("add_on_deal_name")] string? AddOnDealName = null,
-    [property: JsonPropertyName("start_time")] int? StartTime = null,
-    [property: JsonPropertyName("end_time")] int? EndTime = null,
-    [property: JsonPropertyName("promotion_type")] int? PromotionType = null,
+    [property: JsonPropertyName("add_on_deal_name")] string AddOnDealName,
+    [property: JsonPropertyName("start_time")] int StartTime,
+    [property: JsonPropertyName("end_time")] int EndTime,
+    [property: JsonPropertyName("promotion_type")] int PromotionType,
     [property: JsonPropertyName("purchase_min_spend")] decimal? PurchaseMinSpend = null,
     [property: JsonPropertyName("per_gift_num")] int? PerGiftNum = null,
     [property: JsonPropertyName("promotion_purchase_limit")] int? PromotionPurchaseLimit = null
@@ -21,13 +21,13 @@ public sealed record AddOnDealAddAddOnDealResponse(
 );
 
 public sealed record AddOnDealAddAddOnDealMainItemRequestMainItemListItem(
-    [property: JsonPropertyName("item_id")] int? ItemId = null,
-    [property: JsonPropertyName("status")] int? Status = null
+    [property: JsonPropertyName("item_id")] int ItemId,
+    [property: JsonPropertyName("status")] int Status
 );
 
 public sealed record AddOnDealAddAddOnDealMainItemRequest(
-    [property: JsonPropertyName("add_on_deal_id")] int? AddOnDealId = null,
-    [property: JsonPropertyName("main_item_list")] IReadOnlyList<AddOnDealAddAddOnDealMainItemRequestMainItemListItem>? MainItemList = null
+    [property: JsonPropertyName("add_on_deal_id")] int AddOnDealId,
+    [property: JsonPropertyName("main_item_list")] IReadOnlyList<AddOnDealAddAddOnDealMainItemRequestMainItemListItem> MainItemList
 );
 
 public sealed record AddOnDealAddAddOnDealMainItemResponseMainItemListItem(
@@ -49,8 +49,8 @@ public sealed record AddOnDealAddAddOnDealSubItemRequestSubItemListItem(
 );
 
 public sealed record AddOnDealAddAddOnDealSubItemRequest(
-    [property: JsonPropertyName("add_on_deal_id")] int? AddOnDealId = null,
-    [property: JsonPropertyName("sub_item_list")] IReadOnlyList<AddOnDealAddAddOnDealSubItemRequestSubItemListItem>? SubItemList = null
+    [property: JsonPropertyName("add_on_deal_id")] int AddOnDealId,
+    [property: JsonPropertyName("sub_item_list")] IReadOnlyList<AddOnDealAddAddOnDealSubItemRequestSubItemListItem> SubItemList
 );
 
 public sealed record AddOnDealAddAddOnDealSubItemResponseSubItemListItem(
@@ -67,7 +67,7 @@ public sealed record AddOnDealAddAddOnDealSubItemResponse(
 );
 
 public sealed record AddOnDealDeleteAddOnDealRequest(
-    [property: JsonPropertyName("add_on_deal_id")] int? AddOnDealId = null
+    [property: JsonPropertyName("add_on_deal_id")] int AddOnDealId
 );
 
 public sealed record AddOnDealDeleteAddOnDealResponse(
@@ -75,8 +75,8 @@ public sealed record AddOnDealDeleteAddOnDealResponse(
 );
 
 public sealed record AddOnDealDeleteAddOnDealMainItemRequest(
-    [property: JsonPropertyName("add_on_deal_id")] int? AddOnDealId = null,
-    [property: JsonPropertyName("main_item_list")] IReadOnlyList<int>? MainItemList = null
+    [property: JsonPropertyName("add_on_deal_id")] int AddOnDealId,
+    [property: JsonPropertyName("main_item_list")] IReadOnlyList<int> MainItemList
 );
 
 public sealed record AddOnDealDeleteAddOnDealMainItemResponse(
@@ -90,8 +90,8 @@ public sealed record AddOnDealDeleteAddOnDealSubItemRequestSubItemListItem(
 );
 
 public sealed record AddOnDealDeleteAddOnDealSubItemRequest(
-    [property: JsonPropertyName("add_on_deal_id")] int? AddOnDealId = null,
-    [property: JsonPropertyName("sub_item_list")] IReadOnlyList<AddOnDealDeleteAddOnDealSubItemRequestSubItemListItem>? SubItemList = null
+    [property: JsonPropertyName("add_on_deal_id")] int AddOnDealId,
+    [property: JsonPropertyName("sub_item_list")] IReadOnlyList<AddOnDealDeleteAddOnDealSubItemRequestSubItemListItem> SubItemList
 );
 
 public sealed record AddOnDealDeleteAddOnDealSubItemResponseSubItemListItem(
@@ -107,7 +107,7 @@ public sealed record AddOnDealDeleteAddOnDealSubItemResponse(
 );
 
 public sealed record AddOnDealEndAddOnDealRequest(
-    [property: JsonPropertyName("add_on_deal_id")] int? AddOnDealId = null
+    [property: JsonPropertyName("add_on_deal_id")] int AddOnDealId
 );
 
 public sealed record AddOnDealEndAddOnDealResponse(
@@ -115,7 +115,7 @@ public sealed record AddOnDealEndAddOnDealResponse(
 );
 
 public sealed record AddOnDealGetAddOnDealRequest(
-    [property: JsonPropertyName("add_on_deal_id")] int? AddOnDealId = null
+    [property: JsonPropertyName("add_on_deal_id")] int AddOnDealId
 );
 
 public sealed record AddOnDealGetAddOnDealResponse(
@@ -132,7 +132,7 @@ public sealed record AddOnDealGetAddOnDealResponse(
 );
 
 public sealed record AddOnDealGetAddOnDealListRequest(
-    [property: JsonPropertyName("promotion_status")] string? PromotionStatus = null,
+    [property: JsonPropertyName("promotion_status")] string PromotionStatus,
     [property: JsonPropertyName("page_no")] int? PageNo = null,
     [property: JsonPropertyName("page_size")] int? PageSize = null
 );
@@ -156,7 +156,7 @@ public sealed record AddOnDealGetAddOnDealListResponse(
 );
 
 public sealed record AddOnDealGetAddOnDealMainItemRequest(
-    [property: JsonPropertyName("add_on_deal_id")] int? AddOnDealId = null
+    [property: JsonPropertyName("add_on_deal_id")] int AddOnDealId
 );
 
 public sealed record AddOnDealGetAddOnDealMainItemResponseMainItemListItem(
@@ -170,7 +170,7 @@ public sealed record AddOnDealGetAddOnDealMainItemResponse(
 );
 
 public sealed record AddOnDealGetAddOnDealSubItemRequest(
-    [property: JsonPropertyName("add_on_deal_id")] int? AddOnDealId = null
+    [property: JsonPropertyName("add_on_deal_id")] int AddOnDealId
 );
 
 public sealed record AddOnDealGetAddOnDealSubItemResponseSubItemListItemPriceItem(
@@ -192,7 +192,7 @@ public sealed record AddOnDealGetAddOnDealSubItemResponse(
 );
 
 public sealed record AddOnDealUpdateAddOnDealRequest(
-    [property: JsonPropertyName("add_on_deal_id")] int? AddOnDealId = null,
+    [property: JsonPropertyName("add_on_deal_id")] int AddOnDealId,
     [property: JsonPropertyName("start_time")] int? StartTime = null,
     [property: JsonPropertyName("end_time")] int? EndTime = null,
     [property: JsonPropertyName("purchase_min_spend")] decimal? PurchaseMinSpend = null,
@@ -214,13 +214,13 @@ public sealed record AddOnDealUpdateAddOnDealResponse(
 );
 
 public sealed record AddOnDealUpdateAddOnDealMainItemRequestMainItemListItem(
-    [property: JsonPropertyName("item_id")] int? ItemId = null,
-    [property: JsonPropertyName("status")] int? Status = null
+    [property: JsonPropertyName("item_id")] int ItemId,
+    [property: JsonPropertyName("status")] int Status
 );
 
 public sealed record AddOnDealUpdateAddOnDealMainItemRequest(
-    [property: JsonPropertyName("add_on_deal_id")] int? AddOnDealId = null,
-    [property: JsonPropertyName("main_item_list")] IReadOnlyList<AddOnDealUpdateAddOnDealMainItemRequestMainItemListItem>? MainItemList = null
+    [property: JsonPropertyName("add_on_deal_id")] int AddOnDealId,
+    [property: JsonPropertyName("main_item_list")] IReadOnlyList<AddOnDealUpdateAddOnDealMainItemRequestMainItemListItem> MainItemList
 );
 
 public sealed record AddOnDealUpdateAddOnDealMainItemResponseMainItemListItem(
@@ -241,8 +241,8 @@ public sealed record AddOnDealUpdateAddOnDealSubItemRequestSubItemListItem(
 );
 
 public sealed record AddOnDealUpdateAddOnDealSubItemRequest(
-    [property: JsonPropertyName("add_on_deal_id")] int? AddOnDealId = null,
-    [property: JsonPropertyName("sub_item_list")] IReadOnlyList<AddOnDealUpdateAddOnDealSubItemRequestSubItemListItem>? SubItemList = null
+    [property: JsonPropertyName("add_on_deal_id")] int AddOnDealId,
+    [property: JsonPropertyName("sub_item_list")] IReadOnlyList<AddOnDealUpdateAddOnDealSubItemRequestSubItemListItem> SubItemList
 );
 
 public sealed record AddOnDealUpdateAddOnDealSubItemResponseSubItemListItem(

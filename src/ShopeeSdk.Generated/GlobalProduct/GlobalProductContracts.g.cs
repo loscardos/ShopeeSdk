@@ -6,18 +6,18 @@ using ShopeeSdk.Generated.Common;
 
 namespace ShopeeSdk.Generated.GlobalProduct;
 
+public sealed record GlobalProductAddGlobalItemRequestPreOrderItem(
+    [property: JsonPropertyName("days_to_ship")] long DaysToShip
+);
+
 public sealed record GlobalProductAddGlobalItemRequestImageItem(
-    [property: JsonPropertyName("image_id_list")] IReadOnlyList<string>? ImageIdList = null
+    [property: JsonPropertyName("image_id_list")] IReadOnlyList<string> ImageIdList
 );
 
 public sealed record GlobalProductAddGlobalItemRequestDimensionItem(
-    [property: JsonPropertyName("package_length")] long? PackageLength = null,
-    [property: JsonPropertyName("package_width")] long? PackageWidth = null,
-    [property: JsonPropertyName("package_height")] long? PackageHeight = null
-);
-
-public sealed record GlobalProductAddGlobalItemRequestPreOrderItem(
-    [property: JsonPropertyName("days_to_ship")] long? DaysToShip = null
+    [property: JsonPropertyName("package_length")] long PackageLength,
+    [property: JsonPropertyName("package_width")] long PackageWidth,
+    [property: JsonPropertyName("package_height")] long PackageHeight
 );
 
 public sealed record GlobalProductAddGlobalItemRequestBrandItem(
@@ -55,8 +55,8 @@ public sealed record GlobalProductAddGlobalItemRequestDescriptionInfoItem(
 );
 
 public sealed record GlobalProductAddGlobalItemRequestSellerStockItem(
-    [property: JsonPropertyName("location_id")] string? LocationId = null,
-    [property: JsonPropertyName("stock")] int? Stock = null
+    [property: JsonPropertyName("stock")] int Stock,
+    [property: JsonPropertyName("location_id")] string? LocationId = null
 );
 
 public sealed record GlobalProductAddGlobalItemRequestSizeChartInfoItem(
@@ -65,16 +65,16 @@ public sealed record GlobalProductAddGlobalItemRequestSizeChartInfoItem(
 );
 
 public sealed record GlobalProductAddGlobalItemRequest(
-    [property: JsonPropertyName("category_id")] long? CategoryId = null,
-    [property: JsonPropertyName("global_item_name")] string? GlobalItemName = null,
-    [property: JsonPropertyName("description")] string? Description = null,
+    [property: JsonPropertyName("category_id")] long CategoryId,
+    [property: JsonPropertyName("global_item_name")] string GlobalItemName,
+    [property: JsonPropertyName("description")] string Description,
+    [property: JsonPropertyName("original_price")] decimal OriginalPrice,
+    [property: JsonPropertyName("weight")] decimal Weight,
+    [property: JsonPropertyName("pre_order")] GlobalProductAddGlobalItemRequestPreOrderItem PreOrder,
     [property: JsonPropertyName("global_item_sku")] string? GlobalItemSku = null,
     [property: JsonPropertyName("image")] GlobalProductAddGlobalItemRequestImageItem? Image = null,
-    [property: JsonPropertyName("original_price")] decimal? OriginalPrice = null,
     [property: JsonPropertyName("normal_stock")] long? NormalStock = null,
-    [property: JsonPropertyName("weight")] decimal? Weight = null,
     [property: JsonPropertyName("dimension")] GlobalProductAddGlobalItemRequestDimensionItem? Dimension = null,
-    [property: JsonPropertyName("pre_order")] GlobalProductAddGlobalItemRequestPreOrderItem? PreOrder = null,
     [property: JsonPropertyName("condition")] string? Condition = null,
     [property: JsonPropertyName("video_upload_id")] IReadOnlyList<string>? VideoUploadId = null,
     [property: JsonPropertyName("brand")] GlobalProductAddGlobalItemRequestBrandItem? Brand = null,
@@ -91,40 +91,40 @@ public sealed record GlobalProductAddGlobalItemResponse(
 );
 
 public sealed record GlobalProductAddGlobalModelRequestGlobalModelItemSellerStockItem(
-    [property: JsonPropertyName("location_id")] string? LocationId = null,
-    [property: JsonPropertyName("stock")] int? Stock = null
+    [property: JsonPropertyName("stock")] int Stock,
+    [property: JsonPropertyName("location_id")] string? LocationId = null
 );
 
 public sealed record GlobalProductAddGlobalModelRequestGlobalModelItemDimensionItem(
-    [property: JsonPropertyName("package_height")] int? PackageHeight = null,
-    [property: JsonPropertyName("package_length")] int? PackageLength = null,
-    [property: JsonPropertyName("package_width")] int? PackageWidth = null
+    [property: JsonPropertyName("package_height")] int PackageHeight,
+    [property: JsonPropertyName("package_length")] int PackageLength,
+    [property: JsonPropertyName("package_width")] int PackageWidth
 );
 
 public sealed record GlobalProductAddGlobalModelRequestGlobalModelItemPreOrderItem(
-    [property: JsonPropertyName("days_to_ship")] int? DaysToShip = null
+    [property: JsonPropertyName("days_to_ship")] int DaysToShip
 );
 
 public sealed record GlobalProductAddGlobalModelRequestGlobalModelItem(
+    [property: JsonPropertyName("tier_index")] IReadOnlyList<int> TierIndex,
+    [property: JsonPropertyName("original_price")] decimal OriginalPrice,
     [property: JsonPropertyName("global_model_sku")] string? GlobalModelSku = null,
-    [property: JsonPropertyName("tier_index")] IReadOnlyList<int>? TierIndex = null,
     [property: JsonPropertyName("seller_stock")] IReadOnlyList<GlobalProductAddGlobalModelRequestGlobalModelItemSellerStockItem>? SellerStock = null,
-    [property: JsonPropertyName("original_price")] decimal? OriginalPrice = null,
     [property: JsonPropertyName("weight")] decimal? Weight = null,
     [property: JsonPropertyName("dimension")] GlobalProductAddGlobalModelRequestGlobalModelItemDimensionItem? Dimension = null,
     [property: JsonPropertyName("pre_order")] GlobalProductAddGlobalModelRequestGlobalModelItemPreOrderItem? PreOrder = null
 );
 
 public sealed record GlobalProductAddGlobalModelRequest(
-    [property: JsonPropertyName("global_item_id")] long? GlobalItemId = null,
-    [property: JsonPropertyName("global_model")] IReadOnlyList<GlobalProductAddGlobalModelRequestGlobalModelItem>? GlobalModel = null
+    [property: JsonPropertyName("global_item_id")] long GlobalItemId,
+    [property: JsonPropertyName("global_model")] IReadOnlyList<GlobalProductAddGlobalModelRequestGlobalModelItem> GlobalModel
 );
 
 public sealed record GlobalProductAddGlobalModelResponse(
 );
 
 public sealed record GlobalProductCategoryRecommendRequest(
-    [property: JsonPropertyName("global_item_name")] string? GlobalItemName = null,
+    [property: JsonPropertyName("global_item_name")] string GlobalItemName,
     [property: JsonPropertyName("global_product_cover_image")] string? GlobalProductCoverImage = null
 );
 
@@ -133,25 +133,25 @@ public sealed record GlobalProductCategoryRecommendResponse(
 );
 
 public sealed record GlobalProductCreatePublishTaskRequestItemItemImageItem(
-    [property: JsonPropertyName("image_id_list")] IReadOnlyList<string>? ImageIdList = null
+    [property: JsonPropertyName("image_id_list")] IReadOnlyList<string> ImageIdList
 );
 
 public sealed record GlobalProductCreatePublishTaskRequestItemItemModelItem(
-    [property: JsonPropertyName("tier_index")] IReadOnlyList<int>? TierIndex = null,
-    [property: JsonPropertyName("original_price")] decimal? OriginalPrice = null,
+    [property: JsonPropertyName("tier_index")] IReadOnlyList<int> TierIndex,
+    [property: JsonPropertyName("original_price")] decimal OriginalPrice,
     [property: JsonPropertyName("model_status")] string? ModelStatus = null
 );
 
 public sealed record GlobalProductCreatePublishTaskRequestItemItemLogisticItem(
-    [property: JsonPropertyName("logistic_id")] int? LogisticId = null,
-    [property: JsonPropertyName("enabled")] bool? Enabled = null,
+    [property: JsonPropertyName("logistic_id")] int LogisticId,
+    [property: JsonPropertyName("enabled")] bool Enabled,
     [property: JsonPropertyName("shipping_fee")] decimal? ShippingFee = null,
     [property: JsonPropertyName("size_id")] int? SizeId = null,
     [property: JsonPropertyName("is_free")] bool? IsFree = null
 );
 
 public sealed record GlobalProductCreatePublishTaskRequestItemItemPreOrderItem(
-    [property: JsonPropertyName("is_pre_order")] bool? IsPreOrder = null,
+    [property: JsonPropertyName("is_pre_order")] bool IsPreOrder,
     [property: JsonPropertyName("days_to_ship")] int? DaysToShip = null
 );
 
@@ -201,9 +201,9 @@ public sealed record GlobalProductCreatePublishTaskRequestItemItem(
 );
 
 public sealed record GlobalProductCreatePublishTaskRequest(
-    [property: JsonPropertyName("global_item_id")] long? GlobalItemId = null,
-    [property: JsonPropertyName("shop_id")] int? ShopId = null,
-    [property: JsonPropertyName("shop_region")] string? ShopRegion = null,
+    [property: JsonPropertyName("global_item_id")] long GlobalItemId,
+    [property: JsonPropertyName("shop_id")] int ShopId,
+    [property: JsonPropertyName("shop_region")] string ShopRegion,
     [property: JsonPropertyName("item")] GlobalProductCreatePublishTaskRequestItemItem? Item = null
 );
 
@@ -212,7 +212,7 @@ public sealed record GlobalProductCreatePublishTaskResponse(
 );
 
 public sealed record GlobalProductDeleteGlobalItemRequest(
-    [property: JsonPropertyName("global_item_id")] int? GlobalItemId = null
+    [property: JsonPropertyName("global_item_id")] int GlobalItemId
 );
 
 public sealed record GlobalProductDeleteGlobalItemResponseFailureDeleteItemItem(
@@ -225,8 +225,8 @@ public sealed record GlobalProductDeleteGlobalItemResponse(
 );
 
 public sealed record GlobalProductDeleteGlobalModelRequest(
-    [property: JsonPropertyName("global_item_id")] int? GlobalItemId = null,
-    [property: JsonPropertyName("global_model_id")] int? GlobalModelId = null
+    [property: JsonPropertyName("global_item_id")] int GlobalItemId,
+    [property: JsonPropertyName("global_model_id")] int GlobalModelId
 );
 
 public sealed record GlobalProductDeleteGlobalModelResponseFailuresItem(
@@ -241,7 +241,7 @@ public sealed record GlobalProductDeleteGlobalModelResponse(
 );
 
 public sealed record GlobalProductGetAttributeTreeRequest(
-    [property: JsonPropertyName("category_id_list")] IReadOnlyList<int>? CategoryIdList = null,
+    [property: JsonPropertyName("category_id_list")] IReadOnlyList<int> CategoryIdList,
     [property: JsonPropertyName("language")] string? Language = null
 );
 
@@ -296,10 +296,10 @@ public sealed record GlobalProductGetAttributeTreeResponse(
 );
 
 public sealed record GlobalProductGetBrandListRequest(
-    [property: JsonPropertyName("offset")] int? Offset = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
-    [property: JsonPropertyName("category_id")] int? CategoryId = null,
-    [property: JsonPropertyName("status")] int? Status = null
+    [property: JsonPropertyName("offset")] int Offset,
+    [property: JsonPropertyName("page_size")] int PageSize,
+    [property: JsonPropertyName("category_id")] int CategoryId,
+    [property: JsonPropertyName("status")] int Status
 );
 
 public sealed record GlobalProductGetBrandListResponseBrandListItem(
@@ -333,8 +333,8 @@ public sealed record GlobalProductGetCategoryResponse(
 );
 
 public sealed record GlobalProductGetGlobalItemIdRequest(
-    [property: JsonPropertyName("shop_id")] int? ShopId = null,
-    [property: JsonPropertyName("item_id_list")] IReadOnlyList<int>? ItemIdList = null
+    [property: JsonPropertyName("shop_id")] int ShopId,
+    [property: JsonPropertyName("item_id_list")] IReadOnlyList<int> ItemIdList
 );
 
 public sealed record GlobalProductGetGlobalItemIdResponseItemIdMapItem(
@@ -347,7 +347,7 @@ public sealed record GlobalProductGetGlobalItemIdResponse(
 );
 
 public sealed record GlobalProductGetGlobalItemInfoRequest(
-    [property: JsonPropertyName("global_item_id_list")] long? GlobalItemIdList = null
+    [property: JsonPropertyName("global_item_id_list")] long GlobalItemIdList
 );
 
 public sealed record GlobalProductGetGlobalItemInfoResponseGlobalItemListItemStockInfoItem(
@@ -535,8 +535,8 @@ public sealed record GlobalProductGetGlobalItemLimitResponse(
 );
 
 public sealed record GlobalProductGetGlobalItemListRequest(
+    [property: JsonPropertyName("page_size")] int PageSize,
     [property: JsonPropertyName("offset")] string? Offset = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
     [property: JsonPropertyName("update_time_from")] JsonElement? UpdateTimeFrom = null,
     [property: JsonPropertyName("update_time_to")] JsonElement? UpdateTimeTo = null
 );
@@ -554,7 +554,7 @@ public sealed record GlobalProductGetGlobalItemListResponse(
 );
 
 public sealed record GlobalProductGetGlobalModelListRequest(
-    [property: JsonPropertyName("global_item_id")] long? GlobalItemId = null
+    [property: JsonPropertyName("global_item_id")] long GlobalItemId
 );
 
 public sealed record GlobalProductGetGlobalModelListResponseTierVariationItemOptionListItemImageItem(
@@ -627,7 +627,7 @@ public sealed record GlobalProductGetGlobalModelListResponse(
 );
 
 public sealed record GlobalProductGetLocalAdjustmentRateRequest(
-    [property: JsonPropertyName("shop_id")] long? ShopId = null
+    [property: JsonPropertyName("shop_id")] long ShopId
 );
 
 public sealed record GlobalProductGetLocalAdjustmentRateResponse(
@@ -635,7 +635,7 @@ public sealed record GlobalProductGetLocalAdjustmentRateResponse(
 );
 
 public sealed record GlobalProductGetPublishTaskResultRequest(
-    [property: JsonPropertyName("publish_task_id")] int? PublishTaskId = null
+    [property: JsonPropertyName("publish_task_id")] int PublishTaskId
 );
 
 public sealed record GlobalProductGetPublishTaskResultResponseSuccessItem(
@@ -655,7 +655,7 @@ public sealed record GlobalProductGetPublishTaskResultResponse(
 );
 
 public sealed record GlobalProductGetPublishableShopRequest(
-    [property: JsonPropertyName("global_item_id")] int? GlobalItemId = null,
+    [property: JsonPropertyName("global_item_id")] int GlobalItemId,
     [property: JsonPropertyName("shop_id_list")] IReadOnlyList<int>? ShopIdList = null
 );
 
@@ -669,7 +669,7 @@ public sealed record GlobalProductGetPublishableShopResponse(
 );
 
 public sealed record GlobalProductGetPublishedListRequest(
-    [property: JsonPropertyName("global_item_id")] int? GlobalItemId = null,
+    [property: JsonPropertyName("global_item_id")] int GlobalItemId,
     [property: JsonPropertyName("shop_id_list")] IReadOnlyList<int>? ShopIdList = null
 );
 
@@ -685,8 +685,8 @@ public sealed record GlobalProductGetPublishedListResponse(
 );
 
 public sealed record GlobalProductGetRecommendAttributeRequest(
-    [property: JsonPropertyName("global_item_name")] string? GlobalItemName = null,
-    [property: JsonPropertyName("category_id")] int? CategoryId = null,
+    [property: JsonPropertyName("global_item_name")] string GlobalItemName,
+    [property: JsonPropertyName("category_id")] int CategoryId,
     [property: JsonPropertyName("cover_image_id")] string? CoverImageId = null
 );
 
@@ -704,9 +704,9 @@ public sealed record GlobalProductGetRecommendAttributeResponse(
 );
 
 public sealed record GlobalProductGetShopPublishableStatusRequest(
-    [property: JsonPropertyName("global_item_id")] int? GlobalItemId = null,
-    [property: JsonPropertyName("offset")] int? Offset = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null
+    [property: JsonPropertyName("global_item_id")] int GlobalItemId,
+    [property: JsonPropertyName("offset")] int Offset,
+    [property: JsonPropertyName("page_size")] int PageSize
 );
 
 public sealed record GlobalProductGetShopPublishableStatusResponseShopPublishableStatusListItem(
@@ -723,7 +723,7 @@ public sealed record GlobalProductGetShopPublishableStatusResponse(
 );
 
 public sealed record GlobalProductGetSizeChartDetailRequest(
-    [property: JsonPropertyName("size_chart_id")] int? SizeChartId = null,
+    [property: JsonPropertyName("size_chart_id")] int SizeChartId,
     [property: JsonPropertyName("language")] string? Language = null
 );
 
@@ -756,9 +756,9 @@ public sealed record GlobalProductGetSizeChartDetailResponse(
 );
 
 public sealed record GlobalProductGetSizeChartListRequest(
-    [property: JsonPropertyName("category_id")] long? CategoryId = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
-    [property: JsonPropertyName("cursor")] string? Cursor = null
+    [property: JsonPropertyName("category_id")] long CategoryId,
+    [property: JsonPropertyName("page_size")] int PageSize,
+    [property: JsonPropertyName("cursor")] string Cursor
 );
 
 public sealed record GlobalProductGetSizeChartListResponseSizeChartListItem(
@@ -772,53 +772,53 @@ public sealed record GlobalProductGetSizeChartListResponse(
 );
 
 public sealed record GlobalProductGetVariationsRequest(
-    [property: JsonPropertyName("category_id")] int? CategoryId = null
+    [property: JsonPropertyName("category_id")] int CategoryId
 );
 
 public sealed record GlobalProductGetVariationsResponse(
 );
 
 public sealed record GlobalProductInitTierVariationRequestGlobalModelItemSellerStockItem(
-    [property: JsonPropertyName("location_id")] string? LocationId = null,
-    [property: JsonPropertyName("stock")] long? Stock = null
+    [property: JsonPropertyName("stock")] long Stock,
+    [property: JsonPropertyName("location_id")] string? LocationId = null
 );
 
 public sealed record GlobalProductInitTierVariationRequestGlobalModelItemDimensionItem(
-    [property: JsonPropertyName("package_height")] int? PackageHeight = null,
-    [property: JsonPropertyName("package_length")] int? PackageLength = null,
-    [property: JsonPropertyName("package_width")] int? PackageWidth = null
+    [property: JsonPropertyName("package_height")] int PackageHeight,
+    [property: JsonPropertyName("package_length")] int PackageLength,
+    [property: JsonPropertyName("package_width")] int PackageWidth
 );
 
 public sealed record GlobalProductInitTierVariationRequestGlobalModelItemPreOrderItem(
-    [property: JsonPropertyName("days_to_ship")] int? DaysToShip = null
+    [property: JsonPropertyName("days_to_ship")] int DaysToShip
 );
 
 public sealed record GlobalProductInitTierVariationRequestGlobalModelItem(
-    [property: JsonPropertyName("original_price")] decimal? OriginalPrice = null,
+    [property: JsonPropertyName("original_price")] decimal OriginalPrice,
+    [property: JsonPropertyName("tier_index")] IReadOnlyList<int> TierIndex,
     [property: JsonPropertyName("seller_stock")] IReadOnlyList<GlobalProductInitTierVariationRequestGlobalModelItemSellerStockItem>? SellerStock = null,
     [property: JsonPropertyName("global_model_sku")] string? GlobalModelSku = null,
-    [property: JsonPropertyName("tier_index")] IReadOnlyList<int>? TierIndex = null,
     [property: JsonPropertyName("weight")] decimal? Weight = null,
     [property: JsonPropertyName("dimension")] GlobalProductInitTierVariationRequestGlobalModelItemDimensionItem? Dimension = null,
     [property: JsonPropertyName("pre_order")] GlobalProductInitTierVariationRequestGlobalModelItemPreOrderItem? PreOrder = null
 );
 
 public sealed record GlobalProductInitTierVariationRequestStandardiseTierVariationItemVariationOptionListItem(
-    [property: JsonPropertyName("variation_option_id")] int? VariationOptionId = null,
+    [property: JsonPropertyName("variation_option_id")] int VariationOptionId,
     [property: JsonPropertyName("variation_option_name")] string? VariationOptionName = null,
     [property: JsonPropertyName("image_id")] string? ImageId = null
 );
 
 public sealed record GlobalProductInitTierVariationRequestStandardiseTierVariationItem(
-    [property: JsonPropertyName("variation_id")] int? VariationId = null,
+    [property: JsonPropertyName("variation_id")] int VariationId,
+    [property: JsonPropertyName("variation_option_list")] IReadOnlyList<GlobalProductInitTierVariationRequestStandardiseTierVariationItemVariationOptionListItem> VariationOptionList,
     [property: JsonPropertyName("variation_name")] string? VariationName = null,
-    [property: JsonPropertyName("variation_group_id")] int? VariationGroupId = null,
-    [property: JsonPropertyName("variation_option_list")] IReadOnlyList<GlobalProductInitTierVariationRequestStandardiseTierVariationItemVariationOptionListItem>? VariationOptionList = null
+    [property: JsonPropertyName("variation_group_id")] int? VariationGroupId = null
 );
 
 public sealed record GlobalProductInitTierVariationRequest(
-    [property: JsonPropertyName("global_model")] IReadOnlyList<GlobalProductInitTierVariationRequestGlobalModelItem>? GlobalModel = null,
-    [property: JsonPropertyName("global_item_id")] int? GlobalItemId = null,
+    [property: JsonPropertyName("global_model")] IReadOnlyList<GlobalProductInitTierVariationRequestGlobalModelItem> GlobalModel,
+    [property: JsonPropertyName("global_item_id")] int GlobalItemId,
     [property: JsonPropertyName("standardise_tier_variation")] IReadOnlyList<GlobalProductInitTierVariationRequestStandardiseTierVariationItem>? StandardiseTierVariation = null
 );
 
@@ -826,10 +826,10 @@ public sealed record GlobalProductInitTierVariationResponse(
 );
 
 public sealed record GlobalProductSearchGlobalAttributeValueListRequest(
-    [property: JsonPropertyName("attribute_id")] int? AttributeId = null,
-    [property: JsonPropertyName("value_name")] string? ValueName = null,
-    [property: JsonPropertyName("cursor")] long? Cursor = null,
-    [property: JsonPropertyName("limit")] long? Limit = null
+    [property: JsonPropertyName("attribute_id")] int AttributeId,
+    [property: JsonPropertyName("cursor")] long Cursor,
+    [property: JsonPropertyName("limit")] long Limit,
+    [property: JsonPropertyName("value_name")] string? ValueName = null
 );
 
 public sealed record GlobalProductSearchGlobalAttributeValueListResponseValueListItem(
@@ -848,24 +848,24 @@ public sealed record GlobalProductSearchGlobalAttributeValueListResponse(
 );
 
 public sealed record GlobalProductSetSyncFieldRequestShopSyncListItem(
-    [property: JsonPropertyName("shop_id")] int? ShopId = null,
-    [property: JsonPropertyName("shop_region")] string? ShopRegion = null,
-    [property: JsonPropertyName("name_and_description")] bool? NameAndDescription = null,
-    [property: JsonPropertyName("media_information")] bool? MediaInformation = null,
-    [property: JsonPropertyName("tier_variation_name_and_option")] bool? TierVariationNameAndOption = null,
-    [property: JsonPropertyName("price")] bool? Price = null,
-    [property: JsonPropertyName("days_to_ship")] bool? DaysToShip = null
+    [property: JsonPropertyName("shop_id")] int ShopId,
+    [property: JsonPropertyName("shop_region")] string ShopRegion,
+    [property: JsonPropertyName("name_and_description")] bool NameAndDescription,
+    [property: JsonPropertyName("media_information")] bool MediaInformation,
+    [property: JsonPropertyName("tier_variation_name_and_option")] bool TierVariationNameAndOption,
+    [property: JsonPropertyName("price")] bool Price,
+    [property: JsonPropertyName("days_to_ship")] bool DaysToShip
 );
 
 public sealed record GlobalProductSetSyncFieldRequest(
-    [property: JsonPropertyName("shop_sync_list")] IReadOnlyList<GlobalProductSetSyncFieldRequestShopSyncListItem>? ShopSyncList = null
+    [property: JsonPropertyName("shop_sync_list")] IReadOnlyList<GlobalProductSetSyncFieldRequestShopSyncListItem> ShopSyncList
 );
 
 public sealed record GlobalProductSetSyncFieldResponse(
 );
 
 public sealed record GlobalProductSupportSizeChartRequest(
-    [property: JsonPropertyName("category_id")] int? CategoryId = null
+    [property: JsonPropertyName("category_id")] int CategoryId
 );
 
 public sealed record GlobalProductSupportSizeChartResponse(
@@ -879,11 +879,11 @@ public sealed record GlobalProductUpdateGlobalItemRequestDimensionItem(
 );
 
 public sealed record GlobalProductUpdateGlobalItemRequestPreOrderItem(
-    [property: JsonPropertyName("days_to_ship")] int? DaysToShip = null
+    [property: JsonPropertyName("days_to_ship")] int DaysToShip
 );
 
 public sealed record GlobalProductUpdateGlobalItemRequestImageItem(
-    [property: JsonPropertyName("image_id_list")] IReadOnlyList<string>? ImageIdList = null
+    [property: JsonPropertyName("image_id_list")] IReadOnlyList<string> ImageIdList
 );
 
 public sealed record GlobalProductUpdateGlobalItemRequestBrandItem(
@@ -925,7 +925,7 @@ public sealed record GlobalProductUpdateGlobalItemRequestSizeChartInfoItem(
 );
 
 public sealed record GlobalProductUpdateGlobalItemRequest(
-    [property: JsonPropertyName("global_item_id")] long? GlobalItemId = null,
+    [property: JsonPropertyName("global_item_id")] long GlobalItemId,
     [property: JsonPropertyName("category_id")] int? CategoryId = null,
     [property: JsonPropertyName("global_item_name")] string? GlobalItemName = null,
     [property: JsonPropertyName("description")] string? Description = null,
@@ -948,63 +948,63 @@ public sealed record GlobalProductUpdateGlobalItemResponse(
 );
 
 public sealed record GlobalProductUpdateGlobalModelRequestGlobalModelItemDimensionItem(
-    [property: JsonPropertyName("package_height")] int? PackageHeight = null,
-    [property: JsonPropertyName("package_length")] int? PackageLength = null,
-    [property: JsonPropertyName("package_width")] int? PackageWidth = null
+    [property: JsonPropertyName("package_height")] int PackageHeight,
+    [property: JsonPropertyName("package_length")] int PackageLength,
+    [property: JsonPropertyName("package_width")] int PackageWidth
 );
 
 public sealed record GlobalProductUpdateGlobalModelRequestGlobalModelItemPreOrderItem(
-    [property: JsonPropertyName("days_to_ship")] int? DaysToShip = null
+    [property: JsonPropertyName("days_to_ship")] int DaysToShip
 );
 
 public sealed record GlobalProductUpdateGlobalModelRequestGlobalModelItem(
-    [property: JsonPropertyName("global_model_sku")] string? GlobalModelSku = null,
-    [property: JsonPropertyName("global_model_id")] long? GlobalModelId = null,
+    [property: JsonPropertyName("global_model_sku")] string GlobalModelSku,
+    [property: JsonPropertyName("global_model_id")] long GlobalModelId,
     [property: JsonPropertyName("weight")] decimal? Weight = null,
     [property: JsonPropertyName("dimension")] GlobalProductUpdateGlobalModelRequestGlobalModelItemDimensionItem? Dimension = null,
     [property: JsonPropertyName("pre_order")] GlobalProductUpdateGlobalModelRequestGlobalModelItemPreOrderItem? PreOrder = null
 );
 
 public sealed record GlobalProductUpdateGlobalModelRequest(
-    [property: JsonPropertyName("global_item_id")] long? GlobalItemId = null,
-    [property: JsonPropertyName("global_model")] IReadOnlyList<GlobalProductUpdateGlobalModelRequestGlobalModelItem>? GlobalModel = null
+    [property: JsonPropertyName("global_item_id")] long GlobalItemId,
+    [property: JsonPropertyName("global_model")] IReadOnlyList<GlobalProductUpdateGlobalModelRequestGlobalModelItem> GlobalModel
 );
 
 public sealed record GlobalProductUpdateGlobalModelResponse(
 );
 
 public sealed record GlobalProductUpdateLocalAdjustmentRateRequest(
-    [property: JsonPropertyName("adjustment_rate")] decimal? AdjustmentRate = null,
-    [property: JsonPropertyName("shop_id")] long? ShopId = null
+    [property: JsonPropertyName("adjustment_rate")] decimal AdjustmentRate,
+    [property: JsonPropertyName("shop_id")] long ShopId
 );
 
 public sealed record GlobalProductUpdateLocalAdjustmentRateResponse(
 );
 
 public sealed record GlobalProductUpdatePriceRequestPriceListItem(
-    [property: JsonPropertyName("global_model_id")] int? GlobalModelId = null,
-    [property: JsonPropertyName("original_price")] decimal? OriginalPrice = null
+    [property: JsonPropertyName("original_price")] decimal OriginalPrice,
+    [property: JsonPropertyName("global_model_id")] int? GlobalModelId = null
 );
 
 public sealed record GlobalProductUpdatePriceRequest(
-    [property: JsonPropertyName("global_item_id")] int? GlobalItemId = null,
-    [property: JsonPropertyName("price_list")] IReadOnlyList<GlobalProductUpdatePriceRequestPriceListItem>? PriceList = null
+    [property: JsonPropertyName("global_item_id")] int GlobalItemId,
+    [property: JsonPropertyName("price_list")] IReadOnlyList<GlobalProductUpdatePriceRequestPriceListItem> PriceList
 );
 
 public sealed record GlobalProductUpdatePriceResponse(
 );
 
 public sealed record GlobalProductUpdateSizeChartRequest(
-    [property: JsonPropertyName("global_item_id")] int? GlobalItemId = null,
-    [property: JsonPropertyName("size_chart")] string? SizeChart = null
+    [property: JsonPropertyName("global_item_id")] int GlobalItemId,
+    [property: JsonPropertyName("size_chart")] string SizeChart
 );
 
 public sealed record GlobalProductUpdateSizeChartResponse(
 );
 
 public sealed record GlobalProductUpdateStockRequestStockListItemSellerStockItem(
-    [property: JsonPropertyName("location_id")] string? LocationId = null,
-    [property: JsonPropertyName("stock")] int? Stock = null
+    [property: JsonPropertyName("stock")] int Stock,
+    [property: JsonPropertyName("location_id")] string? LocationId = null
 );
 
 public sealed record GlobalProductUpdateStockRequestStockListItem(
@@ -1013,33 +1013,33 @@ public sealed record GlobalProductUpdateStockRequestStockListItem(
 );
 
 public sealed record GlobalProductUpdateStockRequest(
-    [property: JsonPropertyName("global_item_id")] long? GlobalItemId = null,
-    [property: JsonPropertyName("stock_list")] IReadOnlyList<GlobalProductUpdateStockRequestStockListItem>? StockList = null
+    [property: JsonPropertyName("global_item_id")] long GlobalItemId,
+    [property: JsonPropertyName("stock_list")] IReadOnlyList<GlobalProductUpdateStockRequestStockListItem> StockList
 );
 
 public sealed record GlobalProductUpdateStockResponse(
 );
 
 public sealed record GlobalProductUpdateTierVariationRequestModelListItem(
-    [property: JsonPropertyName("model_id")] long? ModelId = null,
-    [property: JsonPropertyName("tier_index")] int? TierIndex = null
+    [property: JsonPropertyName("model_id")] long ModelId,
+    [property: JsonPropertyName("tier_index")] int TierIndex
 );
 
 public sealed record GlobalProductUpdateTierVariationRequestStandardiseTierVariationItemVariationOptionListItem(
-    [property: JsonPropertyName("variation_option_id")] int? VariationOptionId = null,
+    [property: JsonPropertyName("variation_option_id")] int VariationOptionId,
     [property: JsonPropertyName("variation_option_name")] string? VariationOptionName = null,
     [property: JsonPropertyName("image_id")] string? ImageId = null
 );
 
 public sealed record GlobalProductUpdateTierVariationRequestStandardiseTierVariationItem(
-    [property: JsonPropertyName("variation_id")] int? VariationId = null,
+    [property: JsonPropertyName("variation_id")] int VariationId,
+    [property: JsonPropertyName("variation_option_list")] IReadOnlyList<GlobalProductUpdateTierVariationRequestStandardiseTierVariationItemVariationOptionListItem> VariationOptionList,
     [property: JsonPropertyName("variation_name")] string? VariationName = null,
-    [property: JsonPropertyName("variation_group_id")] int? VariationGroupId = null,
-    [property: JsonPropertyName("variation_option_list")] IReadOnlyList<GlobalProductUpdateTierVariationRequestStandardiseTierVariationItemVariationOptionListItem>? VariationOptionList = null
+    [property: JsonPropertyName("variation_group_id")] int? VariationGroupId = null
 );
 
 public sealed record GlobalProductUpdateTierVariationRequest(
-    [property: JsonPropertyName("global_item_id")] long? GlobalItemId = null,
+    [property: JsonPropertyName("global_item_id")] long GlobalItemId,
     [property: JsonPropertyName("model_list")] IReadOnlyList<GlobalProductUpdateTierVariationRequestModelListItem>? ModelList = null,
     [property: JsonPropertyName("standardise_tier_variation")] IReadOnlyList<GlobalProductUpdateTierVariationRequestStandardiseTierVariationItem>? StandardiseTierVariation = null
 );

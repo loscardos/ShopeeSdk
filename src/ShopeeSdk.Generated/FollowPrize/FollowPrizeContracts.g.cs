@@ -7,12 +7,12 @@ using ShopeeSdk.Generated.Common;
 namespace ShopeeSdk.Generated.FollowPrize;
 
 public sealed record FollowPrizeAddFollowPrizeRequest(
-    [property: JsonPropertyName("follow_prize_name")] string? FollowPrizeName = null,
-    [property: JsonPropertyName("start_time")] JsonElement? StartTime = null,
-    [property: JsonPropertyName("end_time")] JsonElement? EndTime = null,
-    [property: JsonPropertyName("usage_quantity")] int? UsageQuantity = null,
-    [property: JsonPropertyName("min_spend")] decimal? MinSpend = null,
-    [property: JsonPropertyName("reward_type")] int? RewardType = null,
+    [property: JsonPropertyName("follow_prize_name")] string FollowPrizeName,
+    [property: JsonPropertyName("start_time")] JsonElement? StartTime,
+    [property: JsonPropertyName("end_time")] JsonElement? EndTime,
+    [property: JsonPropertyName("usage_quantity")] int UsageQuantity,
+    [property: JsonPropertyName("min_spend")] decimal MinSpend,
+    [property: JsonPropertyName("reward_type")] int RewardType,
     [property: JsonPropertyName("discount_amount")] decimal? DiscountAmount = null,
     [property: JsonPropertyName("percentage")] int? Percentage = null,
     [property: JsonPropertyName("max_price")] decimal? MaxPrice = null
@@ -23,7 +23,7 @@ public sealed record FollowPrizeAddFollowPrizeResponse(
 );
 
 public sealed record FollowPrizeDeleteFollowPrizeRequest(
-    [property: JsonPropertyName("campaign_id")] int? CampaignId = null
+    [property: JsonPropertyName("campaign_id")] int CampaignId
 );
 
 public sealed record FollowPrizeDeleteFollowPrizeResponse(
@@ -31,7 +31,7 @@ public sealed record FollowPrizeDeleteFollowPrizeResponse(
 );
 
 public sealed record FollowPrizeEndFollowPrizeRequest(
-    [property: JsonPropertyName("campaign_id")] int? CampaignId = null
+    [property: JsonPropertyName("campaign_id")] int CampaignId
 );
 
 public sealed record FollowPrizeEndFollowPrizeResponse(
@@ -57,9 +57,9 @@ public sealed record FollowPrizeGetFollowPrizeDetailResponse(
 );
 
 public sealed record FollowPrizeGetFollowPrizeListRequest(
+    [property: JsonPropertyName("status")] string Status,
     [property: JsonPropertyName("page_no")] int? PageNo = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
-    [property: JsonPropertyName("status")] string? Status = null
+    [property: JsonPropertyName("page_size")] int? PageSize = null
 );
 
 public sealed record FollowPrizeGetFollowPrizeListResponseFollowPrizeListItem(
@@ -78,8 +78,8 @@ public sealed record FollowPrizeGetFollowPrizeListResponse(
 );
 
 public sealed record FollowPrizeUpdateFollowPrizeRequest(
+    [property: JsonPropertyName("campaign_id")] int CampaignId,
     [property: JsonPropertyName("follow_prize_name")] string? FollowPrizeName = null,
-    [property: JsonPropertyName("campaign_id")] int? CampaignId = null,
     [property: JsonPropertyName("start_time")] JsonElement? StartTime = null,
     [property: JsonPropertyName("end_time")] JsonElement? EndTime = null,
     [property: JsonPropertyName("usage_quantity")] int? UsageQuantity = null,

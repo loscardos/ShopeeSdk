@@ -13,8 +13,8 @@ public sealed record MerchantGetMerchantInfoResponse(
 );
 
 public sealed record MerchantGetMerchantPrepaidAccountListRequest(
-    [property: JsonPropertyName("page_no")] int? PageNo = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null
+    [property: JsonPropertyName("page_no")] int PageNo,
+    [property: JsonPropertyName("page_size")] int PageSize
 );
 
 public sealed record MerchantGetMerchantPrepaidAccountListResponseListItem(
@@ -38,14 +38,14 @@ public sealed record MerchantGetMerchantPrepaidAccountListResponse(
 );
 
 public sealed record MerchantGetMerchantWarehouseListRequestCursorItem(
+    [property: JsonPropertyName("page_size")] int PageSize,
     [property: JsonPropertyName("next_id")] int? NextId = null,
-    [property: JsonPropertyName("prev_id")] int? PrevId = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null
+    [property: JsonPropertyName("prev_id")] int? PrevId = null
 );
 
 public sealed record MerchantGetMerchantWarehouseListRequest(
-    [property: JsonPropertyName("cursor")] MerchantGetMerchantWarehouseListRequestCursorItem? Cursor = null,
-    [property: JsonPropertyName("warehouse_type")] int? WarehouseType = null
+    [property: JsonPropertyName("cursor")] MerchantGetMerchantWarehouseListRequestCursorItem Cursor,
+    [property: JsonPropertyName("warehouse_type")] int WarehouseType
 );
 
 public sealed record MerchantGetMerchantWarehouseListResponseWarehouseListItemAddressItem(
@@ -97,23 +97,23 @@ public sealed record MerchantGetMerchantWarehouseLocationListResponse(
 );
 
 public sealed record MerchantGetShopListByMerchantRequest(
-    [property: JsonPropertyName("page_no")] int? PageNo = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null
+    [property: JsonPropertyName("page_no")] int PageNo,
+    [property: JsonPropertyName("page_size")] int PageSize
 );
 
 public sealed record MerchantGetShopListByMerchantResponse(
 );
 
 public sealed record MerchantGetWarehouseEligibleShopListRequestCursorItem(
+    [property: JsonPropertyName("page_size")] int PageSize,
     [property: JsonPropertyName("next_id")] int? NextId = null,
-    [property: JsonPropertyName("prev_id")] int? PrevId = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null
+    [property: JsonPropertyName("prev_id")] int? PrevId = null
 );
 
 public sealed record MerchantGetWarehouseEligibleShopListRequest(
-    [property: JsonPropertyName("warehouse_id")] int? WarehouseId = null,
-    [property: JsonPropertyName("warehouse_type")] int? WarehouseType = null,
-    [property: JsonPropertyName("cursor")] MerchantGetWarehouseEligibleShopListRequestCursorItem? Cursor = null
+    [property: JsonPropertyName("warehouse_id")] int WarehouseId,
+    [property: JsonPropertyName("warehouse_type")] int WarehouseType,
+    [property: JsonPropertyName("cursor")] MerchantGetWarehouseEligibleShopListRequestCursorItem Cursor
 );
 
 public sealed record MerchantGetWarehouseEligibleShopListResponseShopListItem(

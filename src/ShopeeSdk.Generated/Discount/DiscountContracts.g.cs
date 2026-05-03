@@ -7,9 +7,9 @@ using ShopeeSdk.Generated.Common;
 namespace ShopeeSdk.Generated.Discount;
 
 public sealed record DiscountAddDiscountRequest(
-    [property: JsonPropertyName("discount_name")] string? DiscountName = null,
-    [property: JsonPropertyName("start_time")] JsonElement? StartTime = null,
-    [property: JsonPropertyName("end_time")] JsonElement? EndTime = null
+    [property: JsonPropertyName("discount_name")] string DiscountName,
+    [property: JsonPropertyName("start_time")] JsonElement? StartTime,
+    [property: JsonPropertyName("end_time")] JsonElement? EndTime
 );
 
 public sealed record DiscountAddDiscountResponse(
@@ -17,22 +17,22 @@ public sealed record DiscountAddDiscountResponse(
 );
 
 public sealed record DiscountAddDiscountItemRequestItemListItemModelListItem(
-    [property: JsonPropertyName("model_id")] long? ModelId = null,
-    [property: JsonPropertyName("model_promotion_price")] decimal? ModelPromotionPrice = null,
+    [property: JsonPropertyName("model_id")] long ModelId,
+    [property: JsonPropertyName("model_promotion_price")] decimal ModelPromotionPrice,
     [property: JsonPropertyName("model_promotion_stock")] int? ModelPromotionStock = null
 );
 
 public sealed record DiscountAddDiscountItemRequestItemListItem(
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
+    [property: JsonPropertyName("item_id")] long ItemId,
+    [property: JsonPropertyName("purchase_limit")] int PurchaseLimit,
     [property: JsonPropertyName("item_promotion_price")] decimal? ItemPromotionPrice = null,
     [property: JsonPropertyName("item_promotion_stock")] int? ItemPromotionStock = null,
-    [property: JsonPropertyName("model_list")] IReadOnlyList<DiscountAddDiscountItemRequestItemListItemModelListItem>? ModelList = null,
-    [property: JsonPropertyName("purchase_limit")] int? PurchaseLimit = null
+    [property: JsonPropertyName("model_list")] IReadOnlyList<DiscountAddDiscountItemRequestItemListItemModelListItem>? ModelList = null
 );
 
 public sealed record DiscountAddDiscountItemRequest(
-    [property: JsonPropertyName("discount_id")] long? DiscountId = null,
-    [property: JsonPropertyName("item_list")] IReadOnlyList<DiscountAddDiscountItemRequestItemListItem>? ItemList = null
+    [property: JsonPropertyName("discount_id")] long DiscountId,
+    [property: JsonPropertyName("item_list")] IReadOnlyList<DiscountAddDiscountItemRequestItemListItem> ItemList
 );
 
 public sealed record DiscountAddDiscountItemResponseErrorListItem(
@@ -49,7 +49,7 @@ public sealed record DiscountAddDiscountItemResponse(
 );
 
 public sealed record DiscountDeleteDiscountRequest(
-    [property: JsonPropertyName("discount_id")] int? DiscountId = null
+    [property: JsonPropertyName("discount_id")] int DiscountId
 );
 
 public sealed record DiscountDeleteDiscountResponse(
@@ -58,8 +58,8 @@ public sealed record DiscountDeleteDiscountResponse(
 );
 
 public sealed record DiscountDeleteDiscountItemRequest(
-    [property: JsonPropertyName("discount_id")] int? DiscountId = null,
-    [property: JsonPropertyName("item_id")] int? ItemId = null,
+    [property: JsonPropertyName("discount_id")] int DiscountId,
+    [property: JsonPropertyName("item_id")] int ItemId,
     [property: JsonPropertyName("model_id")] int? ModelId = null
 );
 
@@ -76,7 +76,7 @@ public sealed record DiscountDeleteDiscountItemResponse(
 );
 
 public sealed record DiscountDeleteSipDiscountRequest(
-    [property: JsonPropertyName("region")] string? Region = null
+    [property: JsonPropertyName("region")] string Region
 );
 
 public sealed record DiscountDeleteSipDiscountResponse(
@@ -84,7 +84,7 @@ public sealed record DiscountDeleteSipDiscountResponse(
 );
 
 public sealed record DiscountEndDiscountRequest(
-    [property: JsonPropertyName("discount_id")] int? DiscountId = null
+    [property: JsonPropertyName("discount_id")] int DiscountId
 );
 
 public sealed record DiscountEndDiscountResponse(
@@ -93,9 +93,9 @@ public sealed record DiscountEndDiscountResponse(
 );
 
 public sealed record DiscountGetDiscountRequest(
-    [property: JsonPropertyName("discount_id")] long? DiscountId = null,
-    [property: JsonPropertyName("page_no")] int? PageNo = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null
+    [property: JsonPropertyName("discount_id")] long DiscountId,
+    [property: JsonPropertyName("page_no")] int PageNo,
+    [property: JsonPropertyName("page_size")] int PageSize
 );
 
 public sealed record DiscountGetDiscountResponseItemListItemModelListItem(
@@ -141,9 +141,9 @@ public sealed record DiscountGetDiscountResponse(
 );
 
 public sealed record DiscountGetDiscountListRequest(
-    [property: JsonPropertyName("discount_status")] string? DiscountStatus = null,
-    [property: JsonPropertyName("page_no")] int? PageNo = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
+    [property: JsonPropertyName("discount_status")] string DiscountStatus,
+    [property: JsonPropertyName("page_no")] int PageNo,
+    [property: JsonPropertyName("page_size")] int PageSize,
     [property: JsonPropertyName("update_time_from")] JsonElement? UpdateTimeFrom = null,
     [property: JsonPropertyName("update_time_to")] JsonElement? UpdateTimeTo = null
 );
@@ -181,8 +181,8 @@ public sealed record DiscountGetSipDiscountsResponse(
 );
 
 public sealed record DiscountSetSipDiscountRequest(
-    [property: JsonPropertyName("region")] string? Region = null,
-    [property: JsonPropertyName("sip_discount_rate")] int? SipDiscountRate = null
+    [property: JsonPropertyName("region")] string Region,
+    [property: JsonPropertyName("sip_discount_rate")] int SipDiscountRate
 );
 
 public sealed record DiscountSetSipDiscountResponse(
@@ -196,7 +196,7 @@ public sealed record DiscountSetSipDiscountResponse(
 );
 
 public sealed record DiscountUpdateDiscountRequest(
-    [property: JsonPropertyName("discount_id")] int? DiscountId = null,
+    [property: JsonPropertyName("discount_id")] int DiscountId,
     [property: JsonPropertyName("discount_name")] string? DiscountName = null,
     [property: JsonPropertyName("end_time")] int? EndTime = null,
     [property: JsonPropertyName("start_time")] int? StartTime = null
@@ -208,20 +208,20 @@ public sealed record DiscountUpdateDiscountResponse(
 );
 
 public sealed record DiscountUpdateDiscountItemRequestItemListItemModelListItem(
-    [property: JsonPropertyName("model_id")] long? ModelId = null,
-    [property: JsonPropertyName("model_promotion_price")] decimal? ModelPromotionPrice = null
+    [property: JsonPropertyName("model_id")] long ModelId,
+    [property: JsonPropertyName("model_promotion_price")] decimal ModelPromotionPrice
 );
 
 public sealed record DiscountUpdateDiscountItemRequestItemListItem(
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
+    [property: JsonPropertyName("item_id")] long ItemId,
     [property: JsonPropertyName("item_promotion_price")] decimal? ItemPromotionPrice = null,
     [property: JsonPropertyName("model_list")] IReadOnlyList<DiscountUpdateDiscountItemRequestItemListItemModelListItem>? ModelList = null,
     [property: JsonPropertyName("purchase_limit")] int? PurchaseLimit = null
 );
 
 public sealed record DiscountUpdateDiscountItemRequest(
-    [property: JsonPropertyName("discount_id")] long? DiscountId = null,
-    [property: JsonPropertyName("item_list")] IReadOnlyList<DiscountUpdateDiscountItemRequestItemListItem>? ItemList = null
+    [property: JsonPropertyName("discount_id")] long DiscountId,
+    [property: JsonPropertyName("item_list")] IReadOnlyList<DiscountUpdateDiscountItemRequestItemListItem> ItemList
 );
 
 public sealed record DiscountUpdateDiscountItemResponseErrorListItem(

@@ -7,22 +7,22 @@ using ShopeeSdk.Generated.Common;
 namespace ShopeeSdk.Generated.BundleDeal;
 
 public sealed record BundleDealAddBundleDealRequestAdditionalTiersItem(
-    [property: JsonPropertyName("min_amount")] int? MinAmount = null,
+    [property: JsonPropertyName("min_amount")] int MinAmount,
     [property: JsonPropertyName("fix_price")] decimal? FixPrice = null,
     [property: JsonPropertyName("discount_value")] decimal? DiscountValue = null,
     [property: JsonPropertyName("discount_percentage")] int? DiscountPercentage = null
 );
 
 public sealed record BundleDealAddBundleDealRequest(
-    [property: JsonPropertyName("rule_type")] int? RuleType = null,
-    [property: JsonPropertyName("discount_value")] decimal? DiscountValue = null,
-    [property: JsonPropertyName("fix_price")] decimal? FixPrice = null,
-    [property: JsonPropertyName("discount_percentage")] int? DiscountPercentage = null,
-    [property: JsonPropertyName("min_amount")] int? MinAmount = null,
-    [property: JsonPropertyName("start_time")] JsonElement? StartTime = null,
-    [property: JsonPropertyName("end_time")] JsonElement? EndTime = null,
-    [property: JsonPropertyName("name")] string? Name = null,
-    [property: JsonPropertyName("purchase_limit")] int? PurchaseLimit = null,
+    [property: JsonPropertyName("rule_type")] int RuleType,
+    [property: JsonPropertyName("discount_value")] decimal DiscountValue,
+    [property: JsonPropertyName("fix_price")] decimal FixPrice,
+    [property: JsonPropertyName("discount_percentage")] int DiscountPercentage,
+    [property: JsonPropertyName("min_amount")] int MinAmount,
+    [property: JsonPropertyName("start_time")] JsonElement? StartTime,
+    [property: JsonPropertyName("end_time")] JsonElement? EndTime,
+    [property: JsonPropertyName("name")] string Name,
+    [property: JsonPropertyName("purchase_limit")] int PurchaseLimit,
     [property: JsonPropertyName("additional_tiers")] IReadOnlyList<BundleDealAddBundleDealRequestAdditionalTiersItem>? AdditionalTiers = null
 );
 
@@ -31,13 +31,13 @@ public sealed record BundleDealAddBundleDealResponse(
 );
 
 public sealed record BundleDealAddBundleDealItemRequestItemListItem(
-    [property: JsonPropertyName("item_id")] int? ItemId = null,
-    [property: JsonPropertyName("status")] int? Status = null
+    [property: JsonPropertyName("item_id")] int ItemId,
+    [property: JsonPropertyName("status")] int Status
 );
 
 public sealed record BundleDealAddBundleDealItemRequest(
-    [property: JsonPropertyName("bundle_deal_id")] int? BundleDealId = null,
-    [property: JsonPropertyName("item_list")] IReadOnlyList<BundleDealAddBundleDealItemRequestItemListItem>? ItemList = null
+    [property: JsonPropertyName("bundle_deal_id")] int BundleDealId,
+    [property: JsonPropertyName("item_list")] IReadOnlyList<BundleDealAddBundleDealItemRequestItemListItem> ItemList
 );
 
 public sealed record BundleDealAddBundleDealItemResponseFailedListItem(
@@ -52,7 +52,7 @@ public sealed record BundleDealAddBundleDealItemResponse(
 );
 
 public sealed record BundleDealDeleteBundleDealRequest(
-    [property: JsonPropertyName("bundle_deal_id")] int? BundleDealId = null
+    [property: JsonPropertyName("bundle_deal_id")] int BundleDealId
 );
 
 public sealed record BundleDealDeleteBundleDealResponse(
@@ -60,12 +60,12 @@ public sealed record BundleDealDeleteBundleDealResponse(
 );
 
 public sealed record BundleDealDeleteBundleDealItemRequestItemListItem(
-    [property: JsonPropertyName("item_id")] int? ItemId = null
+    [property: JsonPropertyName("item_id")] int ItemId
 );
 
 public sealed record BundleDealDeleteBundleDealItemRequest(
-    [property: JsonPropertyName("bundle_deal_id")] int? BundleDealId = null,
-    [property: JsonPropertyName("item_list")] IReadOnlyList<BundleDealDeleteBundleDealItemRequestItemListItem>? ItemList = null
+    [property: JsonPropertyName("bundle_deal_id")] int BundleDealId,
+    [property: JsonPropertyName("item_list")] IReadOnlyList<BundleDealDeleteBundleDealItemRequestItemListItem> ItemList
 );
 
 public sealed record BundleDealDeleteBundleDealItemResponseFailedListItem(
@@ -80,7 +80,7 @@ public sealed record BundleDealDeleteBundleDealItemResponse(
 );
 
 public sealed record BundleDealEndBundleDealRequest(
-    [property: JsonPropertyName("bundle_deal_id")] int? BundleDealId = null
+    [property: JsonPropertyName("bundle_deal_id")] int BundleDealId
 );
 
 public sealed record BundleDealEndBundleDealResponse(
@@ -88,7 +88,7 @@ public sealed record BundleDealEndBundleDealResponse(
 );
 
 public sealed record BundleDealGetBundleDealRequest(
-    [property: JsonPropertyName("bundle_deal_id")] int? BundleDealId = null
+    [property: JsonPropertyName("bundle_deal_id")] int BundleDealId
 );
 
 public sealed record BundleDealGetBundleDealResponseBundleDealRuleItemAdditionalTiersItem(
@@ -117,7 +117,7 @@ public sealed record BundleDealGetBundleDealResponse(
 );
 
 public sealed record BundleDealGetBundleDealItemRequest(
-    [property: JsonPropertyName("bundle_deal_id")] int? BundleDealId = null
+    [property: JsonPropertyName("bundle_deal_id")] int BundleDealId
 );
 
 public sealed record BundleDealGetBundleDealItemResponseItemListItem(
@@ -167,13 +167,14 @@ public sealed record BundleDealGetBundleDealListResponse(
 );
 
 public sealed record BundleDealUpdateBundleDealRequestAdditionalTiersItem(
-    [property: JsonPropertyName("min_amount")] int? MinAmount = null,
+    [property: JsonPropertyName("min_amount")] int MinAmount,
     [property: JsonPropertyName("fix_price")] decimal? FixPrice = null,
     [property: JsonPropertyName("discount_value")] decimal? DiscountValue = null,
     [property: JsonPropertyName("discount_percentage")] int? DiscountPercentage = null
 );
 
 public sealed record BundleDealUpdateBundleDealRequest(
+    [property: JsonPropertyName("bundle_deal_id")] int BundleDealId,
     [property: JsonPropertyName("rule_type")] int? RuleType = null,
     [property: JsonPropertyName("discount_value")] decimal? DiscountValue = null,
     [property: JsonPropertyName("fix_price")] decimal? FixPrice = null,
@@ -183,7 +184,6 @@ public sealed record BundleDealUpdateBundleDealRequest(
     [property: JsonPropertyName("end_time")] JsonElement? EndTime = null,
     [property: JsonPropertyName("name")] string? Name = null,
     [property: JsonPropertyName("purchase_limit")] int? PurchaseLimit = null,
-    [property: JsonPropertyName("bundle_deal_id")] int? BundleDealId = null,
     [property: JsonPropertyName("additional_tiers")] BundleDealUpdateBundleDealRequestAdditionalTiersItem? AdditionalTiers = null
 );
 
@@ -213,13 +213,13 @@ public sealed record BundleDealUpdateBundleDealResponse(
 );
 
 public sealed record BundleDealUpdateBundleDealItemRequestItemListItem(
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
-    [property: JsonPropertyName("status")] int? Status = null
+    [property: JsonPropertyName("item_id")] long ItemId,
+    [property: JsonPropertyName("status")] int Status
 );
 
 public sealed record BundleDealUpdateBundleDealItemRequest(
-    [property: JsonPropertyName("bundle_deal_id")] long? BundleDealId = null,
-    [property: JsonPropertyName("item_list")] IReadOnlyList<BundleDealUpdateBundleDealItemRequestItemListItem>? ItemList = null
+    [property: JsonPropertyName("bundle_deal_id")] long BundleDealId,
+    [property: JsonPropertyName("item_list")] IReadOnlyList<BundleDealUpdateBundleDealItemRequestItemListItem> ItemList
 );
 
 public sealed record BundleDealUpdateBundleDealItemResponseFailedListItem(

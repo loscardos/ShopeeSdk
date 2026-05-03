@@ -7,7 +7,7 @@ using ShopeeSdk.Generated.Common;
 namespace ShopeeSdk.Generated.Push;
 
 public sealed record PushConfirmConsumedLostPushMessageRequest(
-    [property: JsonPropertyName("last_message_id")] int? LastMessageId = null
+    [property: JsonPropertyName("last_message_id")] int LastMessageId
 );
 
 public sealed record PushConfirmConsumedLostPushMessageResponse(

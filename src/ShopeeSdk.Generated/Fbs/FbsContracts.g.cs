@@ -54,7 +54,7 @@ public sealed record FbsQueryBrShopInvoiceErrorResponse(
 );
 
 public sealed record FbsQueryBrSkuBlockStatusRequest(
-    [property: JsonPropertyName("shop_sku_id")] string? ShopSkuId = null
+    [property: JsonPropertyName("shop_sku_id")] string ShopSkuId
 );
 
 public sealed record FbsQueryBrSkuBlockStatusResponse(

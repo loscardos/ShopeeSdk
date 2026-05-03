@@ -7,8 +7,8 @@ using ShopeeSdk.Generated.Common;
 namespace ShopeeSdk.Generated.Public;
 
 public sealed record PublicGetAccessTokenRequest(
-    [property: JsonPropertyName("code")] string? Code = null,
-    [property: JsonPropertyName("partner_id")] long? PartnerId = null,
+    [property: JsonPropertyName("code")] string Code,
+    [property: JsonPropertyName("partner_id")] long PartnerId,
     [property: JsonPropertyName("shop_id")] long? ShopId = null,
     [property: JsonPropertyName("main_account_id")] long? MainAccountId = null
 );
@@ -39,15 +39,15 @@ public sealed record PublicGetShopsByPartnerResponse(
 );
 
 public sealed record PublicGetTokenByResendCodeRequest(
-    [property: JsonPropertyName("resend_code")] string? ResendCode = null
+    [property: JsonPropertyName("resend_code")] string ResendCode
 );
 
 public sealed record PublicGetTokenByResendCodeResponse(
 );
 
 public sealed record PublicRefreshAccessTokenRequest(
-    [property: JsonPropertyName("refresh_token")] string? RefreshToken = null,
-    [property: JsonPropertyName("partner_id")] long? PartnerId = null,
+    [property: JsonPropertyName("refresh_token")] string RefreshToken,
+    [property: JsonPropertyName("partner_id")] long PartnerId,
     [property: JsonPropertyName("shop_id")] long? ShopId = null,
     [property: JsonPropertyName("merchant_id")] long? MerchantId = null,
     [property: JsonPropertyName("supplier_id")] long? SupplierId = null,

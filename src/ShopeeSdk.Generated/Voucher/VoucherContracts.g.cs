@@ -7,14 +7,14 @@ using ShopeeSdk.Generated.Common;
 namespace ShopeeSdk.Generated.Voucher;
 
 public sealed record VoucherAddVoucherRequest(
-    [property: JsonPropertyName("voucher_name")] string? VoucherName = null,
-    [property: JsonPropertyName("voucher_code")] string? VoucherCode = null,
-    [property: JsonPropertyName("start_time")] JsonElement? StartTime = null,
-    [property: JsonPropertyName("end_time")] JsonElement? EndTime = null,
-    [property: JsonPropertyName("voucher_type")] int? VoucherType = null,
-    [property: JsonPropertyName("reward_type")] int? RewardType = null,
-    [property: JsonPropertyName("usage_quantity")] int? UsageQuantity = null,
-    [property: JsonPropertyName("min_basket_price")] decimal? MinBasketPrice = null,
+    [property: JsonPropertyName("voucher_name")] string VoucherName,
+    [property: JsonPropertyName("voucher_code")] string VoucherCode,
+    [property: JsonPropertyName("start_time")] JsonElement? StartTime,
+    [property: JsonPropertyName("end_time")] JsonElement? EndTime,
+    [property: JsonPropertyName("voucher_type")] int VoucherType,
+    [property: JsonPropertyName("reward_type")] int RewardType,
+    [property: JsonPropertyName("usage_quantity")] int UsageQuantity,
+    [property: JsonPropertyName("min_basket_price")] decimal MinBasketPrice,
     [property: JsonPropertyName("discount_amount")] decimal? DiscountAmount = null,
     [property: JsonPropertyName("percentage")] int? Percentage = null,
     [property: JsonPropertyName("max_price")] decimal? MaxPrice = null,
@@ -28,7 +28,7 @@ public sealed record VoucherAddVoucherResponse(
 );
 
 public sealed record VoucherDeleteVoucherRequest(
-    [property: JsonPropertyName("voucher_id")] long? VoucherId = null
+    [property: JsonPropertyName("voucher_id")] long VoucherId
 );
 
 public sealed record VoucherDeleteVoucherResponse(
@@ -36,7 +36,7 @@ public sealed record VoucherDeleteVoucherResponse(
 );
 
 public sealed record VoucherEndVoucherRequest(
-    [property: JsonPropertyName("voucher_id")] long? VoucherId = null
+    [property: JsonPropertyName("voucher_id")] long VoucherId
 );
 
 public sealed record VoucherEndVoucherResponse(
@@ -44,7 +44,7 @@ public sealed record VoucherEndVoucherResponse(
 );
 
 public sealed record VoucherGetVoucherRequest(
-    [property: JsonPropertyName("voucher_id")] long? VoucherId = null
+    [property: JsonPropertyName("voucher_id")] long VoucherId
 );
 
 public sealed record VoucherGetVoucherResponse(
@@ -72,9 +72,9 @@ public sealed record VoucherGetVoucherResponse(
 );
 
 public sealed record VoucherGetVoucherListRequest(
+    [property: JsonPropertyName("status")] string Status,
     [property: JsonPropertyName("page_no")] int? PageNo = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
-    [property: JsonPropertyName("status")] string? Status = null
+    [property: JsonPropertyName("page_size")] int? PageSize = null
 );
 
 public sealed record VoucherGetVoucherListResponseVoucherListItem(
@@ -101,7 +101,7 @@ public sealed record VoucherGetVoucherListResponse(
 );
 
 public sealed record VoucherUpdateVoucherRequest(
-    [property: JsonPropertyName("voucher_id")] long? VoucherId = null,
+    [property: JsonPropertyName("voucher_id")] long VoucherId,
     [property: JsonPropertyName("voucher_name")] string? VoucherName = null,
     [property: JsonPropertyName("start_time")] JsonElement? StartTime = null,
     [property: JsonPropertyName("end_time")] JsonElement? EndTime = null,

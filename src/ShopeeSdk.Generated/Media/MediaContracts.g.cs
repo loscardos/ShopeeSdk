@@ -7,21 +7,21 @@ using ShopeeSdk.Generated.Common;
 namespace ShopeeSdk.Generated.Media;
 
 public sealed record MediaCancelVideoUploadRequest(
-    [property: JsonPropertyName("video_upload_id")] string? VideoUploadId = null
+    [property: JsonPropertyName("video_upload_id")] string VideoUploadId
 );
 
 public sealed record MediaCancelVideoUploadResponse(
 );
 
 public sealed record MediaCompleteVideoUploadRequest(
-    [property: JsonPropertyName("video_upload_id")] string? VideoUploadId = null
+    [property: JsonPropertyName("video_upload_id")] string VideoUploadId
 );
 
 public sealed record MediaCompleteVideoUploadResponse(
 );
 
 public sealed record MediaGetVideoUploadResultRequest(
-    [property: JsonPropertyName("video_upload_id")] string? VideoUploadId = null
+    [property: JsonPropertyName("video_upload_id")] string VideoUploadId
 );
 
 public sealed record MediaGetVideoUploadResultResponseVideoInfoItem(
@@ -41,11 +41,11 @@ public sealed record MediaGetVideoUploadResultResponse(
 );
 
 public sealed record MediaInitVideoUploadRequest(
-    [property: JsonPropertyName("business")] int? Business = null,
-    [property: JsonPropertyName("scene")] int? Scene = null,
-    [property: JsonPropertyName("file_name")] string? FileName = null,
-    [property: JsonPropertyName("file_size")] long? FileSize = null,
-    [property: JsonPropertyName("duration")] int? Duration = null
+    [property: JsonPropertyName("business")] int Business,
+    [property: JsonPropertyName("scene")] int Scene,
+    [property: JsonPropertyName("file_name")] string FileName,
+    [property: JsonPropertyName("file_size")] long FileSize,
+    [property: JsonPropertyName("duration")] int Duration
 );
 
 public sealed record MediaInitVideoUploadResponse(
@@ -54,9 +54,9 @@ public sealed record MediaInitVideoUploadResponse(
 );
 
 public sealed record MediaUploadImageRequest(
-    [property: JsonPropertyName("business")] int? Business = null,
-    [property: JsonPropertyName("scene")] int? Scene = null,
-    [property: JsonPropertyName("images")] ShopeeUploadFile? Images = null
+    [property: JsonPropertyName("business")] int Business,
+    [property: JsonPropertyName("scene")] int Scene,
+    [property: JsonPropertyName("images")] ShopeeUploadFile Images
 );
 
 public sealed record MediaUploadImageResponseImageListItem(
@@ -69,10 +69,10 @@ public sealed record MediaUploadImageResponse(
 );
 
 public sealed record MediaUploadVideoPartRequest(
-    [property: JsonPropertyName("video_upload_id")] string? VideoUploadId = null,
-    [property: JsonPropertyName("part_seq")] int? PartSeq = null,
-    [property: JsonPropertyName("part_content")] ShopeeUploadFile? PartContent = null,
-    [property: JsonPropertyName("part_md5")] string? PartMd5 = null
+    [property: JsonPropertyName("video_upload_id")] string VideoUploadId,
+    [property: JsonPropertyName("part_seq")] int PartSeq,
+    [property: JsonPropertyName("part_content")] ShopeeUploadFile PartContent,
+    [property: JsonPropertyName("part_md5")] string PartMd5
 );
 
 public sealed record MediaUploadVideoPartResponse(

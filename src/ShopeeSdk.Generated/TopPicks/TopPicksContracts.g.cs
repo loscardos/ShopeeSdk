@@ -7,9 +7,9 @@ using ShopeeSdk.Generated.Common;
 namespace ShopeeSdk.Generated.TopPicks;
 
 public sealed record TopPicksAddTopPicksRequest(
-    [property: JsonPropertyName("name")] string? Name = null,
-    [property: JsonPropertyName("item_id_list")] IReadOnlyList<long>? ItemIdList = null,
-    [property: JsonPropertyName("is_activated")] bool? IsActivated = null
+    [property: JsonPropertyName("name")] string Name,
+    [property: JsonPropertyName("item_id_list")] IReadOnlyList<long> ItemIdList,
+    [property: JsonPropertyName("is_activated")] bool IsActivated
 );
 
 public sealed record TopPicksAddTopPicksResponseCollectionListItemItemListItem(
@@ -32,7 +32,7 @@ public sealed record TopPicksAddTopPicksResponse(
 );
 
 public sealed record TopPicksDeleteTopPicksRequest(
-    [property: JsonPropertyName("top_picks_id")] int? TopPicksId = null
+    [property: JsonPropertyName("top_picks_id")] int TopPicksId
 );
 
 public sealed record TopPicksDeleteTopPicksResponse(
@@ -62,7 +62,7 @@ public sealed record TopPicksGetTopPicksListResponse(
 );
 
 public sealed record TopPicksUpdateTopPicksRequest(
-    [property: JsonPropertyName("top_picks_id")] int? TopPicksId = null,
+    [property: JsonPropertyName("top_picks_id")] int TopPicksId,
     [property: JsonPropertyName("name")] string? Name = null,
     [property: JsonPropertyName("item_id_list")] IReadOnlyList<int>? ItemIdList = null,
     [property: JsonPropertyName("is_activated")] bool? IsActivated = null

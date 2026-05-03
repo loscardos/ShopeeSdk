@@ -7,7 +7,7 @@ using ShopeeSdk.Generated.Common;
 namespace ShopeeSdk.Generated.Logistics;
 
 public sealed record LogisticsBatchShipOrderRequestOrderListItem(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
+    [property: JsonPropertyName("order_sn")] string OrderSn,
     [property: JsonPropertyName("package_number")] string? PackageNumber = null
 );
 
@@ -28,7 +28,7 @@ public sealed record LogisticsBatchShipOrderRequestNonIntegratedItem(
 );
 
 public sealed record LogisticsBatchShipOrderRequest(
-    [property: JsonPropertyName("order_list")] IReadOnlyList<LogisticsBatchShipOrderRequestOrderListItem>? OrderList = null,
+    [property: JsonPropertyName("order_list")] IReadOnlyList<LogisticsBatchShipOrderRequestOrderListItem> OrderList,
     [property: JsonPropertyName("pickup")] LogisticsBatchShipOrderRequestPickupItem? Pickup = null,
     [property: JsonPropertyName("dropoff")] LogisticsBatchShipOrderRequestDropoffItem? Dropoff = null,
     [property: JsonPropertyName("non_integrated")] LogisticsBatchShipOrderRequestNonIntegratedItem? NonIntegrated = null
@@ -46,15 +46,15 @@ public sealed record LogisticsBatchShipOrderResponse(
 );
 
 public sealed record LogisticsBatchUpdateTpfWarehouseTrackingStatusRequestPackageListItem(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
-    [property: JsonPropertyName("package_number")] string? PackageNumber = null,
-    [property: JsonPropertyName("update_time")] long? UpdateTime = null
+    [property: JsonPropertyName("order_sn")] string OrderSn,
+    [property: JsonPropertyName("update_time")] long UpdateTime,
+    [property: JsonPropertyName("package_number")] string? PackageNumber = null
 );
 
 public sealed record LogisticsBatchUpdateTpfWarehouseTrackingStatusRequest(
-    [property: JsonPropertyName("tpf_name")] string? TpfName = null,
-    [property: JsonPropertyName("tpf_tracking_status")] string? TpfTrackingStatus = null,
-    [property: JsonPropertyName("package_list")] IReadOnlyList<LogisticsBatchUpdateTpfWarehouseTrackingStatusRequestPackageListItem>? PackageList = null
+    [property: JsonPropertyName("tpf_name")] string TpfName,
+    [property: JsonPropertyName("tpf_tracking_status")] string TpfTrackingStatus,
+    [property: JsonPropertyName("package_list")] IReadOnlyList<LogisticsBatchUpdateTpfWarehouseTrackingStatusRequestPackageListItem> PackageList
 );
 
 public sealed record LogisticsBatchUpdateTpfWarehouseTrackingStatusResponseSuccessListItem(
@@ -75,7 +75,7 @@ public sealed record LogisticsBatchUpdateTpfWarehouseTrackingStatusResponse(
 );
 
 public sealed record LogisticsCheckPolygonUpdateStatusRequest(
-    [property: JsonPropertyName("task_id")] string? TaskId = null
+    [property: JsonPropertyName("task_id")] string TaskId
 );
 
 public sealed record LogisticsCheckPolygonUpdateStatusResponse(
@@ -84,13 +84,13 @@ public sealed record LogisticsCheckPolygonUpdateStatusResponse(
 );
 
 public sealed record LogisticsCreateBookingShippingDocumentRequestBookingListItem(
-    [property: JsonPropertyName("booking_sn")] string? BookingSn = null,
+    [property: JsonPropertyName("booking_sn")] string BookingSn,
     [property: JsonPropertyName("tracking_number")] string? TrackingNumber = null,
     [property: JsonPropertyName("shipping_document_type")] string? ShippingDocumentType = null
 );
 
 public sealed record LogisticsCreateBookingShippingDocumentRequest(
-    [property: JsonPropertyName("booking_list")] IReadOnlyList<LogisticsCreateBookingShippingDocumentRequestBookingListItem>? BookingList = null
+    [property: JsonPropertyName("booking_list")] IReadOnlyList<LogisticsCreateBookingShippingDocumentRequestBookingListItem> BookingList
 );
 
 public sealed record LogisticsCreateBookingShippingDocumentResponseResultListItem(
@@ -104,14 +104,14 @@ public sealed record LogisticsCreateBookingShippingDocumentResponse(
 );
 
 public sealed record LogisticsCreateShippingDocumentRequestOrderListItem(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
+    [property: JsonPropertyName("order_sn")] string OrderSn,
     [property: JsonPropertyName("package_number")] string? PackageNumber = null,
     [property: JsonPropertyName("tracking_number")] string? TrackingNumber = null,
     [property: JsonPropertyName("shipping_document_type")] string? ShippingDocumentType = null
 );
 
 public sealed record LogisticsCreateShippingDocumentRequest(
-    [property: JsonPropertyName("order_list")] IReadOnlyList<LogisticsCreateShippingDocumentRequestOrderListItem>? OrderList = null
+    [property: JsonPropertyName("order_list")] IReadOnlyList<LogisticsCreateShippingDocumentRequestOrderListItem> OrderList
 );
 
 public sealed record LogisticsCreateShippingDocumentResponseResultListItem(
@@ -131,7 +131,7 @@ public sealed record LogisticsCreateShippingDocumentJobRequestUnpackagedSkuReque
 );
 
 public sealed record LogisticsCreateShippingDocumentJobRequest(
-    [property: JsonPropertyName("shipping_document_type")] string? ShippingDocumentType = null,
+    [property: JsonPropertyName("shipping_document_type")] string ShippingDocumentType,
     [property: JsonPropertyName("unpackaged_sku_requests")] IReadOnlyList<LogisticsCreateShippingDocumentJobRequestUnpackagedSkuRequestsItem>? UnpackagedSkuRequests = null,
     [property: JsonPropertyName("package_list")] IReadOnlyList<string>? PackageList = null
 );
@@ -149,53 +149,53 @@ public sealed record LogisticsCreateShippingDocumentJobResponse(
 );
 
 public sealed record LogisticsDeleteAddressRequest(
-    [property: JsonPropertyName("address_id")] int? AddressId = null
+    [property: JsonPropertyName("address_id")] int AddressId
 );
 
 public sealed record LogisticsDeleteAddressResponse(
 );
 
 public sealed record LogisticsDeleteSpecialOperatingHourRequest(
-    [property: JsonPropertyName("name")] string? Name = null
+    [property: JsonPropertyName("name")] string Name
 );
 
 public sealed record LogisticsDeleteSpecialOperatingHourResponse(
 );
 
 public sealed record LogisticsDownloadBookingShippingDocumentRequestBookingListItem(
-    [property: JsonPropertyName("booking_sn")] string? BookingSn = null
+    [property: JsonPropertyName("booking_sn")] string BookingSn
 );
 
 public sealed record LogisticsDownloadBookingShippingDocumentRequest(
-    [property: JsonPropertyName("shipping_document_type")] string? ShippingDocumentType = null,
-    [property: JsonPropertyName("booking_list")] IReadOnlyList<LogisticsDownloadBookingShippingDocumentRequestBookingListItem>? BookingList = null
+    [property: JsonPropertyName("booking_list")] IReadOnlyList<LogisticsDownloadBookingShippingDocumentRequestBookingListItem> BookingList,
+    [property: JsonPropertyName("shipping_document_type")] string? ShippingDocumentType = null
 );
 
 public sealed record LogisticsDownloadBookingShippingDocumentResponse(
 );
 
 public sealed record LogisticsDownloadShippingDocumentRequestOrderListItem(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
+    [property: JsonPropertyName("order_sn")] string OrderSn,
     [property: JsonPropertyName("package_number")] string? PackageNumber = null
 );
 
 public sealed record LogisticsDownloadShippingDocumentRequest(
-    [property: JsonPropertyName("shipping_document_type")] string? ShippingDocumentType = null,
-    [property: JsonPropertyName("order_list")] IReadOnlyList<LogisticsDownloadShippingDocumentRequestOrderListItem>? OrderList = null
+    [property: JsonPropertyName("order_list")] IReadOnlyList<LogisticsDownloadShippingDocumentRequestOrderListItem> OrderList,
+    [property: JsonPropertyName("shipping_document_type")] string? ShippingDocumentType = null
 );
 
 public sealed record LogisticsDownloadShippingDocumentResponse(
 );
 
 public sealed record LogisticsDownloadShippingDocumentJobRequest(
-    [property: JsonPropertyName("job_id")] string? JobId = null
+    [property: JsonPropertyName("job_id")] string JobId
 );
 
 public sealed record LogisticsDownloadShippingDocumentJobResponse(
 );
 
 public sealed record LogisticsDownloadToLabelRequest(
-    [property: JsonPropertyName("sorting_group")] int? SortingGroup = null,
+    [property: JsonPropertyName("sorting_group")] int SortingGroup,
     [property: JsonPropertyName("quantity")] int? Quantity = null
 );
 
@@ -231,12 +231,12 @@ public sealed record LogisticsGetBookingShippingDocumentDataInfoRequestRecipient
 );
 
 public sealed record LogisticsGetBookingShippingDocumentDataInfoRequestRecipientAddressInfoItem(
-    [property: JsonPropertyName("key")] string? Key = null,
+    [property: JsonPropertyName("key")] string Key,
     [property: JsonPropertyName("style")] LogisticsGetBookingShippingDocumentDataInfoRequestRecipientAddressInfoItemStyleItem? Style = null
 );
 
 public sealed record LogisticsGetBookingShippingDocumentDataInfoRequest(
-    [property: JsonPropertyName("booking_sn")] string? BookingSn = null,
+    [property: JsonPropertyName("booking_sn")] string BookingSn,
     [property: JsonPropertyName("recipient_address_info")] IReadOnlyList<LogisticsGetBookingShippingDocumentDataInfoRequestRecipientAddressInfoItem>? RecipientAddressInfo = null
 );
 
@@ -294,11 +294,11 @@ public sealed record LogisticsGetBookingShippingDocumentDataInfoResponse(
 );
 
 public sealed record LogisticsGetBookingShippingDocumentParameterRequestBookingListItem(
-    [property: JsonPropertyName("booking_sn")] string? BookingSn = null
+    [property: JsonPropertyName("booking_sn")] string BookingSn
 );
 
 public sealed record LogisticsGetBookingShippingDocumentParameterRequest(
-    [property: JsonPropertyName("booking_list")] IReadOnlyList<LogisticsGetBookingShippingDocumentParameterRequestBookingListItem>? BookingList = null
+    [property: JsonPropertyName("booking_list")] IReadOnlyList<LogisticsGetBookingShippingDocumentParameterRequestBookingListItem> BookingList
 );
 
 public sealed record LogisticsGetBookingShippingDocumentParameterResponseResultListItem(
@@ -314,12 +314,12 @@ public sealed record LogisticsGetBookingShippingDocumentParameterResponse(
 );
 
 public sealed record LogisticsGetBookingShippingDocumentResultRequestBookingListItem(
-    [property: JsonPropertyName("booking_sn")] string? BookingSn = null,
+    [property: JsonPropertyName("booking_sn")] string BookingSn,
     [property: JsonPropertyName("shipping_document_type")] string? ShippingDocumentType = null
 );
 
 public sealed record LogisticsGetBookingShippingDocumentResultRequest(
-    [property: JsonPropertyName("booking_list")] IReadOnlyList<LogisticsGetBookingShippingDocumentResultRequestBookingListItem>? BookingList = null
+    [property: JsonPropertyName("booking_list")] IReadOnlyList<LogisticsGetBookingShippingDocumentResultRequestBookingListItem> BookingList
 );
 
 public sealed record LogisticsGetBookingShippingDocumentResultResponseResultListItem(
@@ -334,7 +334,7 @@ public sealed record LogisticsGetBookingShippingDocumentResultResponse(
 );
 
 public sealed record LogisticsGetBookingShippingParameterRequest(
-    [property: JsonPropertyName("booking_sn")] string? BookingSn = null
+    [property: JsonPropertyName("booking_sn")] string BookingSn
 );
 
 public sealed record LogisticsGetBookingShippingParameterResponseInfoNeededItem(
@@ -374,7 +374,7 @@ public sealed record LogisticsGetBookingShippingParameterResponse(
 );
 
 public sealed record LogisticsGetBookingTrackingInfoRequest(
-    [property: JsonPropertyName("booking_sn")] string? BookingSn = null
+    [property: JsonPropertyName("booking_sn")] string BookingSn
 );
 
 public sealed record LogisticsGetBookingTrackingInfoResponseTrackingInfoItem(
@@ -390,7 +390,7 @@ public sealed record LogisticsGetBookingTrackingInfoResponse(
 );
 
 public sealed record LogisticsGetBookingTrackingNumberRequest(
-    [property: JsonPropertyName("booking_sn")] string? BookingSn = null
+    [property: JsonPropertyName("booking_sn")] string BookingSn
 );
 
 public sealed record LogisticsGetBookingTrackingNumberResponse(
@@ -472,13 +472,13 @@ public sealed record LogisticsGetMartPackagingInfoResponse(
 );
 
 public sealed record LogisticsGetMassShippingParameterRequestPackageListItem(
-    [property: JsonPropertyName("package_number")] string? PackageNumber = null
+    [property: JsonPropertyName("package_number")] string PackageNumber
 );
 
 public sealed record LogisticsGetMassShippingParameterRequest(
+    [property: JsonPropertyName("package_list")] IReadOnlyList<LogisticsGetMassShippingParameterRequestPackageListItem> PackageList,
     [property: JsonPropertyName("logistics_channel_id")] long? LogisticsChannelId = null,
-    [property: JsonPropertyName("product_location_id")] string? ProductLocationId = null,
-    [property: JsonPropertyName("package_list")] IReadOnlyList<LogisticsGetMassShippingParameterRequestPackageListItem>? PackageList = null
+    [property: JsonPropertyName("product_location_id")] string? ProductLocationId = null
 );
 
 public sealed record LogisticsGetMassShippingParameterResponseInfoNeededItem(
@@ -544,11 +544,11 @@ public sealed record LogisticsGetMassShippingParameterResponse(
 );
 
 public sealed record LogisticsGetMassTrackingNumberRequestPackageListItem(
-    [property: JsonPropertyName("package_number")] string? PackageNumber = null
+    [property: JsonPropertyName("package_number")] string PackageNumber
 );
 
 public sealed record LogisticsGetMassTrackingNumberRequest(
-    [property: JsonPropertyName("package_list")] IReadOnlyList<LogisticsGetMassTrackingNumberRequestPackageListItem>? PackageList = null,
+    [property: JsonPropertyName("package_list")] IReadOnlyList<LogisticsGetMassTrackingNumberRequestPackageListItem> PackageList,
     [property: JsonPropertyName("response_optional_fields")] string? ResponseOptionalFields = null
 );
 
@@ -899,12 +899,12 @@ public sealed record LogisticsGetShippingDocumentDataInfoRequestRecipientAddress
 );
 
 public sealed record LogisticsGetShippingDocumentDataInfoRequestRecipientAddressInfoItem(
-    [property: JsonPropertyName("key")] string? Key = null,
+    [property: JsonPropertyName("key")] string Key,
     [property: JsonPropertyName("style")] LogisticsGetShippingDocumentDataInfoRequestRecipientAddressInfoItemStyleItem? Style = null
 );
 
 public sealed record LogisticsGetShippingDocumentDataInfoRequest(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
+    [property: JsonPropertyName("order_sn")] string OrderSn,
     [property: JsonPropertyName("package_number")] string? PackageNumber = null,
     [property: JsonPropertyName("recipient_address_info")] IReadOnlyList<LogisticsGetShippingDocumentDataInfoRequestRecipientAddressInfoItem>? RecipientAddressInfo = null
 );
@@ -1060,7 +1060,7 @@ public sealed record LogisticsGetShippingDocumentDataInfoResponse(
 );
 
 public sealed record LogisticsGetShippingDocumentJobStatusRequest(
-    [property: JsonPropertyName("job_id")] string? JobId = null
+    [property: JsonPropertyName("job_id")] string JobId
 );
 
 public sealed record LogisticsGetShippingDocumentJobStatusResponse(
@@ -1070,12 +1070,12 @@ public sealed record LogisticsGetShippingDocumentJobStatusResponse(
 );
 
 public sealed record LogisticsGetShippingDocumentParameterRequestOrderListItem(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
+    [property: JsonPropertyName("order_sn")] string OrderSn,
     [property: JsonPropertyName("package_number")] string? PackageNumber = null
 );
 
 public sealed record LogisticsGetShippingDocumentParameterRequest(
-    [property: JsonPropertyName("order_list")] IReadOnlyList<LogisticsGetShippingDocumentParameterRequestOrderListItem>? OrderList = null
+    [property: JsonPropertyName("order_list")] IReadOnlyList<LogisticsGetShippingDocumentParameterRequestOrderListItem> OrderList
 );
 
 public sealed record LogisticsGetShippingDocumentParameterResponseResultListItem(
@@ -1092,13 +1092,13 @@ public sealed record LogisticsGetShippingDocumentParameterResponse(
 );
 
 public sealed record LogisticsGetShippingDocumentResultRequestOrderListItem(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
+    [property: JsonPropertyName("order_sn")] string OrderSn,
     [property: JsonPropertyName("package_number")] string? PackageNumber = null,
     [property: JsonPropertyName("shipping_document_type")] string? ShippingDocumentType = null
 );
 
 public sealed record LogisticsGetShippingDocumentResultRequest(
-    [property: JsonPropertyName("order_list")] IReadOnlyList<LogisticsGetShippingDocumentResultRequestOrderListItem>? OrderList = null
+    [property: JsonPropertyName("order_list")] IReadOnlyList<LogisticsGetShippingDocumentResultRequestOrderListItem> OrderList
 );
 
 public sealed record LogisticsGetShippingDocumentResultResponseResultListItem(
@@ -1114,7 +1114,7 @@ public sealed record LogisticsGetShippingDocumentResultResponse(
 );
 
 public sealed record LogisticsGetShippingParameterRequest(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
+    [property: JsonPropertyName("order_sn")] string OrderSn,
     [property: JsonPropertyName("package_number")] string? PackageNumber = null
 );
 
@@ -1176,7 +1176,7 @@ public sealed record LogisticsGetShippingParameterResponse(
 );
 
 public sealed record LogisticsGetTrackingInfoRequest(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
+    [property: JsonPropertyName("order_sn")] string OrderSn,
     [property: JsonPropertyName("package_number")] string? PackageNumber = null
 );
 
@@ -1202,7 +1202,7 @@ public sealed record LogisticsGetTrackingInfoResponse(
 );
 
 public sealed record LogisticsGetTrackingNumberRequest(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
+    [property: JsonPropertyName("order_sn")] string OrderSn,
     [property: JsonPropertyName("package_number")] string? PackageNumber = null,
     [property: JsonPropertyName("response_optional_fields")] string? ResponseOptionalFields = null
 );
@@ -1217,7 +1217,7 @@ public sealed record LogisticsGetTrackingNumberResponse(
 );
 
 public sealed record LogisticsMassShipOrderRequestPackageListItem(
-    [property: JsonPropertyName("package_number")] string? PackageNumber = null
+    [property: JsonPropertyName("package_number")] string PackageNumber
 );
 
 public sealed record LogisticsMassShipOrderRequestPickupItem(
@@ -1232,8 +1232,8 @@ public sealed record LogisticsMassShipOrderRequestDropoffItem(
 );
 
 public sealed record LogisticsMassShipOrderRequestNonIntegratedItemTrackingNumberItem(
-    [property: JsonPropertyName("package_number")] string? PackageNumber = null,
-    [property: JsonPropertyName("tracking_number")] string? TrackingNumber = null
+    [property: JsonPropertyName("package_number")] string PackageNumber,
+    [property: JsonPropertyName("tracking_number")] string TrackingNumber
 );
 
 public sealed record LogisticsMassShipOrderRequestNonIntegratedItem(
@@ -1241,9 +1241,9 @@ public sealed record LogisticsMassShipOrderRequestNonIntegratedItem(
 );
 
 public sealed record LogisticsMassShipOrderRequest(
+    [property: JsonPropertyName("package_list")] IReadOnlyList<LogisticsMassShipOrderRequestPackageListItem> PackageList,
     [property: JsonPropertyName("logistics_channel_id")] long? LogisticsChannelId = null,
     [property: JsonPropertyName("product_location_id")] string? ProductLocationId = null,
-    [property: JsonPropertyName("package_list")] IReadOnlyList<LogisticsMassShipOrderRequestPackageListItem>? PackageList = null,
     [property: JsonPropertyName("pickup")] LogisticsMassShipOrderRequestPickupItem? Pickup = null,
     [property: JsonPropertyName("dropoff")] LogisticsMassShipOrderRequestDropoffItem? Dropoff = null,
     [property: JsonPropertyName("non_integrated")] LogisticsMassShipOrderRequestNonIntegratedItem? NonIntegrated = null
@@ -1266,17 +1266,17 @@ public sealed record LogisticsSetAddressConfigResponse(
 );
 
 public sealed record LogisticsSetMartPackagingInfoRequestDimensionItem(
-    [property: JsonPropertyName("length")] int? Length = null,
-    [property: JsonPropertyName("width")] int? Width = null,
-    [property: JsonPropertyName("height")] int? Height = null
+    [property: JsonPropertyName("length")] int Length,
+    [property: JsonPropertyName("width")] int Width,
+    [property: JsonPropertyName("height")] int Height
 );
 
 public sealed record LogisticsSetMartPackagingInfoRequestPackagingFeeItem(
-    [property: JsonPropertyName("value")] decimal? Value = null
+    [property: JsonPropertyName("value")] decimal Value
 );
 
 public sealed record LogisticsSetMartPackagingInfoRequest(
-    [property: JsonPropertyName("enable")] bool? Enable = null,
+    [property: JsonPropertyName("enable")] bool Enable,
     [property: JsonPropertyName("dimension")] LogisticsSetMartPackagingInfoRequestDimensionItem? Dimension = null,
     [property: JsonPropertyName("packaging_fee")] LogisticsSetMartPackagingInfoRequestPackagingFeeItem? PackagingFee = null
 );
@@ -1298,12 +1298,12 @@ public sealed record LogisticsSetMartPackagingInfoResponse(
 );
 
 public sealed record LogisticsShipBookingRequestPickupItem(
-    [property: JsonPropertyName("address_id")] long? AddressId = null,
+    [property: JsonPropertyName("address_id")] long AddressId,
     [property: JsonPropertyName("pickup_time_id")] string? PickupTimeId = null
 );
 
 public sealed record LogisticsShipBookingRequest(
-    [property: JsonPropertyName("booking_sn")] string? BookingSn = null,
+    [property: JsonPropertyName("booking_sn")] string BookingSn,
     [property: JsonPropertyName("pickup")] LogisticsShipBookingRequestPickupItem? Pickup = null,
     [property: JsonPropertyName("dropoff")] JsonElement? Dropoff = null
 );
@@ -1312,7 +1312,7 @@ public sealed record LogisticsShipBookingResponse(
 );
 
 public sealed record LogisticsShipOrderRequestPickupItem(
-    [property: JsonPropertyName("address_id")] long? AddressId = null,
+    [property: JsonPropertyName("address_id")] long AddressId,
     [property: JsonPropertyName("pickup_time_id")] string? PickupTimeId = null,
     [property: JsonPropertyName("tracking_number")] string? TrackingNumber = null
 );
@@ -1329,7 +1329,7 @@ public sealed record LogisticsShipOrderRequestNonIntegratedItem(
 );
 
 public sealed record LogisticsShipOrderRequest(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
+    [property: JsonPropertyName("order_sn")] string OrderSn,
     [property: JsonPropertyName("package_number")] string? PackageNumber = null,
     [property: JsonPropertyName("pickup")] LogisticsShipOrderRequestPickupItem? Pickup = null,
     [property: JsonPropertyName("dropoff")] LogisticsShipOrderRequestDropoffItem? Dropoff = null,
@@ -1340,7 +1340,7 @@ public sealed record LogisticsShipOrderResponse(
 );
 
 public sealed record LogisticsUpdateAddressRequest(
-    [property: JsonPropertyName("address_id")] long? AddressId = null,
+    [property: JsonPropertyName("address_id")] long AddressId,
     [property: JsonPropertyName("region")] string? Region = null,
     [property: JsonPropertyName("state")] string? State = null,
     [property: JsonPropertyName("city")] string? City = null,
@@ -1357,7 +1357,7 @@ public sealed record LogisticsUpdateAddressResponse(
 );
 
 public sealed record LogisticsUpdateChannelRequest(
-    [property: JsonPropertyName("logistics_channel_id")] long? LogisticsChannelId = null,
+    [property: JsonPropertyName("logistics_channel_id")] long LogisticsChannelId,
     [property: JsonPropertyName("enabled")] bool? Enabled = null,
     [property: JsonPropertyName("cod_enabled")] bool? CodEnabled = null
 );
@@ -1383,43 +1383,43 @@ public sealed record LogisticsUpdateChannelResponse(
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestRegularOperatingHourItemMondayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestRegularOperatingHourItemTuesdayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestRegularOperatingHourItemWednesdayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestRegularOperatingHourItemThursdayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestRegularOperatingHourItemFridayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestRegularOperatingHourItemSaturdayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestRegularOperatingHourItemSundayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestRegularOperatingHourItemPublicHolidayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestRegularOperatingHourItem(
@@ -1434,57 +1434,57 @@ public sealed record LogisticsUpdateOperatingHoursRequestRegularOperatingHourIte
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestSpecialOperatingHourItemOperatingHoursItem(
-    [property: JsonPropertyName("date")] string? Date = null,
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null,
-    [property: JsonPropertyName("enable")] bool? Enable = null
+    [property: JsonPropertyName("date")] string Date,
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime,
+    [property: JsonPropertyName("enable")] bool Enable
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestSpecialOperatingHourItem(
-    [property: JsonPropertyName("name")] string? Name = null,
-    [property: JsonPropertyName("start_date")] string? StartDate = null,
-    [property: JsonPropertyName("end_date")] string? EndDate = null,
-    [property: JsonPropertyName("operating_hours")] IReadOnlyList<LogisticsUpdateOperatingHoursRequestSpecialOperatingHourItemOperatingHoursItem>? OperatingHours = null
+    [property: JsonPropertyName("name")] string Name,
+    [property: JsonPropertyName("start_date")] string StartDate,
+    [property: JsonPropertyName("end_date")] string EndDate,
+    [property: JsonPropertyName("operating_hours")] IReadOnlyList<LogisticsUpdateOperatingHoursRequestSpecialOperatingHourItemOperatingHoursItem> OperatingHours
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestInstantOperatingHourItemMondayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestInstantOperatingHourItemTuesdayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestInstantOperatingHourItemWednesdayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestInstantOperatingHourItemThrusdayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestInstantOperatingHourItemFridayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestInstantOperatingHourItemSaturdayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestInstantOperatingHourItemSundayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestInstantOperatingHourItemPublicHolidayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestInstantOperatingHourItem(
@@ -1499,43 +1499,43 @@ public sealed record LogisticsUpdateOperatingHoursRequestInstantOperatingHourIte
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestShopCollectionOperatingHourItemMondayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestShopCollectionOperatingHourItemTuesdayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestShopCollectionOperatingHourItemWednesdayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestShopCollectionOperatingHourItemThursdayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestShopCollectionOperatingHourItemFridayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestShopCollectionOperatingHourItemSaturdayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestShopCollectionOperatingHourItemSundayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestShopCollectionOperatingHourItemPublicHolidayItem(
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime
 );
 
 public sealed record LogisticsUpdateOperatingHoursRequestShopCollectionOperatingHourItem(
@@ -1588,8 +1588,8 @@ public sealed record LogisticsUpdateOperatingHoursResponse(
 );
 
 public sealed record LogisticsUpdateSelfCollectionOrderLogisticsRequest(
-    [property: JsonPropertyName("package_number")] string? PackageNumber = null,
-    [property: JsonPropertyName("self_collection_logistics_action")] string? SelfCollectionLogisticsAction = null,
+    [property: JsonPropertyName("package_number")] string PackageNumber,
+    [property: JsonPropertyName("self_collection_logistics_action")] string SelfCollectionLogisticsAction,
     [property: JsonPropertyName("epoc_image_list")] IReadOnlyList<string>? EpocImageList = null,
     [property: JsonPropertyName("pin")] string? Pin = null
 );
@@ -1598,24 +1598,24 @@ public sealed record LogisticsUpdateSelfCollectionOrderLogisticsResponse(
 );
 
 public sealed record LogisticsUpdateShippingOrderRequestPickupItem(
-    [property: JsonPropertyName("address_id")] long? AddressId = null,
-    [property: JsonPropertyName("pickup_time_id")] string? PickupTimeId = null
+    [property: JsonPropertyName("address_id")] long AddressId,
+    [property: JsonPropertyName("pickup_time_id")] string PickupTimeId
 );
 
 public sealed record LogisticsUpdateShippingOrderRequest(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
-    [property: JsonPropertyName("package_number")] string? PackageNumber = null,
-    [property: JsonPropertyName("pickup")] LogisticsUpdateShippingOrderRequestPickupItem? Pickup = null
+    [property: JsonPropertyName("order_sn")] string OrderSn,
+    [property: JsonPropertyName("pickup")] LogisticsUpdateShippingOrderRequestPickupItem Pickup,
+    [property: JsonPropertyName("package_number")] string? PackageNumber = null
 );
 
 public sealed record LogisticsUpdateShippingOrderResponse(
 );
 
 public sealed record LogisticsUpdateTrackingStatusRequest(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
+    [property: JsonPropertyName("order_sn")] string OrderSn,
+    [property: JsonPropertyName("logistics_status")] string LogisticsStatus,
     [property: JsonPropertyName("tracking_number")] string? TrackingNumber = null,
     [property: JsonPropertyName("tracking_url")] string? TrackingUrl = null,
-    [property: JsonPropertyName("logistics_status")] string? LogisticsStatus = null,
     [property: JsonPropertyName("failed_reason")] string? FailedReason = null
 );
 
@@ -1624,7 +1624,7 @@ public sealed record LogisticsUpdateTrackingStatusResponse(
 );
 
 public sealed record LogisticsUploadServiceablePolygonRequest(
-    [property: JsonPropertyName("file")] ShopeeUploadFile? File = null
+    [property: JsonPropertyName("file")] ShopeeUploadFile File
 );
 
 public sealed record LogisticsUploadServiceablePolygonResponse(

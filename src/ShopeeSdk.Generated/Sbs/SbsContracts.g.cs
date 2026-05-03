@@ -24,6 +24,7 @@ public sealed record SbsGetBoundWhsInfoResponse(
 );
 
 public sealed record SbsGetCurrentInventoryRequest(
+    [property: JsonPropertyName("whs_region")] string WhsRegion,
     [property: JsonPropertyName("page_no")] int? PageNo = null,
     [property: JsonPropertyName("page_size")] int? PageSize = null,
     [property: JsonPropertyName("search_type")] int? SearchType = null,
@@ -33,8 +34,7 @@ public sealed record SbsGetCurrentInventoryRequest(
     [property: JsonPropertyName("inbound_pending_approval")] long? InboundPendingApproval = null,
     [property: JsonPropertyName("products_with_inventory")] int? ProductsWithInventory = null,
     [property: JsonPropertyName("category_id")] long? CategoryId = null,
-    [property: JsonPropertyName("stock_levels")] string? StockLevels = null,
-    [property: JsonPropertyName("whs_region")] string? WhsRegion = null
+    [property: JsonPropertyName("stock_levels")] string? StockLevels = null
 );
 
 public sealed record SbsGetCurrentInventoryResponseItemListItemSkuListItemWhsListItem(
@@ -84,6 +84,7 @@ public sealed record SbsGetCurrentInventoryResponse(
 );
 
 public sealed record SbsGetExpiryReportRequest(
+    [property: JsonPropertyName("whs_region")] string WhsRegion,
     [property: JsonPropertyName("page_no")] int? PageNo = null,
     [property: JsonPropertyName("page_size")] int? PageSize = null,
     [property: JsonPropertyName("whs_ids")] string? WhsIds = null,
@@ -92,8 +93,7 @@ public sealed record SbsGetExpiryReportRequest(
     [property: JsonPropertyName("sku_id")] string? SkuId = null,
     [property: JsonPropertyName("item_id")] string? ItemId = null,
     [property: JsonPropertyName("variation")] string? Variation = null,
-    [property: JsonPropertyName("item_name")] string? ItemName = null,
-    [property: JsonPropertyName("whs_region")] string? WhsRegion = null
+    [property: JsonPropertyName("item_name")] string? ItemName = null
 );
 
 public sealed record SbsGetExpiryReportResponseItemListItemSkuListItemShopSkuListItem(
@@ -133,6 +133,7 @@ public sealed record SbsGetExpiryReportResponse(
 );
 
 public sealed record SbsGetStockAgingRequest(
+    [property: JsonPropertyName("whs_region")] string WhsRegion,
     [property: JsonPropertyName("page_no")] int? PageNo = null,
     [property: JsonPropertyName("page_size")] int? PageSize = null,
     [property: JsonPropertyName("search_type")] int? SearchType = null,
@@ -140,8 +141,7 @@ public sealed record SbsGetStockAgingRequest(
     [property: JsonPropertyName("whs_ids")] string? WhsIds = null,
     [property: JsonPropertyName("aging_storage_tag")] int? AgingStorageTag = null,
     [property: JsonPropertyName("excess_storage_tag")] int? ExcessStorageTag = null,
-    [property: JsonPropertyName("category_id")] long? CategoryId = null,
-    [property: JsonPropertyName("whs_region")] string? WhsRegion = null
+    [property: JsonPropertyName("category_id")] long? CategoryId = null
 );
 
 public sealed record SbsGetStockAgingResponseItemListItemSkuListItemWhsListItem(
@@ -184,17 +184,17 @@ public sealed record SbsGetStockAgingResponse(
 );
 
 public sealed record SbsGetStockMovementRequest(
+    [property: JsonPropertyName("start_time")] string StartTime,
+    [property: JsonPropertyName("end_time")] string EndTime,
+    [property: JsonPropertyName("whs_region")] string WhsRegion,
     [property: JsonPropertyName("page_no")] int? PageNo = null,
     [property: JsonPropertyName("page_size")] int? PageSize = null,
-    [property: JsonPropertyName("start_time")] string? StartTime = null,
-    [property: JsonPropertyName("end_time")] string? EndTime = null,
     [property: JsonPropertyName("whs_ids")] string? WhsIds = null,
     [property: JsonPropertyName("category_id_l1")] long? CategoryIdL1 = null,
     [property: JsonPropertyName("sku_id")] string? SkuId = null,
     [property: JsonPropertyName("item_id")] string? ItemId = null,
     [property: JsonPropertyName("item_name")] string? ItemName = null,
-    [property: JsonPropertyName("variation")] string? Variation = null,
-    [property: JsonPropertyName("whs_region")] string? WhsRegion = null
+    [property: JsonPropertyName("variation")] string? Variation = null
 );
 
 public sealed record SbsGetStockMovementResponseItemListItemSkuListItemWhsListItem(

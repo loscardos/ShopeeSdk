@@ -7,14 +7,14 @@ using ShopeeSdk.Generated.Common;
 namespace ShopeeSdk.Generated.FirstMile;
 
 public sealed record FirstMileBindCourierDeliveryFirstMileTrackingNumberRequestOrderListItem(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
+    [property: JsonPropertyName("order_sn")] string OrderSn,
     [property: JsonPropertyName("package_number")] string? PackageNumber = null
 );
 
 public sealed record FirstMileBindCourierDeliveryFirstMileTrackingNumberRequest(
-    [property: JsonPropertyName("shipment_method")] string? ShipmentMethod = null,
-    [property: JsonPropertyName("binding_id")] string? BindingId = null,
-    [property: JsonPropertyName("order_list")] IReadOnlyList<FirstMileBindCourierDeliveryFirstMileTrackingNumberRequestOrderListItem>? OrderList = null
+    [property: JsonPropertyName("shipment_method")] string ShipmentMethod,
+    [property: JsonPropertyName("binding_id")] string BindingId,
+    [property: JsonPropertyName("order_list")] IReadOnlyList<FirstMileBindCourierDeliveryFirstMileTrackingNumberRequestOrderListItem> OrderList
 );
 
 public sealed record FirstMileBindCourierDeliveryFirstMileTrackingNumberResponseSuccessListItem(
@@ -36,21 +36,21 @@ public sealed record FirstMileBindCourierDeliveryFirstMileTrackingNumberResponse
 );
 
 public sealed record FirstMileBindFirstMileTrackingNumberRequestOrderListItem(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
+    [property: JsonPropertyName("order_sn")] string OrderSn,
     [property: JsonPropertyName("package_number")] string? PackageNumber = null
 );
 
 public sealed record FirstMileBindFirstMileTrackingNumberRequest(
-    [property: JsonPropertyName("first_mile_tracking_number")] string? FirstMileTrackingNumber = null,
-    [property: JsonPropertyName("shipment_method")] string? ShipmentMethod = null,
-    [property: JsonPropertyName("region")] string? Region = null,
-    [property: JsonPropertyName("logistics_channel_id")] int? LogisticsChannelId = null,
+    [property: JsonPropertyName("first_mile_tracking_number")] string FirstMileTrackingNumber,
+    [property: JsonPropertyName("shipment_method")] string ShipmentMethod,
+    [property: JsonPropertyName("region")] string Region,
+    [property: JsonPropertyName("logistics_channel_id")] int LogisticsChannelId,
+    [property: JsonPropertyName("order_list")] IReadOnlyList<FirstMileBindFirstMileTrackingNumberRequestOrderListItem> OrderList,
     [property: JsonPropertyName("volume")] decimal? Volume = null,
     [property: JsonPropertyName("weight")] decimal? Weight = null,
     [property: JsonPropertyName("width")] decimal? Width = null,
     [property: JsonPropertyName("length")] decimal? Length = null,
     [property: JsonPropertyName("height")] decimal? Height = null,
-    [property: JsonPropertyName("order_list")] IReadOnlyList<FirstMileBindFirstMileTrackingNumberRequestOrderListItem>? OrderList = null,
     [property: JsonPropertyName("warehouse_id")] string? WarehouseId = null,
     [property: JsonPropertyName("warehouse_type")] int? WarehouseType = null
 );
@@ -68,23 +68,23 @@ public sealed record FirstMileBindFirstMileTrackingNumberResponse(
 );
 
 public sealed record FirstMileGenerateAndBindFirstMileTrackingNumberRequestOrderListItem(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
+    [property: JsonPropertyName("order_sn")] string OrderSn,
     [property: JsonPropertyName("package_number")] string? PackageNumber = null
 );
 
 public sealed record FirstMileGenerateAndBindFirstMileTrackingNumberRequestCourierDeliveryInfoItem(
-    [property: JsonPropertyName("address_id")] long? AddressId = null,
-    [property: JsonPropertyName("warehouse_id")] string? WarehouseId = null,
-    [property: JsonPropertyName("logistics_product_id")] long? LogisticsProductId = null,
-    [property: JsonPropertyName("prepaid_account_id")] long? PrepaidAccountId = null,
-    [property: JsonPropertyName("courier_service_id")] string? CourierServiceId = null
+    [property: JsonPropertyName("address_id")] long AddressId,
+    [property: JsonPropertyName("warehouse_id")] string WarehouseId,
+    [property: JsonPropertyName("logistics_product_id")] long LogisticsProductId,
+    [property: JsonPropertyName("courier_service_id")] string CourierServiceId,
+    [property: JsonPropertyName("prepaid_account_id")] long? PrepaidAccountId = null
 );
 
 public sealed record FirstMileGenerateAndBindFirstMileTrackingNumberRequest(
-    [property: JsonPropertyName("shipment_method")] string? ShipmentMethod = null,
-    [property: JsonPropertyName("region")] string? Region = null,
-    [property: JsonPropertyName("order_list")] IReadOnlyList<FirstMileGenerateAndBindFirstMileTrackingNumberRequestOrderListItem>? OrderList = null,
-    [property: JsonPropertyName("courier_delivery_info")] FirstMileGenerateAndBindFirstMileTrackingNumberRequestCourierDeliveryInfoItem? CourierDeliveryInfo = null
+    [property: JsonPropertyName("shipment_method")] string ShipmentMethod,
+    [property: JsonPropertyName("order_list")] IReadOnlyList<FirstMileGenerateAndBindFirstMileTrackingNumberRequestOrderListItem> OrderList,
+    [property: JsonPropertyName("courier_delivery_info")] FirstMileGenerateAndBindFirstMileTrackingNumberRequestCourierDeliveryInfoItem CourierDeliveryInfo,
+    [property: JsonPropertyName("region")] string? Region = null
 );
 
 public sealed record FirstMileGenerateAndBindFirstMileTrackingNumberResponseSuccessListItem(
@@ -106,7 +106,7 @@ public sealed record FirstMileGenerateAndBindFirstMileTrackingNumberResponse(
 );
 
 public sealed record FirstMileGenerateFirstMileTrackingNumberRequest(
-    [property: JsonPropertyName("declare_date")] string? DeclareDate = null,
+    [property: JsonPropertyName("declare_date")] string DeclareDate,
     [property: JsonPropertyName("quantity")] int? Quantity = null
 );
 
@@ -149,7 +149,7 @@ public sealed record FirstMileGetCourierDeliveryChannelListResponse(
 );
 
 public sealed record FirstMileGetCourierDeliveryDetailRequest(
-    [property: JsonPropertyName("binding_id")] string? BindingId = null,
+    [property: JsonPropertyName("binding_id")] string BindingId,
     [property: JsonPropertyName("cursor")] string? Cursor = null,
     [property: JsonPropertyName("page_size")] long? PageSize = null
 );
@@ -173,8 +173,8 @@ public sealed record FirstMileGetCourierDeliveryDetailResponse(
 );
 
 public sealed record FirstMileGetCourierDeliveryTrackingNumberListRequest(
-    [property: JsonPropertyName("from_date")] string? FromDate = null,
-    [property: JsonPropertyName("to_date")] string? ToDate = null,
+    [property: JsonPropertyName("from_date")] string FromDate,
+    [property: JsonPropertyName("to_date")] string ToDate,
     [property: JsonPropertyName("page_size")] long? PageSize = null,
     [property: JsonPropertyName("cursor")] string? Cursor = null
 );
@@ -194,7 +194,7 @@ public sealed record FirstMileGetCourierDeliveryTrackingNumberListResponse(
 );
 
 public sealed record FirstMileGetCourierDeliveryWaybillRequest(
-    [property: JsonPropertyName("binding_id_list")] IReadOnlyList<string>? BindingIdList = null
+    [property: JsonPropertyName("binding_id_list")] IReadOnlyList<string> BindingIdList
 );
 
 public sealed record FirstMileGetCourierDeliveryWaybillResponseWaybillListItem(
@@ -207,7 +207,7 @@ public sealed record FirstMileGetCourierDeliveryWaybillResponse(
 );
 
 public sealed record FirstMileGetDetailRequest(
-    [property: JsonPropertyName("first_mile_tracking_number")] string? FirstMileTrackingNumber = null,
+    [property: JsonPropertyName("first_mile_tracking_number")] string FirstMileTrackingNumber,
     [property: JsonPropertyName("cursor")] string? Cursor = null
 );
 
@@ -231,8 +231,8 @@ public sealed record FirstMileGetDetailResponse(
 );
 
 public sealed record FirstMileGetTrackingNumberListRequest(
-    [property: JsonPropertyName("from_date")] string? FromDate = null,
-    [property: JsonPropertyName("to_date")] string? ToDate = null,
+    [property: JsonPropertyName("from_date")] string FromDate,
+    [property: JsonPropertyName("to_date")] string ToDate,
     [property: JsonPropertyName("page_size")] int? PageSize = null,
     [property: JsonPropertyName("cursor")] string? Cursor = null
 );
@@ -284,20 +284,20 @@ public sealed record FirstMileGetUnbindOrderListResponse(
 );
 
 public sealed record FirstMileGetWaybillRequest(
-    [property: JsonPropertyName("first_mile_tracking_number_list")] IReadOnlyList<string>? FirstMileTrackingNumberList = null
+    [property: JsonPropertyName("first_mile_tracking_number_list")] IReadOnlyList<string> FirstMileTrackingNumberList
 );
 
 public sealed record FirstMileGetWaybillResponse(
 );
 
 public sealed record FirstMileUnbindFirstMileTrackingNumberRequestOrderListItem(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
+    [property: JsonPropertyName("order_sn")] string OrderSn,
     [property: JsonPropertyName("package_number")] string? PackageNumber = null
 );
 
 public sealed record FirstMileUnbindFirstMileTrackingNumberRequest(
-    [property: JsonPropertyName("first_mile_tracking_number")] string? FirstMileTrackingNumber = null,
-    [property: JsonPropertyName("order_list")] IReadOnlyList<FirstMileUnbindFirstMileTrackingNumberRequestOrderListItem>? OrderList = null
+    [property: JsonPropertyName("first_mile_tracking_number")] string FirstMileTrackingNumber,
+    [property: JsonPropertyName("order_list")] IReadOnlyList<FirstMileUnbindFirstMileTrackingNumberRequestOrderListItem> OrderList
 );
 
 public sealed record FirstMileUnbindFirstMileTrackingNumberResponseOrderListItem(
@@ -313,12 +313,12 @@ public sealed record FirstMileUnbindFirstMileTrackingNumberResponse(
 );
 
 public sealed record FirstMileUnbindFirstMileTrackingNumberAllRequestOrderListItem(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
+    [property: JsonPropertyName("order_sn")] string OrderSn,
     [property: JsonPropertyName("package_number")] string? PackageNumber = null
 );
 
 public sealed record FirstMileUnbindFirstMileTrackingNumberAllRequest(
-    [property: JsonPropertyName("order_list")] IReadOnlyList<FirstMileUnbindFirstMileTrackingNumberAllRequestOrderListItem>? OrderList = null
+    [property: JsonPropertyName("order_list")] IReadOnlyList<FirstMileUnbindFirstMileTrackingNumberAllRequestOrderListItem> OrderList
 );
 
 public sealed record FirstMileUnbindFirstMileTrackingNumberAllResponseSuccessListItem(

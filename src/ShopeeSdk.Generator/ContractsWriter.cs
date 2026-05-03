@@ -20,50 +20,68 @@ public sealed class ContractsWriter
         var emitted = new HashSet<string>(StringComparer.Ordinal);
         foreach (var endpoint in endpoints.OrderBy(endpoint => endpoint.Path, StringComparer.Ordinal))
         {
-            WriteRecord(builder, ShopeeName.ToRequestTypeName(endpoint), endpoint.RequestParameters, emitted);
+            WriteRecord(builder, ShopeeName.ToRequestTypeName(endpoint), endpoint.RequestParameters, emitted, enforceRequired: true);
             var responseParameter = endpoint.ResponseParameters.FirstOrDefault(parameter => parameter.Name == "response");
-            WriteRecord(builder, ShopeeName.ToResponseTypeName(endpoint), responseParameter?.Children ?? [], emitted);
+            WriteRecord(builder, ShopeeName.ToResponseTypeName(endpoint), responseParameter?.Children ?? [], emitted, enforceRequired: false);
         }
 
         return builder.ToString();
     }
 
-    private static void WriteRecord(StringBuilder builder, string typeName, IReadOnlyList<SchemaParameter> parameters, HashSet<string> emitted)
+    private static void WriteRecord(
+        StringBuilder builder,
+        string typeName,
+        IReadOnlyList<SchemaParameter> parameters,
+        HashSet<string> emitted,
+        bool enforceRequired)
     {
         if (!emitted.Add(typeName))
         {
             return;
         }
 
-        foreach (var parameter in parameters.Where(parameter => parameter.Children.Count > 0))
+        var orderedParameters = OrderParameters(parameters, enforceRequired);
+
+        foreach (var parameter in orderedParameters.Where(parameter => parameter.Children.Count > 0))
         {
-            WriteRecord(builder, GetChildTypeName(typeName, parameter), parameter.Children, emitted);
+            WriteRecord(builder, GetChildTypeName(typeName, parameter), parameter.Children, emitted, enforceRequired);
         }
 
         builder.AppendLine($"public sealed record {typeName}(");
 
-        for (var index = 0; index < parameters.Count; index++)
+        for (var index = 0; index < orderedParameters.Count; index++)
         {
-            var parameter = parameters[index];
-            var suffix = index == parameters.Count - 1 ? string.Empty : ",";
-            builder.AppendLine($"    [property: JsonPropertyName(\"{parameter.Name}\")] {ToCSharpType(parameter, typeName)} {ShopeeName.ToPropertyName(parameter.Name)} = null{suffix}");
+            var parameter = orderedParameters[index];
+            var suffix = index == orderedParameters.Count - 1 ? string.Empty : ",";
+            var defaultValue = enforceRequired && parameter.Required ? string.Empty : " = null";
+            builder.AppendLine($"    [property: JsonPropertyName(\"{parameter.Name}\")] {ToCSharpType(parameter, typeName, enforceRequired)} {ShopeeName.ToPropertyName(parameter.Name)}{defaultValue}{suffix}");
         }
 
         builder.AppendLine(");");
         builder.AppendLine();
     }
 
-    private static string ToCSharpType(SchemaParameter parameter, string parentTypeName)
+    private static IReadOnlyList<SchemaParameter> OrderParameters(IReadOnlyList<SchemaParameter> parameters, bool enforceRequired)
     {
+        return enforceRequired
+            ? parameters.OrderByDescending(parameter => parameter.Required).ToArray()
+            : parameters;
+    }
+
+    private static string ToCSharpType(SchemaParameter parameter, string parentTypeName, bool enforceRequired)
+    {
+        var required = enforceRequired && parameter.Required;
+
         if (parameter.Children.Count > 0)
         {
             var childTypeName = GetChildTypeName(parentTypeName, parameter);
+            var suffix = required ? string.Empty : "?";
             return parameter.Type.EndsWith("[]", StringComparison.Ordinal)
-                ? $"IReadOnlyList<{childTypeName}>?"
-                : childTypeName + "?";
+                ? $"IReadOnlyList<{childTypeName}>{suffix}"
+                : childTypeName + suffix;
         }
 
-        return ShopeeTypeMapper.MapScalar(parameter.Type);
+        return ShopeeTypeMapper.MapScalar(parameter.Type, required);
     }
 
     private static string GetChildTypeName(string parentTypeName, SchemaParameter parameter)

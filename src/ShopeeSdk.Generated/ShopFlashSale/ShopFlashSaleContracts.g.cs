@@ -7,22 +7,22 @@ using ShopeeSdk.Generated.Common;
 namespace ShopeeSdk.Generated.ShopFlashSale;
 
 public sealed record ShopFlashSaleAddShopFlashSaleItemsRequestItemsItemModelsItem(
-    [property: JsonPropertyName("model_id")] long? ModelId = null,
-    [property: JsonPropertyName("input_promo_price")] decimal? InputPromoPrice = null,
-    [property: JsonPropertyName("stock")] int? Stock = null
+    [property: JsonPropertyName("model_id")] long ModelId,
+    [property: JsonPropertyName("input_promo_price")] decimal InputPromoPrice,
+    [property: JsonPropertyName("stock")] int Stock
 );
 
 public sealed record ShopFlashSaleAddShopFlashSaleItemsRequestItemsItem(
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
-    [property: JsonPropertyName("purchase_limit")] int? PurchaseLimit = null,
+    [property: JsonPropertyName("item_id")] long ItemId,
+    [property: JsonPropertyName("purchase_limit")] int PurchaseLimit,
     [property: JsonPropertyName("models")] IReadOnlyList<ShopFlashSaleAddShopFlashSaleItemsRequestItemsItemModelsItem>? Models = null,
     [property: JsonPropertyName("item_input_promo_price")] decimal? ItemInputPromoPrice = null,
     [property: JsonPropertyName("item_stock")] int? ItemStock = null
 );
 
 public sealed record ShopFlashSaleAddShopFlashSaleItemsRequest(
-    [property: JsonPropertyName("flash_sale_id")] long? FlashSaleId = null,
-    [property: JsonPropertyName("items")] IReadOnlyList<ShopFlashSaleAddShopFlashSaleItemsRequestItemsItem>? Items = null
+    [property: JsonPropertyName("flash_sale_id")] long FlashSaleId,
+    [property: JsonPropertyName("items")] IReadOnlyList<ShopFlashSaleAddShopFlashSaleItemsRequestItemsItem> Items
 );
 
 public sealed record ShopFlashSaleAddShopFlashSaleItemsResponseFailedItemsItemUnqualifiedConditionsItem(
@@ -43,7 +43,7 @@ public sealed record ShopFlashSaleAddShopFlashSaleItemsResponse(
 );
 
 public sealed record ShopFlashSaleCreateShopFlashSaleRequest(
-    [property: JsonPropertyName("timeslot_id")] long? TimeslotId = null
+    [property: JsonPropertyName("timeslot_id")] long TimeslotId
 );
 
 public sealed record ShopFlashSaleCreateShopFlashSaleResponse(
@@ -53,7 +53,7 @@ public sealed record ShopFlashSaleCreateShopFlashSaleResponse(
 );
 
 public sealed record ShopFlashSaleDeleteShopFlashSaleRequest(
-    [property: JsonPropertyName("flash_sale_id")] long? FlashSaleId = null
+    [property: JsonPropertyName("flash_sale_id")] long FlashSaleId
 );
 
 public sealed record ShopFlashSaleDeleteShopFlashSaleResponse(
@@ -63,8 +63,8 @@ public sealed record ShopFlashSaleDeleteShopFlashSaleResponse(
 );
 
 public sealed record ShopFlashSaleDeleteShopFlashSaleItemsRequest(
-    [property: JsonPropertyName("flash_sale_id")] long? FlashSaleId = null,
-    [property: JsonPropertyName("item_ids")] IReadOnlyList<long>? ItemIds = null
+    [property: JsonPropertyName("flash_sale_id")] long FlashSaleId,
+    [property: JsonPropertyName("item_ids")] IReadOnlyList<long> ItemIds
 );
 
 public sealed record ShopFlashSaleDeleteShopFlashSaleItemsResponseFailedItemsItemUnqualifiedConditionsItem(
@@ -122,7 +122,7 @@ public sealed record ShopFlashSaleGetItemCriteriaResponse(
 );
 
 public sealed record ShopFlashSaleGetShopFlashSaleRequest(
-    [property: JsonPropertyName("flash_sale_id")] long? FlashSaleId = null
+    [property: JsonPropertyName("flash_sale_id")] long FlashSaleId
 );
 
 public sealed record ShopFlashSaleGetShopFlashSaleResponse(
@@ -137,9 +137,9 @@ public sealed record ShopFlashSaleGetShopFlashSaleResponse(
 );
 
 public sealed record ShopFlashSaleGetShopFlashSaleItemsRequest(
-    [property: JsonPropertyName("flash_sale_id")] long? FlashSaleId = null,
-    [property: JsonPropertyName("offset")] long? Offset = null,
-    [property: JsonPropertyName("limit")] long? Limit = null
+    [property: JsonPropertyName("flash_sale_id")] long FlashSaleId,
+    [property: JsonPropertyName("offset")] long Offset,
+    [property: JsonPropertyName("limit")] long Limit
 );
 
 public sealed record ShopFlashSaleGetShopFlashSaleItemsResponseModelsItemUnqualifiedConditionsItem(
@@ -190,11 +190,11 @@ public sealed record ShopFlashSaleGetShopFlashSaleItemsResponse(
 );
 
 public sealed record ShopFlashSaleGetShopFlashSaleListRequest(
-    [property: JsonPropertyName("type")] int? Type = null,
+    [property: JsonPropertyName("type")] int Type,
+    [property: JsonPropertyName("offset")] long Offset,
+    [property: JsonPropertyName("limit")] long Limit,
     [property: JsonPropertyName("start_time")] JsonElement? StartTime = null,
-    [property: JsonPropertyName("end_time")] JsonElement? EndTime = null,
-    [property: JsonPropertyName("offset")] long? Offset = null,
-    [property: JsonPropertyName("limit")] long? Limit = null
+    [property: JsonPropertyName("end_time")] JsonElement? EndTime = null
 );
 
 public sealed record ShopFlashSaleGetShopFlashSaleListResponse(
@@ -202,8 +202,8 @@ public sealed record ShopFlashSaleGetShopFlashSaleListResponse(
 );
 
 public sealed record ShopFlashSaleGetTimeSlotIdRequest(
-    [property: JsonPropertyName("start_time")] JsonElement? StartTime = null,
-    [property: JsonPropertyName("end_time")] JsonElement? EndTime = null
+    [property: JsonPropertyName("start_time")] JsonElement? StartTime,
+    [property: JsonPropertyName("end_time")] JsonElement? EndTime
 );
 
 public sealed record ShopFlashSaleGetTimeSlotIdResponse(
@@ -213,8 +213,8 @@ public sealed record ShopFlashSaleGetTimeSlotIdResponse(
 );
 
 public sealed record ShopFlashSaleUpdateShopFlashSaleRequest(
-    [property: JsonPropertyName("flash_sale_id")] long? FlashSaleId = null,
-    [property: JsonPropertyName("status")] int? Status = null
+    [property: JsonPropertyName("flash_sale_id")] long FlashSaleId,
+    [property: JsonPropertyName("status")] int Status
 );
 
 public sealed record ShopFlashSaleUpdateShopFlashSaleResponse(
@@ -224,14 +224,14 @@ public sealed record ShopFlashSaleUpdateShopFlashSaleResponse(
 );
 
 public sealed record ShopFlashSaleUpdateShopFlashSaleItemsRequestItemsItemModelsItem(
-    [property: JsonPropertyName("model_id")] long? ModelId = null,
-    [property: JsonPropertyName("status")] int? Status = null,
+    [property: JsonPropertyName("model_id")] long ModelId,
+    [property: JsonPropertyName("status")] int Status,
     [property: JsonPropertyName("input_promo_price")] decimal? InputPromoPrice = null,
     [property: JsonPropertyName("stock")] int? Stock = null
 );
 
 public sealed record ShopFlashSaleUpdateShopFlashSaleItemsRequestItemsItem(
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
+    [property: JsonPropertyName("item_id")] long ItemId,
     [property: JsonPropertyName("purchase_limit")] int? PurchaseLimit = null,
     [property: JsonPropertyName("models")] IReadOnlyList<ShopFlashSaleUpdateShopFlashSaleItemsRequestItemsItemModelsItem>? Models = null,
     [property: JsonPropertyName("item_status")] int? ItemStatus = null,
@@ -240,8 +240,8 @@ public sealed record ShopFlashSaleUpdateShopFlashSaleItemsRequestItemsItem(
 );
 
 public sealed record ShopFlashSaleUpdateShopFlashSaleItemsRequest(
-    [property: JsonPropertyName("flash_sale_id")] long? FlashSaleId = null,
-    [property: JsonPropertyName("items")] IReadOnlyList<ShopFlashSaleUpdateShopFlashSaleItemsRequestItemsItem>? Items = null
+    [property: JsonPropertyName("flash_sale_id")] long FlashSaleId,
+    [property: JsonPropertyName("items")] IReadOnlyList<ShopFlashSaleUpdateShopFlashSaleItemsRequestItemsItem> Items
 );
 
 public sealed record ShopFlashSaleUpdateShopFlashSaleItemsResponseFailedItemsItemUnqualifiedConditionsItem(

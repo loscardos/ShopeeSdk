@@ -38,7 +38,7 @@ public sealed record AccountHealthGetListingsWithIssuesResponse(
 );
 
 public sealed record AccountHealthGetMetricSourceDetailRequest(
-    [property: JsonPropertyName("metric_id")] long? MetricId = null,
+    [property: JsonPropertyName("metric_id")] long MetricId,
     [property: JsonPropertyName("page_no")] int? PageNo = null,
     [property: JsonPropertyName("page_size")] int? PageSize = null
 );
@@ -189,9 +189,9 @@ public sealed record AccountHealthGetPenaltyPointHistoryResponse(
 );
 
 public sealed record AccountHealthGetPunishmentHistoryRequest(
+    [property: JsonPropertyName("punishment_status")] int PunishmentStatus,
     [property: JsonPropertyName("page_no")] int? PageNo = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
-    [property: JsonPropertyName("punishment_status")] int? PunishmentStatus = null
+    [property: JsonPropertyName("page_size")] int? PageSize = null
 );
 
 public sealed record AccountHealthGetPunishmentHistoryResponsePunishmentListItem(

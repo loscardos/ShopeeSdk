@@ -7,27 +7,27 @@ using ShopeeSdk.Generated.Common;
 namespace ShopeeSdk.Generated.MediaSpace;
 
 public sealed record MediaSpaceCancelVideoUploadRequest(
-    [property: JsonPropertyName("video_upload_id")] string? VideoUploadId = null
+    [property: JsonPropertyName("video_upload_id")] string VideoUploadId
 );
 
 public sealed record MediaSpaceCancelVideoUploadResponse(
 );
 
 public sealed record MediaSpaceCompleteVideoUploadRequestReportDataItem(
-    [property: JsonPropertyName("upload_cost")] int? UploadCost = null
+    [property: JsonPropertyName("upload_cost")] int UploadCost
 );
 
 public sealed record MediaSpaceCompleteVideoUploadRequest(
-    [property: JsonPropertyName("video_upload_id")] string? VideoUploadId = null,
-    [property: JsonPropertyName("part_seq_list")] IReadOnlyList<int>? PartSeqList = null,
-    [property: JsonPropertyName("report_data")] MediaSpaceCompleteVideoUploadRequestReportDataItem? ReportData = null
+    [property: JsonPropertyName("video_upload_id")] string VideoUploadId,
+    [property: JsonPropertyName("part_seq_list")] IReadOnlyList<int> PartSeqList,
+    [property: JsonPropertyName("report_data")] MediaSpaceCompleteVideoUploadRequestReportDataItem ReportData
 );
 
 public sealed record MediaSpaceCompleteVideoUploadResponse(
 );
 
 public sealed record MediaSpaceGetVideoUploadResultRequest(
-    [property: JsonPropertyName("video_upload_id")] string? VideoUploadId = null
+    [property: JsonPropertyName("video_upload_id")] string VideoUploadId
 );
 
 public sealed record MediaSpaceGetVideoUploadResultResponseVideoInfoItemVideoUrlListItem(
@@ -53,8 +53,8 @@ public sealed record MediaSpaceGetVideoUploadResultResponse(
 );
 
 public sealed record MediaSpaceInitVideoUploadRequest(
-    [property: JsonPropertyName("file_md5")] string? FileMd5 = null,
-    [property: JsonPropertyName("file_size")] int? FileSize = null
+    [property: JsonPropertyName("file_md5")] string FileMd5,
+    [property: JsonPropertyName("file_size")] int FileSize
 );
 
 public sealed record MediaSpaceInitVideoUploadResponse(
@@ -62,7 +62,7 @@ public sealed record MediaSpaceInitVideoUploadResponse(
 );
 
 public sealed record MediaSpaceUploadImageRequest(
-    [property: JsonPropertyName("image")] ShopeeUploadFile? Image = null,
+    [property: JsonPropertyName("image")] ShopeeUploadFile Image,
     [property: JsonPropertyName("scene")] string? Scene = null,
     [property: JsonPropertyName("ratio")] string? Ratio = null
 );
@@ -100,10 +100,10 @@ public sealed record MediaSpaceUploadImageResponse(
 );
 
 public sealed record MediaSpaceUploadVideoPartRequest(
-    [property: JsonPropertyName("video_upload_id")] string? VideoUploadId = null,
-    [property: JsonPropertyName("part_seq")] int? PartSeq = null,
-    [property: JsonPropertyName("content_md5")] string? ContentMd5 = null,
-    [property: JsonPropertyName("part_content")] ShopeeUploadFile? PartContent = null
+    [property: JsonPropertyName("video_upload_id")] string VideoUploadId,
+    [property: JsonPropertyName("part_seq")] int PartSeq,
+    [property: JsonPropertyName("content_md5")] string ContentMd5,
+    [property: JsonPropertyName("part_content")] ShopeeUploadFile PartContent
 );
 
 public sealed record MediaSpaceUploadVideoPartResponse(

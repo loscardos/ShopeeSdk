@@ -7,13 +7,13 @@ using ShopeeSdk.Generated.Common;
 namespace ShopeeSdk.Generated.Order;
 
 public sealed record OrderCancelOrderRequestItemListItem(
-    [property: JsonPropertyName("item_id")] int? ItemId = null,
-    [property: JsonPropertyName("model_id")] long? ModelId = null
+    [property: JsonPropertyName("item_id")] int ItemId,
+    [property: JsonPropertyName("model_id")] long ModelId
 );
 
 public sealed record OrderCancelOrderRequest(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
-    [property: JsonPropertyName("cancel_reason")] string? CancelReason = null,
+    [property: JsonPropertyName("order_sn")] string OrderSn,
+    [property: JsonPropertyName("cancel_reason")] string CancelReason,
     [property: JsonPropertyName("item_list")] IReadOnlyList<OrderCancelOrderRequestItemListItem>? ItemList = null
 );
 
@@ -22,7 +22,7 @@ public sealed record OrderCancelOrderResponse(
 );
 
 public sealed record OrderDownloadFbsInvoicesRequestRequestIdListItem(
-    [property: JsonPropertyName("request_id")] IReadOnlyList<long>? RequestId = null
+    [property: JsonPropertyName("request_id")] IReadOnlyList<long> RequestId
 );
 
 public sealed record OrderDownloadFbsInvoicesRequest(
@@ -35,17 +35,17 @@ public sealed record OrderDownloadFbsInvoicesResponse(
 );
 
 public sealed record OrderDownloadInvoiceDocRequest(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null
+    [property: JsonPropertyName("order_sn")] string OrderSn
 );
 
 public sealed record OrderDownloadInvoiceDocResponse(
 );
 
 public sealed record OrderGenerateFbsInvoicesRequestBatchDownloadItem(
-    [property: JsonPropertyName("start")] long? Start = null,
-    [property: JsonPropertyName("end")] long? End = null,
-    [property: JsonPropertyName("document_type")] int? DocumentType = null,
-    [property: JsonPropertyName("file_type")] int? FileType = null,
+    [property: JsonPropertyName("start")] long Start,
+    [property: JsonPropertyName("end")] long End,
+    [property: JsonPropertyName("document_type")] int DocumentType,
+    [property: JsonPropertyName("file_type")] int FileType,
     [property: JsonPropertyName("document_status")] int? DocumentStatus = null
 );
 
@@ -57,7 +57,7 @@ public sealed record OrderGenerateFbsInvoicesResponse(
 );
 
 public sealed record OrderGetBookingDetailRequest(
-    [property: JsonPropertyName("booking_sn_list")] string? BookingSnList = null,
+    [property: JsonPropertyName("booking_sn_list")] string BookingSnList,
     [property: JsonPropertyName("response_optional_fields")] string? ResponseOptionalFields = null
 );
 
@@ -115,10 +115,10 @@ public sealed record OrderGetBookingDetailResponse(
 );
 
 public sealed record OrderGetBookingListRequest(
-    [property: JsonPropertyName("time_range_field")] string? TimeRangeField = null,
-    [property: JsonPropertyName("time_from")] long? TimeFrom = null,
-    [property: JsonPropertyName("time_to")] long? TimeTo = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
+    [property: JsonPropertyName("time_range_field")] string TimeRangeField,
+    [property: JsonPropertyName("time_from")] long TimeFrom,
+    [property: JsonPropertyName("time_to")] long TimeTo,
+    [property: JsonPropertyName("page_size")] int PageSize,
     [property: JsonPropertyName("cursor")] string? Cursor = null,
     [property: JsonPropertyName("booking_status")] string? BookingStatus = null
 );
@@ -136,7 +136,7 @@ public sealed record OrderGetBookingListResponse(
 );
 
 public sealed record OrderGetBuyerInvoiceInfoRequestQueriesItem(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null
+    [property: JsonPropertyName("order_sn")] string OrderSn
 );
 
 public sealed record OrderGetBuyerInvoiceInfoRequest(
@@ -147,18 +147,18 @@ public sealed record OrderGetBuyerInvoiceInfoResponse(
 );
 
 public sealed record OrderGetFbsInvoicesResultRequestRequestIdListItem(
-    [property: JsonPropertyName("request_id")] IReadOnlyList<long>? RequestId = null
+    [property: JsonPropertyName("request_id")] IReadOnlyList<long> RequestId
 );
 
 public sealed record OrderGetFbsInvoicesResultRequest(
-    [property: JsonPropertyName("request_id_list")] OrderGetFbsInvoicesResultRequestRequestIdListItem? RequestIdList = null
+    [property: JsonPropertyName("request_id_list")] OrderGetFbsInvoicesResultRequestRequestIdListItem RequestIdList
 );
 
 public sealed record OrderGetFbsInvoicesResultResponse(
 );
 
 public sealed record OrderGetOrderDetailRequest(
-    [property: JsonPropertyName("order_sn_list")] string? OrderSnList = null,
+    [property: JsonPropertyName("order_sn_list")] string OrderSnList,
     [property: JsonPropertyName("request_order_status_pending")] bool? RequestOrderStatusPending = null,
     [property: JsonPropertyName("response_optional_fields")] string? ResponseOptionalFields = null
 );
@@ -323,10 +323,10 @@ public sealed record OrderGetOrderDetailResponse(
 );
 
 public sealed record OrderGetOrderListRequest(
-    [property: JsonPropertyName("time_range_field")] string? TimeRangeField = null,
-    [property: JsonPropertyName("time_from")] JsonElement? TimeFrom = null,
-    [property: JsonPropertyName("time_to")] JsonElement? TimeTo = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
+    [property: JsonPropertyName("time_range_field")] string TimeRangeField,
+    [property: JsonPropertyName("time_from")] JsonElement? TimeFrom,
+    [property: JsonPropertyName("time_to")] JsonElement? TimeTo,
+    [property: JsonPropertyName("page_size")] int PageSize,
     [property: JsonPropertyName("cursor")] string? Cursor = null,
     [property: JsonPropertyName("order_status")] string? OrderStatus = null,
     [property: JsonPropertyName("response_optional_fields")] string? ResponseOptionalFields = null,
@@ -347,7 +347,7 @@ public sealed record OrderGetOrderListResponse(
 );
 
 public sealed record OrderGetPackageDetailRequest(
-    [property: JsonPropertyName("package_number_list")] string? PackageNumberList = null
+    [property: JsonPropertyName("package_number_list")] string PackageNumberList
 );
 
 public sealed record OrderGetPackageDetailResponsePackageListItemItemListItem(
@@ -439,8 +439,8 @@ public sealed record OrderGetPackageDetailResponse(
 );
 
 public sealed record OrderGetPendingBuyerInvoiceOrderListRequest(
-    [property: JsonPropertyName("cursor")] string? Cursor = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null
+    [property: JsonPropertyName("page_size")] int PageSize,
+    [property: JsonPropertyName("cursor")] string? Cursor = null
 );
 
 public sealed record OrderGetPendingBuyerInvoiceOrderListResponseOrderListItem(
@@ -454,8 +454,8 @@ public sealed record OrderGetPendingBuyerInvoiceOrderListResponse(
 );
 
 public sealed record OrderGetShipmentListRequest(
-    [property: JsonPropertyName("cursor")] string? Cursor = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null
+    [property: JsonPropertyName("page_size")] int PageSize,
+    [property: JsonPropertyName("cursor")] string? Cursor = null
 );
 
 public sealed record OrderGetShipmentListResponseOrderListItem(
@@ -485,8 +485,8 @@ public sealed record OrderGetWarehouseFilterConfigResponse(
 );
 
 public sealed record OrderHandleBuyerCancellationRequest(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
-    [property: JsonPropertyName("operation")] string? Operation = null
+    [property: JsonPropertyName("order_sn")] string OrderSn,
+    [property: JsonPropertyName("operation")] string Operation
 );
 
 public sealed record OrderHandleBuyerCancellationResponse(
@@ -494,14 +494,14 @@ public sealed record OrderHandleBuyerCancellationResponse(
 );
 
 public sealed record OrderHandlePrescriptionCheckRequestItemsItem(
-    [property: JsonPropertyName("item_id")] int? ItemId = null,
-    [property: JsonPropertyName("model_id")] int? ModelId = null,
-    [property: JsonPropertyName("group_id")] int? GroupId = null
+    [property: JsonPropertyName("item_id")] int ItemId,
+    [property: JsonPropertyName("model_id")] int ModelId,
+    [property: JsonPropertyName("group_id")] int GroupId
 );
 
 public sealed record OrderHandlePrescriptionCheckRequest(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
-    [property: JsonPropertyName("is_approved")] bool? IsApproved = null,
+    [property: JsonPropertyName("order_sn")] string OrderSn,
+    [property: JsonPropertyName("is_approved")] bool IsApproved,
     [property: JsonPropertyName("reject_reason_code")] int? RejectReasonCode = null,
     [property: JsonPropertyName("items")] IReadOnlyList<OrderHandlePrescriptionCheckRequestItemsItem>? Items = null,
     [property: JsonPropertyName("pharmacist_name")] string? PharmacistName = null,
@@ -510,6 +510,11 @@ public sealed record OrderHandlePrescriptionCheckRequest(
 
 public sealed record OrderHandlePrescriptionCheckResponse(
     [property: JsonPropertyName("is_success")] bool? IsSuccess = null
+);
+
+public sealed record OrderSearchPackageListRequestPaginationItem(
+    [property: JsonPropertyName("page_size")] int PageSize,
+    [property: JsonPropertyName("cursor")] string? Cursor = null
 );
 
 public sealed record OrderSearchPackageListRequestFilterItem(
@@ -524,19 +529,14 @@ public sealed record OrderSearchPackageListRequestFilterItem(
     [property: JsonPropertyName("shipping_priority")] int? ShippingPriority = null
 );
 
-public sealed record OrderSearchPackageListRequestPaginationItem(
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
-    [property: JsonPropertyName("cursor")] string? Cursor = null
-);
-
 public sealed record OrderSearchPackageListRequestSortItem(
     [property: JsonPropertyName("sort_type")] int? SortType = null,
     [property: JsonPropertyName("ascending")] bool? Ascending = null
 );
 
 public sealed record OrderSearchPackageListRequest(
+    [property: JsonPropertyName("pagination")] OrderSearchPackageListRequestPaginationItem Pagination,
     [property: JsonPropertyName("filter")] OrderSearchPackageListRequestFilterItem? Filter = null,
-    [property: JsonPropertyName("pagination")] OrderSearchPackageListRequestPaginationItem? Pagination = null,
     [property: JsonPropertyName("sort")] OrderSearchPackageListRequestSortItem? Sort = null
 );
 
@@ -567,28 +567,28 @@ public sealed record OrderSearchPackageListResponse(
 );
 
 public sealed record OrderSetNoteRequest(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
-    [property: JsonPropertyName("note")] string? Note = null
+    [property: JsonPropertyName("order_sn")] string OrderSn,
+    [property: JsonPropertyName("note")] string Note
 );
 
 public sealed record OrderSetNoteResponse(
 );
 
 public sealed record OrderSplitOrderRequestPackageListItemItemListItem(
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
-    [property: JsonPropertyName("model_id")] long? ModelId = null,
+    [property: JsonPropertyName("item_id")] long ItemId,
+    [property: JsonPropertyName("model_id")] long ModelId,
     [property: JsonPropertyName("order_item_id")] int? OrderItemId = null,
     [property: JsonPropertyName("promotion_group_id")] int? PromotionGroupId = null,
     [property: JsonPropertyName("model_quantity")] int? ModelQuantity = null
 );
 
 public sealed record OrderSplitOrderRequestPackageListItem(
-    [property: JsonPropertyName("item_list")] IReadOnlyList<OrderSplitOrderRequestPackageListItemItemListItem>? ItemList = null
+    [property: JsonPropertyName("item_list")] IReadOnlyList<OrderSplitOrderRequestPackageListItemItemListItem> ItemList
 );
 
 public sealed record OrderSplitOrderRequest(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
-    [property: JsonPropertyName("package_list")] IReadOnlyList<OrderSplitOrderRequestPackageListItem>? PackageList = null
+    [property: JsonPropertyName("order_sn")] string OrderSn,
+    [property: JsonPropertyName("package_list")] IReadOnlyList<OrderSplitOrderRequestPackageListItem> PackageList
 );
 
 public sealed record OrderSplitOrderResponsePackageListItemItemListItem(
@@ -610,16 +610,16 @@ public sealed record OrderSplitOrderResponse(
 );
 
 public sealed record OrderUnsplitOrderRequest(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null
+    [property: JsonPropertyName("order_sn")] string OrderSn
 );
 
 public sealed record OrderUnsplitOrderResponse(
 );
 
 public sealed record OrderUploadInvoiceDocRequest(
-    [property: JsonPropertyName("order_sn")] string? OrderSn = null,
-    [property: JsonPropertyName("file_type")] int? FileType = null,
-    [property: JsonPropertyName("file")] ShopeeUploadFile? File = null
+    [property: JsonPropertyName("order_sn")] string OrderSn,
+    [property: JsonPropertyName("file_type")] int FileType,
+    [property: JsonPropertyName("file")] ShopeeUploadFile File
 );
 
 public sealed record OrderUploadInvoiceDocResponse(

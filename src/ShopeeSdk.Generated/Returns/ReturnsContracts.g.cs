@@ -7,7 +7,7 @@ using ShopeeSdk.Generated.Common;
 namespace ShopeeSdk.Generated.Returns;
 
 public sealed record ReturnsAcceptOfferRequest(
-    [property: JsonPropertyName("return_sn")] string? ReturnSn = null
+    [property: JsonPropertyName("return_sn")] string ReturnSn
 );
 
 public sealed record ReturnsAcceptOfferResponse(
@@ -15,8 +15,8 @@ public sealed record ReturnsAcceptOfferResponse(
 );
 
 public sealed record ReturnsCancelDisputeRequest(
-    [property: JsonPropertyName("return_sn")] string? ReturnSn = null,
-    [property: JsonPropertyName("email")] string? Email = null
+    [property: JsonPropertyName("return_sn")] string ReturnSn,
+    [property: JsonPropertyName("email")] string Email
 );
 
 public sealed record ReturnsCancelDisputeResponse(
@@ -25,7 +25,7 @@ public sealed record ReturnsCancelDisputeResponse(
 );
 
 public sealed record ReturnsConfirmRequest(
-    [property: JsonPropertyName("return_sn")] string? ReturnSn = null
+    [property: JsonPropertyName("return_sn")] string ReturnSn
 );
 
 public sealed record ReturnsConfirmResponse(
@@ -33,8 +33,8 @@ public sealed record ReturnsConfirmResponse(
 );
 
 public sealed record ReturnsConvertImageRequest(
-    [property: JsonPropertyName("return_sn")] string? ReturnSn = null,
-    [property: JsonPropertyName("upload_image")] ShopeeUploadFile? UploadImage = null
+    [property: JsonPropertyName("return_sn")] string ReturnSn,
+    [property: JsonPropertyName("upload_image")] ShopeeUploadFile UploadImage
 );
 
 public sealed record ReturnsConvertImageResponse(
@@ -43,15 +43,15 @@ public sealed record ReturnsConvertImageResponse(
 );
 
 public sealed record ReturnsDisputeRequestImageListItem(
-    [property: JsonPropertyName("module_index")] int? ModuleIndex = null,
-    [property: JsonPropertyName("requirement")] string? Requirement = null,
-    [property: JsonPropertyName("image_url")] IReadOnlyList<string>? ImageUrl = null
+    [property: JsonPropertyName("module_index")] int ModuleIndex,
+    [property: JsonPropertyName("requirement")] string Requirement,
+    [property: JsonPropertyName("image_url")] IReadOnlyList<string> ImageUrl
 );
 
 public sealed record ReturnsDisputeRequest(
-    [property: JsonPropertyName("return_sn")] string? ReturnSn = null,
-    [property: JsonPropertyName("email")] string? Email = null,
-    [property: JsonPropertyName("dispute_reason_id")] int? DisputeReasonId = null,
+    [property: JsonPropertyName("return_sn")] string ReturnSn,
+    [property: JsonPropertyName("email")] string Email,
+    [property: JsonPropertyName("dispute_reason_id")] int DisputeReasonId,
     [property: JsonPropertyName("image_list")] IReadOnlyList<ReturnsDisputeRequestImageListItem>? ImageList = null,
     [property: JsonPropertyName("dispute_text_reason")] string? DisputeTextReason = null
 );
@@ -62,7 +62,7 @@ public sealed record ReturnsDisputeResponse(
 );
 
 public sealed record ReturnsGetAvailableSolutionsRequest(
-    [property: JsonPropertyName("return_sn")] string? ReturnSn = null
+    [property: JsonPropertyName("return_sn")] string ReturnSn
 );
 
 public sealed record ReturnsGetAvailableSolutionsResponseOfferReturnRefundItem(
@@ -86,7 +86,7 @@ public sealed record ReturnsGetAvailableSolutionsResponse(
 );
 
 public sealed record ReturnsGetReturnDetailRequest(
-    [property: JsonPropertyName("return_sn")] string? ReturnSn = null
+    [property: JsonPropertyName("return_sn")] string ReturnSn
 );
 
 public sealed record ReturnsGetReturnDetailResponseBuyerVideosItem(
@@ -223,7 +223,7 @@ public sealed record ReturnsGetReturnDetailResponse(
 );
 
 public sealed record ReturnsGetReturnDisputeReasonRequest(
-    [property: JsonPropertyName("return_sn")] string? ReturnSn = null
+    [property: JsonPropertyName("return_sn")] string ReturnSn
 );
 
 public sealed record ReturnsGetReturnDisputeReasonResponseDisputeReasonListItemSampleEvidenceItem(
@@ -250,8 +250,8 @@ public sealed record ReturnsGetReturnDisputeReasonResponse(
 );
 
 public sealed record ReturnsGetReturnListRequest(
-    [property: JsonPropertyName("page_no")] long? PageNo = null,
-    [property: JsonPropertyName("page_size")] long? PageSize = null,
+    [property: JsonPropertyName("page_no")] long PageNo,
+    [property: JsonPropertyName("page_size")] long PageSize,
     [property: JsonPropertyName("create_time_from")] JsonElement? CreateTimeFrom = null,
     [property: JsonPropertyName("create_time_to")] JsonElement? CreateTimeTo = null,
     [property: JsonPropertyName("update_time_from")] JsonElement? UpdateTimeFrom = null,
@@ -332,7 +332,7 @@ public sealed record ReturnsGetReturnListResponse(
 );
 
 public sealed record ReturnsGetReverseTrackingInfoRequest(
-    [property: JsonPropertyName("return_sn")] string? ReturnSn = null
+    [property: JsonPropertyName("return_sn")] string ReturnSn
 );
 
 public sealed record ReturnsGetReverseTrackingInfoResponseTrackingInfoItem(
@@ -366,7 +366,7 @@ public sealed record ReturnsGetReverseTrackingInfoResponse(
 );
 
 public sealed record ReturnsGetShippingCarrierRequest(
-    [property: JsonPropertyName("return_sn")] string? ReturnSn = null
+    [property: JsonPropertyName("return_sn")] string ReturnSn
 );
 
 public sealed record ReturnsGetShippingCarrierResponseShippingProofTemplateItem(
@@ -387,8 +387,8 @@ public sealed record ReturnsGetShippingCarrierResponse(
 );
 
 public sealed record ReturnsOfferRequest(
-    [property: JsonPropertyName("return_sn")] string? ReturnSn = null,
-    [property: JsonPropertyName("proposed_solution")] string? ProposedSolution = null,
+    [property: JsonPropertyName("return_sn")] string ReturnSn,
+    [property: JsonPropertyName("proposed_solution")] string ProposedSolution,
     [property: JsonPropertyName("proposed_adjusted_refund_amount")] decimal? ProposedAdjustedRefundAmount = null
 );
 
@@ -397,7 +397,7 @@ public sealed record ReturnsOfferResponse(
 );
 
 public sealed record ReturnsQueryProofRequest(
-    [property: JsonPropertyName("return_sn")] string? ReturnSn = null
+    [property: JsonPropertyName("return_sn")] string ReturnSn
 );
 
 public sealed record ReturnsQueryProofResponseImageItem(
@@ -417,12 +417,12 @@ public sealed record ReturnsQueryProofResponse(
 );
 
 public sealed record ReturnsUploadProofRequestPhotoItem(
-    [property: JsonPropertyName("url")] string? Url = null,
-    [property: JsonPropertyName("thumbnail")] string? Thumbnail = null
+    [property: JsonPropertyName("url")] string Url,
+    [property: JsonPropertyName("thumbnail")] string Thumbnail
 );
 
 public sealed record ReturnsUploadProofRequest(
-    [property: JsonPropertyName("return_sn")] string? ReturnSn = null,
+    [property: JsonPropertyName("return_sn")] string ReturnSn,
     [property: JsonPropertyName("photo")] IReadOnlyList<ReturnsUploadProofRequestPhotoItem>? Photo = null,
     [property: JsonPropertyName("description")] string? Description = null
 );
@@ -435,8 +435,8 @@ public sealed record ReturnsUploadShippingProofRequestImageIdListItem(
 );
 
 public sealed record ReturnsUploadShippingProofRequest(
-    [property: JsonPropertyName("return_sn")] string? ReturnSn = null,
-    [property: JsonPropertyName("reverse_logistics_carrier_id")] long? ReverseLogisticsCarrierId = null,
+    [property: JsonPropertyName("return_sn")] string ReturnSn,
+    [property: JsonPropertyName("reverse_logistics_carrier_id")] long ReverseLogisticsCarrierId,
     [property: JsonPropertyName("reverse_logistics_carrier_name")] string? ReverseLogisticsCarrierName = null,
     [property: JsonPropertyName("tracking_number")] string? TrackingNumber = null,
     [property: JsonPropertyName("image_id_list")] IReadOnlyList<ReturnsUploadShippingProofRequestImageIdListItem>? ImageIdList = null,

@@ -7,38 +7,38 @@ using ShopeeSdk.Generated.Common;
 namespace ShopeeSdk.Generated.Livestream;
 
 public sealed record LivestreamAddItemListRequestItemListItem(
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
-    [property: JsonPropertyName("shop_id")] long? ShopId = null
+    [property: JsonPropertyName("item_id")] long ItemId,
+    [property: JsonPropertyName("shop_id")] long ShopId
 );
 
 public sealed record LivestreamAddItemListRequest(
-    [property: JsonPropertyName("session_id")] long? SessionId = null,
-    [property: JsonPropertyName("item_list")] IReadOnlyList<LivestreamAddItemListRequestItemListItem>? ItemList = null
+    [property: JsonPropertyName("session_id")] long SessionId,
+    [property: JsonPropertyName("item_list")] IReadOnlyList<LivestreamAddItemListRequestItemListItem> ItemList
 );
 
 public sealed record LivestreamAddItemListResponse(
 );
 
 public sealed record LivestreamApplyItemSetRequest(
-    [property: JsonPropertyName("session_id")] long? SessionId = null,
-    [property: JsonPropertyName("item_set_ids")] IReadOnlyList<long>? ItemSetIds = null
+    [property: JsonPropertyName("session_id")] long SessionId,
+    [property: JsonPropertyName("item_set_ids")] IReadOnlyList<long> ItemSetIds
 );
 
 public sealed record LivestreamApplyItemSetResponse(
 );
 
 public sealed record LivestreamBanUserCommentRequest(
-    [property: JsonPropertyName("session_id")] long? SessionId = null,
-    [property: JsonPropertyName("ban_user_id")] long? BanUserId = null
+    [property: JsonPropertyName("session_id")] long SessionId,
+    [property: JsonPropertyName("ban_user_id")] long BanUserId
 );
 
 public sealed record LivestreamBanUserCommentResponse(
 );
 
 public sealed record LivestreamCreateSessionRequest(
-    [property: JsonPropertyName("title")] string? Title = null,
+    [property: JsonPropertyName("title")] string Title,
+    [property: JsonPropertyName("cover_image_url")] string CoverImageUrl,
     [property: JsonPropertyName("description")] string? Description = null,
-    [property: JsonPropertyName("cover_image_url")] string? CoverImageUrl = null,
     [property: JsonPropertyName("is_test")] bool? IsTest = null
 );
 
@@ -47,34 +47,34 @@ public sealed record LivestreamCreateSessionResponse(
 );
 
 public sealed record LivestreamDeleteItemListRequestItemListItem(
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
-    [property: JsonPropertyName("shop_id")] long? ShopId = null
+    [property: JsonPropertyName("item_id")] long ItemId,
+    [property: JsonPropertyName("shop_id")] long ShopId
 );
 
 public sealed record LivestreamDeleteItemListRequest(
-    [property: JsonPropertyName("session_id")] long? SessionId = null,
-    [property: JsonPropertyName("item_list")] IReadOnlyList<LivestreamDeleteItemListRequestItemListItem>? ItemList = null
+    [property: JsonPropertyName("session_id")] long SessionId,
+    [property: JsonPropertyName("item_list")] IReadOnlyList<LivestreamDeleteItemListRequestItemListItem> ItemList
 );
 
 public sealed record LivestreamDeleteItemListResponse(
 );
 
 public sealed record LivestreamDeleteShowItemRequest(
-    [property: JsonPropertyName("session_id")] long? SessionId = null
+    [property: JsonPropertyName("session_id")] long SessionId
 );
 
 public sealed record LivestreamDeleteShowItemResponse(
 );
 
 public sealed record LivestreamEndSessionRequest(
-    [property: JsonPropertyName("session_id")] long? SessionId = null
+    [property: JsonPropertyName("session_id")] long SessionId
 );
 
 public sealed record LivestreamEndSessionResponse(
 );
 
 public sealed record LivestreamGetItemCountRequest(
-    [property: JsonPropertyName("session_id")] long? SessionId = null
+    [property: JsonPropertyName("session_id")] long SessionId
 );
 
 public sealed record LivestreamGetItemCountResponse(
@@ -83,9 +83,9 @@ public sealed record LivestreamGetItemCountResponse(
 );
 
 public sealed record LivestreamGetItemListRequest(
-    [property: JsonPropertyName("session_id")] long? SessionId = null,
-    [property: JsonPropertyName("offset")] int? Offset = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null
+    [property: JsonPropertyName("session_id")] long SessionId,
+    [property: JsonPropertyName("offset")] int Offset,
+    [property: JsonPropertyName("page_size")] int PageSize
 );
 
 public sealed record LivestreamGetItemListResponseListItemPriceInfoItem(
@@ -119,9 +119,9 @@ public sealed record LivestreamGetItemListResponse(
 );
 
 public sealed record LivestreamGetItemSetItemListRequest(
-    [property: JsonPropertyName("item_set_id")] long? ItemSetId = null,
-    [property: JsonPropertyName("offset")] int? Offset = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null
+    [property: JsonPropertyName("item_set_id")] long ItemSetId,
+    [property: JsonPropertyName("offset")] int Offset,
+    [property: JsonPropertyName("page_size")] int PageSize
 );
 
 public sealed record LivestreamGetItemSetItemListResponseListItemPriceInfoItem(
@@ -154,8 +154,8 @@ public sealed record LivestreamGetItemSetItemListResponse(
 );
 
 public sealed record LivestreamGetItemSetListRequest(
-    [property: JsonPropertyName("offset")] int? Offset = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
+    [property: JsonPropertyName("offset")] int Offset,
+    [property: JsonPropertyName("page_size")] int PageSize,
     [property: JsonPropertyName("keyword")] string? Keyword = null
 );
 
@@ -172,7 +172,7 @@ public sealed record LivestreamGetItemSetListResponse(
 );
 
 public sealed record LivestreamGetLatestCommentListRequest(
-    [property: JsonPropertyName("session_id")] long? SessionId = null,
+    [property: JsonPropertyName("session_id")] long SessionId,
     [property: JsonPropertyName("offset")] int? Offset = null
 );
 
@@ -190,8 +190,8 @@ public sealed record LivestreamGetLatestCommentListResponse(
 );
 
 public sealed record LivestreamGetLikeItemListRequest(
-    [property: JsonPropertyName("offset")] int? Offset = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
+    [property: JsonPropertyName("offset")] int Offset,
+    [property: JsonPropertyName("page_size")] int PageSize,
     [property: JsonPropertyName("keyword")] string? Keyword = null
 );
 
@@ -225,8 +225,8 @@ public sealed record LivestreamGetLikeItemListResponse(
 );
 
 public sealed record LivestreamGetRecentItemListRequest(
-    [property: JsonPropertyName("offset")] int? Offset = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null
+    [property: JsonPropertyName("offset")] int Offset,
+    [property: JsonPropertyName("page_size")] int PageSize
 );
 
 public sealed record LivestreamGetRecentItemListResponseListItemPriceInfoItem(
@@ -259,7 +259,7 @@ public sealed record LivestreamGetRecentItemListResponse(
 );
 
 public sealed record LivestreamGetSessionDetailRequest(
-    [property: JsonPropertyName("session_id")] long? SessionId = null
+    [property: JsonPropertyName("session_id")] long SessionId
 );
 
 public sealed record LivestreamGetSessionDetailResponseStreamUrlListItem(
@@ -285,9 +285,9 @@ public sealed record LivestreamGetSessionDetailResponse(
 );
 
 public sealed record LivestreamGetSessionItemMetricRequest(
-    [property: JsonPropertyName("session_id")] long? SessionId = null,
-    [property: JsonPropertyName("offset")] int? Offset = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null
+    [property: JsonPropertyName("session_id")] long SessionId,
+    [property: JsonPropertyName("offset")] int Offset,
+    [property: JsonPropertyName("page_size")] int PageSize
 );
 
 public sealed record LivestreamGetSessionItemMetricResponseListItemItemItemPriceInfoItem(
@@ -322,7 +322,7 @@ public sealed record LivestreamGetSessionItemMetricResponse(
 );
 
 public sealed record LivestreamGetSessionMetricRequest(
-    [property: JsonPropertyName("session_id")] long? SessionId = null
+    [property: JsonPropertyName("session_id")] long SessionId
 );
 
 public sealed record LivestreamGetSessionMetricResponse(
@@ -342,7 +342,7 @@ public sealed record LivestreamGetSessionMetricResponse(
 );
 
 public sealed record LivestreamGetShowItemRequest(
-    [property: JsonPropertyName("session_id")] long? SessionId = null
+    [property: JsonPropertyName("session_id")] long SessionId
 );
 
 public sealed record LivestreamGetShowItemResponseItemItemPriceInfoItem(
@@ -366,8 +366,8 @@ public sealed record LivestreamGetShowItemResponse(
 );
 
 public sealed record LivestreamPostCommentRequest(
-    [property: JsonPropertyName("session_id")] long? SessionId = null,
-    [property: JsonPropertyName("content")] string? Content = null
+    [property: JsonPropertyName("session_id")] long SessionId,
+    [property: JsonPropertyName("content")] string Content
 );
 
 public sealed record LivestreamPostCommentResponse(
@@ -375,56 +375,56 @@ public sealed record LivestreamPostCommentResponse(
 );
 
 public sealed record LivestreamStartSessionRequest(
-    [property: JsonPropertyName("session_id")] long? SessionId = null,
-    [property: JsonPropertyName("domain_id")] long? DomainId = null
+    [property: JsonPropertyName("session_id")] long SessionId,
+    [property: JsonPropertyName("domain_id")] long DomainId
 );
 
 public sealed record LivestreamStartSessionResponse(
 );
 
 public sealed record LivestreamUnbanUserCommentRequest(
-    [property: JsonPropertyName("session_id")] long? SessionId = null,
-    [property: JsonPropertyName("unban_user_id")] long? UnbanUserId = null
+    [property: JsonPropertyName("session_id")] long SessionId,
+    [property: JsonPropertyName("unban_user_id")] long UnbanUserId
 );
 
 public sealed record LivestreamUnbanUserCommentResponse(
 );
 
 public sealed record LivestreamUpdateItemListRequestItemListItem(
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
-    [property: JsonPropertyName("shop_id")] long? ShopId = null
+    [property: JsonPropertyName("item_id")] long ItemId,
+    [property: JsonPropertyName("shop_id")] long ShopId
 );
 
 public sealed record LivestreamUpdateItemListRequest(
-    [property: JsonPropertyName("session_id")] long? SessionId = null,
-    [property: JsonPropertyName("item_list")] IReadOnlyList<LivestreamUpdateItemListRequestItemListItem>? ItemList = null
+    [property: JsonPropertyName("session_id")] long SessionId,
+    [property: JsonPropertyName("item_list")] IReadOnlyList<LivestreamUpdateItemListRequestItemListItem> ItemList
 );
 
 public sealed record LivestreamUpdateItemListResponse(
 );
 
 public sealed record LivestreamUpdateSessionRequest(
-    [property: JsonPropertyName("session_id")] long? SessionId = null,
-    [property: JsonPropertyName("title")] string? Title = null,
-    [property: JsonPropertyName("description")] string? Description = null,
-    [property: JsonPropertyName("cover_image_url")] string? CoverImageUrl = null,
-    [property: JsonPropertyName("is_test")] bool? IsTest = null
+    [property: JsonPropertyName("session_id")] long SessionId,
+    [property: JsonPropertyName("title")] string Title,
+    [property: JsonPropertyName("cover_image_url")] string CoverImageUrl,
+    [property: JsonPropertyName("is_test")] bool IsTest,
+    [property: JsonPropertyName("description")] string? Description = null
 );
 
 public sealed record LivestreamUpdateSessionResponse(
 );
 
 public sealed record LivestreamUpdateShowItemRequest(
-    [property: JsonPropertyName("session_id")] long? SessionId = null,
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
-    [property: JsonPropertyName("shop_id")] long? ShopId = null
+    [property: JsonPropertyName("session_id")] long SessionId,
+    [property: JsonPropertyName("item_id")] long ItemId,
+    [property: JsonPropertyName("shop_id")] long ShopId
 );
 
 public sealed record LivestreamUpdateShowItemResponse(
 );
 
 public sealed record LivestreamUploadImageRequest(
-    [property: JsonPropertyName("image")] ShopeeUploadFile? Image = null
+    [property: JsonPropertyName("image")] ShopeeUploadFile Image
 );
 
 public sealed record LivestreamUploadImageResponse(

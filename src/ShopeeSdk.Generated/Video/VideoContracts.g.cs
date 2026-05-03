@@ -27,32 +27,32 @@ public sealed record VideoDeleteVideoResponse(
     [property: JsonPropertyName("failure_list")] IReadOnlyList<VideoDeleteVideoResponseFailureListItem>? FailureList = null
 );
 
-public sealed record VideoEditVideoInfoRequestVideoUploadListItemItemInfoItem(
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
-    [property: JsonPropertyName("custom_item_name")] string? CustomItemName = null
-);
-
 public sealed record VideoEditVideoInfoRequestVideoUploadListItemAllowInfoItem(
-    [property: JsonPropertyName("allow_duet")] bool? AllowDuet = null,
-    [property: JsonPropertyName("allow_stitch")] bool? AllowStitch = null
+    [property: JsonPropertyName("allow_duet")] bool AllowDuet,
+    [property: JsonPropertyName("allow_stitch")] bool AllowStitch
 );
 
 public sealed record VideoEditVideoInfoRequestVideoUploadListItemScheduledInfoItem(
-    [property: JsonPropertyName("scheduled_post")] bool? ScheduledPost = null,
+    [property: JsonPropertyName("scheduled_post")] bool ScheduledPost,
     [property: JsonPropertyName("scheduled_post_time")] JsonElement? ScheduledPostTime = null
 );
 
+public sealed record VideoEditVideoInfoRequestVideoUploadListItemItemInfoItem(
+    [property: JsonPropertyName("item_id")] long ItemId,
+    [property: JsonPropertyName("custom_item_name")] string? CustomItemName = null
+);
+
 public sealed record VideoEditVideoInfoRequestVideoUploadListItem(
-    [property: JsonPropertyName("video_upload_id")] string? VideoUploadId = null,
+    [property: JsonPropertyName("video_upload_id")] string VideoUploadId,
+    [property: JsonPropertyName("cover_image_url")] string CoverImageUrl,
+    [property: JsonPropertyName("allow_info")] VideoEditVideoInfoRequestVideoUploadListItemAllowInfoItem AllowInfo,
+    [property: JsonPropertyName("scheduled_info")] VideoEditVideoInfoRequestVideoUploadListItemScheduledInfoItem ScheduledInfo,
     [property: JsonPropertyName("caption")] string? Caption = null,
-    [property: JsonPropertyName("cover_image_url")] string? CoverImageUrl = null,
-    [property: JsonPropertyName("item_info")] IReadOnlyList<VideoEditVideoInfoRequestVideoUploadListItemItemInfoItem>? ItemInfo = null,
-    [property: JsonPropertyName("allow_info")] VideoEditVideoInfoRequestVideoUploadListItemAllowInfoItem? AllowInfo = null,
-    [property: JsonPropertyName("scheduled_info")] VideoEditVideoInfoRequestVideoUploadListItemScheduledInfoItem? ScheduledInfo = null
+    [property: JsonPropertyName("item_info")] IReadOnlyList<VideoEditVideoInfoRequestVideoUploadListItemItemInfoItem>? ItemInfo = null
 );
 
 public sealed record VideoEditVideoInfoRequest(
-    [property: JsonPropertyName("video_upload_list")] IReadOnlyList<VideoEditVideoInfoRequestVideoUploadListItem>? VideoUploadList = null
+    [property: JsonPropertyName("video_upload_list")] IReadOnlyList<VideoEditVideoInfoRequestVideoUploadListItem> VideoUploadList
 );
 
 public sealed record VideoEditVideoInfoResponseFailureListItem(
@@ -66,7 +66,7 @@ public sealed record VideoEditVideoInfoResponse(
 );
 
 public sealed record VideoGetCoverListRequest(
-    [property: JsonPropertyName("video_upload_id")] string? VideoUploadId = null
+    [property: JsonPropertyName("video_upload_id")] string VideoUploadId
 );
 
 public sealed record VideoGetCoverListResponse(
@@ -74,8 +74,8 @@ public sealed record VideoGetCoverListResponse(
 );
 
 public sealed record VideoGetMetricTrendRequest(
-    [property: JsonPropertyName("period_type")] string? PeriodType = null,
-    [property: JsonPropertyName("end_date")] string? EndDate = null
+    [property: JsonPropertyName("period_type")] string PeriodType,
+    [property: JsonPropertyName("end_date")] string EndDate
 );
 
 public sealed record VideoGetMetricTrendResponseVideoTotalMetricListItem(
@@ -114,8 +114,8 @@ public sealed record VideoGetMetricTrendResponse(
 );
 
 public sealed record VideoGetOverviewPerformanceRequest(
-    [property: JsonPropertyName("period_type")] string? PeriodType = null,
-    [property: JsonPropertyName("end_date")] string? EndDate = null
+    [property: JsonPropertyName("period_type")] string PeriodType,
+    [property: JsonPropertyName("end_date")] string EndDate
 );
 
 public sealed record VideoGetOverviewPerformanceResponseKeyMetricItem(
@@ -162,12 +162,12 @@ public sealed record VideoGetOverviewPerformanceResponse(
 );
 
 public sealed record VideoGetProdcutPerformanceListRequest(
-    [property: JsonPropertyName("page_no")] int? PageNo = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
-    [property: JsonPropertyName("period_type")] string? PeriodType = null,
-    [property: JsonPropertyName("end_date")] string? EndDate = null,
-    [property: JsonPropertyName("order_by")] string? OrderBy = null,
-    [property: JsonPropertyName("sort")] string? Sort = null,
+    [property: JsonPropertyName("page_no")] int PageNo,
+    [property: JsonPropertyName("page_size")] int PageSize,
+    [property: JsonPropertyName("period_type")] string PeriodType,
+    [property: JsonPropertyName("end_date")] string EndDate,
+    [property: JsonPropertyName("order_by")] string OrderBy,
+    [property: JsonPropertyName("sort")] string Sort,
     [property: JsonPropertyName("item_id")] long? ItemId = null,
     [property: JsonPropertyName("item_name")] string? ItemName = null
 );
@@ -252,7 +252,7 @@ public sealed record VideoGetVideoDetailResponse(
 );
 
 public sealed record VideoGetVideoDetailAudienceDistributionRequest(
-    [property: JsonPropertyName("post_id")] string? PostId = null
+    [property: JsonPropertyName("post_id")] string PostId
 );
 
 public sealed record VideoGetVideoDetailAudienceDistributionResponse(
@@ -266,8 +266,8 @@ public sealed record VideoGetVideoDetailAudienceDistributionResponse(
 );
 
 public sealed record VideoGetVideoDetailMetricTrendRequest(
-    [property: JsonPropertyName("post_id")] string? PostId = null,
-    [property: JsonPropertyName("metric_name")] string? MetricName = null
+    [property: JsonPropertyName("post_id")] string PostId,
+    [property: JsonPropertyName("metric_name")] string MetricName
 );
 
 public sealed record VideoGetVideoDetailMetricTrendResponse(
@@ -275,7 +275,7 @@ public sealed record VideoGetVideoDetailMetricTrendResponse(
 );
 
 public sealed record VideoGetVideoDetailPerformanceRequest(
-    [property: JsonPropertyName("post_id")] string? PostId = null
+    [property: JsonPropertyName("post_id")] string PostId
 );
 
 public sealed record VideoGetVideoDetailPerformanceResponseVideoInfoItem(
@@ -311,9 +311,9 @@ public sealed record VideoGetVideoDetailPerformanceResponse(
 );
 
 public sealed record VideoGetVideoDetailProductPerformanceRequest(
-    [property: JsonPropertyName("page_no")] long? PageNo = null,
-    [property: JsonPropertyName("page_size")] long? PageSize = null,
-    [property: JsonPropertyName("post_id")] string? PostId = null,
+    [property: JsonPropertyName("page_no")] long PageNo,
+    [property: JsonPropertyName("page_size")] long PageSize,
+    [property: JsonPropertyName("post_id")] string PostId,
     [property: JsonPropertyName("item_id")] long? ItemId = null,
     [property: JsonPropertyName("item_name")] string? ItemName = null
 );
@@ -344,9 +344,9 @@ public sealed record VideoGetVideoDetailProductPerformanceResponse(
 );
 
 public sealed record VideoGetVideoListRequest(
-    [property: JsonPropertyName("page_no")] int? PageNo = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
-    [property: JsonPropertyName("list_type")] int? ListType = null
+    [property: JsonPropertyName("page_no")] int PageNo,
+    [property: JsonPropertyName("page_size")] int PageSize,
+    [property: JsonPropertyName("list_type")] int ListType
 );
 
 public sealed record VideoGetVideoListResponseListItemItemListItem(
@@ -396,13 +396,13 @@ public sealed record VideoGetVideoListResponse(
 );
 
 public sealed record VideoGetVideoPerformanceListRequest(
-    [property: JsonPropertyName("page_no")] int? PageNo = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
-    [property: JsonPropertyName("period_type")] string? PeriodType = null,
-    [property: JsonPropertyName("end_date")] string? EndDate = null,
-    [property: JsonPropertyName("caption")] string? Caption = null,
-    [property: JsonPropertyName("order_by")] string? OrderBy = null,
-    [property: JsonPropertyName("sort")] string? Sort = null
+    [property: JsonPropertyName("page_no")] int PageNo,
+    [property: JsonPropertyName("page_size")] int PageSize,
+    [property: JsonPropertyName("period_type")] string PeriodType,
+    [property: JsonPropertyName("end_date")] string EndDate,
+    [property: JsonPropertyName("order_by")] string OrderBy,
+    [property: JsonPropertyName("sort")] string Sort,
+    [property: JsonPropertyName("caption")] string? Caption = null
 );
 
 public sealed record VideoGetVideoPerformanceListResponseListItem(
@@ -436,7 +436,7 @@ public sealed record VideoGetVideoPerformanceListResponse(
 );
 
 public sealed record VideoPostVideoRequest(
-    [property: JsonPropertyName("video_upload_id_list")] IReadOnlyList<string>? VideoUploadIdList = null
+    [property: JsonPropertyName("video_upload_id_list")] IReadOnlyList<string> VideoUploadIdList
 );
 
 public sealed record VideoPostVideoResponseSuccessListItem(

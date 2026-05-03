@@ -7,8 +7,8 @@ using ShopeeSdk.Generated.Common;
 namespace ShopeeSdk.Generated.Shop;
 
 public sealed record ShopGetAuthorisedResellerBrandRequest(
-    [property: JsonPropertyName("page_no")] int? PageNo = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null
+    [property: JsonPropertyName("page_no")] int PageNo,
+    [property: JsonPropertyName("page_size")] int PageSize
 );
 
 public sealed record ShopGetAuthorisedResellerBrandResponseAuthorisedBrandListItem(
@@ -113,7 +113,7 @@ public sealed record ShopGetWarehouseDetailResponse(
 );
 
 public sealed record ShopSetShopHolidayModeRequest(
-    [property: JsonPropertyName("holiday_mode_on")] bool? HolidayModeOn = null,
+    [property: JsonPropertyName("holiday_mode_on")] bool HolidayModeOn,
     [property: JsonPropertyName("holiday_mode_type")] int? HolidayModeType = null,
     [property: JsonPropertyName("holiday_mode_start_time")] JsonElement? HolidayModeStartTime = null,
     [property: JsonPropertyName("holiday_mode_end_time")] JsonElement? HolidayModeEndTime = null,

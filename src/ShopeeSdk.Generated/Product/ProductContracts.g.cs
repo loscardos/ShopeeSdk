@@ -6,50 +6,50 @@ using ShopeeSdk.Generated.Common;
 
 namespace ShopeeSdk.Generated.Product;
 
-public sealed record ProductAddItemRequestDimensionItem(
-    [property: JsonPropertyName("package_height")] int? PackageHeight = null,
-    [property: JsonPropertyName("package_length")] int? PackageLength = null,
-    [property: JsonPropertyName("package_width")] int? PackageWidth = null
-);
-
 public sealed record ProductAddItemRequestLogisticInfoItem(
+    [property: JsonPropertyName("enabled")] bool Enabled,
+    [property: JsonPropertyName("logistic_id")] int LogisticId,
     [property: JsonPropertyName("size_id")] int? SizeId = null,
     [property: JsonPropertyName("shipping_fee")] decimal? ShippingFee = null,
-    [property: JsonPropertyName("enabled")] bool? Enabled = null,
-    [property: JsonPropertyName("logistic_id")] int? LogisticId = null,
     [property: JsonPropertyName("is_free")] bool? IsFree = null
 );
 
+public sealed record ProductAddItemRequestImageItem(
+    [property: JsonPropertyName("image_id_list")] IReadOnlyList<string> ImageIdList,
+    [property: JsonPropertyName("image_ratio")] string? ImageRatio = null
+);
+
+public sealed record ProductAddItemRequestDimensionItem(
+    [property: JsonPropertyName("package_height")] int PackageHeight,
+    [property: JsonPropertyName("package_length")] int PackageLength,
+    [property: JsonPropertyName("package_width")] int PackageWidth
+);
+
 public sealed record ProductAddItemRequestAttributeListItemAttributeValueListItem(
-    [property: JsonPropertyName("value_id")] int? ValueId = null,
+    [property: JsonPropertyName("value_id")] int ValueId,
     [property: JsonPropertyName("original_value_name")] string? OriginalValueName = null,
     [property: JsonPropertyName("value_unit")] string? ValueUnit = null
 );
 
 public sealed record ProductAddItemRequestAttributeListItem(
-    [property: JsonPropertyName("attribute_id")] int? AttributeId = null,
+    [property: JsonPropertyName("attribute_id")] int AttributeId,
     [property: JsonPropertyName("attribute_value_list")] IReadOnlyList<ProductAddItemRequestAttributeListItemAttributeValueListItem>? AttributeValueList = null
 );
 
-public sealed record ProductAddItemRequestImageItem(
-    [property: JsonPropertyName("image_id_list")] IReadOnlyList<string>? ImageIdList = null,
-    [property: JsonPropertyName("image_ratio")] string? ImageRatio = null
-);
-
 public sealed record ProductAddItemRequestPreOrderItem(
-    [property: JsonPropertyName("is_pre_order")] bool? IsPreOrder = null,
+    [property: JsonPropertyName("is_pre_order")] bool IsPreOrder,
     [property: JsonPropertyName("days_to_ship")] int? DaysToShip = null
 );
 
 public sealed record ProductAddItemRequestWholesaleItem(
-    [property: JsonPropertyName("min_count")] int? MinCount = null,
-    [property: JsonPropertyName("max_count")] int? MaxCount = null,
-    [property: JsonPropertyName("unit_price")] decimal? UnitPrice = null
+    [property: JsonPropertyName("min_count")] int MinCount,
+    [property: JsonPropertyName("max_count")] int MaxCount,
+    [property: JsonPropertyName("unit_price")] decimal UnitPrice
 );
 
 public sealed record ProductAddItemRequestBrandItem(
-    [property: JsonPropertyName("brand_id")] int? BrandId = null,
-    [property: JsonPropertyName("original_brand_name")] string? OriginalBrandName = null
+    [property: JsonPropertyName("brand_id")] int BrandId,
+    [property: JsonPropertyName("original_brand_name")] string OriginalBrandName
 );
 
 public sealed record ProductAddItemRequestTaxInfoItemGroupItemInfoItem(
@@ -110,8 +110,8 @@ public sealed record ProductAddItemRequestDescriptionInfoItem(
 );
 
 public sealed record ProductAddItemRequestSellerStockItem(
-    [property: JsonPropertyName("location_id")] string? LocationId = null,
-    [property: JsonPropertyName("stock")] int? Stock = null
+    [property: JsonPropertyName("stock")] int Stock,
+    [property: JsonPropertyName("location_id")] string? LocationId = null
 );
 
 public sealed record ProductAddItemRequestPromotionImagesItem(
@@ -119,14 +119,14 @@ public sealed record ProductAddItemRequestPromotionImagesItem(
 );
 
 public sealed record ProductAddItemRequestCompatibilityInfoItemVehicleInfoListItem(
-    [property: JsonPropertyName("brand_id")] long? BrandId = null,
-    [property: JsonPropertyName("model_id")] long? ModelId = null,
+    [property: JsonPropertyName("brand_id")] long BrandId,
+    [property: JsonPropertyName("model_id")] long ModelId,
     [property: JsonPropertyName("year_id")] long? YearId = null,
     [property: JsonPropertyName("version_id")] long? VersionId = null
 );
 
 public sealed record ProductAddItemRequestCompatibilityInfoItem(
-    [property: JsonPropertyName("vehicle_info_list")] IReadOnlyList<ProductAddItemRequestCompatibilityInfoItemVehicleInfoListItem>? VehicleInfoList = null
+    [property: JsonPropertyName("vehicle_info_list")] IReadOnlyList<ProductAddItemRequestCompatibilityInfoItemVehicleInfoListItem> VehicleInfoList
 );
 
 public sealed record ProductAddItemRequestSizeChartInfoItem(
@@ -135,16 +135,16 @@ public sealed record ProductAddItemRequestSizeChartInfoItem(
 );
 
 public sealed record ProductAddItemRequestCertificationInfoItemCertificationListItemCertificationProofsItem(
-    [property: JsonPropertyName("file_name")] string? FileName = null,
-    [property: JsonPropertyName("image_id")] int? ImageId = null,
-    [property: JsonPropertyName("ratio")] decimal? Ratio = null
+    [property: JsonPropertyName("file_name")] string FileName,
+    [property: JsonPropertyName("image_id")] int ImageId,
+    [property: JsonPropertyName("ratio")] decimal Ratio
 );
 
 public sealed record ProductAddItemRequestCertificationInfoItemCertificationListItem(
-    [property: JsonPropertyName("certification_no")] string? CertificationNo = null,
-    [property: JsonPropertyName("permit_id")] long? PermitId = null,
-    [property: JsonPropertyName("expiry_date")] int? ExpiryDate = null,
-    [property: JsonPropertyName("certification_proofs")] IReadOnlyList<ProductAddItemRequestCertificationInfoItemCertificationListItemCertificationProofsItem>? CertificationProofs = null
+    [property: JsonPropertyName("certification_no")] string CertificationNo,
+    [property: JsonPropertyName("permit_id")] long PermitId,
+    [property: JsonPropertyName("certification_proofs")] IReadOnlyList<ProductAddItemRequestCertificationInfoItemCertificationListItemCertificationProofsItem> CertificationProofs,
+    [property: JsonPropertyName("expiry_date")] int? ExpiryDate = null
 );
 
 public sealed record ProductAddItemRequestCertificationInfoItem(
@@ -161,16 +161,16 @@ public sealed record ProductAddItemRequestPurchaseLimitInfoItem(
 );
 
 public sealed record ProductAddItemRequest(
-    [property: JsonPropertyName("original_price")] decimal? OriginalPrice = null,
-    [property: JsonPropertyName("description")] string? Description = null,
-    [property: JsonPropertyName("weight")] decimal? Weight = null,
-    [property: JsonPropertyName("item_name")] string? ItemName = null,
+    [property: JsonPropertyName("original_price")] decimal OriginalPrice,
+    [property: JsonPropertyName("description")] string Description,
+    [property: JsonPropertyName("weight")] decimal Weight,
+    [property: JsonPropertyName("item_name")] string ItemName,
+    [property: JsonPropertyName("logistic_info")] IReadOnlyList<ProductAddItemRequestLogisticInfoItem> LogisticInfo,
+    [property: JsonPropertyName("category_id")] int CategoryId,
+    [property: JsonPropertyName("image")] ProductAddItemRequestImageItem Image,
     [property: JsonPropertyName("item_status")] string? ItemStatus = null,
     [property: JsonPropertyName("dimension")] ProductAddItemRequestDimensionItem? Dimension = null,
-    [property: JsonPropertyName("logistic_info")] IReadOnlyList<ProductAddItemRequestLogisticInfoItem>? LogisticInfo = null,
     [property: JsonPropertyName("attribute_list")] IReadOnlyList<ProductAddItemRequestAttributeListItem>? AttributeList = null,
-    [property: JsonPropertyName("category_id")] int? CategoryId = null,
-    [property: JsonPropertyName("image")] ProductAddItemRequestImageItem? Image = null,
     [property: JsonPropertyName("pre_order")] ProductAddItemRequestPreOrderItem? PreOrder = null,
     [property: JsonPropertyName("item_sku")] string? ItemSku = null,
     [property: JsonPropertyName("condition")] string? Condition = null,
@@ -307,102 +307,102 @@ public sealed record ProductAddItemResponse(
 );
 
 public sealed record ProductAddKitItemRequestItemSettingItemImagesItem(
-    [property: JsonPropertyName("image_id_list")] IReadOnlyList<string>? ImageIdList = null
-);
-
-public sealed record ProductAddKitItemRequestItemSettingItemLongImagesItem(
-    [property: JsonPropertyName("image_id_list")] IReadOnlyList<string>? ImageIdList = null
-);
-
-public sealed record ProductAddKitItemRequestItemSettingItemDescriptionInfoItemExtendedDescriptionItemFieldListItemImageInfoItem(
-    [property: JsonPropertyName("image_id")] string? ImageId = null
-);
-
-public sealed record ProductAddKitItemRequestItemSettingItemDescriptionInfoItemExtendedDescriptionItemFieldListItem(
-    [property: JsonPropertyName("field_type")] string? FieldType = null,
-    [property: JsonPropertyName("text")] string? Text = null,
-    [property: JsonPropertyName("image_info")] ProductAddKitItemRequestItemSettingItemDescriptionInfoItemExtendedDescriptionItemFieldListItemImageInfoItem? ImageInfo = null
-);
-
-public sealed record ProductAddKitItemRequestItemSettingItemDescriptionInfoItemExtendedDescriptionItem(
-    [property: JsonPropertyName("field_list")] IReadOnlyList<ProductAddKitItemRequestItemSettingItemDescriptionInfoItemExtendedDescriptionItemFieldListItem>? FieldList = null
-);
-
-public sealed record ProductAddKitItemRequestItemSettingItemDescriptionInfoItem(
-    [property: JsonPropertyName("extended_description")] ProductAddKitItemRequestItemSettingItemDescriptionInfoItemExtendedDescriptionItem? ExtendedDescription = null
+    [property: JsonPropertyName("image_id_list")] IReadOnlyList<string> ImageIdList
 );
 
 public sealed record ProductAddKitItemRequestItemSettingItemLogisticInfoItem(
-    [property: JsonPropertyName("logistic_id")] long? LogisticId = null,
-    [property: JsonPropertyName("enabled")] bool? Enabled = null,
+    [property: JsonPropertyName("logistic_id")] long LogisticId,
+    [property: JsonPropertyName("enabled")] bool Enabled,
     [property: JsonPropertyName("shipping_fee")] decimal? ShippingFee = null,
     [property: JsonPropertyName("size_id")] long? SizeId = null,
     [property: JsonPropertyName("is_free")] bool? IsFree = null
 );
 
-public sealed record ProductAddKitItemRequestItemSettingItemDimensionItem(
-    [property: JsonPropertyName("package_length")] int? PackageLength = null,
-    [property: JsonPropertyName("package_width")] int? PackageWidth = null,
-    [property: JsonPropertyName("package_height")] int? PackageHeight = null
-);
-
-public sealed record ProductAddKitItemRequestItemSettingItemPreOrderItem(
-    [property: JsonPropertyName("is_pre_order")] bool? IsPreOrder = null,
-    [property: JsonPropertyName("days_to_ship")] int? DaysToShip = null
-);
-
 public sealed record ProductAddKitItemRequestItemSettingItemModelListItemComponentListItem(
-    [property: JsonPropertyName("component_item_id")] long? ComponentItemId = null,
+    [property: JsonPropertyName("component_item_id")] long ComponentItemId,
+    [property: JsonPropertyName("quantity")] int Quantity,
     [property: JsonPropertyName("component_model_id")] long? ComponentModelId = null,
-    [property: JsonPropertyName("quantity")] int? Quantity = null,
     [property: JsonPropertyName("main_component")] bool? MainComponent = null
 );
 
 public sealed record ProductAddKitItemRequestItemSettingItemModelListItem(
-    [property: JsonPropertyName("tier_index")] IReadOnlyList<int>? TierIndex = null,
-    [property: JsonPropertyName("model_sku")] string? ModelSku = null,
-    [property: JsonPropertyName("original_price")] decimal? OriginalPrice = null,
-    [property: JsonPropertyName("component_list")] IReadOnlyList<ProductAddKitItemRequestItemSettingItemModelListItemComponentListItem>? ComponentList = null
+    [property: JsonPropertyName("tier_index")] IReadOnlyList<int> TierIndex,
+    [property: JsonPropertyName("original_price")] decimal OriginalPrice,
+    [property: JsonPropertyName("component_list")] IReadOnlyList<ProductAddKitItemRequestItemSettingItemModelListItemComponentListItem> ComponentList,
+    [property: JsonPropertyName("model_sku")] string? ModelSku = null
 );
 
 public sealed record ProductAddKitItemRequestItemSettingItemTierVariationListItemOptionListItemImageItem(
-    [property: JsonPropertyName("image_id")] string? ImageId = null
+    [property: JsonPropertyName("image_id")] string ImageId
 );
 
 public sealed record ProductAddKitItemRequestItemSettingItemTierVariationListItemOptionListItem(
-    [property: JsonPropertyName("option")] string? Option = null,
+    [property: JsonPropertyName("option")] string Option,
     [property: JsonPropertyName("image")] ProductAddKitItemRequestItemSettingItemTierVariationListItemOptionListItemImageItem? Image = null
 );
 
 public sealed record ProductAddKitItemRequestItemSettingItemTierVariationListItem(
-    [property: JsonPropertyName("name")] string? Name = null,
-    [property: JsonPropertyName("option_list")] IReadOnlyList<ProductAddKitItemRequestItemSettingItemTierVariationListItemOptionListItem>? OptionList = null
+    [property: JsonPropertyName("option_list")] IReadOnlyList<ProductAddKitItemRequestItemSettingItemTierVariationListItemOptionListItem> OptionList,
+    [property: JsonPropertyName("name")] string? Name = null
+);
+
+public sealed record ProductAddKitItemRequestItemSettingItemLongImagesItem(
+    [property: JsonPropertyName("image_id_list")] IReadOnlyList<string> ImageIdList
+);
+
+public sealed record ProductAddKitItemRequestItemSettingItemDescriptionInfoItemExtendedDescriptionItemFieldListItemImageInfoItem(
+    [property: JsonPropertyName("image_id")] string ImageId
+);
+
+public sealed record ProductAddKitItemRequestItemSettingItemDescriptionInfoItemExtendedDescriptionItemFieldListItem(
+    [property: JsonPropertyName("field_type")] string FieldType,
+    [property: JsonPropertyName("text")] string Text,
+    [property: JsonPropertyName("image_info")] ProductAddKitItemRequestItemSettingItemDescriptionInfoItemExtendedDescriptionItemFieldListItemImageInfoItem? ImageInfo = null
+);
+
+public sealed record ProductAddKitItemRequestItemSettingItemDescriptionInfoItemExtendedDescriptionItem(
+    [property: JsonPropertyName("field_list")] IReadOnlyList<ProductAddKitItemRequestItemSettingItemDescriptionInfoItemExtendedDescriptionItemFieldListItem> FieldList
+);
+
+public sealed record ProductAddKitItemRequestItemSettingItemDescriptionInfoItem(
+    [property: JsonPropertyName("extended_description")] ProductAddKitItemRequestItemSettingItemDescriptionInfoItemExtendedDescriptionItem ExtendedDescription
+);
+
+public sealed record ProductAddKitItemRequestItemSettingItemDimensionItem(
+    [property: JsonPropertyName("package_length")] int PackageLength,
+    [property: JsonPropertyName("package_width")] int PackageWidth,
+    [property: JsonPropertyName("package_height")] int PackageHeight
+);
+
+public sealed record ProductAddKitItemRequestItemSettingItemPreOrderItem(
+    [property: JsonPropertyName("is_pre_order")] bool IsPreOrder,
+    [property: JsonPropertyName("days_to_ship")] int? DaysToShip = null
 );
 
 public sealed record ProductAddKitItemRequestItemSettingItem(
-    [property: JsonPropertyName("item_name")] string? ItemName = null,
-    [property: JsonPropertyName("images")] ProductAddKitItemRequestItemSettingItemImagesItem? Images = null,
+    [property: JsonPropertyName("item_name")] string ItemName,
+    [property: JsonPropertyName("images")] ProductAddKitItemRequestItemSettingItemImagesItem Images,
+    [property: JsonPropertyName("description_type")] string DescriptionType,
+    [property: JsonPropertyName("logistic_info")] IReadOnlyList<ProductAddKitItemRequestItemSettingItemLogisticInfoItem> LogisticInfo,
+    [property: JsonPropertyName("weight")] decimal Weight,
+    [property: JsonPropertyName("model_list")] IReadOnlyList<ProductAddKitItemRequestItemSettingItemModelListItem> ModelList,
+    [property: JsonPropertyName("tier_variation_list")] IReadOnlyList<ProductAddKitItemRequestItemSettingItemTierVariationListItem> TierVariationList,
     [property: JsonPropertyName("long_images")] ProductAddKitItemRequestItemSettingItemLongImagesItem? LongImages = null,
     [property: JsonPropertyName("video_upload_id")] IReadOnlyList<string>? VideoUploadId = null,
     [property: JsonPropertyName("description")] string? Description = null,
     [property: JsonPropertyName("description_info")] ProductAddKitItemRequestItemSettingItemDescriptionInfoItem? DescriptionInfo = null,
-    [property: JsonPropertyName("description_type")] string? DescriptionType = null,
-    [property: JsonPropertyName("logistic_info")] IReadOnlyList<ProductAddKitItemRequestItemSettingItemLogisticInfoItem>? LogisticInfo = null,
     [property: JsonPropertyName("unlisted")] bool? Unlisted = null,
     [property: JsonPropertyName("item_sku")] string? ItemSku = null,
-    [property: JsonPropertyName("weight")] decimal? Weight = null,
     [property: JsonPropertyName("dimension")] ProductAddKitItemRequestItemSettingItemDimensionItem? Dimension = null,
-    [property: JsonPropertyName("pre_order")] ProductAddKitItemRequestItemSettingItemPreOrderItem? PreOrder = null,
-    [property: JsonPropertyName("model_list")] IReadOnlyList<ProductAddKitItemRequestItemSettingItemModelListItem>? ModelList = null,
-    [property: JsonPropertyName("tier_variation_list")] IReadOnlyList<ProductAddKitItemRequestItemSettingItemTierVariationListItem>? TierVariationList = null
+    [property: JsonPropertyName("pre_order")] ProductAddKitItemRequestItemSettingItemPreOrderItem? PreOrder = null
 );
 
 public sealed record ProductAddKitItemRequestSyncSettingItem(
-    [property: JsonPropertyName("auto_sync_dts")] bool? AutoSyncDts = null
+    [property: JsonPropertyName("auto_sync_dts")] bool AutoSyncDts
 );
 
 public sealed record ProductAddKitItemRequest(
-    [property: JsonPropertyName("item_setting")] ProductAddKitItemRequestItemSettingItem? ItemSetting = null,
+    [property: JsonPropertyName("item_setting")] ProductAddKitItemRequestItemSettingItem ItemSetting,
     [property: JsonPropertyName("sync_setting")] ProductAddKitItemRequestSyncSettingItem? SyncSetting = null
 );
 
@@ -411,26 +411,26 @@ public sealed record ProductAddKitItemResponse(
 );
 
 public sealed record ProductAddModelRequestModelListItemSellerStockItem(
-    [property: JsonPropertyName("location_id")] string? LocationId = null,
-    [property: JsonPropertyName("stock")] int? Stock = null
+    [property: JsonPropertyName("stock")] int Stock,
+    [property: JsonPropertyName("location_id")] string? LocationId = null
 );
 
 public sealed record ProductAddModelRequestModelListItemDimensionItem(
-    [property: JsonPropertyName("package_height")] int? PackageHeight = null,
-    [property: JsonPropertyName("package_length")] int? PackageLength = null,
-    [property: JsonPropertyName("package_width")] int? PackageWidth = null
+    [property: JsonPropertyName("package_height")] int PackageHeight,
+    [property: JsonPropertyName("package_length")] int PackageLength,
+    [property: JsonPropertyName("package_width")] int PackageWidth
 );
 
 public sealed record ProductAddModelRequestModelListItemPreOrderItem(
-    [property: JsonPropertyName("is_pre_order")] bool? IsPreOrder = null,
+    [property: JsonPropertyName("is_pre_order")] bool IsPreOrder,
     [property: JsonPropertyName("days_to_ship")] int? DaysToShip = null
 );
 
 public sealed record ProductAddModelRequestModelListItem(
-    [property: JsonPropertyName("tier_index")] IReadOnlyList<int>? TierIndex = null,
-    [property: JsonPropertyName("original_price")] decimal? OriginalPrice = null,
+    [property: JsonPropertyName("tier_index")] IReadOnlyList<int> TierIndex,
+    [property: JsonPropertyName("original_price")] decimal OriginalPrice,
+    [property: JsonPropertyName("seller_stock")] IReadOnlyList<ProductAddModelRequestModelListItemSellerStockItem> SellerStock,
     [property: JsonPropertyName("model_sku")] string? ModelSku = null,
-    [property: JsonPropertyName("seller_stock")] IReadOnlyList<ProductAddModelRequestModelListItemSellerStockItem>? SellerStock = null,
     [property: JsonPropertyName("gtin_code")] string? GtinCode = null,
     [property: JsonPropertyName("weight")] decimal? Weight = null,
     [property: JsonPropertyName("dimension")] ProductAddModelRequestModelListItemDimensionItem? Dimension = null,
@@ -438,8 +438,8 @@ public sealed record ProductAddModelRequestModelListItem(
 );
 
 public sealed record ProductAddModelRequest(
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
-    [property: JsonPropertyName("model_list")] IReadOnlyList<ProductAddModelRequestModelListItem>? ModelList = null
+    [property: JsonPropertyName("item_id")] long ItemId,
+    [property: JsonPropertyName("model_list")] IReadOnlyList<ProductAddModelRequestModelListItem> ModelList
 );
 
 public sealed record ProductAddModelResponseModelItemPriceInfoItem(
@@ -471,40 +471,40 @@ public sealed record ProductAddModelResponse(
     [property: JsonPropertyName("model")] IReadOnlyList<ProductAddModelResponseModelItem>? Model = null
 );
 
-public sealed record ProductAddSspItemRequestDimensionItem(
-    [property: JsonPropertyName("package_length")] int? PackageLength = null,
-    [property: JsonPropertyName("package_width")] int? PackageWidth = null,
-    [property: JsonPropertyName("package_height")] int? PackageHeight = null
-);
-
 public sealed record ProductAddSspItemRequestLogisticInfoItem(
-    [property: JsonPropertyName("logistic_id")] long? LogisticId = null,
-    [property: JsonPropertyName("enabled")] bool? Enabled = null,
+    [property: JsonPropertyName("logistic_id")] long LogisticId,
+    [property: JsonPropertyName("enabled")] bool Enabled,
     [property: JsonPropertyName("shipping_fee")] decimal? ShippingFee = null,
     [property: JsonPropertyName("size_id")] long? SizeId = null,
     [property: JsonPropertyName("is_free")] bool? IsFree = null
 );
 
+public sealed record ProductAddSspItemRequestDimensionItem(
+    [property: JsonPropertyName("package_length")] int PackageLength,
+    [property: JsonPropertyName("package_width")] int PackageWidth,
+    [property: JsonPropertyName("package_height")] int PackageHeight
+);
+
 public sealed record ProductAddSspItemRequestAttributeListItemAttributeValueListItem(
-    [property: JsonPropertyName("value_id")] long? ValueId = null,
+    [property: JsonPropertyName("value_id")] long ValueId,
     [property: JsonPropertyName("original_value_name")] string? OriginalValueName = null,
     [property: JsonPropertyName("value_unit")] string? ValueUnit = null
 );
 
 public sealed record ProductAddSspItemRequestAttributeListItem(
-    [property: JsonPropertyName("attribute_id")] long? AttributeId = null,
-    [property: JsonPropertyName("attribute_value_list")] IReadOnlyList<ProductAddSspItemRequestAttributeListItemAttributeValueListItem>? AttributeValueList = null
+    [property: JsonPropertyName("attribute_id")] long AttributeId,
+    [property: JsonPropertyName("attribute_value_list")] IReadOnlyList<ProductAddSspItemRequestAttributeListItemAttributeValueListItem> AttributeValueList
 );
 
 public sealed record ProductAddSspItemRequestPreOrderItem(
-    [property: JsonPropertyName("is_pre_order")] bool? IsPreOrder = null,
+    [property: JsonPropertyName("is_pre_order")] bool IsPreOrder,
     [property: JsonPropertyName("days_to_ship")] int? DaysToShip = null
 );
 
 public sealed record ProductAddSspItemRequestWholesaleItem(
-    [property: JsonPropertyName("min_count")] int? MinCount = null,
-    [property: JsonPropertyName("max_count")] int? MaxCount = null,
-    [property: JsonPropertyName("unit_price")] decimal? UnitPrice = null
+    [property: JsonPropertyName("min_count")] int MinCount,
+    [property: JsonPropertyName("max_count")] int MaxCount,
+    [property: JsonPropertyName("unit_price")] decimal UnitPrice
 );
 
 public sealed record ProductAddSspItemRequestTaxInfoItemGroupItemInfoItem(
@@ -517,6 +517,8 @@ public sealed record ProductAddSspItemRequestTaxInfoItemGroupItemInfoItem(
 );
 
 public sealed record ProductAddSspItemRequestTaxInfoItem(
+    [property: JsonPropertyName("hs_code")] string HsCode,
+    [property: JsonPropertyName("tax_code")] string TaxCode,
     [property: JsonPropertyName("ncm")] string? Ncm = null,
     [property: JsonPropertyName("same_state_cfop")] string? SameStateCfop = null,
     [property: JsonPropertyName("diff_state_cfop")] string? DiffStateCfop = null,
@@ -526,8 +528,6 @@ public sealed record ProductAddSspItemRequestTaxInfoItem(
     [property: JsonPropertyName("measure_unit")] string? MeasureUnit = null,
     [property: JsonPropertyName("invoice_option")] string? InvoiceOption = null,
     [property: JsonPropertyName("vat_rate")] string? VatRate = null,
-    [property: JsonPropertyName("hs_code")] string? HsCode = null,
-    [property: JsonPropertyName("tax_code")] string? TaxCode = null,
     [property: JsonPropertyName("tax_type")] int? TaxType = null,
     [property: JsonPropertyName("pis")] string? Pis = null,
     [property: JsonPropertyName("cofins")] string? Cofins = null,
@@ -543,8 +543,8 @@ public sealed record ProductAddSspItemRequestTaxInfoItem(
 );
 
 public sealed record ProductAddSspItemRequestSellerStockItem(
-    [property: JsonPropertyName("location_id")] string? LocationId = null,
-    [property: JsonPropertyName("stock")] int? Stock = null
+    [property: JsonPropertyName("stock")] int Stock,
+    [property: JsonPropertyName("location_id")] string? LocationId = null
 );
 
 public sealed record ProductAddSspItemRequestSizeChartInfoItem(
@@ -553,36 +553,36 @@ public sealed record ProductAddSspItemRequestSizeChartInfoItem(
 );
 
 public sealed record ProductAddSspItemRequestModelListItemSellerStockItem(
-    [property: JsonPropertyName("location_id")] string? LocationId = null,
-    [property: JsonPropertyName("stock")] int? Stock = null
+    [property: JsonPropertyName("stock")] int Stock,
+    [property: JsonPropertyName("location_id")] string? LocationId = null
 );
 
 public sealed record ProductAddSspItemRequestModelListItemDimensionItem(
-    [property: JsonPropertyName("package_length")] int? PackageLength = null,
-    [property: JsonPropertyName("package_width")] int? PackageWidth = null,
-    [property: JsonPropertyName("package_height")] int? PackageHeight = null
+    [property: JsonPropertyName("package_length")] int PackageLength,
+    [property: JsonPropertyName("package_width")] int PackageWidth,
+    [property: JsonPropertyName("package_height")] int PackageHeight
 );
 
 public sealed record ProductAddSspItemRequestModelListItemPreOrderItem(
-    [property: JsonPropertyName("is_pre_order")] bool? IsPreOrder = null,
+    [property: JsonPropertyName("is_pre_order")] bool IsPreOrder,
     [property: JsonPropertyName("days_to_ship")] int? DaysToShip = null
 );
 
 public sealed record ProductAddSspItemRequestModelListItem(
-    [property: JsonPropertyName("tier_index")] IReadOnlyList<int>? TierIndex = null,
+    [property: JsonPropertyName("tier_index")] IReadOnlyList<int> TierIndex,
+    [property: JsonPropertyName("original_price")] decimal OriginalPrice,
     [property: JsonPropertyName("model_sku")] string? ModelSku = null,
-    [property: JsonPropertyName("original_price")] decimal? OriginalPrice = null,
     [property: JsonPropertyName("seller_stock")] IReadOnlyList<ProductAddSspItemRequestModelListItemSellerStockItem>? SellerStock = null,
     [property: JsonPropertyName("dimension")] ProductAddSspItemRequestModelListItemDimensionItem? Dimension = null,
     [property: JsonPropertyName("pre_order")] ProductAddSspItemRequestModelListItemPreOrderItem? PreOrder = null
 );
 
 public sealed record ProductAddSspItemRequest(
-    [property: JsonPropertyName("ssp_id")] long? SspId = null,
+    [property: JsonPropertyName("ssp_id")] long SspId,
+    [property: JsonPropertyName("logistic_info")] IReadOnlyList<ProductAddSspItemRequestLogisticInfoItem> LogisticInfo,
     [property: JsonPropertyName("original_price")] decimal? OriginalPrice = null,
     [property: JsonPropertyName("item_status")] string? ItemStatus = null,
     [property: JsonPropertyName("dimension")] ProductAddSspItemRequestDimensionItem? Dimension = null,
-    [property: JsonPropertyName("logistic_info")] IReadOnlyList<ProductAddSspItemRequestLogisticInfoItem>? LogisticInfo = null,
     [property: JsonPropertyName("attribute_list")] IReadOnlyList<ProductAddSspItemRequestAttributeListItem>? AttributeList = null,
     [property: JsonPropertyName("pre_order")] ProductAddSspItemRequestPreOrderItem? PreOrder = null,
     [property: JsonPropertyName("item_sku")] string? ItemSku = null,
@@ -602,7 +602,7 @@ public sealed record ProductAddSspItemResponse(
 );
 
 public sealed record ProductBoostItemRequest(
-    [property: JsonPropertyName("item_id_list")] IReadOnlyList<long>? ItemIdList = null
+    [property: JsonPropertyName("item_id_list")] IReadOnlyList<long> ItemIdList
 );
 
 public sealed record ProductBoostItemResponseFailureListItem(
@@ -620,7 +620,7 @@ public sealed record ProductBoostItemResponse(
 );
 
 public sealed record ProductCategoryRecommendRequest(
-    [property: JsonPropertyName("item_name")] string? ItemName = null,
+    [property: JsonPropertyName("item_name")] string ItemName,
     [property: JsonPropertyName("product_cover_image")] string? ProductCoverImage = null
 );
 
@@ -629,27 +629,27 @@ public sealed record ProductCategoryRecommendResponse(
 );
 
 public sealed record ProductDeleteItemRequest(
-    [property: JsonPropertyName("item_id")] long? ItemId = null
+    [property: JsonPropertyName("item_id")] long ItemId
 );
 
 public sealed record ProductDeleteItemResponse(
 );
 
 public sealed record ProductDeleteModelRequest(
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
-    [property: JsonPropertyName("model_id")] long? ModelId = null
+    [property: JsonPropertyName("item_id")] long ItemId,
+    [property: JsonPropertyName("model_id")] long ModelId
 );
 
 public sealed record ProductDeleteModelResponse(
 );
 
 public sealed record ProductGenerateKitImageRequestComponentListItem(
-    [property: JsonPropertyName("component_item_id")] long? ComponentItemId = null,
+    [property: JsonPropertyName("component_item_id")] long ComponentItemId,
     [property: JsonPropertyName("component_model_id")] long? ComponentModelId = null
 );
 
 public sealed record ProductGenerateKitImageRequest(
-    [property: JsonPropertyName("component_list")] IReadOnlyList<ProductGenerateKitImageRequestComponentListItem>? ComponentList = null
+    [property: JsonPropertyName("component_list")] IReadOnlyList<ProductGenerateKitImageRequestComponentListItem> ComponentList
 );
 
 public sealed record ProductGenerateKitImageResponse(
@@ -657,7 +657,7 @@ public sealed record ProductGenerateKitImageResponse(
 );
 
 public sealed record ProductGetAitemByPitemIdRequest(
-    [property: JsonPropertyName("pitem_id")] long? PitemId = null
+    [property: JsonPropertyName("pitem_id")] long PitemId
 );
 
 public sealed record ProductGetAitemByPitemIdResponseAitemListItemModelMappingListItem(
@@ -677,7 +677,7 @@ public sealed record ProductGetAitemByPitemIdResponse(
 );
 
 public sealed record ProductGetAllVehicleListRequest(
-    [property: JsonPropertyName("page_size")] long? PageSize = null,
+    [property: JsonPropertyName("page_size")] long PageSize,
     [property: JsonPropertyName("offset")] long? Offset = null,
     [property: JsonPropertyName("language")] string? Language = null
 );
@@ -700,7 +700,7 @@ public sealed record ProductGetAllVehicleListResponse(
 );
 
 public sealed record ProductGetAttributeTreeRequest(
-    [property: JsonPropertyName("category_id_list")] IReadOnlyList<int>? CategoryIdList = null,
+    [property: JsonPropertyName("category_id_list")] IReadOnlyList<int> CategoryIdList,
     [property: JsonPropertyName("language")] string? Language = null
 );
 
@@ -766,10 +766,10 @@ public sealed record ProductGetBoostedListResponse(
 );
 
 public sealed record ProductGetBrandListRequest(
-    [property: JsonPropertyName("offset")] long? Offset = null,
-    [property: JsonPropertyName("page_size")] long? PageSize = null,
-    [property: JsonPropertyName("category_id")] long? CategoryId = null,
-    [property: JsonPropertyName("status")] long? Status = null,
+    [property: JsonPropertyName("offset")] long Offset,
+    [property: JsonPropertyName("page_size")] long PageSize,
+    [property: JsonPropertyName("category_id")] long CategoryId,
+    [property: JsonPropertyName("status")] long Status,
     [property: JsonPropertyName("language")] string? Language = null
 );
 
@@ -804,10 +804,10 @@ public sealed record ProductGetCategoryResponse(
 );
 
 public sealed record ProductGetCommentRequest(
+    [property: JsonPropertyName("cursor")] string Cursor,
+    [property: JsonPropertyName("page_size")] int PageSize,
     [property: JsonPropertyName("item_id")] long? ItemId = null,
-    [property: JsonPropertyName("comment_id")] long? CommentId = null,
-    [property: JsonPropertyName("cursor")] string? Cursor = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null
+    [property: JsonPropertyName("comment_id")] long? CommentId = null
 );
 
 public sealed record ProductGetCommentResponseItemCommentListItemCommentReplyItem(
@@ -844,7 +844,7 @@ public sealed record ProductGetCommentResponse(
 );
 
 public sealed record ProductGetDirectItemListRequest(
-    [property: JsonPropertyName("main_item_id")] IReadOnlyList<long>? MainItemId = null
+    [property: JsonPropertyName("main_item_id")] IReadOnlyList<long> MainItemId
 );
 
 public sealed record ProductGetDirectItemListResponseListItemDirectItemListItem(
@@ -869,8 +869,8 @@ public sealed record ProductGetDirectShopRecommendedPriceRequestModelListItem(
 );
 
 public sealed record ProductGetDirectShopRecommendedPriceRequest(
-    [property: JsonPropertyName("main_item_id")] long? MainItemId = null,
-    [property: JsonPropertyName("direct_shop_regions")] IReadOnlyList<string>? DirectShopRegions = null,
+    [property: JsonPropertyName("main_item_id")] long MainItemId,
+    [property: JsonPropertyName("direct_shop_regions")] IReadOnlyList<string> DirectShopRegions,
     [property: JsonPropertyName("category_id")] long? CategoryId = null,
     [property: JsonPropertyName("model_list")] IReadOnlyList<ProductGetDirectShopRecommendedPriceRequestModelListItem>? ModelList = null,
     [property: JsonPropertyName("enabled_channel_id_list")] IReadOnlyList<long>? EnabledChannelIdList = null
@@ -894,7 +894,7 @@ public sealed record ProductGetDirectShopRecommendedPriceResponse(
 );
 
 public sealed record ProductGetItemBaseInfoRequest(
-    [property: JsonPropertyName("item_id_list")] IReadOnlyList<long>? ItemIdList = null,
+    [property: JsonPropertyName("item_id_list")] IReadOnlyList<long> ItemIdList,
     [property: JsonPropertyName("need_tax_info")] bool? NeedTaxInfo = null,
     [property: JsonPropertyName("need_complaint_policy")] bool? NeedComplaintPolicy = null
 );
@@ -1155,7 +1155,7 @@ public sealed record ProductGetItemBaseInfoResponse(
 );
 
 public sealed record ProductGetItemContentDiagnosisResultRequest(
-    [property: JsonPropertyName("item_id_list")] IReadOnlyList<long>? ItemIdList = null
+    [property: JsonPropertyName("item_id_list")] IReadOnlyList<long> ItemIdList
 );
 
 public sealed record ProductGetItemContentDiagnosisResultResponseSuccessItemListItemUnfinishedTaskItem(
@@ -1180,7 +1180,7 @@ public sealed record ProductGetItemContentDiagnosisResultResponse(
 );
 
 public sealed record ProductGetItemExtraInfoRequest(
-    [property: JsonPropertyName("item_id_list")] IReadOnlyList<long>? ItemIdList = null
+    [property: JsonPropertyName("item_id_list")] IReadOnlyList<long> ItemIdList
 );
 
 public sealed record ProductGetItemExtraInfoResponseItemListItem(
@@ -1297,11 +1297,11 @@ public sealed record ProductGetItemLimitResponse(
 );
 
 public sealed record ProductGetItemListRequest(
-    [property: JsonPropertyName("offset")] long? Offset = null,
-    [property: JsonPropertyName("page_size")] long? PageSize = null,
+    [property: JsonPropertyName("offset")] long Offset,
+    [property: JsonPropertyName("page_size")] long PageSize,
+    [property: JsonPropertyName("item_status")] IReadOnlyList<string> ItemStatus,
     [property: JsonPropertyName("update_time_from")] JsonElement? UpdateTimeFrom = null,
-    [property: JsonPropertyName("update_time_to")] JsonElement? UpdateTimeTo = null,
-    [property: JsonPropertyName("item_status")] IReadOnlyList<string>? ItemStatus = null
+    [property: JsonPropertyName("update_time_to")] JsonElement? UpdateTimeTo = null
 );
 
 public sealed record ProductGetItemListResponseItemItemTagItem(
@@ -1323,7 +1323,7 @@ public sealed record ProductGetItemListResponse(
 );
 
 public sealed record ProductGetItemListByContentDiagnosisRequest(
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
+    [property: JsonPropertyName("page_size")] int PageSize,
     [property: JsonPropertyName("offset")] string? Offset = null,
     [property: JsonPropertyName("quality_level")] IReadOnlyList<int>? QualityLevel = null,
     [property: JsonPropertyName("issue_type")] IReadOnlyList<int>? IssueType = null
@@ -1348,7 +1348,7 @@ public sealed record ProductGetItemListByContentDiagnosisResponse(
 );
 
 public sealed record ProductGetItemPromotionRequest(
-    [property: JsonPropertyName("item_id_list")] IReadOnlyList<long>? ItemIdList = null
+    [property: JsonPropertyName("item_id_list")] IReadOnlyList<long> ItemIdList
 );
 
 public sealed record ProductGetItemPromotionResponseSuccessListItemPromotionItemPromotionPriceInfoItem(
@@ -1387,7 +1387,7 @@ public sealed record ProductGetItemPromotionResponse(
 );
 
 public sealed record ProductGetItemViolationInfoRequest(
-    [property: JsonPropertyName("item_id_list")] IReadOnlyList<int>? ItemIdList = null
+    [property: JsonPropertyName("item_id_list")] IReadOnlyList<int> ItemIdList
 );
 
 public sealed record ProductGetItemViolationInfoResponseItemListItemItemStatusDetailsItem(
@@ -1428,7 +1428,7 @@ public sealed record ProductGetItemViolationInfoResponse(
 );
 
 public sealed record ProductGetKitItemInfoRequest(
-    [property: JsonPropertyName("item_id")] long? ItemId = null
+    [property: JsonPropertyName("item_id")] long ItemId
 );
 
 public sealed record ProductGetKitItemInfoResponseProductInfoItemImagesItem(
@@ -1635,7 +1635,7 @@ public sealed record ProductGetKitItemLimitResponse(
 );
 
 public sealed record ProductGetMainItemListRequest(
-    [property: JsonPropertyName("direct_item_id")] IReadOnlyList<long>? DirectItemId = null
+    [property: JsonPropertyName("direct_item_id")] IReadOnlyList<long> DirectItemId
 );
 
 public sealed record ProductGetMainItemListResponseListItem(
@@ -1649,8 +1649,8 @@ public sealed record ProductGetMainItemListResponse(
 );
 
 public sealed record ProductGetMartItemMappingByIdRequest(
-    [property: JsonPropertyName("mart_item_id")] long? MartItemId = null,
-    [property: JsonPropertyName("outlet_shop_id_list")] IReadOnlyList<long>? OutletShopIdList = null
+    [property: JsonPropertyName("mart_item_id")] long MartItemId,
+    [property: JsonPropertyName("outlet_shop_id_list")] IReadOnlyList<long> OutletShopIdList
 );
 
 public sealed record ProductGetMartItemMappingByIdResponseItemMappingListItemModelMappingItem(
@@ -1669,7 +1669,7 @@ public sealed record ProductGetMartItemMappingByIdResponse(
 );
 
 public sealed record ProductGetModelListRequest(
-    [property: JsonPropertyName("item_id")] long? ItemId = null
+    [property: JsonPropertyName("item_id")] long ItemId
 );
 
 public sealed record ProductGetModelListResponseTierVariationItemOptionListItemImageItem(
@@ -1776,13 +1776,13 @@ public sealed record ProductGetModelListResponse(
 );
 
 public sealed record ProductGetProductCertificationRuleRequestAttributeListItemAttributeValueListItem(
-    [property: JsonPropertyName("value_id")] long? ValueId = null,
+    [property: JsonPropertyName("value_id")] long ValueId,
     [property: JsonPropertyName("original_value_name")] string? OriginalValueName = null,
     [property: JsonPropertyName("value_unit")] string? ValueUnit = null
 );
 
 public sealed record ProductGetProductCertificationRuleRequestAttributeListItem(
-    [property: JsonPropertyName("attribute_id")] long? AttributeId = null,
+    [property: JsonPropertyName("attribute_id")] long AttributeId,
     [property: JsonPropertyName("attribute_value_list")] IReadOnlyList<ProductGetProductCertificationRuleRequestAttributeListItemAttributeValueListItem>? AttributeValueList = null
 );
 
@@ -1803,9 +1803,9 @@ public sealed record ProductGetProductCertificationRuleResponse(
 );
 
 public sealed record ProductGetRecommendAttributeRequest(
-    [property: JsonPropertyName("item_name")] string? ItemName = null,
-    [property: JsonPropertyName("cover_image_id")] int? CoverImageId = null,
-    [property: JsonPropertyName("category_id")] int? CategoryId = null
+    [property: JsonPropertyName("item_name")] string ItemName,
+    [property: JsonPropertyName("category_id")] int CategoryId,
+    [property: JsonPropertyName("cover_image_id")] int? CoverImageId = null
 );
 
 public sealed record ProductGetRecommendAttributeResponseAttributeListItemAttributeValueListItem(
@@ -1822,7 +1822,7 @@ public sealed record ProductGetRecommendAttributeResponse(
 );
 
 public sealed record ProductGetSizeChartDetailRequest(
-    [property: JsonPropertyName("size_chart_id")] int? SizeChartId = null
+    [property: JsonPropertyName("size_chart_id")] int SizeChartId
 );
 
 public sealed record ProductGetSizeChartDetailResponseSizeChartTableItemColumnListItemMeasurementItem(
@@ -1854,8 +1854,8 @@ public sealed record ProductGetSizeChartDetailResponse(
 );
 
 public sealed record ProductGetSizeChartListRequest(
-    [property: JsonPropertyName("category_id")] int? CategoryId = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
+    [property: JsonPropertyName("category_id")] int CategoryId,
+    [property: JsonPropertyName("page_size")] int PageSize,
     [property: JsonPropertyName("cursor")] string? Cursor = null
 );
 
@@ -2023,14 +2023,14 @@ public sealed record ProductGetSspListResponse(
 );
 
 public sealed record ProductGetVariationsRequest(
-    [property: JsonPropertyName("category_id")] int? CategoryId = null
+    [property: JsonPropertyName("category_id")] int CategoryId
 );
 
 public sealed record ProductGetVariationsResponse(
 );
 
 public sealed record ProductGetVehicleListByCompatibilityDetailRequest(
-    [property: JsonPropertyName("compatibility_details")] string? CompatibilityDetails = null,
+    [property: JsonPropertyName("compatibility_details")] string CompatibilityDetails,
     [property: JsonPropertyName("brand_id")] long? BrandId = null,
     [property: JsonPropertyName("model_id")] long? ModelId = null,
     [property: JsonPropertyName("year_id")] long? YearId = null,
@@ -2053,14 +2053,14 @@ public sealed record ProductGetVehicleListByCompatibilityDetailResponse(
 );
 
 public sealed record ProductGetWeightRecommendationRequestAttributeListItemAttributeValueListItem(
-    [property: JsonPropertyName("value_id")] int? ValueId = null,
+    [property: JsonPropertyName("value_id")] int ValueId,
     [property: JsonPropertyName("original_value_name")] string? OriginalValueName = null,
     [property: JsonPropertyName("value_unit")] string? ValueUnit = null
 );
 
 public sealed record ProductGetWeightRecommendationRequestAttributeListItem(
-    [property: JsonPropertyName("attribute_id")] int? AttributeId = null,
-    [property: JsonPropertyName("attribute_value_list")] IReadOnlyList<ProductGetWeightRecommendationRequestAttributeListItemAttributeValueListItem>? AttributeValueList = null
+    [property: JsonPropertyName("attribute_id")] int AttributeId,
+    [property: JsonPropertyName("attribute_value_list")] IReadOnlyList<ProductGetWeightRecommendationRequestAttributeListItemAttributeValueListItem> AttributeValueList
 );
 
 public sealed record ProductGetWeightRecommendationRequestDescriptionInfoItemExtendedDescriptionItemFieldListItemImageInfoItem(
@@ -2082,12 +2082,12 @@ public sealed record ProductGetWeightRecommendationRequestDescriptionInfoItem(
 );
 
 public sealed record ProductGetWeightRecommendationRequest(
-    [property: JsonPropertyName("item_name")] string? ItemName = null,
-    [property: JsonPropertyName("cover_image_id")] string? CoverImageId = null,
-    [property: JsonPropertyName("category_id")] int? CategoryId = null,
-    [property: JsonPropertyName("attribute_list")] IReadOnlyList<ProductGetWeightRecommendationRequestAttributeListItem>? AttributeList = null,
-    [property: JsonPropertyName("brand_id")] int? BrandId = null,
-    [property: JsonPropertyName("description_type")] string? DescriptionType = null,
+    [property: JsonPropertyName("item_name")] string ItemName,
+    [property: JsonPropertyName("cover_image_id")] string CoverImageId,
+    [property: JsonPropertyName("category_id")] int CategoryId,
+    [property: JsonPropertyName("attribute_list")] IReadOnlyList<ProductGetWeightRecommendationRequestAttributeListItem> AttributeList,
+    [property: JsonPropertyName("brand_id")] int BrandId,
+    [property: JsonPropertyName("description_type")] string DescriptionType,
     [property: JsonPropertyName("description")] string? Description = null,
     [property: JsonPropertyName("description_info")] ProductGetWeightRecommendationRequestDescriptionInfoItem? DescriptionInfo = null
 );
@@ -2097,26 +2097,26 @@ public sealed record ProductGetWeightRecommendationResponse(
 );
 
 public sealed record ProductInitTierVariationRequestModelItemSellerStockItem(
-    [property: JsonPropertyName("location_id")] string? LocationId = null,
-    [property: JsonPropertyName("stock")] int? Stock = null
+    [property: JsonPropertyName("stock")] int Stock,
+    [property: JsonPropertyName("location_id")] string? LocationId = null
 );
 
 public sealed record ProductInitTierVariationRequestModelItemDimensionItem(
-    [property: JsonPropertyName("package_height")] int? PackageHeight = null,
-    [property: JsonPropertyName("package_length")] int? PackageLength = null,
-    [property: JsonPropertyName("package_width")] int? PackageWidth = null
+    [property: JsonPropertyName("package_height")] int PackageHeight,
+    [property: JsonPropertyName("package_length")] int PackageLength,
+    [property: JsonPropertyName("package_width")] int PackageWidth
 );
 
 public sealed record ProductInitTierVariationRequestModelItemPreOrderItem(
-    [property: JsonPropertyName("is_pre_order")] bool? IsPreOrder = null,
+    [property: JsonPropertyName("is_pre_order")] bool IsPreOrder,
     [property: JsonPropertyName("days_to_ship")] int? DaysToShip = null
 );
 
 public sealed record ProductInitTierVariationRequestModelItem(
-    [property: JsonPropertyName("tier_index")] IReadOnlyList<int>? TierIndex = null,
-    [property: JsonPropertyName("original_price")] decimal? OriginalPrice = null,
+    [property: JsonPropertyName("tier_index")] IReadOnlyList<int> TierIndex,
+    [property: JsonPropertyName("original_price")] decimal OriginalPrice,
+    [property: JsonPropertyName("seller_stock")] IReadOnlyList<ProductInitTierVariationRequestModelItemSellerStockItem> SellerStock,
     [property: JsonPropertyName("model_sku")] string? ModelSku = null,
-    [property: JsonPropertyName("seller_stock")] IReadOnlyList<ProductInitTierVariationRequestModelItemSellerStockItem>? SellerStock = null,
     [property: JsonPropertyName("gtin_code")] string? GtinCode = null,
     [property: JsonPropertyName("weight")] decimal? Weight = null,
     [property: JsonPropertyName("dimension")] ProductInitTierVariationRequestModelItemDimensionItem? Dimension = null,
@@ -2130,15 +2130,15 @@ public sealed record ProductInitTierVariationRequestStandardiseTierVariationItem
 );
 
 public sealed record ProductInitTierVariationRequestStandardiseTierVariationItem(
-    [property: JsonPropertyName("variation_id")] int? VariationId = null,
+    [property: JsonPropertyName("variation_id")] int VariationId,
+    [property: JsonPropertyName("variation_option_list")] IReadOnlyList<ProductInitTierVariationRequestStandardiseTierVariationItemVariationOptionListItem> VariationOptionList,
     [property: JsonPropertyName("variation_name")] string? VariationName = null,
-    [property: JsonPropertyName("variation_group_id")] int? VariationGroupId = null,
-    [property: JsonPropertyName("variation_option_list")] IReadOnlyList<ProductInitTierVariationRequestStandardiseTierVariationItemVariationOptionListItem>? VariationOptionList = null
+    [property: JsonPropertyName("variation_group_id")] int? VariationGroupId = null
 );
 
 public sealed record ProductInitTierVariationRequest(
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
-    [property: JsonPropertyName("model")] IReadOnlyList<ProductInitTierVariationRequestModelItem>? Model = null,
+    [property: JsonPropertyName("item_id")] long ItemId,
+    [property: JsonPropertyName("model")] IReadOnlyList<ProductInitTierVariationRequestModelItem> Model,
     [property: JsonPropertyName("standardise_tier_variation")] IReadOnlyList<ProductInitTierVariationRequestStandardiseTierVariationItem>? StandardiseTierVariation = null
 );
 
@@ -2188,39 +2188,39 @@ public sealed record ProductInitTierVariationResponse(
 );
 
 public sealed record ProductLinkSspRequestDimensionItem(
-    [property: JsonPropertyName("package_length")] int? PackageLength = null,
-    [property: JsonPropertyName("package_width")] int? PackageWidth = null,
-    [property: JsonPropertyName("package_height")] int? PackageHeight = null
+    [property: JsonPropertyName("package_length")] int PackageLength,
+    [property: JsonPropertyName("package_width")] int PackageWidth,
+    [property: JsonPropertyName("package_height")] int PackageHeight
 );
 
 public sealed record ProductLinkSspRequestLogisticInfoItem(
-    [property: JsonPropertyName("logistic_id")] long? LogisticId = null,
-    [property: JsonPropertyName("enabled")] bool? Enabled = null,
+    [property: JsonPropertyName("logistic_id")] long LogisticId,
+    [property: JsonPropertyName("enabled")] bool Enabled,
     [property: JsonPropertyName("shipping_fee")] decimal? ShippingFee = null,
     [property: JsonPropertyName("size_id")] long? SizeId = null,
     [property: JsonPropertyName("is_free")] bool? IsFree = null
 );
 
 public sealed record ProductLinkSspRequestAttributeListItemAttributeValueListItem(
-    [property: JsonPropertyName("value_id")] long? ValueId = null,
+    [property: JsonPropertyName("value_id")] long ValueId,
     [property: JsonPropertyName("original_value_name")] string? OriginalValueName = null,
     [property: JsonPropertyName("value_unit")] string? ValueUnit = null
 );
 
 public sealed record ProductLinkSspRequestAttributeListItem(
-    [property: JsonPropertyName("attribute_id")] long? AttributeId = null,
-    [property: JsonPropertyName("attribute_value_list")] IReadOnlyList<ProductLinkSspRequestAttributeListItemAttributeValueListItem>? AttributeValueList = null
+    [property: JsonPropertyName("attribute_id")] long AttributeId,
+    [property: JsonPropertyName("attribute_value_list")] IReadOnlyList<ProductLinkSspRequestAttributeListItemAttributeValueListItem> AttributeValueList
 );
 
 public sealed record ProductLinkSspRequestPreOrderItem(
-    [property: JsonPropertyName("is_pre_order")] bool? IsPreOrder = null,
+    [property: JsonPropertyName("is_pre_order")] bool IsPreOrder,
     [property: JsonPropertyName("days_to_ship")] int? DaysToShip = null
 );
 
 public sealed record ProductLinkSspRequestWholesaleItem(
-    [property: JsonPropertyName("min_count")] int? MinCount = null,
-    [property: JsonPropertyName("max_count")] int? MaxCount = null,
-    [property: JsonPropertyName("unit_price")] decimal? UnitPrice = null
+    [property: JsonPropertyName("min_count")] int MinCount,
+    [property: JsonPropertyName("max_count")] int MaxCount,
+    [property: JsonPropertyName("unit_price")] decimal UnitPrice
 );
 
 public sealed record ProductLinkSspRequestTaxInfoItemGroupItemInfoItem(
@@ -2233,6 +2233,8 @@ public sealed record ProductLinkSspRequestTaxInfoItemGroupItemInfoItem(
 );
 
 public sealed record ProductLinkSspRequestTaxInfoItem(
+    [property: JsonPropertyName("hs_code")] string HsCode,
+    [property: JsonPropertyName("tax_code")] string TaxCode,
     [property: JsonPropertyName("ncm")] string? Ncm = null,
     [property: JsonPropertyName("same_state_cfop")] string? SameStateCfop = null,
     [property: JsonPropertyName("diff_state_cfop")] string? DiffStateCfop = null,
@@ -2242,8 +2244,6 @@ public sealed record ProductLinkSspRequestTaxInfoItem(
     [property: JsonPropertyName("measure_unit")] string? MeasureUnit = null,
     [property: JsonPropertyName("invoice_option")] string? InvoiceOption = null,
     [property: JsonPropertyName("vat_rate")] string? VatRate = null,
-    [property: JsonPropertyName("hs_code")] string? HsCode = null,
-    [property: JsonPropertyName("tax_code")] string? TaxCode = null,
     [property: JsonPropertyName("tax_type")] int? TaxType = null,
     [property: JsonPropertyName("pis")] string? Pis = null,
     [property: JsonPropertyName("cofins")] string? Cofins = null,
@@ -2259,8 +2259,8 @@ public sealed record ProductLinkSspRequestTaxInfoItem(
 );
 
 public sealed record ProductLinkSspRequestSellerStockItem(
-    [property: JsonPropertyName("location_id")] string? LocationId = null,
-    [property: JsonPropertyName("stock")] int? Stock = null
+    [property: JsonPropertyName("stock")] int Stock,
+    [property: JsonPropertyName("location_id")] string? LocationId = null
 );
 
 public sealed record ProductLinkSspRequestSizeChartInfoItem(
@@ -2269,33 +2269,33 @@ public sealed record ProductLinkSspRequestSizeChartInfoItem(
 );
 
 public sealed record ProductLinkSspRequestModelListItemSellerStockItem(
-    [property: JsonPropertyName("location_id")] string? LocationId = null,
-    [property: JsonPropertyName("stock")] int? Stock = null
+    [property: JsonPropertyName("stock")] int Stock,
+    [property: JsonPropertyName("location_id")] string? LocationId = null
 );
 
 public sealed record ProductLinkSspRequestModelListItemDimensionItem(
-    [property: JsonPropertyName("package_length")] int? PackageLength = null,
-    [property: JsonPropertyName("package_width")] int? PackageWidth = null,
-    [property: JsonPropertyName("package_height")] int? PackageHeight = null
+    [property: JsonPropertyName("package_length")] int PackageLength,
+    [property: JsonPropertyName("package_width")] int PackageWidth,
+    [property: JsonPropertyName("package_height")] int PackageHeight
 );
 
 public sealed record ProductLinkSspRequestModelListItemPreOrderItem(
-    [property: JsonPropertyName("is_pre_order")] bool? IsPreOrder = null,
+    [property: JsonPropertyName("is_pre_order")] bool IsPreOrder,
     [property: JsonPropertyName("days_to_ship")] int? DaysToShip = null
 );
 
 public sealed record ProductLinkSspRequestModelListItem(
-    [property: JsonPropertyName("tier_index")] IReadOnlyList<int>? TierIndex = null,
+    [property: JsonPropertyName("tier_index")] IReadOnlyList<int> TierIndex,
+    [property: JsonPropertyName("original_price")] decimal OriginalPrice,
     [property: JsonPropertyName("model_sku")] string? ModelSku = null,
-    [property: JsonPropertyName("original_price")] decimal? OriginalPrice = null,
     [property: JsonPropertyName("seller_stock")] IReadOnlyList<ProductLinkSspRequestModelListItemSellerStockItem>? SellerStock = null,
     [property: JsonPropertyName("dimension")] ProductLinkSspRequestModelListItemDimensionItem? Dimension = null,
     [property: JsonPropertyName("pre_order")] ProductLinkSspRequestModelListItemPreOrderItem? PreOrder = null
 );
 
 public sealed record ProductLinkSspRequest(
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
-    [property: JsonPropertyName("ssp_id")] long? SspId = null,
+    [property: JsonPropertyName("item_id")] long ItemId,
+    [property: JsonPropertyName("ssp_id")] long SspId,
     [property: JsonPropertyName("original_price")] decimal? OriginalPrice = null,
     [property: JsonPropertyName("item_status")] string? ItemStatus = null,
     [property: JsonPropertyName("dimension")] ProductLinkSspRequestDimensionItem? Dimension = null,
@@ -2319,7 +2319,7 @@ public sealed record ProductLinkSspResponse(
 );
 
 public sealed record ProductRegisterBrandRequestProductImageItem(
-    [property: JsonPropertyName("image_id_list")] IReadOnlyList<string>? ImageIdList = null
+    [property: JsonPropertyName("image_id_list")] IReadOnlyList<string> ImageIdList
 );
 
 public sealed record ProductRegisterBrandRequestLicensesItem(
@@ -2328,15 +2328,15 @@ public sealed record ProductRegisterBrandRequestLicensesItem(
 );
 
 public sealed record ProductRegisterBrandRequest(
-    [property: JsonPropertyName("original_brand_name")] string? OriginalBrandName = null,
-    [property: JsonPropertyName("category_list")] IReadOnlyList<int>? CategoryList = null,
-    [property: JsonPropertyName("product_image")] ProductRegisterBrandRequestProductImageItem? ProductImage = null,
+    [property: JsonPropertyName("original_brand_name")] string OriginalBrandName,
+    [property: JsonPropertyName("category_list")] IReadOnlyList<int> CategoryList,
+    [property: JsonPropertyName("product_image")] ProductRegisterBrandRequestProductImageItem ProductImage,
+    [property: JsonPropertyName("brand_region")] string BrandRegion,
     [property: JsonPropertyName("app_logo_image_id")] string? AppLogoImageId = null,
     [property: JsonPropertyName("brand_website")] string? BrandWebsite = null,
     [property: JsonPropertyName("brand_description")] string? BrandDescription = null,
     [property: JsonPropertyName("additional_information")] string? AdditionalInformation = null,
     [property: JsonPropertyName("pc_logo_image_id")] string? PcLogoImageId = null,
-    [property: JsonPropertyName("brand_region")] string? BrandRegion = null,
     [property: JsonPropertyName("licenses")] IReadOnlyList<ProductRegisterBrandRequestLicensesItem>? Licenses = null,
     [property: JsonPropertyName("brand_registration_website")] string? BrandRegistrationWebsite = null
 );
@@ -2347,12 +2347,12 @@ public sealed record ProductRegisterBrandResponse(
 );
 
 public sealed record ProductReplyCommentRequestCommentListItem(
-    [property: JsonPropertyName("comment_id")] int? CommentId = null,
-    [property: JsonPropertyName("comment")] string? Comment = null
+    [property: JsonPropertyName("comment_id")] int CommentId,
+    [property: JsonPropertyName("comment")] string Comment
 );
 
 public sealed record ProductReplyCommentRequest(
-    [property: JsonPropertyName("comment_list")] IReadOnlyList<ProductReplyCommentRequestCommentListItem>? CommentList = null
+    [property: JsonPropertyName("comment_list")] IReadOnlyList<ProductReplyCommentRequestCommentListItem> CommentList
 );
 
 public sealed record ProductReplyCommentResponseResultListItem(
@@ -2366,10 +2366,10 @@ public sealed record ProductReplyCommentResponse(
 );
 
 public sealed record ProductSearchAttributeValueListRequest(
-    [property: JsonPropertyName("attribute_id")] int? AttributeId = null,
-    [property: JsonPropertyName("value_name")] string? ValueName = null,
-    [property: JsonPropertyName("cursor")] long? Cursor = null,
-    [property: JsonPropertyName("limit")] long? Limit = null
+    [property: JsonPropertyName("attribute_id")] int AttributeId,
+    [property: JsonPropertyName("cursor")] long Cursor,
+    [property: JsonPropertyName("limit")] long Limit,
+    [property: JsonPropertyName("value_name")] string? ValueName = null
 );
 
 public sealed record ProductSearchAttributeValueListResponseValueListItem(
@@ -2388,8 +2388,8 @@ public sealed record ProductSearchAttributeValueListResponse(
 );
 
 public sealed record ProductSearchItemRequest(
+    [property: JsonPropertyName("page_size")] int PageSize,
     [property: JsonPropertyName("offset")] string? Offset = null,
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
     [property: JsonPropertyName("item_name")] string? ItemName = null,
     [property: JsonPropertyName("attribute_status")] int? AttributeStatus = null,
     [property: JsonPropertyName("item_sku")] string? ItemSku = null,
@@ -2404,7 +2404,7 @@ public sealed record ProductSearchItemResponse(
 );
 
 public sealed record ProductSearchUnpackagedModelListRequest(
-    [property: JsonPropertyName("page_size")] int? PageSize = null,
+    [property: JsonPropertyName("page_size")] int PageSize,
     [property: JsonPropertyName("cursor")] string? Cursor = null,
     [property: JsonPropertyName("item_id")] long? ItemId = null,
     [property: JsonPropertyName("item_name")] string? ItemName = null,
@@ -2426,7 +2426,7 @@ public sealed record ProductSearchUnpackagedModelListResponse(
 );
 
 public sealed record ProductUnlinkSspRequest(
-    [property: JsonPropertyName("item_id")] long? ItemId = null
+    [property: JsonPropertyName("item_id")] long ItemId
 );
 
 public sealed record ProductUnlinkSspResponse(
@@ -2434,12 +2434,12 @@ public sealed record ProductUnlinkSspResponse(
 );
 
 public sealed record ProductUnlistItemRequestItemListItem(
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
-    [property: JsonPropertyName("unlist")] bool? Unlist = null
+    [property: JsonPropertyName("item_id")] long ItemId,
+    [property: JsonPropertyName("unlist")] bool Unlist
 );
 
 public sealed record ProductUnlistItemRequest(
-    [property: JsonPropertyName("item_list")] IReadOnlyList<ProductUnlistItemRequestItemListItem>? ItemList = null
+    [property: JsonPropertyName("item_list")] IReadOnlyList<ProductUnlistItemRequestItemListItem> ItemList
 );
 
 public sealed record ProductUnlistItemResponseFailureListItem(
@@ -2458,44 +2458,44 @@ public sealed record ProductUnlistItemResponse(
 );
 
 public sealed record ProductUpdateItemRequestPreOrderItem(
-    [property: JsonPropertyName("days_to_ship")] int? DaysToShip = null,
-    [property: JsonPropertyName("is_pre_order")] bool? IsPreOrder = null
+    [property: JsonPropertyName("days_to_ship")] int DaysToShip,
+    [property: JsonPropertyName("is_pre_order")] bool IsPreOrder
 );
 
 public sealed record ProductUpdateItemRequestAttributeListItemAttributeValueListItem(
-    [property: JsonPropertyName("value_id")] int? ValueId = null,
+    [property: JsonPropertyName("value_id")] int ValueId,
     [property: JsonPropertyName("original_value_name")] string? OriginalValueName = null,
     [property: JsonPropertyName("value_unit")] string? ValueUnit = null
 );
 
 public sealed record ProductUpdateItemRequestAttributeListItem(
-    [property: JsonPropertyName("attribute_id")] int? AttributeId = null,
+    [property: JsonPropertyName("attribute_id")] int AttributeId,
     [property: JsonPropertyName("attribute_value_list")] IReadOnlyList<ProductUpdateItemRequestAttributeListItemAttributeValueListItem>? AttributeValueList = null
 );
 
 public sealed record ProductUpdateItemRequestImageItem(
-    [property: JsonPropertyName("image_id_list")] JsonElement? ImageIdList = null,
+    [property: JsonPropertyName("image_id_list")] JsonElement? ImageIdList,
     [property: JsonPropertyName("image_ratio")] string? ImageRatio = null
 );
 
 public sealed record ProductUpdateItemRequestLogisticInfoItem(
+    [property: JsonPropertyName("enabled")] bool Enabled,
+    [property: JsonPropertyName("logistic_id")] int LogisticId,
     [property: JsonPropertyName("size_id")] int? SizeId = null,
     [property: JsonPropertyName("shipping_fee")] decimal? ShippingFee = null,
-    [property: JsonPropertyName("enabled")] bool? Enabled = null,
-    [property: JsonPropertyName("logistic_id")] int? LogisticId = null,
     [property: JsonPropertyName("is_free")] bool? IsFree = null
 );
 
 public sealed record ProductUpdateItemRequestWholesaleItem(
-    [property: JsonPropertyName("min_count")] int? MinCount = null,
-    [property: JsonPropertyName("unit_price")] decimal? UnitPrice = null,
-    [property: JsonPropertyName("max_count")] int? MaxCount = null
+    [property: JsonPropertyName("min_count")] int MinCount,
+    [property: JsonPropertyName("unit_price")] decimal UnitPrice,
+    [property: JsonPropertyName("max_count")] int MaxCount
 );
 
 public sealed record ProductUpdateItemRequestDimensionItem(
-    [property: JsonPropertyName("package_height")] int? PackageHeight = null,
-    [property: JsonPropertyName("package_length")] int? PackageLength = null,
-    [property: JsonPropertyName("package_width")] int? PackageWidth = null
+    [property: JsonPropertyName("package_height")] int PackageHeight,
+    [property: JsonPropertyName("package_length")] int PackageLength,
+    [property: JsonPropertyName("package_width")] int PackageWidth
 );
 
 public sealed record ProductUpdateItemRequestBrandItem(
@@ -2569,14 +2569,14 @@ public sealed record ProductUpdateItemRequestPromotionImagesItem(
 );
 
 public sealed record ProductUpdateItemRequestCompatibilityInfoItemVehicleInfoListItem(
-    [property: JsonPropertyName("brand_id")] long? BrandId = null,
-    [property: JsonPropertyName("model_id")] long? ModelId = null,
+    [property: JsonPropertyName("brand_id")] long BrandId,
+    [property: JsonPropertyName("model_id")] long ModelId,
     [property: JsonPropertyName("year_id")] long? YearId = null,
     [property: JsonPropertyName("version_id")] long? VersionId = null
 );
 
 public sealed record ProductUpdateItemRequestCompatibilityInfoItem(
-    [property: JsonPropertyName("vehicle_info_list")] IReadOnlyList<ProductUpdateItemRequestCompatibilityInfoItemVehicleInfoListItem>? VehicleInfoList = null
+    [property: JsonPropertyName("vehicle_info_list")] IReadOnlyList<ProductUpdateItemRequestCompatibilityInfoItemVehicleInfoListItem> VehicleInfoList
 );
 
 public sealed record ProductUpdateItemRequestSizeChartInfoItem(
@@ -2585,14 +2585,14 @@ public sealed record ProductUpdateItemRequestSizeChartInfoItem(
 );
 
 public sealed record ProductUpdateItemRequestCertificationInfoItemCertificationListItemCertificationProofsItem(
-    [property: JsonPropertyName("image_id")] string? ImageId = null,
-    [property: JsonPropertyName("file_name")] string? FileName = null,
-    [property: JsonPropertyName("ratio")] decimal? Ratio = null
+    [property: JsonPropertyName("image_id")] string ImageId,
+    [property: JsonPropertyName("file_name")] string FileName,
+    [property: JsonPropertyName("ratio")] decimal Ratio
 );
 
 public sealed record ProductUpdateItemRequestCertificationInfoItemCertificationListItem(
-    [property: JsonPropertyName("certification_no")] string? CertificationNo = null,
-    [property: JsonPropertyName("permit_id")] long? PermitId = null,
+    [property: JsonPropertyName("certification_no")] string CertificationNo,
+    [property: JsonPropertyName("permit_id")] long PermitId,
     [property: JsonPropertyName("expiry_date")] int? ExpiryDate = null,
     [property: JsonPropertyName("certification_proofs")] ProductUpdateItemRequestCertificationInfoItemCertificationListItemCertificationProofsItem? CertificationProofs = null
 );
@@ -2611,6 +2611,7 @@ public sealed record ProductUpdateItemRequestPurchaseLimitInfoItem(
 );
 
 public sealed record ProductUpdateItemRequest(
+    [property: JsonPropertyName("item_id")] long ItemId,
     [property: JsonPropertyName("description")] string? Description = null,
     [property: JsonPropertyName("weight")] decimal? Weight = null,
     [property: JsonPropertyName("pre_order")] ProductUpdateItemRequestPreOrderItem? PreOrder = null,
@@ -2621,7 +2622,6 @@ public sealed record ProductUpdateItemRequest(
     [property: JsonPropertyName("item_status")] string? ItemStatus = null,
     [property: JsonPropertyName("logistic_info")] IReadOnlyList<ProductUpdateItemRequestLogisticInfoItem>? LogisticInfo = null,
     [property: JsonPropertyName("wholesale")] IReadOnlyList<ProductUpdateItemRequestWholesaleItem>? Wholesale = null,
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
     [property: JsonPropertyName("category_id")] int? CategoryId = null,
     [property: JsonPropertyName("dimension")] ProductUpdateItemRequestDimensionItem? Dimension = null,
     [property: JsonPropertyName("condition")] string? Condition = null,
@@ -2717,77 +2717,77 @@ public sealed record ProductUpdateItemResponse(
 );
 
 public sealed record ProductUpdateKitItemRequestItemSettingItemImagesItem(
-    [property: JsonPropertyName("image_id_list")] IReadOnlyList<string>? ImageIdList = null
+    [property: JsonPropertyName("image_id_list")] IReadOnlyList<string> ImageIdList
 );
 
 public sealed record ProductUpdateKitItemRequestItemSettingItemLongImagesItem(
-    [property: JsonPropertyName("image_id_list")] IReadOnlyList<string>? ImageIdList = null
+    [property: JsonPropertyName("image_id_list")] IReadOnlyList<string> ImageIdList
 );
 
 public sealed record ProductUpdateKitItemRequestItemSettingItemDescriptionInfoItemExtendedDescriptionItemFieldListItemImageInfoItem(
-    [property: JsonPropertyName("image_id")] string? ImageId = null
+    [property: JsonPropertyName("image_id")] string ImageId
 );
 
 public sealed record ProductUpdateKitItemRequestItemSettingItemDescriptionInfoItemExtendedDescriptionItemFieldListItem(
-    [property: JsonPropertyName("field_type")] string? FieldType = null,
-    [property: JsonPropertyName("text")] string? Text = null,
+    [property: JsonPropertyName("field_type")] string FieldType,
+    [property: JsonPropertyName("text")] string Text,
     [property: JsonPropertyName("image_info")] ProductUpdateKitItemRequestItemSettingItemDescriptionInfoItemExtendedDescriptionItemFieldListItemImageInfoItem? ImageInfo = null
 );
 
 public sealed record ProductUpdateKitItemRequestItemSettingItemDescriptionInfoItemExtendedDescriptionItem(
-    [property: JsonPropertyName("field_list")] IReadOnlyList<ProductUpdateKitItemRequestItemSettingItemDescriptionInfoItemExtendedDescriptionItemFieldListItem>? FieldList = null
+    [property: JsonPropertyName("field_list")] IReadOnlyList<ProductUpdateKitItemRequestItemSettingItemDescriptionInfoItemExtendedDescriptionItemFieldListItem> FieldList
 );
 
 public sealed record ProductUpdateKitItemRequestItemSettingItemDescriptionInfoItem(
-    [property: JsonPropertyName("extended_description")] ProductUpdateKitItemRequestItemSettingItemDescriptionInfoItemExtendedDescriptionItem? ExtendedDescription = null
+    [property: JsonPropertyName("extended_description")] ProductUpdateKitItemRequestItemSettingItemDescriptionInfoItemExtendedDescriptionItem ExtendedDescription
 );
 
 public sealed record ProductUpdateKitItemRequestItemSettingItemLogisticInfoItem(
-    [property: JsonPropertyName("logistic_id")] long? LogisticId = null,
-    [property: JsonPropertyName("enabled")] bool? Enabled = null,
+    [property: JsonPropertyName("logistic_id")] long LogisticId,
+    [property: JsonPropertyName("enabled")] bool Enabled,
     [property: JsonPropertyName("shipping_fee")] decimal? ShippingFee = null,
     [property: JsonPropertyName("size_id")] long? SizeId = null,
     [property: JsonPropertyName("is_free")] bool? IsFree = null
 );
 
 public sealed record ProductUpdateKitItemRequestItemSettingItemDimensionItem(
-    [property: JsonPropertyName("package_length")] int? PackageLength = null,
-    [property: JsonPropertyName("package_width")] int? PackageWidth = null,
-    [property: JsonPropertyName("package_height")] int? PackageHeight = null
+    [property: JsonPropertyName("package_length")] int PackageLength,
+    [property: JsonPropertyName("package_width")] int PackageWidth,
+    [property: JsonPropertyName("package_height")] int PackageHeight
 );
 
 public sealed record ProductUpdateKitItemRequestItemSettingItemPreOrderItem(
-    [property: JsonPropertyName("is_pre_order")] bool? IsPreOrder = null,
+    [property: JsonPropertyName("is_pre_order")] bool IsPreOrder,
     [property: JsonPropertyName("days_to_ship")] long? DaysToShip = null
 );
 
 public sealed record ProductUpdateKitItemRequestItemSettingItemModelListItemComponentListItem(
-    [property: JsonPropertyName("component_item_id")] long? ComponentItemId = null,
+    [property: JsonPropertyName("component_item_id")] long ComponentItemId,
+    [property: JsonPropertyName("quantity")] long Quantity,
     [property: JsonPropertyName("component_model_id")] long? ComponentModelId = null,
-    [property: JsonPropertyName("quantity")] long? Quantity = null,
     [property: JsonPropertyName("main_component")] bool? MainComponent = null
 );
 
 public sealed record ProductUpdateKitItemRequestItemSettingItemModelListItem(
+    [property: JsonPropertyName("tier_index")] IReadOnlyList<long> TierIndex,
     [property: JsonPropertyName("model_id")] long? ModelId = null,
-    [property: JsonPropertyName("tier_index")] IReadOnlyList<long>? TierIndex = null,
     [property: JsonPropertyName("model_sku")] string? ModelSku = null,
     [property: JsonPropertyName("original_price")] decimal? OriginalPrice = null,
     [property: JsonPropertyName("component_list")] IReadOnlyList<ProductUpdateKitItemRequestItemSettingItemModelListItemComponentListItem>? ComponentList = null
 );
 
 public sealed record ProductUpdateKitItemRequestItemSettingItemTierVariationListItemOptionListItemImageItem(
-    [property: JsonPropertyName("image_id")] string? ImageId = null
+    [property: JsonPropertyName("image_id")] string ImageId
 );
 
 public sealed record ProductUpdateKitItemRequestItemSettingItemTierVariationListItemOptionListItem(
-    [property: JsonPropertyName("option")] string? Option = null,
+    [property: JsonPropertyName("option")] string Option,
     [property: JsonPropertyName("image")] ProductUpdateKitItemRequestItemSettingItemTierVariationListItemOptionListItemImageItem? Image = null
 );
 
 public sealed record ProductUpdateKitItemRequestItemSettingItemTierVariationListItem(
-    [property: JsonPropertyName("name")] string? Name = null,
-    [property: JsonPropertyName("option_list")] IReadOnlyList<ProductUpdateKitItemRequestItemSettingItemTierVariationListItemOptionListItem>? OptionList = null
+    [property: JsonPropertyName("option_list")] IReadOnlyList<ProductUpdateKitItemRequestItemSettingItemTierVariationListItemOptionListItem> OptionList,
+    [property: JsonPropertyName("name")] string? Name = null
 );
 
 public sealed record ProductUpdateKitItemRequestItemSettingItem(
@@ -2809,11 +2809,11 @@ public sealed record ProductUpdateKitItemRequestItemSettingItem(
 );
 
 public sealed record ProductUpdateKitItemRequestSyncSettingItem(
-    [property: JsonPropertyName("auto_sync_dts")] bool? AutoSyncDts = null
+    [property: JsonPropertyName("auto_sync_dts")] bool AutoSyncDts
 );
 
 public sealed record ProductUpdateKitItemRequest(
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
+    [property: JsonPropertyName("item_id")] long ItemId,
     [property: JsonPropertyName("item_setting")] ProductUpdateKitItemRequestItemSettingItem? ItemSetting = null,
     [property: JsonPropertyName("sync_setting")] ProductUpdateKitItemRequestSyncSettingItem? SyncSetting = null
 );
@@ -2822,19 +2822,19 @@ public sealed record ProductUpdateKitItemResponse(
 );
 
 public sealed record ProductUpdateModelRequestModelItemPreOrderItem(
-    [property: JsonPropertyName("is_pre_order")] bool? IsPreOrder = null,
-    [property: JsonPropertyName("days_to_ship")] int? DaysToShip = null
+    [property: JsonPropertyName("is_pre_order")] bool IsPreOrder,
+    [property: JsonPropertyName("days_to_ship")] int DaysToShip
 );
 
 public sealed record ProductUpdateModelRequestModelItemDimensionItem(
-    [property: JsonPropertyName("package_height")] int? PackageHeight = null,
-    [property: JsonPropertyName("package_length")] int? PackageLength = null,
-    [property: JsonPropertyName("package_width")] int? PackageWidth = null
+    [property: JsonPropertyName("package_height")] int PackageHeight,
+    [property: JsonPropertyName("package_length")] int PackageLength,
+    [property: JsonPropertyName("package_width")] int PackageWidth
 );
 
 public sealed record ProductUpdateModelRequestModelItem(
-    [property: JsonPropertyName("model_id")] long? ModelId = null,
-    [property: JsonPropertyName("model_sku")] string? ModelSku = null,
+    [property: JsonPropertyName("model_id")] long ModelId,
+    [property: JsonPropertyName("model_sku")] string ModelSku,
     [property: JsonPropertyName("pre_order")] ProductUpdateModelRequestModelItemPreOrderItem? PreOrder = null,
     [property: JsonPropertyName("gtin_code")] string? GtinCode = null,
     [property: JsonPropertyName("model_status")] string? ModelStatus = null,
@@ -2843,21 +2843,21 @@ public sealed record ProductUpdateModelRequestModelItem(
 );
 
 public sealed record ProductUpdateModelRequest(
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
-    [property: JsonPropertyName("model")] IReadOnlyList<ProductUpdateModelRequestModelItem>? Model = null
+    [property: JsonPropertyName("item_id")] long ItemId,
+    [property: JsonPropertyName("model")] IReadOnlyList<ProductUpdateModelRequestModelItem> Model
 );
 
 public sealed record ProductUpdateModelResponse(
 );
 
 public sealed record ProductUpdatePriceRequestPriceListItem(
-    [property: JsonPropertyName("model_id")] long? ModelId = null,
-    [property: JsonPropertyName("original_price")] decimal? OriginalPrice = null
+    [property: JsonPropertyName("original_price")] decimal OriginalPrice,
+    [property: JsonPropertyName("model_id")] long? ModelId = null
 );
 
 public sealed record ProductUpdatePriceRequest(
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
-    [property: JsonPropertyName("price_list")] IReadOnlyList<ProductUpdatePriceRequestPriceListItem>? PriceList = null
+    [property: JsonPropertyName("item_id")] long ItemId,
+    [property: JsonPropertyName("price_list")] IReadOnlyList<ProductUpdatePriceRequestPriceListItem> PriceList
 );
 
 public sealed record ProductUpdatePriceResponseFailureListItem(
@@ -2876,12 +2876,12 @@ public sealed record ProductUpdatePriceResponse(
 );
 
 public sealed record ProductUpdateSipItemPriceRequestSipItemPriceItem(
-    [property: JsonPropertyName("model_id")] int? ModelId = null,
-    [property: JsonPropertyName("sip_item_price")] decimal? SipItemPrice = null
+    [property: JsonPropertyName("sip_item_price")] decimal SipItemPrice,
+    [property: JsonPropertyName("model_id")] int? ModelId = null
 );
 
 public sealed record ProductUpdateSipItemPriceRequest(
-    [property: JsonPropertyName("item_id")] int? ItemId = null,
+    [property: JsonPropertyName("item_id")] int ItemId,
     [property: JsonPropertyName("sip_item_price")] IReadOnlyList<ProductUpdateSipItemPriceRequestSipItemPriceItem>? SipItemPrice = null
 );
 
@@ -2889,18 +2889,18 @@ public sealed record ProductUpdateSipItemPriceResponse(
 );
 
 public sealed record ProductUpdateStockRequestStockListItemSellerStockItem(
-    [property: JsonPropertyName("location_id")] string? LocationId = null,
-    [property: JsonPropertyName("stock")] long? Stock = null
+    [property: JsonPropertyName("stock")] long Stock,
+    [property: JsonPropertyName("location_id")] string? LocationId = null
 );
 
 public sealed record ProductUpdateStockRequestStockListItem(
-    [property: JsonPropertyName("model_id")] long? ModelId = null,
-    [property: JsonPropertyName("seller_stock")] IReadOnlyList<ProductUpdateStockRequestStockListItemSellerStockItem>? SellerStock = null
+    [property: JsonPropertyName("seller_stock")] IReadOnlyList<ProductUpdateStockRequestStockListItemSellerStockItem> SellerStock,
+    [property: JsonPropertyName("model_id")] long? ModelId = null
 );
 
 public sealed record ProductUpdateStockRequest(
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
-    [property: JsonPropertyName("stock_list")] IReadOnlyList<ProductUpdateStockRequestStockListItem>? StockList = null
+    [property: JsonPropertyName("item_id")] long ItemId,
+    [property: JsonPropertyName("stock_list")] IReadOnlyList<ProductUpdateStockRequestStockListItem> StockList
 );
 
 public sealed record ProductUpdateStockResponseFailureListItem(
@@ -2920,25 +2920,25 @@ public sealed record ProductUpdateStockResponse(
 );
 
 public sealed record ProductUpdateTierVariationRequestModelListItem(
-    [property: JsonPropertyName("model_id")] long? ModelId = null,
-    [property: JsonPropertyName("tier_index")] IReadOnlyList<long>? TierIndex = null
+    [property: JsonPropertyName("model_id")] long ModelId,
+    [property: JsonPropertyName("tier_index")] IReadOnlyList<long> TierIndex
 );
 
 public sealed record ProductUpdateTierVariationRequestStandardiseTierVariationItemVariationOptionListItem(
-    [property: JsonPropertyName("variation_option_id")] long? VariationOptionId = null,
+    [property: JsonPropertyName("variation_option_id")] long VariationOptionId,
     [property: JsonPropertyName("variation_option_name")] string? VariationOptionName = null,
     [property: JsonPropertyName("image_id")] string? ImageId = null
 );
 
 public sealed record ProductUpdateTierVariationRequestStandardiseTierVariationItem(
-    [property: JsonPropertyName("variation_id")] long? VariationId = null,
+    [property: JsonPropertyName("variation_id")] long VariationId,
+    [property: JsonPropertyName("variation_option_list")] IReadOnlyList<ProductUpdateTierVariationRequestStandardiseTierVariationItemVariationOptionListItem> VariationOptionList,
     [property: JsonPropertyName("variation_name")] string? VariationName = null,
-    [property: JsonPropertyName("variation_group_id")] long? VariationGroupId = null,
-    [property: JsonPropertyName("variation_option_list")] IReadOnlyList<ProductUpdateTierVariationRequestStandardiseTierVariationItemVariationOptionListItem>? VariationOptionList = null
+    [property: JsonPropertyName("variation_group_id")] long? VariationGroupId = null
 );
 
 public sealed record ProductUpdateTierVariationRequest(
-    [property: JsonPropertyName("item_id")] long? ItemId = null,
+    [property: JsonPropertyName("item_id")] long ItemId,
     [property: JsonPropertyName("model_list")] IReadOnlyList<ProductUpdateTierVariationRequestModelListItem>? ModelList = null,
     [property: JsonPropertyName("standardise_tier_variation")] IReadOnlyList<ProductUpdateTierVariationRequestStandardiseTierVariationItem>? StandardiseTierVariation = null
 );
