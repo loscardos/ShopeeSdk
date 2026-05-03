@@ -66,6 +66,7 @@ The sample console can generate an authorization URL, exchange a sandbox code, a
 dotnet run --project samples/ShopeeSdk.SampleConsole -- auth-url
 dotnet run --project samples/ShopeeSdk.SampleConsole -- exchange-code
 dotnet run --project samples/ShopeeSdk.SampleConsole -- get-orders
+dotnet run --project samples/ShopeeSdk.SampleConsole -- sandbox-check
 ```
 
 Use ignored local environment files such as `.token/shopee-sandbox.env` for sandbox credentials. Do not commit access tokens or refresh tokens.
@@ -96,3 +97,4 @@ Before enabling production shops, read:
 - `docs/endpoint-coverage.md`
 - `docs/live-rollout-checklist.md`
 - `docs/nuget-publishing.md`
+- `docs/sandbox-validation.md`
