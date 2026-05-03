@@ -1,0 +1,48 @@
+# Packaging and Verification
+
+The repo ships NuGet packages under `Loscardos.ShopeeSdk.*`.
+
+## Local Verification
+
+Run the same core checks used by CI:
+
+```bash
+dotnet restore ShopeeSdk.sln
+dotnet build ShopeeSdk.sln --no-restore
+dotnet test ShopeeSdk.sln --no-build
+./scripts/verify-generated.sh
+```
+
+## Package Build
+
+```bash
+dotnet pack ShopeeSdk.sln --no-build --output artifacts
+./scripts/inspect-nuget.sh
+./scripts/test-local-nuget.sh
+```
+
+`inspect-nuget.sh` checks package contents for common packaging mistakes. `test-local-nuget.sh` creates a temporary consumer project and installs the local packages from `artifacts`.
+
+## Package Metadata
+
+Shared package metadata is configured in `Directory.Build.props`:
+
+- Version: `0.1.0-preview`
+- Authors: `Loscardos`
+- License expression: `MIT`
+- Tags: `shopee;openapi;sdk;aspnet;omnichannel;ecommerce`
+- Deterministic builds enabled
+- XML docs generated
+
+## CI
+
+`.github/workflows/ci.yml` runs:
+
+- restore
+- build
+- tests
+- pack
+- local NuGet consumer validation
+- generated SDK surface verification
+
+Sandbox tests stay gated and are not run unless sandbox environment variables are explicitly configured.
