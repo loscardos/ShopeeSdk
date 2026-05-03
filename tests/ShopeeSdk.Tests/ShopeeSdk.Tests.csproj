@@ -30,6 +30,7 @@
     <ProjectReference Include="..\..\src\ShopeeSdk.Core\ShopeeSdk.Core.csproj" />
     <ProjectReference Include="..\..\src\ShopeeSdk.Generator\ShopeeSdk.Generator.csproj" />
     <ProjectReference Include="..\..\src\ShopeeSdk.Generated\ShopeeSdk.Generated.csproj" />
+    <ProjectReference Include="..\..\samples\ShopeeSdk.SampleConsole\ShopeeSdk.SampleConsole.csproj" />
   </ItemGroup>
 
 </Project>

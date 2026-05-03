@@ -12,6 +12,7 @@ using ShopeeSdk.Core.Time;
 using ShopeeSdk.Generated.Order;
 using ShopeeSdk.Generated.Product;
 using ShopeeSdk.Generated.Shop;
+using ShopeeSdk.SampleConsole;
 using GeneratedProductApi = ShopeeSdk.Core.Managers.Generated.ProductApi;
 using GeneratedShopApi = ShopeeSdk.Core.Managers.Generated.ShopApi;
 
@@ -63,6 +64,37 @@ if (args is ["exchange-code"])
     var code = Required("SHOPEE_AUTH_CODE");
     var shopId = long.Parse(Required("SHOPEE_SHOP_ID"));
     var token = await authApi.ExchangeCodeAsync(code, shopId, null, CancellationToken.None);
+    Console.WriteLine($"shop_id={token.ShopId}");
+    Console.WriteLine($"access_token_length={token.AccessToken.Length}");
+    Console.WriteLine($"refresh_token_length={token.RefreshToken.Length}");
+    Console.WriteLine($"expires_at={token.ExpiresAt:O}");
+    return;
+}
+
+if (args is ["refresh-token"] or ["refresh-token", "--update-env", _])
+{
+    options.Value.PartnerId = long.Parse(Required("SHOPEE_PARTNER_ID"));
+    options.Value.PartnerKey = Required("SHOPEE_PARTNER_KEY");
+
+    var shopId = long.Parse(Required("SHOPEE_SHOP_ID"));
+    await tokenStore.StoreAsync(
+        new ShopeeToken(
+            shopId,
+            null,
+            Required("SHOPEE_ACCESS_TOKEN"),
+            Required("SHOPEE_REFRESH_TOKEN"),
+            DateTimeOffset.UtcNow.AddHours(1),
+            "sample-env"),
+        CancellationToken.None);
+
+    var token = await authApi.RefreshAsync(shopId, null, CancellationToken.None);
+
+    if (args is ["refresh-token", "--update-env", var envPath])
+    {
+        SandboxEnvFile.UpdateTokens(envPath, token.AccessToken, token.RefreshToken);
+        Console.WriteLine($"env_updated={envPath}");
+    }
+
     Console.WriteLine($"shop_id={token.ShopId}");
     Console.WriteLine($"access_token_length={token.AccessToken.Length}");
     Console.WriteLine($"refresh_token_length={token.RefreshToken.Length}");
@@ -137,6 +169,8 @@ if (args is ["sandbox-check"])
 Console.WriteLine("Usage:");
 Console.WriteLine("  dotnet run --project samples/ShopeeSdk.SampleConsole -- auth-url");
 Console.WriteLine("  dotnet run --project samples/ShopeeSdk.SampleConsole -- exchange-code");
+Console.WriteLine("  dotnet run --project samples/ShopeeSdk.SampleConsole -- refresh-token");
+Console.WriteLine("  dotnet run --project samples/ShopeeSdk.SampleConsole -- refresh-token --update-env .token/shopee-sandbox.env");
 Console.WriteLine("  dotnet run --project samples/ShopeeSdk.SampleConsole -- get-orders");
 Console.WriteLine("  dotnet run --project samples/ShopeeSdk.SampleConsole -- sandbox-check");
 

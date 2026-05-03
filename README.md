@@ -65,6 +65,7 @@ The sample console can generate an authorization URL, exchange a sandbox code, a
 ```bash
 dotnet run --project samples/ShopeeSdk.SampleConsole -- auth-url
 dotnet run --project samples/ShopeeSdk.SampleConsole -- exchange-code
+dotnet run --project samples/ShopeeSdk.SampleConsole -- refresh-token
 dotnet run --project samples/ShopeeSdk.SampleConsole -- get-orders
 dotnet run --project samples/ShopeeSdk.SampleConsole -- sandbox-check
 ```
