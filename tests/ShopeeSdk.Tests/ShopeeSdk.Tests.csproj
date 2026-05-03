@@ -28,6 +28,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\ShopeeSdk.Abstractions\ShopeeSdk.Abstractions.csproj" />
     <ProjectReference Include="..\..\src\ShopeeSdk.Core\ShopeeSdk.Core.csproj" />
+    <ProjectReference Include="..\..\src\ShopeeSdk.Generator\ShopeeSdk.Generator.csproj" />
     <ProjectReference Include="..\..\src\ShopeeSdk.Generated\ShopeeSdk.Generated.csproj" />
   </ItemGroup>
 
