@@ -34,7 +34,7 @@ public sealed record VideoEditVideoInfoRequestVideoUploadListItemAllowInfoItem(
 
 public sealed record VideoEditVideoInfoRequestVideoUploadListItemScheduledInfoItem(
     [property: JsonPropertyName("scheduled_post")] bool ScheduledPost,
-    [property: JsonPropertyName("scheduled_post_time")] JsonElement? ScheduledPostTime = null
+    [property: JsonPropertyName("scheduled_post_time")] long? ScheduledPostTime = null
 );
 
 public sealed record VideoEditVideoInfoRequestVideoUploadListItemItemInfoItem(
@@ -229,13 +229,13 @@ public sealed record VideoGetVideoDetailResponseAllowInfoItem(
 
 public sealed record VideoGetVideoDetailResponseScheduledInfoItem(
     [property: JsonPropertyName("scheduled_post")] bool? ScheduledPost = null,
-    [property: JsonPropertyName("scheduled_post_time")] JsonElement? ScheduledPostTime = null
+    [property: JsonPropertyName("scheduled_post_time")] long? ScheduledPostTime = null
 );
 
 public sealed record VideoGetVideoDetailResponse(
     [property: JsonPropertyName("video_upload_id")] string? VideoUploadId = null,
     [property: JsonPropertyName("post_id")] string? PostId = null,
-    [property: JsonPropertyName("post_time")] JsonElement? PostTime = null,
+    [property: JsonPropertyName("post_time")] long? PostTime = null,
     [property: JsonPropertyName("video_url")] string? VideoUrl = null,
     [property: JsonPropertyName("status")] int? Status = null,
     [property: JsonPropertyName("cover_image_url")] string? CoverImageUrl = null,
@@ -248,7 +248,7 @@ public sealed record VideoGetVideoDetailResponse(
     [property: JsonPropertyName("item_list")] IReadOnlyList<VideoGetVideoDetailResponseItemListItem>? ItemList = null,
     [property: JsonPropertyName("allow_info")] VideoGetVideoDetailResponseAllowInfoItem? AllowInfo = null,
     [property: JsonPropertyName("scheduled_info")] VideoGetVideoDetailResponseScheduledInfoItem? ScheduledInfo = null,
-    [property: JsonPropertyName("update_time")] JsonElement? UpdateTime = null
+    [property: JsonPropertyName("update_time")] long? UpdateTime = null
 );
 
 public sealed record VideoGetVideoDetailAudienceDistributionRequest(
@@ -280,7 +280,7 @@ public sealed record VideoGetVideoDetailPerformanceRequest(
 
 public sealed record VideoGetVideoDetailPerformanceResponseVideoInfoItem(
     [property: JsonPropertyName("post_id")] string? PostId = null,
-    [property: JsonPropertyName("post_time")] JsonElement? PostTime = null,
+    [property: JsonPropertyName("post_time")] long? PostTime = null,
     [property: JsonPropertyName("video_url")] string? VideoUrl = null,
     [property: JsonPropertyName("cover_image_url")] string? CoverImageUrl = null,
     [property: JsonPropertyName("caption")] string? Caption = null,
@@ -367,13 +367,13 @@ public sealed record VideoGetVideoListResponseListItemAllowInfoItem(
 
 public sealed record VideoGetVideoListResponseListItemScheduledInfoItem(
     [property: JsonPropertyName("scheduled_post")] bool? ScheduledPost = null,
-    [property: JsonPropertyName("scheduled_post_time")] JsonElement? ScheduledPostTime = null
+    [property: JsonPropertyName("scheduled_post_time")] long? ScheduledPostTime = null
 );
 
 public sealed record VideoGetVideoListResponseListItem(
     [property: JsonPropertyName("video_upload_id")] string? VideoUploadId = null,
     [property: JsonPropertyName("post_id")] string? PostId = null,
-    [property: JsonPropertyName("post_time")] JsonElement? PostTime = null,
+    [property: JsonPropertyName("post_time")] long? PostTime = null,
     [property: JsonPropertyName("video_url")] string? VideoUrl = null,
     [property: JsonPropertyName("status")] int? Status = null,
     [property: JsonPropertyName("cover_image_url")] string? CoverImageUrl = null,
@@ -386,7 +386,7 @@ public sealed record VideoGetVideoListResponseListItem(
     [property: JsonPropertyName("item_list")] VideoGetVideoListResponseListItemItemListItem? ItemList = null,
     [property: JsonPropertyName("allow_info")] VideoGetVideoListResponseListItemAllowInfoItem? AllowInfo = null,
     [property: JsonPropertyName("scheduled_info")] VideoGetVideoListResponseListItemScheduledInfoItem? ScheduledInfo = null,
-    [property: JsonPropertyName("update_time")] JsonElement? UpdateTime = null
+    [property: JsonPropertyName("update_time")] long? UpdateTime = null
 );
 
 public sealed record VideoGetVideoListResponse(
@@ -408,7 +408,7 @@ public sealed record VideoGetVideoPerformanceListRequest(
 public sealed record VideoGetVideoPerformanceListResponseListItem(
     [property: JsonPropertyName("video_upload_id")] string? VideoUploadId = null,
     [property: JsonPropertyName("post_id")] string? PostId = null,
-    [property: JsonPropertyName("post_time")] JsonElement? PostTime = null,
+    [property: JsonPropertyName("post_time")] long? PostTime = null,
     [property: JsonPropertyName("video_url")] string? VideoUrl = null,
     [property: JsonPropertyName("status")] long? Status = null,
     [property: JsonPropertyName("cover_image_url")] string? CoverImageUrl = null,

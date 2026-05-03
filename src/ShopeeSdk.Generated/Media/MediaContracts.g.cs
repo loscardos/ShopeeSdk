@@ -36,7 +36,7 @@ public sealed record MediaGetVideoUploadResultResponseVideoInfoItem(
 public sealed record MediaGetVideoUploadResultResponse(
     [property: JsonPropertyName("status")] string? Status = null,
     [property: JsonPropertyName("reason")] string? Reason = null,
-    [property: JsonPropertyName("update_time")] JsonElement? UpdateTime = null,
+    [property: JsonPropertyName("update_time")] long? UpdateTime = null,
     [property: JsonPropertyName("video_info")] MediaGetVideoUploadResultResponseVideoInfoItem? VideoInfo = null
 );
 

@@ -179,7 +179,7 @@ public sealed record LivestreamGetLatestCommentListRequest(
 public sealed record LivestreamGetLatestCommentListResponseListItem(
     [property: JsonPropertyName("comment_id")] long? CommentId = null,
     [property: JsonPropertyName("content")] string? Content = null,
-    [property: JsonPropertyName("timestamp")] JsonElement? Timestamp = null,
+    [property: JsonPropertyName("timestamp")] long? Timestamp = null,
     [property: JsonPropertyName("user_id")] long? UserId = null,
     [property: JsonPropertyName("username")] string? Username = null
 );

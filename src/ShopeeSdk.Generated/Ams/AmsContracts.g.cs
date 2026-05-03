@@ -8,8 +8,8 @@ namespace ShopeeSdk.Generated.Ams;
 
 public sealed record AmsAddAllProductsToOpenCampaignRequest(
     [property: JsonPropertyName("commission_rate")] decimal CommissionRate,
-    [property: JsonPropertyName("period_start_time")] JsonElement? PeriodStartTime = null,
-    [property: JsonPropertyName("period_end_time")] JsonElement? PeriodEndTime = null
+    [property: JsonPropertyName("period_start_time")] long? PeriodStartTime = null,
+    [property: JsonPropertyName("period_end_time")] long? PeriodEndTime = null
 );
 
 public sealed record AmsAddAllProductsToOpenCampaignResponse(
@@ -20,8 +20,8 @@ public sealed record AmsAddAllProductsToOpenCampaignResponse(
 public sealed record AmsBatchAddProductsToOpenCampaignRequest(
     [property: JsonPropertyName("item_id_list")] IReadOnlyList<long> ItemIdList,
     [property: JsonPropertyName("commission_rate")] decimal CommissionRate,
-    [property: JsonPropertyName("period_start_time")] JsonElement? PeriodStartTime = null,
-    [property: JsonPropertyName("period_end_time")] JsonElement? PeriodEndTime = null
+    [property: JsonPropertyName("period_start_time")] long? PeriodStartTime = null,
+    [property: JsonPropertyName("period_end_time")] long? PeriodEndTime = null
 );
 
 public sealed record AmsBatchAddProductsToOpenCampaignResponseFailedListItem(
@@ -38,8 +38,8 @@ public sealed record AmsBatchAddProductsToOpenCampaignResponse(
 public sealed record AmsBatchEditProductsOpenCampaignSettingRequest(
     [property: JsonPropertyName("campaign_ids")] IReadOnlyList<long> CampaignIds,
     [property: JsonPropertyName("commission_rate")] decimal? CommissionRate = null,
-    [property: JsonPropertyName("period_start_time")] JsonElement? PeriodStartTime = null,
-    [property: JsonPropertyName("period_end_time")] JsonElement? PeriodEndTime = null
+    [property: JsonPropertyName("period_start_time")] long? PeriodStartTime = null,
+    [property: JsonPropertyName("period_end_time")] long? PeriodEndTime = null
 );
 
 public sealed record AmsBatchEditProductsOpenCampaignSettingResponseFailedListItem(
@@ -93,8 +93,8 @@ public sealed record AmsCreateNewTargetedCampaignRequestAffiliateListItem(
 
 public sealed record AmsCreateNewTargetedCampaignRequest(
     [property: JsonPropertyName("campaign_name")] string CampaignName,
-    [property: JsonPropertyName("period_start_time")] JsonElement? PeriodStartTime,
-    [property: JsonPropertyName("period_end_time")] JsonElement? PeriodEndTime,
+    [property: JsonPropertyName("period_start_time")] long PeriodStartTime,
+    [property: JsonPropertyName("period_end_time")] long PeriodEndTime,
     [property: JsonPropertyName("seller_message")] string SellerMessage,
     [property: JsonPropertyName("item_list")] IReadOnlyList<AmsCreateNewTargetedCampaignRequestItemListItem> ItemList,
     [property: JsonPropertyName("affiliate_list")] IReadOnlyList<AmsCreateNewTargetedCampaignRequestAffiliateListItem> AffiliateList,
@@ -142,8 +142,8 @@ public sealed record AmsEditAffiliateListOfTargetedCampaignResponse(
 
 public sealed record AmsEditAllProductsOpenCampaignSettingRequest(
     [property: JsonPropertyName("commission_rate")] decimal? CommissionRate = null,
-    [property: JsonPropertyName("period_start_time")] JsonElement? PeriodStartTime = null,
-    [property: JsonPropertyName("period_end_time")] JsonElement? PeriodEndTime = null
+    [property: JsonPropertyName("period_start_time")] long? PeriodStartTime = null,
+    [property: JsonPropertyName("period_end_time")] long? PeriodEndTime = null
 );
 
 public sealed record AmsEditAllProductsOpenCampaignSettingResponse(
@@ -291,14 +291,14 @@ public sealed record AmsGetConversionReportRequest(
     [property: JsonPropertyName("seller_campaign_type")] string? SellerCampaignType = null,
     [property: JsonPropertyName("deduction_status")] string? DeductionStatus = null,
     [property: JsonPropertyName("deduction_method")] string? DeductionMethod = null,
-    [property: JsonPropertyName("place_order_time_start")] JsonElement? PlaceOrderTimeStart = null,
-    [property: JsonPropertyName("place_order_time_end")] JsonElement? PlaceOrderTimeEnd = null,
-    [property: JsonPropertyName("order_completed_time_start")] JsonElement? OrderCompletedTimeStart = null,
-    [property: JsonPropertyName("order_completed_time_end")] JsonElement? OrderCompletedTimeEnd = null,
-    [property: JsonPropertyName("conversion_completed_time_start")] JsonElement? ConversionCompletedTimeStart = null,
-    [property: JsonPropertyName("conversion_completed_time_end")] JsonElement? ConversionCompletedTimeEnd = null,
-    [property: JsonPropertyName("ams_deduction_time_start")] JsonElement? AmsDeductionTimeStart = null,
-    [property: JsonPropertyName("ams_deduction_time_end")] JsonElement? AmsDeductionTimeEnd = null
+    [property: JsonPropertyName("place_order_time_start")] long? PlaceOrderTimeStart = null,
+    [property: JsonPropertyName("place_order_time_end")] long? PlaceOrderTimeEnd = null,
+    [property: JsonPropertyName("order_completed_time_start")] long? OrderCompletedTimeStart = null,
+    [property: JsonPropertyName("order_completed_time_end")] long? OrderCompletedTimeEnd = null,
+    [property: JsonPropertyName("conversion_completed_time_start")] long? ConversionCompletedTimeStart = null,
+    [property: JsonPropertyName("conversion_completed_time_end")] long? ConversionCompletedTimeEnd = null,
+    [property: JsonPropertyName("ams_deduction_time_start")] long? AmsDeductionTimeStart = null,
+    [property: JsonPropertyName("ams_deduction_time_end")] long? AmsDeductionTimeEnd = null
 );
 
 public sealed record AmsGetConversionReportResponseListItemItemsItem(
@@ -408,7 +408,7 @@ public sealed record AmsGetOpenCampaignAddedProductRequest(
 
 public sealed record AmsGetOpenCampaignAddedProductResponseItemListItemCommissionProtectionListItem(
     [property: JsonPropertyName("commission_rate")] decimal? CommissionRate = null,
-    [property: JsonPropertyName("protection_period_end_time")] JsonElement? ProtectionPeriodEndTime = null
+    [property: JsonPropertyName("protection_period_end_time")] long? ProtectionPeriodEndTime = null
 );
 
 public sealed record AmsGetOpenCampaignAddedProductResponseItemListItem(
@@ -417,9 +417,9 @@ public sealed record AmsGetOpenCampaignAddedProductResponseItemListItem(
     [property: JsonPropertyName("campaign_id")] long? CampaignId = null,
     [property: JsonPropertyName("campaign_status")] string? CampaignStatus = null,
     [property: JsonPropertyName("commission_rate")] decimal? CommissionRate = null,
-    [property: JsonPropertyName("period_start_time")] JsonElement? PeriodStartTime = null,
-    [property: JsonPropertyName("period_end_time")] JsonElement? PeriodEndTime = null,
-    [property: JsonPropertyName("pending_terminated_time")] JsonElement? PendingTerminatedTime = null,
+    [property: JsonPropertyName("period_start_time")] long? PeriodStartTime = null,
+    [property: JsonPropertyName("period_end_time")] long? PeriodEndTime = null,
+    [property: JsonPropertyName("pending_terminated_time")] long? PendingTerminatedTime = null,
     [property: JsonPropertyName("commission_protection_list")] IReadOnlyList<AmsGetOpenCampaignAddedProductResponseItemListItemCommissionProtectionListItem>? CommissionProtectionList = null,
     [property: JsonPropertyName("max_commission_rate_current_day")] decimal? MaxCommissionRateCurrentDay = null
 );
@@ -503,8 +503,8 @@ public sealed record AmsGetOptimizationSuggestionProductResponseItemListItem(
     [property: JsonPropertyName("rcmd_reason")] IReadOnlyList<string>? RcmdReason = null,
     [property: JsonPropertyName("campaign_id")] long? CampaignId = null,
     [property: JsonPropertyName("commission_rate")] decimal? CommissionRate = null,
-    [property: JsonPropertyName("period_start_time")] JsonElement? PeriodStartTime = null,
-    [property: JsonPropertyName("period_end_time")] JsonElement? PeriodEndTime = null,
+    [property: JsonPropertyName("period_start_time")] long? PeriodStartTime = null,
+    [property: JsonPropertyName("period_end_time")] long? PeriodEndTime = null,
     [property: JsonPropertyName("affiliate_count")] long? AffiliateCount = null,
     [property: JsonPropertyName("item_sold")] long? ItemSold = null,
     [property: JsonPropertyName("campaign_status")] string? CampaignStatus = null,
@@ -669,8 +669,8 @@ public sealed record AmsGetTargetedCampaignListRequest(
     [property: JsonPropertyName("campaign_id_list")] string? CampaignIdList = null,
     [property: JsonPropertyName("campaign_name")] string? CampaignName = null,
     [property: JsonPropertyName("campaign_status")] string? CampaignStatus = null,
-    [property: JsonPropertyName("period_start_time")] JsonElement? PeriodStartTime = null,
-    [property: JsonPropertyName("period_end_time")] JsonElement? PeriodEndTime = null,
+    [property: JsonPropertyName("period_start_time")] long? PeriodStartTime = null,
+    [property: JsonPropertyName("period_end_time")] long? PeriodEndTime = null,
     [property: JsonPropertyName("item_id")] long? ItemId = null,
     [property: JsonPropertyName("item_name")] string? ItemName = null
 );
@@ -680,10 +680,10 @@ public sealed record AmsGetTargetedCampaignListResponseCommissionListItem(
     [property: JsonPropertyName("campaign_name")] string? CampaignName = null,
     [property: JsonPropertyName("campaign_status")] string? CampaignStatus = null,
     [property: JsonPropertyName("campaign_source")] string? CampaignSource = null,
-    [property: JsonPropertyName("period_start_time")] JsonElement? PeriodStartTime = null,
-    [property: JsonPropertyName("period_end_time")] JsonElement? PeriodEndTime = null,
+    [property: JsonPropertyName("period_start_time")] long? PeriodStartTime = null,
+    [property: JsonPropertyName("period_end_time")] long? PeriodEndTime = null,
     [property: JsonPropertyName("last_editor")] string? LastEditor = null,
-    [property: JsonPropertyName("last_edit_time")] JsonElement? LastEditTime = null,
+    [property: JsonPropertyName("last_edit_time")] long? LastEditTime = null,
     [property: JsonPropertyName("affiliate_count")] int? AffiliateCount = null,
     [property: JsonPropertyName("item_count")] int? ItemCount = null,
     [property: JsonPropertyName("min_rate")] decimal? MinRate = null,
@@ -730,7 +730,7 @@ public sealed record AmsGetTargetedCampaignSettingsResponseAffiliateListItem(
 
 public sealed record AmsGetTargetedCampaignSettingsResponseItemListItemCommissionProtectionListItem(
     [property: JsonPropertyName("commission_rate")] decimal? CommissionRate = null,
-    [property: JsonPropertyName("protection_period_end_time")] JsonElement? ProtectionPeriodEndTime = null
+    [property: JsonPropertyName("protection_period_end_time")] long? ProtectionPeriodEndTime = null
 );
 
 public sealed record AmsGetTargetedCampaignSettingsResponseItemListItem(
@@ -744,13 +744,13 @@ public sealed record AmsGetTargetedCampaignSettingsResponseItemListItem(
 public sealed record AmsGetTargetedCampaignSettingsResponse(
     [property: JsonPropertyName("campaign_name")] string? CampaignName = null,
     [property: JsonPropertyName("commission_status")] string? CommissionStatus = null,
-    [property: JsonPropertyName("period_start_time")] JsonElement? PeriodStartTime = null,
-    [property: JsonPropertyName("period_end_time")] JsonElement? PeriodEndTime = null,
+    [property: JsonPropertyName("period_start_time")] long? PeriodStartTime = null,
+    [property: JsonPropertyName("period_end_time")] long? PeriodEndTime = null,
     [property: JsonPropertyName("is_set_budget")] bool? IsSetBudget = null,
     [property: JsonPropertyName("budget")] decimal? Budget = null,
     [property: JsonPropertyName("budget_cost")] decimal? BudgetCost = null,
     [property: JsonPropertyName("seller_message")] string? SellerMessage = null,
-    [property: JsonPropertyName("pending_terminated_time")] JsonElement? PendingTerminatedTime = null,
+    [property: JsonPropertyName("pending_terminated_time")] long? PendingTerminatedTime = null,
     [property: JsonPropertyName("affiliate_list")] IReadOnlyList<AmsGetTargetedCampaignSettingsResponseAffiliateListItem>? AffiliateList = null,
     [property: JsonPropertyName("item_list")] IReadOnlyList<AmsGetTargetedCampaignSettingsResponseItemListItem>? ItemList = null
 );
@@ -793,8 +793,8 @@ public sealed record AmsGetValidationReportRequest(
     [property: JsonPropertyName("validation_id")] string ValidationId,
     [property: JsonPropertyName("validation_month")] int ValidationMonth,
     [property: JsonPropertyName("campaign_source")] string CampaignSource,
-    [property: JsonPropertyName("place_order_time_start")] JsonElement? PlaceOrderTimeStart,
-    [property: JsonPropertyName("place_order_time_end")] JsonElement? PlaceOrderTimeEnd,
+    [property: JsonPropertyName("place_order_time_start")] long PlaceOrderTimeStart,
+    [property: JsonPropertyName("place_order_time_end")] long PlaceOrderTimeEnd,
     [property: JsonPropertyName("order_sn")] string? OrderSn = null,
     [property: JsonPropertyName("l1_category_id")] long? L1CategoryId = null,
     [property: JsonPropertyName("l2_category_id")] long? L2CategoryId = null,
@@ -929,8 +929,8 @@ public sealed record AmsUpdateAutoAddNewProductSettingResponse(
 public sealed record AmsUpdateBasicInfoOfTargetedCampaignRequest(
     [property: JsonPropertyName("campaign_id")] long CampaignId,
     [property: JsonPropertyName("campaign_name")] string? CampaignName = null,
-    [property: JsonPropertyName("period_start_time")] JsonElement? PeriodStartTime = null,
-    [property: JsonPropertyName("period_end_time")] JsonElement? PeriodEndTime = null,
+    [property: JsonPropertyName("period_start_time")] long? PeriodStartTime = null,
+    [property: JsonPropertyName("period_end_time")] long? PeriodEndTime = null,
     [property: JsonPropertyName("is_set_budget")] bool? IsSetBudget = null,
     [property: JsonPropertyName("budget")] decimal? Budget = null
 );

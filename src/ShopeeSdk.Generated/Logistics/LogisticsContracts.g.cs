@@ -343,7 +343,7 @@ public sealed record LogisticsGetBookingShippingParameterResponseInfoNeededItem(
 );
 
 public sealed record LogisticsGetBookingShippingParameterResponsePickupItemAddressListItemTimeSlotListItem(
-    [property: JsonPropertyName("date")] JsonElement? Date = null,
+    [property: JsonPropertyName("date")] long? Date = null,
     [property: JsonPropertyName("time_text")] string? TimeText = null,
     [property: JsonPropertyName("pickup_time_id")] string? PickupTimeId = null,
     [property: JsonPropertyName("flags")] IReadOnlyList<string>? Flags = null,
@@ -378,7 +378,7 @@ public sealed record LogisticsGetBookingTrackingInfoRequest(
 );
 
 public sealed record LogisticsGetBookingTrackingInfoResponseTrackingInfoItem(
-    [property: JsonPropertyName("update_time")] JsonElement? UpdateTime = null,
+    [property: JsonPropertyName("update_time")] long? UpdateTime = null,
     [property: JsonPropertyName("description")] string? Description = null,
     [property: JsonPropertyName("logistics_status")] string? LogisticsStatus = null
 );
@@ -503,7 +503,7 @@ public sealed record LogisticsGetMassShippingParameterResponseDropoffItem(
 );
 
 public sealed record LogisticsGetMassShippingParameterResponsePickupItemAddressListItemTimeSlotListItem(
-    [property: JsonPropertyName("date")] JsonElement? Date = null,
+    [property: JsonPropertyName("date")] long? Date = null,
     [property: JsonPropertyName("time_text")] string? TimeText = null,
     [property: JsonPropertyName("pickup_time_id")] string? PickupTimeId = null,
     [property: JsonPropertyName("flags")] IReadOnlyList<string>? Flags = null
@@ -1146,7 +1146,7 @@ public sealed record LogisticsGetShippingParameterResponseDropoffItem(
 );
 
 public sealed record LogisticsGetShippingParameterResponsePickupItemAddressListItemTimeSlotListItem(
-    [property: JsonPropertyName("date")] JsonElement? Date = null,
+    [property: JsonPropertyName("date")] long? Date = null,
     [property: JsonPropertyName("time_text")] string? TimeText = null,
     [property: JsonPropertyName("pickup_time_id")] string? PickupTimeId = null,
     [property: JsonPropertyName("flags")] IReadOnlyList<string>? Flags = null
@@ -1181,7 +1181,7 @@ public sealed record LogisticsGetTrackingInfoRequest(
 );
 
 public sealed record LogisticsGetTrackingInfoResponseTrackingInfoItem(
-    [property: JsonPropertyName("update_time")] JsonElement? UpdateTime = null,
+    [property: JsonPropertyName("update_time")] long? UpdateTime = null,
     [property: JsonPropertyName("description")] string? Description = null,
     [property: JsonPropertyName("logistics_status")] string? LogisticsStatus = null
 );

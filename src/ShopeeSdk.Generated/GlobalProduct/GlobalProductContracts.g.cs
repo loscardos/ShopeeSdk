@@ -427,8 +427,8 @@ public sealed record GlobalProductGetGlobalItemInfoResponseGlobalItemListItem(
     [property: JsonPropertyName("description")] string? Description = null,
     [property: JsonPropertyName("global_item_sku")] string? GlobalItemSku = null,
     [property: JsonPropertyName("global_item_status")] string? GlobalItemStatus = null,
-    [property: JsonPropertyName("create_time")] JsonElement? CreateTime = null,
-    [property: JsonPropertyName("update_time")] JsonElement? UpdateTime = null,
+    [property: JsonPropertyName("create_time")] long? CreateTime = null,
+    [property: JsonPropertyName("update_time")] long? UpdateTime = null,
     [property: JsonPropertyName("stock_info")] IReadOnlyList<GlobalProductGetGlobalItemInfoResponseGlobalItemListItemStockInfoItem>? StockInfo = null,
     [property: JsonPropertyName("price_info")] IReadOnlyList<GlobalProductGetGlobalItemInfoResponseGlobalItemListItemPriceInfoItem>? PriceInfo = null,
     [property: JsonPropertyName("image")] GlobalProductGetGlobalItemInfoResponseGlobalItemListItemImageItem? Image = null,
@@ -537,13 +537,13 @@ public sealed record GlobalProductGetGlobalItemLimitResponse(
 public sealed record GlobalProductGetGlobalItemListRequest(
     [property: JsonPropertyName("page_size")] int PageSize,
     [property: JsonPropertyName("offset")] string? Offset = null,
-    [property: JsonPropertyName("update_time_from")] JsonElement? UpdateTimeFrom = null,
-    [property: JsonPropertyName("update_time_to")] JsonElement? UpdateTimeTo = null
+    [property: JsonPropertyName("update_time_from")] long? UpdateTimeFrom = null,
+    [property: JsonPropertyName("update_time_to")] long? UpdateTimeTo = null
 );
 
 public sealed record GlobalProductGetGlobalItemListResponseGlobalItemListItem(
     [property: JsonPropertyName("global_item_id")] int? GlobalItemId = null,
-    [property: JsonPropertyName("update_time")] JsonElement? UpdateTime = null
+    [property: JsonPropertyName("update_time")] long? UpdateTime = null
 );
 
 public sealed record GlobalProductGetGlobalItemListResponse(

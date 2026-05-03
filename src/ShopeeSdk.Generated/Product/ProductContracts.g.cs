@@ -187,7 +187,7 @@ public sealed record ProductAddItemRequest(
     [property: JsonPropertyName("ds_cat_rcmd_id")] string? DsCatRcmdId = null,
     [property: JsonPropertyName("promotion_images")] ProductAddItemRequestPromotionImagesItem? PromotionImages = null,
     [property: JsonPropertyName("compatibility_info")] ProductAddItemRequestCompatibilityInfoItem? CompatibilityInfo = null,
-    [property: JsonPropertyName("scheduled_publish_time")] JsonElement? ScheduledPublishTime = null,
+    [property: JsonPropertyName("scheduled_publish_time")] long? ScheduledPublishTime = null,
     [property: JsonPropertyName("authorised_brand_id")] long? AuthorisedBrandId = null,
     [property: JsonPropertyName("size_chart_info")] ProductAddItemRequestSizeChartInfoItem? SizeChartInfo = null,
     [property: JsonPropertyName("certification_info")] ProductAddItemRequestCertificationInfoItem? CertificationInfo = null,
@@ -813,7 +813,7 @@ public sealed record ProductGetCommentRequest(
 public sealed record ProductGetCommentResponseItemCommentListItemCommentReplyItem(
     [property: JsonPropertyName("reply")] string? Reply = null,
     [property: JsonPropertyName("hidden")] bool? Hidden = null,
-    [property: JsonPropertyName("create_time")] JsonElement? CreateTime = null
+    [property: JsonPropertyName("create_time")] long? CreateTime = null
 );
 
 public sealed record ProductGetCommentResponseItemCommentListItemMediaItem(
@@ -831,7 +831,7 @@ public sealed record ProductGetCommentResponseItemCommentListItem(
     [property: JsonPropertyName("rating_star")] int? RatingStar = null,
     [property: JsonPropertyName("editable")] string? Editable = null,
     [property: JsonPropertyName("hidden")] bool? Hidden = null,
-    [property: JsonPropertyName("create_time")] JsonElement? CreateTime = null,
+    [property: JsonPropertyName("create_time")] long? CreateTime = null,
     [property: JsonPropertyName("comment_reply")] ProductGetCommentResponseItemCommentListItemCommentReplyItem? CommentReply = null,
     [property: JsonPropertyName("model_id_list")] IReadOnlyList<long>? ModelIdList = null,
     [property: JsonPropertyName("media")] ProductGetCommentResponseItemCommentListItemMediaItem? Media = null
@@ -1023,8 +1023,8 @@ public sealed record ProductGetItemBaseInfoResponseItemListItem(
     [property: JsonPropertyName("item_name")] string? ItemName = null,
     [property: JsonPropertyName("description")] string? Description = null,
     [property: JsonPropertyName("item_sku")] string? ItemSku = null,
-    [property: JsonPropertyName("create_time")] JsonElement? CreateTime = null,
-    [property: JsonPropertyName("update_time")] JsonElement? UpdateTime = null,
+    [property: JsonPropertyName("create_time")] long? CreateTime = null,
+    [property: JsonPropertyName("update_time")] long? UpdateTime = null,
     [property: JsonPropertyName("attribute_list")] IReadOnlyList<ProductGetItemBaseInfoResponseItemListItemAttributeListItem>? AttributeList = null,
     [property: JsonPropertyName("price_info")] IReadOnlyList<ProductGetItemBaseInfoResponseItemListItemPriceInfoItem>? PriceInfo = null,
     [property: JsonPropertyName("image")] ProductGetItemBaseInfoResponseItemListItemImageItem? Image = null,
@@ -1046,7 +1046,7 @@ public sealed record ProductGetItemBaseInfoResponseItemListItem(
     [property: JsonPropertyName("size_chart_id")] long? SizeChartId = null,
     [property: JsonPropertyName("promotion_image")] ProductGetItemBaseInfoResponseItemListItemPromotionImageItem? PromotionImage = null,
     [property: JsonPropertyName("compatibility_info")] ProductGetItemBaseInfoResponseItemListItemCompatibilityInfoItem? CompatibilityInfo = null,
-    [property: JsonPropertyName("scheduled_publish_time")] JsonElement? ScheduledPublishTime = null,
+    [property: JsonPropertyName("scheduled_publish_time")] long? ScheduledPublishTime = null,
     [property: JsonPropertyName("authorised_brand_id")] long? AuthorisedBrandId = null,
     [property: JsonPropertyName("ssp_id")] long? SspId = null,
     [property: JsonPropertyName("is_fulfillment_by_shopee")] bool? IsFulfillmentByShopee = null,
@@ -1300,8 +1300,8 @@ public sealed record ProductGetItemListRequest(
     [property: JsonPropertyName("offset")] long Offset,
     [property: JsonPropertyName("page_size")] long PageSize,
     [property: JsonPropertyName("item_status")] IReadOnlyList<string> ItemStatus,
-    [property: JsonPropertyName("update_time_from")] JsonElement? UpdateTimeFrom = null,
-    [property: JsonPropertyName("update_time_to")] JsonElement? UpdateTimeTo = null
+    [property: JsonPropertyName("update_time_from")] long? UpdateTimeFrom = null,
+    [property: JsonPropertyName("update_time_to")] long? UpdateTimeTo = null
 );
 
 public sealed record ProductGetItemListResponseItemItemTagItem(
@@ -1311,7 +1311,7 @@ public sealed record ProductGetItemListResponseItemItemTagItem(
 public sealed record ProductGetItemListResponseItemItem(
     [property: JsonPropertyName("item_id")] long? ItemId = null,
     [property: JsonPropertyName("item_status")] string? ItemStatus = null,
-    [property: JsonPropertyName("update_time")] JsonElement? UpdateTime = null,
+    [property: JsonPropertyName("update_time")] long? UpdateTime = null,
     [property: JsonPropertyName("tag")] ProductGetItemListResponseItemItemTagItem? Tag = null
 );
 
@@ -1364,8 +1364,8 @@ public sealed record ProductGetItemPromotionResponseSuccessListItemPromotionItem
     [property: JsonPropertyName("promotion_type")] string? PromotionType = null,
     [property: JsonPropertyName("promotion_id")] long? PromotionId = null,
     [property: JsonPropertyName("model_id")] long? ModelId = null,
-    [property: JsonPropertyName("start_time")] JsonElement? StartTime = null,
-    [property: JsonPropertyName("end_time")] JsonElement? EndTime = null,
+    [property: JsonPropertyName("start_time")] long? StartTime = null,
+    [property: JsonPropertyName("end_time")] long? EndTime = null,
     [property: JsonPropertyName("promotion_price_info")] IReadOnlyList<ProductGetItemPromotionResponseSuccessListItemPromotionItemPromotionPriceInfoItem>? PromotionPriceInfo = null,
     [property: JsonPropertyName("promotion_staging")] string? PromotionStaging = null,
     [property: JsonPropertyName("promotion_stock_info_v2")] ProductGetItemPromotionResponseSuccessListItemPromotionItemPromotionStockInfoV2Item? PromotionStockInfoV2 = null
@@ -1394,8 +1394,8 @@ public sealed record ProductGetItemViolationInfoResponseItemListItemItemStatusDe
     [property: JsonPropertyName("violation_type")] string? ViolationType = null,
     [property: JsonPropertyName("violation_reason")] string? ViolationReason = null,
     [property: JsonPropertyName("suggestion")] string? Suggestion = null,
-    [property: JsonPropertyName("fix_deadline_time")] JsonElement? FixDeadlineTime = null,
-    [property: JsonPropertyName("update_time")] JsonElement? UpdateTime = null
+    [property: JsonPropertyName("fix_deadline_time")] long? FixDeadlineTime = null,
+    [property: JsonPropertyName("update_time")] long? UpdateTime = null
 );
 
 public sealed record ProductGetItemViolationInfoResponseItemListItemDeboostDetailsItemSuggestedCategoryItem(
@@ -1408,8 +1408,8 @@ public sealed record ProductGetItemViolationInfoResponseItemListItemDeboostDetai
     [property: JsonPropertyName("violation_reason")] string? ViolationReason = null,
     [property: JsonPropertyName("suggestion")] string? Suggestion = null,
     [property: JsonPropertyName("suggested_category")] IReadOnlyList<ProductGetItemViolationInfoResponseItemListItemDeboostDetailsItemSuggestedCategoryItem>? SuggestedCategory = null,
-    [property: JsonPropertyName("fix_deadline_time")] JsonElement? FixDeadlineTime = null,
-    [property: JsonPropertyName("update_time")] JsonElement? UpdateTime = null
+    [property: JsonPropertyName("fix_deadline_time")] long? FixDeadlineTime = null,
+    [property: JsonPropertyName("update_time")] long? UpdateTime = null
 );
 
 public sealed record ProductGetItemViolationInfoResponseItemListItem(
@@ -2093,7 +2093,7 @@ public sealed record ProductGetWeightRecommendationRequest(
 );
 
 public sealed record ProductGetWeightRecommendationResponse(
-    [property: JsonPropertyName("normal_weight_range")] JsonElement? NormalWeightRange = null
+    [property: JsonPropertyName("normal_weight_range")] IReadOnlyList<decimal>? NormalWeightRange = null
 );
 
 public sealed record ProductInitTierVariationRequestModelItemSellerStockItem(
@@ -2636,7 +2636,7 @@ public sealed record ProductUpdateItemRequest(
     [property: JsonPropertyName("ds_cat_rcmd_id")] string? DsCatRcmdId = null,
     [property: JsonPropertyName("promotion_images")] ProductUpdateItemRequestPromotionImagesItem? PromotionImages = null,
     [property: JsonPropertyName("compatibility_info")] ProductUpdateItemRequestCompatibilityInfoItem? CompatibilityInfo = null,
-    [property: JsonPropertyName("scheduled_publish_time")] JsonElement? ScheduledPublishTime = null,
+    [property: JsonPropertyName("scheduled_publish_time")] long? ScheduledPublishTime = null,
     [property: JsonPropertyName("authorised_brand_id")] long? AuthorisedBrandId = null,
     [property: JsonPropertyName("size_chart_info")] ProductUpdateItemRequestSizeChartInfoItem? SizeChartInfo = null,
     [property: JsonPropertyName("certification_info")] ProductUpdateItemRequestCertificationInfoItem? CertificationInfo = null,

@@ -19,8 +19,8 @@ public sealed record BundleDealAddBundleDealRequest(
     [property: JsonPropertyName("fix_price")] decimal FixPrice,
     [property: JsonPropertyName("discount_percentage")] int DiscountPercentage,
     [property: JsonPropertyName("min_amount")] int MinAmount,
-    [property: JsonPropertyName("start_time")] JsonElement? StartTime,
-    [property: JsonPropertyName("end_time")] JsonElement? EndTime,
+    [property: JsonPropertyName("start_time")] long StartTime,
+    [property: JsonPropertyName("end_time")] long EndTime,
     [property: JsonPropertyName("name")] string Name,
     [property: JsonPropertyName("purchase_limit")] int PurchaseLimit,
     [property: JsonPropertyName("additional_tiers")] IReadOnlyList<BundleDealAddBundleDealRequestAdditionalTiersItem>? AdditionalTiers = null
@@ -110,8 +110,8 @@ public sealed record BundleDealGetBundleDealResponseBundleDealRuleItem(
 public sealed record BundleDealGetBundleDealResponse(
     [property: JsonPropertyName("bundle_deal_id")] int? BundleDealId = null,
     [property: JsonPropertyName("name")] string? Name = null,
-    [property: JsonPropertyName("start_time")] JsonElement? StartTime = null,
-    [property: JsonPropertyName("end_time")] JsonElement? EndTime = null,
+    [property: JsonPropertyName("start_time")] long? StartTime = null,
+    [property: JsonPropertyName("end_time")] long? EndTime = null,
     [property: JsonPropertyName("bundle_deal_rule")] BundleDealGetBundleDealResponseBundleDealRuleItem? BundleDealRule = null,
     [property: JsonPropertyName("purchase_limit")] int? PurchaseLimit = null
 );
@@ -155,8 +155,8 @@ public sealed record BundleDealGetBundleDealListResponseBundleDealListItemBundle
 public sealed record BundleDealGetBundleDealListResponseBundleDealListItem(
     [property: JsonPropertyName("bundle_deal_id")] int? BundleDealId = null,
     [property: JsonPropertyName("name")] string? Name = null,
-    [property: JsonPropertyName("start_time")] JsonElement? StartTime = null,
-    [property: JsonPropertyName("end_time")] JsonElement? EndTime = null,
+    [property: JsonPropertyName("start_time")] long? StartTime = null,
+    [property: JsonPropertyName("end_time")] long? EndTime = null,
     [property: JsonPropertyName("bundle_deal_rule")] BundleDealGetBundleDealListResponseBundleDealListItemBundleDealRuleItem? BundleDealRule = null,
     [property: JsonPropertyName("purchase_limit")] int? PurchaseLimit = null
 );
@@ -180,8 +180,8 @@ public sealed record BundleDealUpdateBundleDealRequest(
     [property: JsonPropertyName("fix_price")] decimal? FixPrice = null,
     [property: JsonPropertyName("discount_percentage")] int? DiscountPercentage = null,
     [property: JsonPropertyName("min_amount")] int? MinAmount = null,
-    [property: JsonPropertyName("start_time")] JsonElement? StartTime = null,
-    [property: JsonPropertyName("end_time")] JsonElement? EndTime = null,
+    [property: JsonPropertyName("start_time")] long? StartTime = null,
+    [property: JsonPropertyName("end_time")] long? EndTime = null,
     [property: JsonPropertyName("name")] string? Name = null,
     [property: JsonPropertyName("purchase_limit")] int? PurchaseLimit = null,
     [property: JsonPropertyName("additional_tiers")] BundleDealUpdateBundleDealRequestAdditionalTiersItem? AdditionalTiers = null
@@ -206,8 +206,8 @@ public sealed record BundleDealUpdateBundleDealResponseBundleDealRuleItem(
 public sealed record BundleDealUpdateBundleDealResponse(
     [property: JsonPropertyName("bundle_deal_id")] int? BundleDealId = null,
     [property: JsonPropertyName("name")] string? Name = null,
-    [property: JsonPropertyName("start_time")] JsonElement? StartTime = null,
-    [property: JsonPropertyName("end_time")] JsonElement? EndTime = null,
+    [property: JsonPropertyName("start_time")] long? StartTime = null,
+    [property: JsonPropertyName("end_time")] long? EndTime = null,
     [property: JsonPropertyName("bundle_deal_rule")] BundleDealUpdateBundleDealResponseBundleDealRuleItem? BundleDealRule = null,
     [property: JsonPropertyName("purchase_limit")] int? PurchaseLimit = null
 );

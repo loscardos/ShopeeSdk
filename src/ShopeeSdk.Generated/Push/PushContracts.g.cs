@@ -19,7 +19,7 @@ public sealed record PushGetAppPushConfigRequest(
 public sealed record PushGetAppPushConfigResponse(
     [property: JsonPropertyName("callback_url")] string? CallbackUrl = null,
     [property: JsonPropertyName("live_push_status")] string? LivePushStatus = null,
-    [property: JsonPropertyName("suspended_time")] JsonElement? SuspendedTime = null,
+    [property: JsonPropertyName("suspended_time")] long? SuspendedTime = null,
     [property: JsonPropertyName("blocked_shop_id")] IReadOnlyList<int>? BlockedShopId = null,
     [property: JsonPropertyName("push_config_on_list")] IReadOnlyList<int>? PushConfigOnList = null,
     [property: JsonPropertyName("push_config_off_list")] IReadOnlyList<int>? PushConfigOffList = null
@@ -31,7 +31,7 @@ public sealed record PushGetLostPushMessageRequest(
 public sealed record PushGetLostPushMessageResponsePushMessageListItem(
     [property: JsonPropertyName("shop_id")] int? ShopId = null,
     [property: JsonPropertyName("code")] int? Code = null,
-    [property: JsonPropertyName("timestamp")] JsonElement? Timestamp = null,
+    [property: JsonPropertyName("timestamp")] long? Timestamp = null,
     [property: JsonPropertyName("data")] string? Data = null
 );
 

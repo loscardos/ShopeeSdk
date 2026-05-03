@@ -494,7 +494,7 @@ public sealed record AdsGetShopToggleInfoRequest(
 );
 
 public sealed record AdsGetShopToggleInfoResponse(
-    [property: JsonPropertyName("data_timestamp")] JsonElement? DataTimestamp = null,
+    [property: JsonPropertyName("data_timestamp")] long? DataTimestamp = null,
     [property: JsonPropertyName("auto_top_up")] bool? AutoTopUp = null,
     [property: JsonPropertyName("campaign_surge")] bool? CampaignSurge = null
 );
@@ -503,7 +503,7 @@ public sealed record AdsGetTotalBalanceRequest(
 );
 
 public sealed record AdsGetTotalBalanceResponse(
-    [property: JsonPropertyName("data_timestamp")] JsonElement? DataTimestamp = null,
+    [property: JsonPropertyName("data_timestamp")] long? DataTimestamp = null,
     [property: JsonPropertyName("total_balance")] decimal? TotalBalance = null
 );
 

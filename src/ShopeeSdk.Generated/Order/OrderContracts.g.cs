@@ -18,7 +18,7 @@ public sealed record OrderCancelOrderRequest(
 );
 
 public sealed record OrderCancelOrderResponse(
-    [property: JsonPropertyName("update_time")] JsonElement? UpdateTime = null
+    [property: JsonPropertyName("update_time")] long? UpdateTime = null
 );
 
 public sealed record OrderDownloadFbsInvoicesRequestRequestIdListItem(
@@ -97,8 +97,8 @@ public sealed record OrderGetBookingDetailResponseBookingListItem(
     [property: JsonPropertyName("booking_status")] string? BookingStatus = null,
     [property: JsonPropertyName("match_status")] string? MatchStatus = null,
     [property: JsonPropertyName("shipping_carrier")] string? ShippingCarrier = null,
-    [property: JsonPropertyName("create_time")] JsonElement? CreateTime = null,
-    [property: JsonPropertyName("update_time")] JsonElement? UpdateTime = null,
+    [property: JsonPropertyName("create_time")] long? CreateTime = null,
+    [property: JsonPropertyName("update_time")] long? UpdateTime = null,
     [property: JsonPropertyName("ship_by_date")] long? ShipByDate = null,
     [property: JsonPropertyName("recipient_address")] OrderGetBookingDetailResponseBookingListItemRecipientAddressItem? RecipientAddress = null,
     [property: JsonPropertyName("item_list")] IReadOnlyList<OrderGetBookingDetailResponseBookingListItemItemListItem>? ItemList = null,
@@ -107,7 +107,7 @@ public sealed record OrderGetBookingDetailResponseBookingListItem(
     [property: JsonPropertyName("cancel_by")] string? CancelBy = null,
     [property: JsonPropertyName("cancel_reason")] string? CancelReason = null,
     [property: JsonPropertyName("fulfillment_flag")] string? FulfillmentFlag = null,
-    [property: JsonPropertyName("pickup_done_time")] JsonElement? PickupDoneTime = null
+    [property: JsonPropertyName("pickup_done_time")] long? PickupDoneTime = null
 );
 
 public sealed record OrderGetBookingDetailResponse(
@@ -245,7 +245,7 @@ public sealed record OrderGetOrderDetailResponseOrderListItemInvoiceDataItem(
     [property: JsonPropertyName("number")] string? Number = null,
     [property: JsonPropertyName("series_number")] string? SeriesNumber = null,
     [property: JsonPropertyName("access_key")] string? AccessKey = null,
-    [property: JsonPropertyName("issue_date")] JsonElement? IssueDate = null,
+    [property: JsonPropertyName("issue_date")] long? IssueDate = null,
     [property: JsonPropertyName("total_value")] decimal? TotalValue = null,
     [property: JsonPropertyName("products_total_value")] decimal? ProductsTotalValue = null,
     [property: JsonPropertyName("tax_code")] string? TaxCode = null
@@ -272,19 +272,19 @@ public sealed record OrderGetOrderDetailResponseOrderListItem(
     [property: JsonPropertyName("payment_method")] string? PaymentMethod = null,
     [property: JsonPropertyName("estimated_shipping_fee")] decimal? EstimatedShippingFee = null,
     [property: JsonPropertyName("message_to_seller")] string? MessageToSeller = null,
-    [property: JsonPropertyName("create_time")] JsonElement? CreateTime = null,
-    [property: JsonPropertyName("update_time")] JsonElement? UpdateTime = null,
+    [property: JsonPropertyName("create_time")] long? CreateTime = null,
+    [property: JsonPropertyName("update_time")] long? UpdateTime = null,
     [property: JsonPropertyName("days_to_ship")] int? DaysToShip = null,
-    [property: JsonPropertyName("ship_by_date")] JsonElement? ShipByDate = null,
+    [property: JsonPropertyName("ship_by_date")] long? ShipByDate = null,
     [property: JsonPropertyName("buyer_user_id")] long? BuyerUserId = null,
     [property: JsonPropertyName("buyer_username")] string? BuyerUsername = null,
     [property: JsonPropertyName("recipient_address")] OrderGetOrderDetailResponseOrderListItemRecipientAddressItem? RecipientAddress = null,
     [property: JsonPropertyName("actual_shipping_fee")] decimal? ActualShippingFee = null,
     [property: JsonPropertyName("goods_to_declare")] bool? GoodsToDeclare = null,
     [property: JsonPropertyName("note")] string? Note = null,
-    [property: JsonPropertyName("note_update_time")] JsonElement? NoteUpdateTime = null,
+    [property: JsonPropertyName("note_update_time")] long? NoteUpdateTime = null,
     [property: JsonPropertyName("item_list")] IReadOnlyList<OrderGetOrderDetailResponseOrderListItemItemListItem>? ItemList = null,
-    [property: JsonPropertyName("pay_time")] JsonElement? PayTime = null,
+    [property: JsonPropertyName("pay_time")] long? PayTime = null,
     [property: JsonPropertyName("dropshipper")] string? Dropshipper = null,
     [property: JsonPropertyName("dropshipper_phone")] string? DropshipperPhone = null,
     [property: JsonPropertyName("split_up")] bool? SplitUp = null,
@@ -294,7 +294,7 @@ public sealed record OrderGetOrderDetailResponseOrderListItem(
     [property: JsonPropertyName("actual_shipping_fee_confirmed")] bool? ActualShippingFeeConfirmed = null,
     [property: JsonPropertyName("buyer_cpf_id")] string? BuyerCpfId = null,
     [property: JsonPropertyName("fulfillment_flag")] string? FulfillmentFlag = null,
-    [property: JsonPropertyName("pickup_done_time")] JsonElement? PickupDoneTime = null,
+    [property: JsonPropertyName("pickup_done_time")] long? PickupDoneTime = null,
     [property: JsonPropertyName("package_list")] IReadOnlyList<OrderGetOrderDetailResponseOrderListItemPackageListItem>? PackageList = null,
     [property: JsonPropertyName("invoice_data")] OrderGetOrderDetailResponseOrderListItemInvoiceDataItem? InvoiceData = null,
     [property: JsonPropertyName("checkout_shipping_carrier")] string? CheckoutShippingCarrier = null,
@@ -303,16 +303,16 @@ public sealed record OrderGetOrderDetailResponseOrderListItem(
     [property: JsonPropertyName("prescription_check_status")] int? PrescriptionCheckStatus = null,
     [property: JsonPropertyName("pharmacist_name")] string? PharmacistName = null,
     [property: JsonPropertyName("prescription_images")] IReadOnlyList<string>? PrescriptionImages = null,
-    [property: JsonPropertyName("prescription_approval_time")] JsonElement? PrescriptionApprovalTime = null,
-    [property: JsonPropertyName("prescription_rejection_time")] JsonElement? PrescriptionRejectionTime = null,
+    [property: JsonPropertyName("prescription_approval_time")] long? PrescriptionApprovalTime = null,
+    [property: JsonPropertyName("prescription_rejection_time")] long? PrescriptionRejectionTime = null,
     [property: JsonPropertyName("prescription_reject_reason")] string? PrescriptionRejectReason = null,
     [property: JsonPropertyName("is_buyer_shop_collection")] bool? IsBuyerShopCollection = null,
     [property: JsonPropertyName("buyer_proof_of_collection")] IReadOnlyList<string>? BuyerProofOfCollection = null,
-    [property: JsonPropertyName("edt_from")] JsonElement? EdtFrom = null,
-    [property: JsonPropertyName("edt_to")] JsonElement? EdtTo = null,
+    [property: JsonPropertyName("edt_from")] long? EdtFrom = null,
+    [property: JsonPropertyName("edt_to")] long? EdtTo = null,
     [property: JsonPropertyName("booking_sn")] string? BookingSn = null,
     [property: JsonPropertyName("advance_package")] bool? AdvancePackage = null,
-    [property: JsonPropertyName("return_request_due_date")] JsonElement? ReturnRequestDueDate = null,
+    [property: JsonPropertyName("return_request_due_date")] long? ReturnRequestDueDate = null,
     [property: JsonPropertyName("payment_info")] IReadOnlyList<OrderGetOrderDetailResponseOrderListItemPaymentInfoItem>? PaymentInfo = null,
     [property: JsonPropertyName("hot_listing_order")] bool? HotListingOrder = null,
     [property: JsonPropertyName("is_international")] bool? IsInternational = null
@@ -324,8 +324,8 @@ public sealed record OrderGetOrderDetailResponse(
 
 public sealed record OrderGetOrderListRequest(
     [property: JsonPropertyName("time_range_field")] string TimeRangeField,
-    [property: JsonPropertyName("time_from")] JsonElement? TimeFrom,
-    [property: JsonPropertyName("time_to")] JsonElement? TimeTo,
+    [property: JsonPropertyName("time_from")] long TimeFrom,
+    [property: JsonPropertyName("time_to")] long TimeTo,
     [property: JsonPropertyName("page_size")] int PageSize,
     [property: JsonPropertyName("cursor")] string? Cursor = null,
     [property: JsonPropertyName("order_status")] string? OrderStatus = null,
@@ -382,7 +382,7 @@ public sealed record OrderGetPackageDetailResponsePackageListItemRecipientAddres
 
 public sealed record OrderGetPackageDetailResponsePackageListItemStatusInfoTagItem(
     [property: JsonPropertyName("tag_id")] int? TagId = null,
-    [property: JsonPropertyName("timestamp")] JsonElement? Timestamp = null
+    [property: JsonPropertyName("timestamp")] long? Timestamp = null
 );
 
 public sealed record OrderGetPackageDetailResponsePackageListItemDriverInfoItem(
@@ -426,11 +426,11 @@ public sealed record OrderGetPackageDetailResponsePackageListItem(
     [property: JsonPropertyName("is_pre_order")] bool? IsPreOrder = null,
     [property: JsonPropertyName("pharmacist_name")] string? PharmacistName = null,
     [property: JsonPropertyName("prescription_images")] IReadOnlyList<string>? PrescriptionImages = null,
-    [property: JsonPropertyName("prescription_approval_time")] JsonElement? PrescriptionApprovalTime = null,
-    [property: JsonPropertyName("prescription_rejection_time")] JsonElement? PrescriptionRejectionTime = null,
+    [property: JsonPropertyName("prescription_approval_time")] long? PrescriptionApprovalTime = null,
+    [property: JsonPropertyName("prescription_rejection_time")] long? PrescriptionRejectionTime = null,
     [property: JsonPropertyName("is_buyer_shop_collection")] bool? IsBuyerShopCollection = null,
     [property: JsonPropertyName("buyer_proof_of_collection")] IReadOnlyList<string>? BuyerProofOfCollection = null,
-    [property: JsonPropertyName("preparation_end_time")] JsonElement? PreparationEndTime = null,
+    [property: JsonPropertyName("preparation_end_time")] long? PreparationEndTime = null,
     [property: JsonPropertyName("driver_info")] OrderGetPackageDetailResponsePackageListItemDriverInfoItem? DriverInfo = null
 );
 
@@ -490,7 +490,7 @@ public sealed record OrderHandleBuyerCancellationRequest(
 );
 
 public sealed record OrderHandleBuyerCancellationResponse(
-    [property: JsonPropertyName("update_time")] JsonElement? UpdateTime = null
+    [property: JsonPropertyName("update_time")] long? UpdateTime = null
 );
 
 public sealed record OrderHandlePrescriptionCheckRequestItemsItem(

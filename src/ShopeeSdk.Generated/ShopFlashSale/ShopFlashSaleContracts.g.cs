@@ -129,8 +129,8 @@ public sealed record ShopFlashSaleGetShopFlashSaleResponse(
     [property: JsonPropertyName("timeslot_id")] long? TimeslotId = null,
     [property: JsonPropertyName("flash_sale_id")] long? FlashSaleId = null,
     [property: JsonPropertyName("status")] int? Status = null,
-    [property: JsonPropertyName("start_time")] JsonElement? StartTime = null,
-    [property: JsonPropertyName("end_time")] JsonElement? EndTime = null,
+    [property: JsonPropertyName("start_time")] long? StartTime = null,
+    [property: JsonPropertyName("end_time")] long? EndTime = null,
     [property: JsonPropertyName("enabled_item_count")] int? EnabledItemCount = null,
     [property: JsonPropertyName("item_count")] int? ItemCount = null,
     [property: JsonPropertyName("type")] int? Type = null
@@ -193,8 +193,8 @@ public sealed record ShopFlashSaleGetShopFlashSaleListRequest(
     [property: JsonPropertyName("type")] int Type,
     [property: JsonPropertyName("offset")] long Offset,
     [property: JsonPropertyName("limit")] long Limit,
-    [property: JsonPropertyName("start_time")] JsonElement? StartTime = null,
-    [property: JsonPropertyName("end_time")] JsonElement? EndTime = null
+    [property: JsonPropertyName("start_time")] long? StartTime = null,
+    [property: JsonPropertyName("end_time")] long? EndTime = null
 );
 
 public sealed record ShopFlashSaleGetShopFlashSaleListResponse(
@@ -202,14 +202,14 @@ public sealed record ShopFlashSaleGetShopFlashSaleListResponse(
 );
 
 public sealed record ShopFlashSaleGetTimeSlotIdRequest(
-    [property: JsonPropertyName("start_time")] JsonElement? StartTime,
-    [property: JsonPropertyName("end_time")] JsonElement? EndTime
+    [property: JsonPropertyName("start_time")] long StartTime,
+    [property: JsonPropertyName("end_time")] long EndTime
 );
 
 public sealed record ShopFlashSaleGetTimeSlotIdResponse(
     [property: JsonPropertyName("timeslot_id")] long? TimeslotId = null,
-    [property: JsonPropertyName("start_time")] JsonElement? StartTime = null,
-    [property: JsonPropertyName("end_time")] JsonElement? EndTime = null
+    [property: JsonPropertyName("start_time")] long? StartTime = null,
+    [property: JsonPropertyName("end_time")] long? EndTime = null
 );
 
 public sealed record ShopFlashSaleUpdateShopFlashSaleRequest(

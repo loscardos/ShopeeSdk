@@ -15,12 +15,13 @@ public static class ShopeeTypeMapper
         {
             "string" => "string" + nullableSuffix,
             "int" or "int32" or "integer" => "int" + nullableSuffix,
-            "int64" or "long" => "long" + nullableSuffix,
+            "int64" or "long" or "timestamp" => "long" + nullableSuffix,
             "float" or "double" or "decimal" => "decimal" + nullableSuffix,
             "boolean" or "bool" => "bool" + nullableSuffix,
             "string[]" => "IReadOnlyList<string>" + nullableSuffix,
             "int[]" or "int32[]" => "IReadOnlyList<int>" + nullableSuffix,
             "int64[]" => "IReadOnlyList<long>" + nullableSuffix,
+            "float[]" or "double[]" or "decimal[]" => "IReadOnlyList<decimal>" + nullableSuffix,
             "file" => "ShopeeUploadFile" + nullableSuffix,
             _ => "JsonElement?"
         };

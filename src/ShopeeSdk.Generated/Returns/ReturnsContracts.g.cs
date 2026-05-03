@@ -133,12 +133,12 @@ public sealed record ReturnsGetReturnDetailResponseActivityItem(
 
 public sealed record ReturnsGetReturnDetailResponseSellerProofItem(
     [property: JsonPropertyName("seller_proof_status")] string? SellerProofStatus = null,
-    [property: JsonPropertyName("seller_evidence_deadline")] JsonElement? SellerEvidenceDeadline = null
+    [property: JsonPropertyName("seller_evidence_deadline")] long? SellerEvidenceDeadline = null
 );
 
 public sealed record ReturnsGetReturnDetailResponseSellerCompensationItem(
     [property: JsonPropertyName("seller_compensation_status")] string? SellerCompensationStatus = null,
-    [property: JsonPropertyName("seller_compensation_due_date")] JsonElement? SellerCompensationDueDate = null,
+    [property: JsonPropertyName("seller_compensation_due_date")] long? SellerCompensationDueDate = null,
     [property: JsonPropertyName("compensation_amount")] decimal? CompensationAmount = null
 );
 
@@ -148,7 +148,7 @@ public sealed record ReturnsGetReturnDetailResponseNegotiationItem(
     [property: JsonPropertyName("latest_offer_amount")] decimal? LatestOfferAmount = null,
     [property: JsonPropertyName("latest_offer_creator")] string? LatestOfferCreator = null,
     [property: JsonPropertyName("counter_limit")] int? CounterLimit = null,
-    [property: JsonPropertyName("offer_due_date")] JsonElement? OfferDueDate = null
+    [property: JsonPropertyName("offer_due_date")] long? OfferDueDate = null
 );
 
 public sealed record ReturnsGetReturnDetailResponseReturnPickupAddressItem(
@@ -185,10 +185,10 @@ public sealed record ReturnsGetReturnDetailResponse(
     [property: JsonPropertyName("return_sn")] string? ReturnSn = null,
     [property: JsonPropertyName("refund_amount")] decimal? RefundAmount = null,
     [property: JsonPropertyName("currency")] string? Currency = null,
-    [property: JsonPropertyName("create_time")] JsonElement? CreateTime = null,
-    [property: JsonPropertyName("update_time")] JsonElement? UpdateTime = null,
+    [property: JsonPropertyName("create_time")] long? CreateTime = null,
+    [property: JsonPropertyName("update_time")] long? UpdateTime = null,
     [property: JsonPropertyName("status")] string? Status = null,
-    [property: JsonPropertyName("due_date")] JsonElement? DueDate = null,
+    [property: JsonPropertyName("due_date")] long? DueDate = null,
     [property: JsonPropertyName("tracking_number")] string? TrackingNumber = null,
     [property: JsonPropertyName("dispute_reason")] int? DisputeReason = null,
     [property: JsonPropertyName("dispute_text_reason")] string? DisputeTextReason = null,
@@ -197,8 +197,8 @@ public sealed record ReturnsGetReturnDetailResponse(
     [property: JsonPropertyName("user")] ReturnsGetReturnDetailResponseUserItem? User = null,
     [property: JsonPropertyName("item")] IReadOnlyList<ReturnsGetReturnDetailResponseItemItem>? Item = null,
     [property: JsonPropertyName("order_sn")] string? OrderSn = null,
-    [property: JsonPropertyName("return_ship_due_date")] JsonElement? ReturnShipDueDate = null,
-    [property: JsonPropertyName("return_seller_due_date")] JsonElement? ReturnSellerDueDate = null,
+    [property: JsonPropertyName("return_ship_due_date")] long? ReturnShipDueDate = null,
+    [property: JsonPropertyName("return_seller_due_date")] long? ReturnSellerDueDate = null,
     [property: JsonPropertyName("activity")] IReadOnlyList<ReturnsGetReturnDetailResponseActivityItem>? Activity = null,
     [property: JsonPropertyName("seller_proof")] ReturnsGetReturnDetailResponseSellerProofItem? SellerProof = null,
     [property: JsonPropertyName("seller_compensation")] ReturnsGetReturnDetailResponseSellerCompensationItem? SellerCompensation = null,
@@ -252,10 +252,10 @@ public sealed record ReturnsGetReturnDisputeReasonResponse(
 public sealed record ReturnsGetReturnListRequest(
     [property: JsonPropertyName("page_no")] long PageNo,
     [property: JsonPropertyName("page_size")] long PageSize,
-    [property: JsonPropertyName("create_time_from")] JsonElement? CreateTimeFrom = null,
-    [property: JsonPropertyName("create_time_to")] JsonElement? CreateTimeTo = null,
-    [property: JsonPropertyName("update_time_from")] JsonElement? UpdateTimeFrom = null,
-    [property: JsonPropertyName("update_time_to")] JsonElement? UpdateTimeTo = null,
+    [property: JsonPropertyName("create_time_from")] long? CreateTimeFrom = null,
+    [property: JsonPropertyName("create_time_to")] long? CreateTimeTo = null,
+    [property: JsonPropertyName("update_time_from")] long? UpdateTimeFrom = null,
+    [property: JsonPropertyName("update_time_to")] long? UpdateTimeTo = null,
     [property: JsonPropertyName("status")] string? Status = null,
     [property: JsonPropertyName("negotiation_status")] string? NegotiationStatus = null,
     [property: JsonPropertyName("seller_proof_status")] string? SellerProofStatus = null,
@@ -299,10 +299,10 @@ public sealed record ReturnsGetReturnListResponseReturnItem(
     [property: JsonPropertyName("return_sn")] string? ReturnSn = null,
     [property: JsonPropertyName("refund_amount")] decimal? RefundAmount = null,
     [property: JsonPropertyName("currency")] string? Currency = null,
-    [property: JsonPropertyName("create_time")] JsonElement? CreateTime = null,
-    [property: JsonPropertyName("update_time")] JsonElement? UpdateTime = null,
+    [property: JsonPropertyName("create_time")] long? CreateTime = null,
+    [property: JsonPropertyName("update_time")] long? UpdateTime = null,
     [property: JsonPropertyName("status")] string? Status = null,
-    [property: JsonPropertyName("due_date")] JsonElement? DueDate = null,
+    [property: JsonPropertyName("due_date")] long? DueDate = null,
     [property: JsonPropertyName("tracking_number")] string? TrackingNumber = null,
     [property: JsonPropertyName("dispute_reason")] IReadOnlyList<string>? DisputeReason = null,
     [property: JsonPropertyName("dispute_text_reason")] IReadOnlyList<string>? DisputeTextReason = null,
@@ -311,8 +311,8 @@ public sealed record ReturnsGetReturnListResponseReturnItem(
     [property: JsonPropertyName("user")] ReturnsGetReturnListResponseReturnItemUserItem? User = null,
     [property: JsonPropertyName("item")] IReadOnlyList<ReturnsGetReturnListResponseReturnItemItemItem>? Item = null,
     [property: JsonPropertyName("order_sn")] string? OrderSn = null,
-    [property: JsonPropertyName("return_ship_due_date")] JsonElement? ReturnShipDueDate = null,
-    [property: JsonPropertyName("return_seller_due_date")] JsonElement? ReturnSellerDueDate = null,
+    [property: JsonPropertyName("return_ship_due_date")] long? ReturnShipDueDate = null,
+    [property: JsonPropertyName("return_seller_due_date")] long? ReturnSellerDueDate = null,
     [property: JsonPropertyName("negotiation_status")] string? NegotiationStatus = null,
     [property: JsonPropertyName("seller_proof_status")] string? SellerProofStatus = null,
     [property: JsonPropertyName("seller_compensation_status")] string? SellerCompensationStatus = null,
@@ -336,14 +336,14 @@ public sealed record ReturnsGetReverseTrackingInfoRequest(
 );
 
 public sealed record ReturnsGetReverseTrackingInfoResponseTrackingInfoItem(
-    [property: JsonPropertyName("update_time")] JsonElement? UpdateTime = null,
+    [property: JsonPropertyName("update_time")] long? UpdateTime = null,
     [property: JsonPropertyName("tracking_description")] string? TrackingDescription = null,
     [property: JsonPropertyName("epop_image_list")] IReadOnlyList<string>? EpopImageList = null,
     [property: JsonPropertyName("epod_image_list")] IReadOnlyList<string>? EpodImageList = null
 );
 
 public sealed record ReturnsGetReverseTrackingInfoResponsePostReturnLogisticsTrackingInfoItem(
-    [property: JsonPropertyName("update_time")] JsonElement? UpdateTime = null,
+    [property: JsonPropertyName("update_time")] long? UpdateTime = null,
     [property: JsonPropertyName("tracking_description")] string? TrackingDescription = null,
     [property: JsonPropertyName("epop_image_list")] IReadOnlyList<string>? EpopImageList = null,
     [property: JsonPropertyName("epod_image_list")] IReadOnlyList<string>? EpodImageList = null
@@ -354,13 +354,13 @@ public sealed record ReturnsGetReverseTrackingInfoResponse(
     [property: JsonPropertyName("return_refund_request_type")] int? ReturnRefundRequestType = null,
     [property: JsonPropertyName("validation_type")] string? ValidationType = null,
     [property: JsonPropertyName("reverse_logistics_status")] string? ReverseLogisticsStatus = null,
-    [property: JsonPropertyName("reverse_logistics_update_time")] JsonElement? ReverseLogisticsUpdateTime = null,
-    [property: JsonPropertyName("estimated_delivery_date_max")] JsonElement? EstimatedDeliveryDateMax = null,
-    [property: JsonPropertyName("estimated_delivery_date_min")] JsonElement? EstimatedDeliveryDateMin = null,
+    [property: JsonPropertyName("reverse_logistics_update_time")] long? ReverseLogisticsUpdateTime = null,
+    [property: JsonPropertyName("estimated_delivery_date_max")] long? EstimatedDeliveryDateMax = null,
+    [property: JsonPropertyName("estimated_delivery_date_min")] long? EstimatedDeliveryDateMin = null,
     [property: JsonPropertyName("tracking_number")] string? TrackingNumber = null,
     [property: JsonPropertyName("tracking_info")] IReadOnlyList<ReturnsGetReverseTrackingInfoResponseTrackingInfoItem>? TrackingInfo = null,
     [property: JsonPropertyName("post_return_logistics_status")] string? PostReturnLogisticsStatus = null,
-    [property: JsonPropertyName("post_return_logistics_update_time")] JsonElement? PostReturnLogisticsUpdateTime = null,
+    [property: JsonPropertyName("post_return_logistics_update_time")] long? PostReturnLogisticsUpdateTime = null,
     [property: JsonPropertyName("rts_tracking_number")] string? RtsTrackingNumber = null,
     [property: JsonPropertyName("post_return_logistics_tracking_info")] IReadOnlyList<ReturnsGetReverseTrackingInfoResponsePostReturnLogisticsTrackingInfoItem>? PostReturnLogisticsTrackingInfo = null
 );

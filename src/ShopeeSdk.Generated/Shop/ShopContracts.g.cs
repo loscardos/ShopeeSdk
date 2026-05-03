@@ -69,10 +69,10 @@ public sealed record ShopGetShopHolidayModeRequest(
 
 public sealed record ShopGetShopHolidayModeResponse(
     [property: JsonPropertyName("holiday_mode_on")] bool? HolidayModeOn = null,
-    [property: JsonPropertyName("holiday_mode_mtime")] JsonElement? HolidayModeMtime = null,
+    [property: JsonPropertyName("holiday_mode_mtime")] long? HolidayModeMtime = null,
     [property: JsonPropertyName("holiday_mode_type")] int? HolidayModeType = null,
-    [property: JsonPropertyName("holiday_mode_start_time")] JsonElement? HolidayModeStartTime = null,
-    [property: JsonPropertyName("holiday_mode_end_time")] JsonElement? HolidayModeEndTime = null,
+    [property: JsonPropertyName("holiday_mode_start_time")] long? HolidayModeStartTime = null,
+    [property: JsonPropertyName("holiday_mode_end_time")] long? HolidayModeEndTime = null,
     [property: JsonPropertyName("holiday_mode_description")] string? HolidayModeDescription = null,
     [property: JsonPropertyName("debug_msg")] string? DebugMsg = null
 );
@@ -115,8 +115,8 @@ public sealed record ShopGetWarehouseDetailResponse(
 public sealed record ShopSetShopHolidayModeRequest(
     [property: JsonPropertyName("holiday_mode_on")] bool HolidayModeOn,
     [property: JsonPropertyName("holiday_mode_type")] int? HolidayModeType = null,
-    [property: JsonPropertyName("holiday_mode_start_time")] JsonElement? HolidayModeStartTime = null,
-    [property: JsonPropertyName("holiday_mode_end_time")] JsonElement? HolidayModeEndTime = null,
+    [property: JsonPropertyName("holiday_mode_start_time")] long? HolidayModeStartTime = null,
+    [property: JsonPropertyName("holiday_mode_end_time")] long? HolidayModeEndTime = null,
     [property: JsonPropertyName("holiday_mode_description")] string? HolidayModeDescription = null
 );
 

@@ -97,7 +97,7 @@ public sealed record PaymentGetEscrowDetailResponseOrderIncomeItemItemsItem(
 
 public sealed record PaymentGetEscrowDetailResponseOrderIncomeItemOrderAdjustmentItem(
     [property: JsonPropertyName("amount")] decimal? Amount = null,
-    [property: JsonPropertyName("date")] JsonElement? Date = null,
+    [property: JsonPropertyName("date")] long? Date = null,
     [property: JsonPropertyName("currency")] string? Currency = null,
     [property: JsonPropertyName("adjustment_reason")] string? AdjustmentReason = null
 );
@@ -454,8 +454,8 @@ public sealed record PaymentGetEscrowDetailBatchResponse(
 );
 
 public sealed record PaymentGetEscrowListRequest(
-    [property: JsonPropertyName("release_time_from")] JsonElement? ReleaseTimeFrom,
-    [property: JsonPropertyName("release_time_to")] JsonElement? ReleaseTimeTo,
+    [property: JsonPropertyName("release_time_from")] long ReleaseTimeFrom,
+    [property: JsonPropertyName("release_time_to")] long ReleaseTimeTo,
     [property: JsonPropertyName("page_size")] int? PageSize = null,
     [property: JsonPropertyName("page_no")] int? PageNo = null
 );
@@ -463,7 +463,7 @@ public sealed record PaymentGetEscrowListRequest(
 public sealed record PaymentGetEscrowListResponseEscrowListItem(
     [property: JsonPropertyName("order_sn")] string? OrderSn = null,
     [property: JsonPropertyName("payout_amount")] decimal? PayoutAmount = null,
-    [property: JsonPropertyName("escrow_release_time")] JsonElement? EscrowReleaseTime = null
+    [property: JsonPropertyName("escrow_release_time")] long? EscrowReleaseTime = null
 );
 
 public sealed record PaymentGetEscrowListResponse(
@@ -551,8 +551,8 @@ public sealed record PaymentGetPaymentMethodListResponse(
 public sealed record PaymentGetPayoutDetailRequest(
     [property: JsonPropertyName("page_size")] int PageSize,
     [property: JsonPropertyName("page_no")] int PageNo,
-    [property: JsonPropertyName("payout_time_from")] JsonElement? PayoutTimeFrom,
-    [property: JsonPropertyName("payout_time_to")] JsonElement? PayoutTimeTo
+    [property: JsonPropertyName("payout_time_from")] long PayoutTimeFrom,
+    [property: JsonPropertyName("payout_time_to")] long PayoutTimeTo
 );
 
 public sealed record PaymentGetPayoutDetailResponsePayoutListItemPayoutInfoItem(
@@ -561,7 +561,7 @@ public sealed record PaymentGetPayoutDetailResponsePayoutListItemPayoutInfoItem(
     [property: JsonPropertyName("from_amount")] decimal? FromAmount = null,
     [property: JsonPropertyName("payout_amount")] decimal? PayoutAmount = null,
     [property: JsonPropertyName("exchange_rate")] string? ExchangeRate = null,
-    [property: JsonPropertyName("payout_time")] JsonElement? PayoutTime = null,
+    [property: JsonPropertyName("payout_time")] long? PayoutTime = null,
     [property: JsonPropertyName("pay_service")] string? PayService = null,
     [property: JsonPropertyName("payee_id")] string? PayeeId = null
 );
@@ -593,8 +593,8 @@ public sealed record PaymentGetPayoutDetailResponse(
 );
 
 public sealed record PaymentGetPayoutInfoRequest(
-    [property: JsonPropertyName("payout_time_from")] JsonElement? PayoutTimeFrom,
-    [property: JsonPropertyName("payout_time_to")] JsonElement? PayoutTimeTo,
+    [property: JsonPropertyName("payout_time_from")] long PayoutTimeFrom,
+    [property: JsonPropertyName("payout_time_to")] long PayoutTimeTo,
     [property: JsonPropertyName("page_size")] int PageSize,
     [property: JsonPropertyName("cursor")] string Cursor
 );
@@ -605,7 +605,7 @@ public sealed record PaymentGetPayoutInfoResponsePayoutListItem(
     [property: JsonPropertyName("from_amount")] decimal? FromAmount = null,
     [property: JsonPropertyName("payout_amount")] decimal? PayoutAmount = null,
     [property: JsonPropertyName("exchange_rate")] string? ExchangeRate = null,
-    [property: JsonPropertyName("payout_time")] JsonElement? PayoutTime = null,
+    [property: JsonPropertyName("payout_time")] long? PayoutTime = null,
     [property: JsonPropertyName("pay_service")] string? PayService = null,
     [property: JsonPropertyName("payee_id")] string? PayeeId = null,
     [property: JsonPropertyName("encrypted_payout_id")] string? EncryptedPayoutId = null

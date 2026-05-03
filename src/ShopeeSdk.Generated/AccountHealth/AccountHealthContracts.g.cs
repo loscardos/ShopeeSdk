@@ -13,7 +13,7 @@ public sealed record AccountHealthGetLateOrdersRequest(
 
 public sealed record AccountHealthGetLateOrdersResponseLateOrderListItem(
     [property: JsonPropertyName("order_sn")] string? OrderSn = null,
-    [property: JsonPropertyName("shipping_deadline")] JsonElement? ShippingDeadline = null,
+    [property: JsonPropertyName("shipping_deadline")] long? ShippingDeadline = null,
     [property: JsonPropertyName("late_by_days")] int? LateByDays = null
 );
 
@@ -62,10 +62,10 @@ public sealed record AccountHealthGetMetricSourceDetailResponseReturnRefundOrder
 
 public sealed record AccountHealthGetMetricSourceDetailResponseLsrOrderListItem(
     [property: JsonPropertyName("order_sn")] string? OrderSn = null,
-    [property: JsonPropertyName("shipping_deadline")] JsonElement? ShippingDeadline = null,
-    [property: JsonPropertyName("actual_shipping_time")] JsonElement? ActualShippingTime = null,
+    [property: JsonPropertyName("shipping_deadline")] long? ShippingDeadline = null,
+    [property: JsonPropertyName("actual_shipping_time")] long? ActualShippingTime = null,
     [property: JsonPropertyName("late_by_days")] long? LateByDays = null,
-    [property: JsonPropertyName("actual_pick_up_time")] JsonElement? ActualPickUpTime = null,
+    [property: JsonPropertyName("actual_pick_up_time")] long? ActualPickUpTime = null,
     [property: JsonPropertyName("shipping_channel")] string? ShippingChannel = null,
     [property: JsonPropertyName("first_mile_type")] string? FirstMileType = null,
     [property: JsonPropertyName("diagnosis_scenario")] IReadOnlyList<string>? DiagnosisScenario = null
@@ -75,11 +75,11 @@ public sealed record AccountHealthGetMetricSourceDetailResponseFhrOrderListItem(
     [property: JsonPropertyName("order_sn")] string? OrderSn = null,
     [property: JsonPropertyName("parcel_id")] long? ParcelId = null,
     [property: JsonPropertyName("parcel_display_id")] string? ParcelDisplayId = null,
-    [property: JsonPropertyName("confirm_time")] JsonElement? ConfirmTime = null,
-    [property: JsonPropertyName("handover_deadline")] JsonElement? HandoverDeadline = null,
-    [property: JsonPropertyName("fast_handover_due_date")] JsonElement? FastHandoverDueDate = null,
-    [property: JsonPropertyName("arrange_pick_up_time")] JsonElement? ArrangePickUpTime = null,
-    [property: JsonPropertyName("handover_time")] JsonElement? HandoverTime = null,
+    [property: JsonPropertyName("confirm_time")] long? ConfirmTime = null,
+    [property: JsonPropertyName("handover_deadline")] long? HandoverDeadline = null,
+    [property: JsonPropertyName("fast_handover_due_date")] long? FastHandoverDueDate = null,
+    [property: JsonPropertyName("arrange_pick_up_time")] long? ArrangePickUpTime = null,
+    [property: JsonPropertyName("handover_time")] long? HandoverTime = null,
     [property: JsonPropertyName("shipping_channel")] string? ShippingChannel = null,
     [property: JsonPropertyName("first_mile_type")] string? FirstMileType = null,
     [property: JsonPropertyName("first_mile_tracking_no")] string? FirstMileTrackingNo = null,
@@ -97,7 +97,7 @@ public sealed record AccountHealthGetMetricSourceDetailResponseOpfrDayDetailData
 public sealed record AccountHealthGetMetricSourceDetailResponseViolationListingListItem(
     [property: JsonPropertyName("item_id")] long? ItemId = null,
     [property: JsonPropertyName("detailed_reason")] int? DetailedReason = null,
-    [property: JsonPropertyName("update_time")] JsonElement? UpdateTime = null
+    [property: JsonPropertyName("update_time")] long? UpdateTime = null
 );
 
 public sealed record AccountHealthGetMetricSourceDetailResponsePreOrderListingViolationDataListItem(
@@ -125,9 +125,9 @@ public sealed record AccountHealthGetMetricSourceDetailResponseNddListingListIte
 
 public sealed record AccountHealthGetMetricSourceDetailResponseAptOrderListItem(
     [property: JsonPropertyName("order_sn")] string? OrderSn = null,
-    [property: JsonPropertyName("order_create_time")] JsonElement? OrderCreateTime = null,
-    [property: JsonPropertyName("arrange_pick_up_time")] JsonElement? ArrangePickUpTime = null,
-    [property: JsonPropertyName("actual_pick_up_time")] JsonElement? ActualPickUpTime = null,
+    [property: JsonPropertyName("order_create_time")] long? OrderCreateTime = null,
+    [property: JsonPropertyName("arrange_pick_up_time")] long? ArrangePickUpTime = null,
+    [property: JsonPropertyName("actual_pick_up_time")] long? ActualPickUpTime = null,
     [property: JsonPropertyName("preparation_days")] decimal? PreparationDays = null,
     [property: JsonPropertyName("shipping_channel")] string? ShippingChannel = null,
     [property: JsonPropertyName("first_mile_type")] string? FirstMileType = null,
@@ -141,9 +141,9 @@ public sealed record AccountHealthGetMetricSourceDetailResponseHdListingListItem
 
 public sealed record AccountHealthGetMetricSourceDetailResponseSaturdayShipmentListItem(
     [property: JsonPropertyName("order_sn")] string? OrderSn = null,
-    [property: JsonPropertyName("order_create_time")] JsonElement? OrderCreateTime = null,
-    [property: JsonPropertyName("arrange_pick_up_time")] JsonElement? ArrangePickUpTime = null,
-    [property: JsonPropertyName("actual_pick_up_time")] JsonElement? ActualPickUpTime = null,
+    [property: JsonPropertyName("order_create_time")] long? OrderCreateTime = null,
+    [property: JsonPropertyName("arrange_pick_up_time")] long? ArrangePickUpTime = null,
+    [property: JsonPropertyName("actual_pick_up_time")] long? ActualPickUpTime = null,
     [property: JsonPropertyName("preparation_days")] decimal? PreparationDays = null,
     [property: JsonPropertyName("shipping_channel")] string? ShippingChannel = null,
     [property: JsonPropertyName("first_mile_type")] string? FirstMileType = null,
@@ -176,7 +176,7 @@ public sealed record AccountHealthGetPenaltyPointHistoryRequest(
 );
 
 public sealed record AccountHealthGetPenaltyPointHistoryResponsePenaltyPointListItem(
-    [property: JsonPropertyName("issue_time")] JsonElement? IssueTime = null,
+    [property: JsonPropertyName("issue_time")] long? IssueTime = null,
     [property: JsonPropertyName("latest_point_num")] int? LatestPointNum = null,
     [property: JsonPropertyName("original_point_num")] int? OriginalPointNum = null,
     [property: JsonPropertyName("reference_id")] long? ReferenceId = null,
@@ -195,9 +195,9 @@ public sealed record AccountHealthGetPunishmentHistoryRequest(
 );
 
 public sealed record AccountHealthGetPunishmentHistoryResponsePunishmentListItem(
-    [property: JsonPropertyName("issue_time")] JsonElement? IssueTime = null,
-    [property: JsonPropertyName("start_time")] JsonElement? StartTime = null,
-    [property: JsonPropertyName("end_time")] JsonElement? EndTime = null,
+    [property: JsonPropertyName("issue_time")] long? IssueTime = null,
+    [property: JsonPropertyName("start_time")] long? StartTime = null,
+    [property: JsonPropertyName("end_time")] long? EndTime = null,
     [property: JsonPropertyName("punishment_type")] int? PunishmentType = null,
     [property: JsonPropertyName("reason")] int? Reason = null,
     [property: JsonPropertyName("reference_id")] long? ReferenceId = null,

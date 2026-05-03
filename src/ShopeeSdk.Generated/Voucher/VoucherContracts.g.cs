@@ -9,8 +9,8 @@ namespace ShopeeSdk.Generated.Voucher;
 public sealed record VoucherAddVoucherRequest(
     [property: JsonPropertyName("voucher_name")] string VoucherName,
     [property: JsonPropertyName("voucher_code")] string VoucherCode,
-    [property: JsonPropertyName("start_time")] JsonElement? StartTime,
-    [property: JsonPropertyName("end_time")] JsonElement? EndTime,
+    [property: JsonPropertyName("start_time")] long StartTime,
+    [property: JsonPropertyName("end_time")] long EndTime,
     [property: JsonPropertyName("voucher_type")] int VoucherType,
     [property: JsonPropertyName("reward_type")] int RewardType,
     [property: JsonPropertyName("usage_quantity")] int UsageQuantity,
@@ -55,8 +55,8 @@ public sealed record VoucherGetVoucherResponse(
     [property: JsonPropertyName("reward_type")] int? RewardType = null,
     [property: JsonPropertyName("usage_quantity")] int? UsageQuantity = null,
     [property: JsonPropertyName("current_usage")] int? CurrentUsage = null,
-    [property: JsonPropertyName("start_time")] JsonElement? StartTime = null,
-    [property: JsonPropertyName("end_time")] JsonElement? EndTime = null,
+    [property: JsonPropertyName("start_time")] long? StartTime = null,
+    [property: JsonPropertyName("end_time")] long? EndTime = null,
     [property: JsonPropertyName("is_admin")] bool? IsAdmin = null,
     [property: JsonPropertyName("voucher_purpose")] int? VoucherPurpose = null,
     [property: JsonPropertyName("display_channel_list")] IReadOnlyList<int>? DisplayChannelList = null,
@@ -66,7 +66,7 @@ public sealed record VoucherGetVoucherResponse(
     [property: JsonPropertyName("discount_amount")] decimal? DiscountAmount = null,
     [property: JsonPropertyName("cmt_voucher_status")] int? CmtVoucherStatus = null,
     [property: JsonPropertyName("item_id_list")] IReadOnlyList<long>? ItemIdList = null,
-    [property: JsonPropertyName("display_start_time")] JsonElement? DisplayStartTime = null,
+    [property: JsonPropertyName("display_start_time")] long? DisplayStartTime = null,
     [property: JsonPropertyName("target_voucher")] int? TargetVoucher = null,
     [property: JsonPropertyName("usecase")] int? Usecase = null
 );
@@ -85,14 +85,14 @@ public sealed record VoucherGetVoucherListResponseVoucherListItem(
     [property: JsonPropertyName("reward_type")] int? RewardType = null,
     [property: JsonPropertyName("usage_quantity")] int? UsageQuantity = null,
     [property: JsonPropertyName("current_usage")] int? CurrentUsage = null,
-    [property: JsonPropertyName("start_time")] JsonElement? StartTime = null,
-    [property: JsonPropertyName("end_time")] JsonElement? EndTime = null,
+    [property: JsonPropertyName("start_time")] long? StartTime = null,
+    [property: JsonPropertyName("end_time")] long? EndTime = null,
     [property: JsonPropertyName("is_admin")] bool? IsAdmin = null,
     [property: JsonPropertyName("voucher_purpose")] int? VoucherPurpose = null,
     [property: JsonPropertyName("discount_amount")] decimal? DiscountAmount = null,
     [property: JsonPropertyName("percentage")] int? Percentage = null,
     [property: JsonPropertyName("cmt_voucher_status")] int? CmtVoucherStatus = null,
-    [property: JsonPropertyName("display_start_time")] JsonElement? DisplayStartTime = null
+    [property: JsonPropertyName("display_start_time")] long? DisplayStartTime = null
 );
 
 public sealed record VoucherGetVoucherListResponse(
@@ -103,8 +103,8 @@ public sealed record VoucherGetVoucherListResponse(
 public sealed record VoucherUpdateVoucherRequest(
     [property: JsonPropertyName("voucher_id")] long VoucherId,
     [property: JsonPropertyName("voucher_name")] string? VoucherName = null,
-    [property: JsonPropertyName("start_time")] JsonElement? StartTime = null,
-    [property: JsonPropertyName("end_time")] JsonElement? EndTime = null,
+    [property: JsonPropertyName("start_time")] long? StartTime = null,
+    [property: JsonPropertyName("end_time")] long? EndTime = null,
     [property: JsonPropertyName("usage_quantity")] int? UsageQuantity = null,
     [property: JsonPropertyName("min_basket_price")] decimal? MinBasketPrice = null,
     [property: JsonPropertyName("discount_amount")] decimal? DiscountAmount = null,
