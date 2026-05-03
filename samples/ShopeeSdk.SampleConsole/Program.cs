@@ -10,6 +10,10 @@ using ShopeeSdk.Core.Managers;
 using ShopeeSdk.Core.RateLimiting;
 using ShopeeSdk.Core.Time;
 using ShopeeSdk.Generated.Order;
+using ShopeeSdk.Generated.Product;
+using ShopeeSdk.Generated.Shop;
+using GeneratedProductApi = ShopeeSdk.Core.Managers.Generated.ProductApi;
+using GeneratedShopApi = ShopeeSdk.Core.Managers.Generated.ShopApi;
 
 static string Required(string name)
 {
@@ -95,10 +99,46 @@ if (args is ["get-orders"])
     return;
 }
 
+if (args is ["sandbox-check"])
+{
+    options.Value.PartnerId = long.Parse(Required("SHOPEE_PARTNER_ID"));
+    options.Value.PartnerKey = Required("SHOPEE_PARTNER_KEY");
+
+    var shopId = long.Parse(Required("SHOPEE_SHOP_ID"));
+    await tokenStore.StoreAsync(
+        new ShopeeToken(
+            shopId,
+            null,
+            Required("SHOPEE_ACCESS_TOKEN"),
+            Environment.GetEnvironmentVariable("SHOPEE_REFRESH_TOKEN") ?? string.Empty,
+            DateTimeOffset.UtcNow.AddHours(1),
+            "sample-env"),
+        CancellationToken.None);
+
+    var tokenService = new ShopeeTokenService(tokenStore, new MissingAuthApi(), options, new SystemShopeeClock());
+    var productApi = new GeneratedProductApi(client, tokenService);
+    var shopApi = new GeneratedShopApi(client, tokenService);
+
+    var categories = await productApi.GetCategoryAsync(
+        shopId,
+        new ProductGetCategoryRequest(Language: "en"),
+        CancellationToken.None);
+
+    var shopInfo = await shopApi.GetShopInfoAsync(
+        shopId,
+        new ShopGetShopInfoRequest(),
+        CancellationToken.None);
+
+    Console.WriteLine($"categories={categories.CategoryList?.Count ?? 0}");
+    Console.WriteLine($"shop_info_received={shopInfo is not null}");
+    return;
+}
+
 Console.WriteLine("Usage:");
 Console.WriteLine("  dotnet run --project samples/ShopeeSdk.SampleConsole -- auth-url");
 Console.WriteLine("  dotnet run --project samples/ShopeeSdk.SampleConsole -- exchange-code");
 Console.WriteLine("  dotnet run --project samples/ShopeeSdk.SampleConsole -- get-orders");
+Console.WriteLine("  dotnet run --project samples/ShopeeSdk.SampleConsole -- sandbox-check");
 
 internal sealed class SampleTokenStore : IShopeeTokenStore
 {
