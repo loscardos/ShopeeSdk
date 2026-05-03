@@ -74,6 +74,20 @@ Use ignored local environment files such as `.token/shopee-sandbox.env` for sand
 
 See `docs/production-readiness.md` before using this SDK against live Shopee shops.
 
+## Production Hardening
+
+Before publishing a preview package, run the local hardening checks:
+
+```bash
+./scripts/verify-generated.sh
+dotnet test ShopeeSdk.sln --no-build
+dotnet pack ShopeeSdk.sln --no-build --output artifacts
+./scripts/inspect-nuget.sh
+./scripts/test-local-nuget.sh
+```
+
+Generated endpoint coverage is complete against the checked-in local schema reference, and public API type drift is guarded by `tests/ShopeeSdk.Tests/PublicApi/public-api-baseline.txt`.
+
 ## Live Rollout
 
 Before enabling production shops, read:
