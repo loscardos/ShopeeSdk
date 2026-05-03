@@ -1,6 +1,6 @@
 # ShopeeSdk
 
-ASP.NET-friendly Shopee Open API SDK for the internal omni-channel integration service.
+ASP.NET-friendly Shopee Open API SDK for .NET.
 
 ## First Release Scope
 
@@ -8,7 +8,7 @@ ASP.NET-friendly Shopee Open API SDK for the internal omni-channel integration s
 - OAuth authorization URL, token exchange, and token refresh.
 - Multi-shop token store abstraction.
 - Product, order, logistics, payment, and returns endpoint foundations.
-- Generated full endpoint coverage from the local Shopee schema reference.
+- Generated full endpoint coverage from the SDK schema snapshot.
 - Dependency injection through `AddShopeeSdk`.
 
 ## Endpoint Coverage
@@ -72,10 +72,6 @@ dotnet run --project samples/ShopeeSdk.SampleConsole -- sandbox-check
 
 Use ignored local environment files such as `.token/shopee-sandbox.env` for sandbox credentials. Do not commit access tokens or refresh tokens.
 
-## Production Pilot Checklist
-
-See `docs/production-readiness.md` before using this SDK against live Shopee shops.
-
 ## Production Hardening
 
 Before publishing a preview package, run the local hardening checks:
@@ -88,14 +84,4 @@ dotnet pack ShopeeSdk.sln --no-build --output artifacts
 ./scripts/test-local-nuget.sh
 ```
 
-Generated endpoint coverage is complete against the checked-in local schema reference, and public API type drift is guarded by `tests/ShopeeSdk.Tests/PublicApi/public-api-baseline.txt`.
-
-## Live Rollout
-
-Before enabling production shops, read:
-
-- `docs/production-readiness.md`
-- `docs/endpoint-coverage.md`
-- `docs/live-rollout-checklist.md`
-- `docs/nuget-publishing.md`
-- `docs/sandbox-validation.md`
+Generated endpoint coverage is guarded by `tests/ShopeeSdk.Tests/Managers/ErpEndpointCoverageTests.cs`, and public API type drift is guarded by `tests/ShopeeSdk.Tests/PublicApi/public-api-baseline.txt`.

@@ -6,9 +6,9 @@ namespace ShopeeSdk.Tests.Generator;
 public sealed class SchemaTypeCoverageTests
 {
     [Fact]
-    public void ReferenceSchemas_OnlyUseKnownScalarTypesOrObjectShapes()
+    public void SchemaFixtures_OnlyUseKnownScalarTypesOrObjectShapes()
     {
-        var endpoints = new SchemaReader().ReadDirectory(FindReferenceSchemas());
+        var endpoints = new SchemaReader().ReadDirectory(SchemaFixturePaths.FindSchemas());
         var unknownScalarTypes = endpoints
             .SelectMany(endpoint => endpoint.RequestParameters.Concat(endpoint.ResponseParameters))
             .SelectMany(Flatten)
@@ -23,9 +23,9 @@ public sealed class SchemaTypeCoverageTests
     }
 
     [Fact]
-    public void ReferenceSchemas_StillHaveExpectedObjectFallbacks()
+    public void SchemaFixtures_StillExerciseObjectFallbacks()
     {
-        var endpoints = new SchemaReader().ReadDirectory(FindReferenceSchemas());
+        var endpoints = new SchemaReader().ReadDirectory(SchemaFixturePaths.FindSchemas());
         var objectFallbackCount = endpoints
             .SelectMany(endpoint => endpoint.RequestParameters.Concat(endpoint.ResponseParameters))
             .SelectMany(Flatten)
@@ -69,22 +69,5 @@ public sealed class SchemaTypeCoverageTests
             "file" or
             "object" or
             "object[]";
-    }
-
-    private static string FindReferenceSchemas()
-    {
-        var directory = new DirectoryInfo(AppContext.BaseDirectory);
-        while (directory is not null)
-        {
-            var candidate = Path.Combine(directory.FullName, "reference", "schemas");
-            if (Directory.Exists(candidate))
-            {
-                return candidate;
-            }
-
-            directory = directory.Parent;
-        }
-
-        throw new DirectoryNotFoundException("Could not find reference/schemas from test output directory.");
     }
 }

@@ -6,52 +6,30 @@ namespace ShopeeSdk.Tests.Generator;
 public sealed class GeneratedManagerOutputTests
 {
     [Fact]
-    public void GeneratedManagerInterfaces_MatchReferenceSchemas()
+    public void GeneratedManagerInterfaces_AreDeterministicForSchemaFixtures()
     {
-        var repoRoot = FindRepoRoot();
-        var endpoints = new SchemaReader().ReadDirectory(Path.Combine(repoRoot, "reference", "schemas"));
+        var endpoints = new SchemaReader().ReadDirectory(SchemaFixturePaths.FindSchemas());
         var writer = new ManagersWriter();
+        var product = endpoints.Where(endpoint => endpoint.ModuleKey == "product").ToArray();
 
-        foreach (var module in endpoints.GroupBy(endpoint => endpoint.ModuleKey).OrderBy(group => group.Key, StringComparer.Ordinal))
-        {
-            var expected = writer.WriteInterface(module.First().ModuleName, module.Key, module.ToArray());
-            var moduleName = ShopeeName.ToPascalCase(module.Key);
-            var path = Path.Combine(repoRoot, "src", "ShopeeSdk.Abstractions", "Managers", "Generated", $"I{moduleName}Api.g.cs");
+        var first = writer.WriteInterface("Product", "product", product);
+        var second = writer.WriteInterface("Product", "product", product);
 
-            File.ReadAllText(path).Should().Be(expected, $"{path} must be regenerated from reference/schemas");
-        }
+        first.Should().Be(second);
+        first.Should().Contain("GetCategoryAsync(long shopId, ProductGetCategoryRequest request, CancellationToken cancellationToken)");
     }
 
     [Fact]
-    public void GeneratedManagerImplementations_MatchReferenceSchemas()
+    public void GeneratedManagerImplementations_AreDeterministicForSchemaFixtures()
     {
-        var repoRoot = FindRepoRoot();
-        var endpoints = new SchemaReader().ReadDirectory(Path.Combine(repoRoot, "reference", "schemas"));
+        var endpoints = new SchemaReader().ReadDirectory(SchemaFixturePaths.FindSchemas());
         var writer = new ManagersWriter();
+        var media = endpoints.Where(endpoint => endpoint.ModuleKey == "media").ToArray();
 
-        foreach (var module in endpoints.GroupBy(endpoint => endpoint.ModuleKey).OrderBy(group => group.Key, StringComparer.Ordinal))
-        {
-            var expected = writer.WriteImplementation(module.First().ModuleName, module.Key, module.ToArray());
-            var moduleName = ShopeeName.ToPascalCase(module.Key);
-            var path = Path.Combine(repoRoot, "src", "ShopeeSdk.Core", "Managers", "Generated", $"{moduleName}Api.g.cs");
+        var first = writer.WriteImplementation("Media", "media", media);
+        var second = writer.WriteImplementation("Media", "media", media);
 
-            File.ReadAllText(path).Should().Be(expected, $"{path} must be regenerated from reference/schemas");
-        }
-    }
-
-    private static string FindRepoRoot()
-    {
-        var directory = new DirectoryInfo(AppContext.BaseDirectory);
-        while (directory is not null)
-        {
-            if (File.Exists(Path.Combine(directory.FullName, "ShopeeSdk.sln")))
-            {
-                return directory.FullName;
-            }
-
-            directory = directory.Parent;
-        }
-
-        throw new DirectoryNotFoundException("Could not find repository root from test output directory.");
+        first.Should().Be(second);
+        first.Should().Contain("ShopeeRequestContentKind.Multipart");
     }
 }

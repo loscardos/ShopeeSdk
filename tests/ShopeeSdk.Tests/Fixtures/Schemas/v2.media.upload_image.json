@@ -1,0 +1,20 @@
+{
+  "api_name": "v2.media.upload_image",
+  "module_name": "Media",
+  "method": 1,
+  "params": {
+    "request_params": [
+      {
+        "name": "images",
+        "type": "file",
+        "required": true
+      }
+    ],
+    "response_params": [
+      {
+        "name": "image_info",
+        "type": "object"
+      }
+    ]
+  }
+}

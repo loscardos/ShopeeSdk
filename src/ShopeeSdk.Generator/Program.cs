@@ -1,7 +1,7 @@
 using ShopeeSdk.Generator;
 
 var mode = args.Length > 0 ? args[0] : "summary";
-var schemaDirectory = args.Length > 1 ? args[1] : Path.Combine("reference", "schemas");
+var schemaDirectory = args.Length > 1 ? args[1] : Path.Combine("tests", "ShopeeSdk.Tests", "Fixtures", "Schemas");
 var outputDirectory = args.Length > 2 ? args[2] : Directory.GetCurrentDirectory();
 
 var reader = new SchemaReader();

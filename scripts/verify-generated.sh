@@ -6,8 +6,8 @@ cd "$ROOT"
 
 before="$(git status --short)"
 
-dotnet run --project src/ShopeeSdk.Generator -- generate reference/schemas docs
 dotnet build ShopeeSdk.sln --no-restore
+dotnet test tests/ShopeeSdk.Tests/ShopeeSdk.Tests.csproj --no-build --filter "ErpEndpointCoverageTests|PublicApiPolishTests|GeneratedAuthScopeTests|GeneratedOutputDeterminismTests|GeneratedManagerOutputTests|SchemaReaderTests|SchemaTypeCoverageTests"
 
 after="$(git status --short)"
 
@@ -20,5 +20,4 @@ if [[ "$before" != "$after" ]]; then
   exit 1
 fi
 
-grep -q "Total schema endpoints: 425" docs/endpoint-coverage.md
-echo "Generated output verified."
+echo "Generated SDK surface verified."

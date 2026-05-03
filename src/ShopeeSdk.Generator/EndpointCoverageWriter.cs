@@ -11,7 +11,7 @@ public sealed class EndpointCoverageWriter
         builder.AppendLine();
         builder.AppendLine($"Total schema endpoints: {endpoints.Count}");
         builder.AppendLine();
-        builder.AppendLine("This report reflects the local Shopee schema reference used by the generator. Endpoint availability can still vary by Shopee region, shop permissions, merchant authorization, and Shopee platform rollout state.");
+        builder.AppendLine("This report reflects the Shopee schema snapshot used by the generator. Endpoint availability can still vary by Shopee region, shop permissions, merchant authorization, and Shopee platform rollout state.");
         builder.AppendLine();
         builder.AppendLine("| Module | Endpoints |");
         builder.AppendLine("| --- | ---: |");

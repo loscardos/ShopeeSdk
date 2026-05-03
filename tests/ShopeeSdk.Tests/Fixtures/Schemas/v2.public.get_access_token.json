@@ -1,0 +1,26 @@
+{
+  "api_name": "v2.public.get_access_token",
+  "module_name": "Public",
+  "method": 1,
+  "params": {
+    "request_params": [
+      {
+        "name": "code",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "shop_id",
+        "type": "int64",
+        "required": false
+      }
+    ],
+    "response_params": [
+      {
+        "name": "access_token",
+        "type": "string",
+        "required": true
+      }
+    ]
+  }
+}

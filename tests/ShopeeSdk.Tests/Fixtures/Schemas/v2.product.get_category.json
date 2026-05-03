@@ -1,0 +1,33 @@
+{
+  "api_name": "v2.product.get_category",
+  "module_name": "Product",
+  "api_type": "Shop",
+  "method": 2,
+  "params": {
+    "request_params": [
+      {
+        "name": "language",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "response_params": [
+      {
+        "name": "category_list",
+        "type": "object[]",
+        "children": [
+          {
+            "name": "category_id",
+            "type": "int64",
+            "required": true
+          },
+          {
+            "name": "display_category_name",
+            "type": "string",
+            "required": "False"
+          }
+        ]
+      }
+    ]
+  }
+}

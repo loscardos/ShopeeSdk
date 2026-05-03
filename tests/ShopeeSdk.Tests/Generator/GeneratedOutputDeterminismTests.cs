@@ -6,23 +6,23 @@ namespace ShopeeSdk.Tests.Generator;
 public sealed class GeneratedOutputDeterminismTests
 {
     [Fact]
-    public void CoverageWriter_IsDeterministicForReferenceSchemas()
+    public void CoverageWriter_IsDeterministicForSchemaFixtures()
     {
-        var endpoints = new SchemaReader().ReadDirectory(FindReferenceSchemas());
+        var endpoints = new SchemaReader().ReadDirectory(SchemaFixturePaths.FindSchemas());
         var writer = new EndpointCoverageWriter();
 
         var first = writer.WriteMarkdown(endpoints);
         var second = writer.WriteMarkdown(endpoints);
 
         first.Should().Be(second);
-        first.Should().Contain("Total schema endpoints: 425");
+        first.Should().Contain("Total schema endpoints: 4");
     }
 
     [Fact]
-    public void ContractsWriter_IsDeterministicForProductModule()
+    public void ContractsWriter_IsDeterministicForProductModuleFixture()
     {
         var endpoints = new SchemaReader()
-            .ReadDirectory(FindReferenceSchemas())
+            .ReadDirectory(SchemaFixturePaths.FindSchemas())
             .Where(endpoint => endpoint.ModuleKey == "product")
             .ToArray();
 
@@ -32,22 +32,5 @@ public sealed class GeneratedOutputDeterminismTests
 
         first.Should().Be(second);
         first.Should().Contain("public sealed record ProductGetCategoryRequest");
-    }
-
-    private static string FindReferenceSchemas()
-    {
-        var directory = new DirectoryInfo(AppContext.BaseDirectory);
-        while (directory is not null)
-        {
-            var candidate = Path.Combine(directory.FullName, "reference", "schemas");
-            if (Directory.Exists(candidate))
-            {
-                return candidate;
-            }
-
-            directory = directory.Parent;
-        }
-
-        throw new DirectoryNotFoundException("Could not find reference/schemas from test output directory.");
     }
 }

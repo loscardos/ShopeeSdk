@@ -8,6 +8,5 @@ TestResults/
 *.nupkg
 .token/
 .tmp/
-reference/
 artifacts/
 .idea/

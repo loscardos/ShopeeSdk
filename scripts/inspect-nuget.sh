@@ -41,7 +41,7 @@ for package in "${packages[@]}"; do
   grep -q "<license type=\"expression\">MIT</license>" "$nuspec" || { echo "$package nuspec is missing MIT license"; exit 1; }
   grep -q "<readme>README.md</readme>" "$nuspec" || { echo "$package nuspec is missing package readme"; exit 1; }
 
-  if find "$package_dir" | grep -Eq '(^|/)(\.token|reference)(/|$)'; then
+  if find "$package_dir" | grep -Eq '(^|/)(\.token)(/|$)'; then
     echo "$package contains ignored local-only assets"
     exit 1
   fi

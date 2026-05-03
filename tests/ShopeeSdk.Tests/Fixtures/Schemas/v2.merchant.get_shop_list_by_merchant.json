@@ -1,0 +1,28 @@
+{
+  "api_name": "v2.merchant.get_shop_list_by_merchant",
+  "module_name": "Merchant",
+  "api_type": "Merchant",
+  "method": 2,
+  "params": {
+    "request_params": [
+      {
+        "name": "page_no",
+        "type": "int",
+        "required": true
+      }
+    ],
+    "response_params": [
+      {
+        "name": "shop_list",
+        "type": "object[]",
+        "children": [
+          {
+            "name": "shop_id",
+            "type": "int64",
+            "required": true
+          }
+        ]
+      }
+    ]
+  }
+}
