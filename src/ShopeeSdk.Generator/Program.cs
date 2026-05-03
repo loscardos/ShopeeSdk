@@ -18,6 +18,16 @@ switch (mode)
     case "generate":
         Directory.CreateDirectory(outputDirectory);
         File.WriteAllText(Path.Combine(outputDirectory, "endpoint-coverage.md"), new EndpointCoverageWriter().WriteMarkdown(endpoints));
+
+        foreach (var group in endpoints.GroupBy(endpoint => endpoint.ModuleKey).OrderBy(group => group.Key, StringComparer.Ordinal))
+        {
+            var moduleDirectory = Path.Combine("src", "ShopeeSdk.Generated", ShopeeName.ToPascalCase(group.Key));
+            Directory.CreateDirectory(moduleDirectory);
+            File.WriteAllText(
+                Path.Combine(moduleDirectory, ShopeeName.ToPascalCase(group.Key) + "Contracts.g.cs"),
+                new ContractsWriter().WriteModule(group.First().ModuleName, group.Key, group.ToArray()));
+        }
+
         break;
     default:
         Console.Error.WriteLine("Usage: dotnet run --project src/ShopeeSdk.Generator -- [summary|coverage|generate] [schemaDirectory] [outputDirectory]");
