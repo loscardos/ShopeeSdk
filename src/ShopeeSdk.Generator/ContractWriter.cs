@@ -6,7 +6,7 @@ public sealed class ContractWriter
     {
         var byModule = endpoints
             .GroupBy(endpoint => endpoint.ModuleName)
-            .OrderBy(group => group.Key)
+            .OrderBy(group => group.Key, StringComparer.Ordinal)
             .Select(group => $"{group.Key}: {group.Count()} endpoints");
 
         return string.Join(Environment.NewLine, byModule);
