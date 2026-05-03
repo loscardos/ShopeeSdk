@@ -22,10 +22,5 @@ jobs:
           SHOPEE_PARTNER_KEY: ${{ secrets.SHOPEE_PARTNER_KEY }}
       - run: dotnet pack ShopeeSdk.sln --no-build --output artifacts
       - run: ./scripts/test-local-nuget.sh
-      - name: Generator smoke test
-        run: |
-          if [ -d reference/schemas ]; then
-            dotnet run --project src/ShopeeSdk.Generator/ShopeeSdk.Generator.csproj -- reference/schemas
-          else
-            echo "reference/schemas not present in repository; skipping local reference smoke test"
-          fi
+      - name: Verify generated SDK surface
+        run: ./scripts/verify-generated.sh
