@@ -7,6 +7,7 @@ using ShopeeSdk.Abstractions.Http;
 using ShopeeSdk.Abstractions.RateLimiting;
 using ShopeeSdk.Core.Crypto;
 using ShopeeSdk.Core.Time;
+using ShopeeSdk.Generated.Common;
 
 namespace ShopeeSdk.Core.Http;
 
@@ -275,9 +276,25 @@ public sealed class ShopeeClient(
                 continue;
             }
 
+            if (value is ShopeeUploadFile uploadFile)
+            {
+                AddFile(multipart, name, uploadFile);
+                continue;
+            }
+
             if (value is IEnumerable<ShopeeFilePart> files)
             {
                 foreach (var item in files)
+                {
+                    AddFile(multipart, name, item);
+                }
+
+                continue;
+            }
+
+            if (value is IEnumerable<ShopeeUploadFile> uploadFiles)
+            {
+                foreach (var item in uploadFiles)
                 {
                     AddFile(multipart, name, item);
                 }
@@ -298,6 +315,13 @@ public sealed class ShopeeClient(
     }
 
     private static void AddFile(MultipartFormDataContent multipart, string name, ShopeeFilePart file)
+    {
+        var content = new ByteArrayContent(file.Content);
+        content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(file.ContentType);
+        multipart.Add(content, name, file.FileName);
+    }
+
+    private static void AddFile(MultipartFormDataContent multipart, string name, ShopeeUploadFile file)
     {
         var content = new ByteArrayContent(file.Content);
         content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(file.ContentType);

@@ -2,6 +2,7 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using ShopeeSdk.Generated.Common;
 
 namespace ShopeeSdk.Generated.MediaSpace;
 
@@ -61,7 +62,7 @@ public sealed record MediaSpaceInitVideoUploadResponse(
 );
 
 public sealed record MediaSpaceUploadImageRequest(
-    [property: JsonPropertyName("image")] byte[]? Image = null,
+    [property: JsonPropertyName("image")] ShopeeUploadFile? Image = null,
     [property: JsonPropertyName("scene")] string? Scene = null,
     [property: JsonPropertyName("ratio")] string? Ratio = null
 );
@@ -102,7 +103,7 @@ public sealed record MediaSpaceUploadVideoPartRequest(
     [property: JsonPropertyName("video_upload_id")] string? VideoUploadId = null,
     [property: JsonPropertyName("part_seq")] int? PartSeq = null,
     [property: JsonPropertyName("content_md5")] string? ContentMd5 = null,
-    [property: JsonPropertyName("part_content")] byte[]? PartContent = null
+    [property: JsonPropertyName("part_content")] ShopeeUploadFile? PartContent = null
 );
 
 public sealed record MediaSpaceUploadVideoPartResponse(

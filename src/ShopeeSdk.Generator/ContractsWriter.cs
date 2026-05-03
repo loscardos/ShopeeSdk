@@ -12,6 +12,7 @@ public sealed class ContractsWriter
         builder.AppendLine("#nullable enable");
         builder.AppendLine("using System.Text.Json;");
         builder.AppendLine("using System.Text.Json.Serialization;");
+        builder.AppendLine("using ShopeeSdk.Generated.Common;");
         builder.AppendLine();
         builder.AppendLine($"namespace {namespaceName};");
         builder.AppendLine();

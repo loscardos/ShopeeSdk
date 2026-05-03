@@ -2,6 +2,7 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using ShopeeSdk.Generated.Common;
 
 namespace ShopeeSdk.Generated.Logistics;
 
@@ -1623,7 +1624,7 @@ public sealed record LogisticsUpdateTrackingStatusResponse(
 );
 
 public sealed record LogisticsUploadServiceablePolygonRequest(
-    [property: JsonPropertyName("file")] byte[]? File = null
+    [property: JsonPropertyName("file")] ShopeeUploadFile? File = null
 );
 
 public sealed record LogisticsUploadServiceablePolygonResponse(

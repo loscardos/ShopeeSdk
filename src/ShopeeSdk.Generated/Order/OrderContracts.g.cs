@@ -2,6 +2,7 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using ShopeeSdk.Generated.Common;
 
 namespace ShopeeSdk.Generated.Order;
 
@@ -618,7 +619,7 @@ public sealed record OrderUnsplitOrderResponse(
 public sealed record OrderUploadInvoiceDocRequest(
     [property: JsonPropertyName("order_sn")] string? OrderSn = null,
     [property: JsonPropertyName("file_type")] int? FileType = null,
-    [property: JsonPropertyName("file")] byte[]? File = null
+    [property: JsonPropertyName("file")] ShopeeUploadFile? File = null
 );
 
 public sealed record OrderUploadInvoiceDocResponse(

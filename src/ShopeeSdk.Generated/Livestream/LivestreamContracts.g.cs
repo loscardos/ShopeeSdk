@@ -2,6 +2,7 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using ShopeeSdk.Generated.Common;
 
 namespace ShopeeSdk.Generated.Livestream;
 
@@ -423,7 +424,7 @@ public sealed record LivestreamUpdateShowItemResponse(
 );
 
 public sealed record LivestreamUploadImageRequest(
-    [property: JsonPropertyName("image")] byte[]? Image = null
+    [property: JsonPropertyName("image")] ShopeeUploadFile? Image = null
 );
 
 public sealed record LivestreamUploadImageResponse(

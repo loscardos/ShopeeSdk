@@ -7,6 +7,7 @@ using ShopeeSdk.Abstractions.Configuration;
 using ShopeeSdk.Abstractions.Http;
 using ShopeeSdk.Core.Http;
 using ShopeeSdk.Core.RateLimiting;
+using ShopeeSdk.Generated.Common;
 using ShopeeSdk.Tests.TestDoubles;
 
 namespace ShopeeSdk.Tests.Http;
@@ -39,6 +40,35 @@ public sealed class ShopeeClientMultipartTests
             CancellationToken.None);
 
         handler.Request!.Content.Should().BeOfType<MultipartFormDataContent>();
+        handler.Body.Should().Contain("name=images");
+        handler.Body.Should().Contain("filename=image.png");
+    }
+
+    [Fact]
+    public async Task SendAsync_SendsGeneratedUploadFilePart()
+    {
+        using var handler = new CapturingHandler("""{"request_id":"req-1","error":"","message":"","response":{"image_list":[]}}""");
+        using var httpClient = new HttpClient(handler) { BaseAddress = new Uri("https://partner.test/api/v2/") };
+        var client = new ShopeeClient(
+            httpClient,
+            Options.Create(new ShopeeOptions { PartnerId = 123, PartnerKey = "secret", BaseUrl = new Uri("https://partner.test/api/v2/") }),
+            new FixedShopeeClock(DateTimeOffset.FromUnixTimeSeconds(1700000000)),
+            new NoopShopeeRateLimiter(),
+            NullLogger<ShopeeClient>.Instance);
+
+        await client.SendAsync<object>(
+            new ShopeeRequest(
+                ShopeeRequestMethod.Post,
+                "/media/upload_image",
+                new Dictionary<string, object?>(),
+                new Dictionary<string, object?>
+                {
+                    ["images"] = new ShopeeUploadFile("image.png", "image/png", Encoding.UTF8.GetBytes("png"))
+                },
+                null,
+                ShopeeRequestContentKind.Multipart),
+            CancellationToken.None);
+
         handler.Body.Should().Contain("name=images");
         handler.Body.Should().Contain("filename=image.png");
     }

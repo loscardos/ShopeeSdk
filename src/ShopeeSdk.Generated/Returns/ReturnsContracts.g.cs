@@ -2,6 +2,7 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using ShopeeSdk.Generated.Common;
 
 namespace ShopeeSdk.Generated.Returns;
 
@@ -33,7 +34,7 @@ public sealed record ReturnsConfirmResponse(
 
 public sealed record ReturnsConvertImageRequest(
     [property: JsonPropertyName("return_sn")] string? ReturnSn = null,
-    [property: JsonPropertyName("upload_image")] byte[]? UploadImage = null
+    [property: JsonPropertyName("upload_image")] ShopeeUploadFile? UploadImage = null
 );
 
 public sealed record ReturnsConvertImageResponse(
