@@ -8,7 +8,29 @@ ASP.NET-friendly Shopee Open API SDK for the internal omni-channel integration s
 - OAuth authorization URL, token exchange, and token refresh.
 - Multi-shop token store abstraction.
 - Product, order, logistics, payment, and returns endpoint foundations.
+- Generated full endpoint coverage from the local Shopee schema reference.
 - Dependency injection through `AddShopeeSdk`.
+
+## Endpoint Coverage
+
+The SDK ships two API surfaces:
+
+- Polished managers in `ShopeeSdk.Abstractions.Managers` for auth and the first ERP workflows.
+- Generated managers in `ShopeeSdk.Abstractions.Managers.Generated` for full Shopee schema coverage.
+
+Generated managers are grouped by Shopee module and use request/response contracts from `ShopeeSdk.Generated.<Module>`.
+
+Example:
+
+```csharp
+using ShopeeSdk.Abstractions.Managers.Generated;
+using ShopeeSdk.Generated.Product;
+
+var categories = await productApi.GetCategoryAsync(
+    shopId,
+    new ProductGetCategoryRequest(Language: "en"),
+    cancellationToken);
+```
 
 ## ASP.NET Registration
 
