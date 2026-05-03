@@ -6,6 +6,7 @@ ARTIFACTS="$ROOT/artifacts"
 TMP="$ROOT/.tmp/local-nuget-consumer"
 
 rm -rf "$ARTIFACTS" "$TMP"
+rm -rf "$HOME/.nuget/packages/loscardos.shopeesdk."*
 dotnet pack "$ROOT/ShopeeSdk.sln" --output "$ARTIFACTS"
 
 mkdir -p "$TMP"
@@ -17,10 +18,15 @@ dotnet add "$TMP/LocalNuGetConsumer.csproj" package Microsoft.Extensions.Depende
 
 cat > "$TMP/Program.cs" <<'CS'
 using Microsoft.Extensions.DependencyInjection;
+using ShopeeSdk.Abstractions.Auth;
 using ShopeeSdk.Abstractions.Configuration;
+using ShopeeSdk.Abstractions.Http;
+using ShopeeSdk.Abstractions.Managers.Generated;
 using ShopeeSdk.Extensions.DependencyInjection;
+using ShopeeSdk.Generated.Product;
 
 var services = new ServiceCollection();
+services.AddSingleton<IShopeeTokenStore, SmokeTokenStore>();
 services.AddShopeeSdk(options =>
 {
     options.PartnerId = 1;
@@ -29,7 +35,33 @@ services.AddShopeeSdk(options =>
 });
 
 using var provider = services.BuildServiceProvider();
-Console.WriteLine(provider.GetRequiredService<ShopeeSdk.Abstractions.Http.IShopeeClient>().GetType().Name);
+Console.WriteLine(provider.GetRequiredService<IShopeeClient>().GetType().Name);
+Console.WriteLine(provider.GetRequiredService<IProductApi>().GetType().FullName);
+Console.WriteLine(typeof(ProductGetCategoryRequest).Name);
+
+public sealed class SmokeTokenStore : IShopeeTokenStore
+{
+    public Task<ShopeeToken?> GetAsync(long? shopId, long? merchantId, CancellationToken cancellationToken)
+    {
+        return Task.FromResult<ShopeeToken?>(new ShopeeToken(
+            shopId,
+            merchantId,
+            "access",
+            "refresh",
+            DateTimeOffset.UtcNow.AddHours(1),
+            "smoke"));
+    }
+
+    public Task StoreAsync(ShopeeToken token, CancellationToken cancellationToken)
+    {
+        return Task.CompletedTask;
+    }
+
+    public Task ClearAsync(long? shopId, long? merchantId, CancellationToken cancellationToken)
+    {
+        return Task.CompletedTask;
+    }
+}
 CS
 
 dotnet run --project "$TMP/LocalNuGetConsumer.csproj"
