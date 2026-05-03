@@ -26,6 +26,19 @@ switch (mode)
             File.WriteAllText(
                 Path.Combine(moduleDirectory, ShopeeName.ToPascalCase(group.Key) + "Contracts.g.cs"),
                 new ContractsWriter().WriteModule(group.First().ModuleName, group.Key, group.ToArray()));
+
+            var abstractionDirectory = Path.Combine("src", "ShopeeSdk.Abstractions", "Managers", "Generated");
+            var coreDirectory = Path.Combine("src", "ShopeeSdk.Core", "Managers", "Generated");
+            Directory.CreateDirectory(abstractionDirectory);
+            Directory.CreateDirectory(coreDirectory);
+
+            File.WriteAllText(
+                Path.Combine(abstractionDirectory, ShopeeName.ToManagerInterfaceName(group.Key) + ".g.cs"),
+                new ManagersWriter().WriteInterface(group.First().ModuleName, group.Key, group.ToArray()));
+
+            File.WriteAllText(
+                Path.Combine(coreDirectory, ShopeeName.ToManagerImplementationName(group.Key) + ".g.cs"),
+                new ManagersWriter().WriteImplementation(group.First().ModuleName, group.Key, group.ToArray()));
         }
 
         break;

@@ -32,4 +32,24 @@ public sealed class GeneratorGoldenFileTests
         output.Should().Contain("public sealed record ProductGetCategoryResponse(");
         output.Should().Contain("IReadOnlyList<ProductGetCategoryResponseCategoryListItem>? CategoryList = null");
     }
+
+    [Fact]
+    public void ManagersWriter_GeneratesShopAuthenticatedManagerMethod()
+    {
+        var endpoint = new SchemaEndpoint(
+            "v2.product.get_category",
+            "Product",
+            "product",
+            "/product/get_category",
+            ShopeeSchemaHttpMethod.Get,
+            ShopeeSchemaAuthScope.Shop,
+            ShopeeSchemaRequestContentKind.Query,
+            [new SchemaParameter("language", "string", false, [])],
+            []);
+
+        var output = new ManagersWriter().WriteInterface("Product", "product", [endpoint]);
+
+        output.Should().Contain("public interface IProductApi");
+        output.Should().Contain("Task<ProductGetCategoryResponse> GetCategoryAsync(long shopId, ProductGetCategoryRequest request, CancellationToken cancellationToken);");
+    }
 }
