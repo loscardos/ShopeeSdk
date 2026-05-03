@@ -10,3 +10,4 @@ TestResults/
 .tmp/
 reference/
 artifacts/
+.idea/
