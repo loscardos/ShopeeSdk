@@ -1,10 +1,4 @@
 using FluentAssertions;
-using Microsoft.Extensions.Logging.Abstractions;
-using Microsoft.Extensions.Options;
-using ShopeeSdk.Core.Auth;
-using ShopeeSdk.Core.Http;
-using ShopeeSdk.Core.RateLimiting;
-using ShopeeSdk.Tests.TestDoubles;
 
 namespace ShopeeSdk.IntegrationTests;
 
@@ -13,19 +7,45 @@ public sealed class ShopeeAuthSandboxTests
     [ShopeeSandboxFact]
     public void BuildAuthorizationUrl_UsesSandboxCredentials()
     {
-        var options = Options.Create(ShopeeSandboxConfiguration.CreateOptions());
-        var client = new ShopeeClient(
-            new HttpClient { BaseAddress = options.Value.ResolveBaseUrl() },
-            options,
-            new FixedShopeeClock(DateTimeOffset.FromUnixTimeSeconds(1_700_000_000)),
-            new NoopShopeeRateLimiter(),
-            NullLogger<ShopeeClient>.Instance);
-        var auth = new ShopeeAuthApi(client, options, new FixedShopeeClock(DateTimeOffset.FromUnixTimeSeconds(1_700_000_000)), new InMemoryShopeeTokenStore());
+        var fixture = new ShopeeSandboxFixture();
 
-        var url = auth.BuildAuthorizationUrl(new Uri("https://localhost/shopee/callback"));
+        var url = fixture.AuthApi.BuildAuthorizationUrl(ShopeeSandboxConfiguration.RedirectUri);
 
-        url.ToString().Should().Contain("partner_id=");
-        url.ToString().Should().Contain("sign=");
-        url.ToString().Should().Contain("openplatform.sandbox.test-stable.shopee.sg");
+        url.Host.Should().Contain("sandbox.test-stable.shopee");
+        url.Query.Should().Contain("partner_id=");
+        url.Query.Should().Contain("timestamp=");
+        url.Query.Should().Contain("redirect=");
+        url.Query.Should().Contain("sign=");
+    }
+
+    [ShopeeSandboxAuthCodeFact]
+    public async Task ExchangeCodeAsync_StoresSandboxShopToken()
+    {
+        var fixture = new ShopeeSandboxFixture();
+
+        var token = await fixture.AuthApi.ExchangeCodeAsync(
+            ShopeeSandboxConfiguration.AuthCode,
+            ShopeeSandboxConfiguration.ShopId,
+            null,
+            CancellationToken.None);
+
+        token.ShopId.Should().Be(ShopeeSandboxConfiguration.ShopId);
+        token.AccessToken.Should().NotBeNullOrWhiteSpace();
+        token.RefreshToken.Should().NotBeNullOrWhiteSpace();
+        token.ExpiresAt.Should().BeAfter(DateTimeOffset.UtcNow);
+    }
+
+    [ShopeeSandboxRefreshTokenFact]
+    public async Task RefreshAsync_RotatesSandboxShopToken()
+    {
+        var fixture = new ShopeeSandboxFixture();
+        await fixture.StoreConfiguredShopTokenAsync();
+
+        var token = await fixture.AuthApi.RefreshAsync(ShopeeSandboxConfiguration.ShopId, null, CancellationToken.None);
+
+        token.ShopId.Should().Be(ShopeeSandboxConfiguration.ShopId);
+        token.AccessToken.Should().NotBeNullOrWhiteSpace();
+        token.RefreshToken.Should().NotBeNullOrWhiteSpace();
+        token.ExpiresAt.Should().BeAfter(DateTimeOffset.UtcNow);
     }
 }
