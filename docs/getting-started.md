@@ -72,5 +72,6 @@ builder.Services.AddShopeeEntityFrameworkTokenStorage();
 ## Next Steps
 
 - Read [Authentication](auth.md) to wire the OAuth callback.
+- Read [Webhooks](webhooks.md) to wire a fast Shopee callback receiver with signature verification, timestamp validation, and queue handoff.
 - Read [Token Storage](storage.md) before going beyond local testing.
 - Read [Endpoint Usage](endpoints.md) to choose polished or generated managers.

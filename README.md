@@ -72,6 +72,32 @@ var token = await authApi.ExchangeCodeAsync(
 
 Persisted tokens are used by shop-scoped generated managers and refreshed through `ShopeeTokenService` when needed.
 
+## Webhook Receiver Pattern
+
+Use the SDK to verify and parse Shopee webhook callbacks, then persist or enqueue the raw verified envelope and return quickly. Broker, storage, and worker implementations belong to the host application.
+
+```csharp
+app.MapPost("/webhooks/shopee", async (
+    HttpRequest request,
+    IShopeeWebhookParser parser,
+    IShopeeWebhookQueue queue,
+    CancellationToken cancellationToken) =>
+{
+    using var reader = new StreamReader(request.Body);
+    var rawBody = await reader.ReadToEndAsync(cancellationToken);
+    var signature = request.Headers["authorization"].ToString();
+    var result = parser.TryReceive(rawBody, signature, DateTimeOffset.UtcNow);
+
+    if (!result.Accepted)
+    {
+        return Results.Unauthorized();
+    }
+
+    await queue.EnqueueAsync(result.Envelope!, cancellationToken);
+    return Results.Ok();
+});
+```
+
 ## Calling Endpoints
 
 The SDK exposes two API surfaces:
@@ -121,6 +147,7 @@ Use ignored local files such as `.token/shopee-sandbox.env` for sandbox credenti
 - [Getting Started](docs/getting-started.md)
 - [Authentication](docs/auth.md)
 - [Endpoint Usage](docs/endpoints.md)
+- [Webhooks](docs/webhooks.md)
 - [Token Storage](docs/storage.md)
 - [Sandbox Validation](docs/sandbox.md)
 - [Packaging and Verification](docs/packaging.md)

@@ -30,6 +30,14 @@ public static class ShopeeServiceCollectionExtensions
         services.AddScoped<ILogisticsApi, LogisticsApi>();
         services.AddScoped<IPaymentApi, PaymentApi>();
         services.AddScoped<IReturnsApi, ReturnsApi>();
+        services.AddSingleton<IShopeeWebhookIdempotencyKeyFactory, ShopeeWebhookIdempotencyKeyFactory>();
+        services.AddSingleton(_ => new ShopeeWebhookOptions
+        {
+            TimestampTolerance = TimeSpan.FromMinutes(10),
+            SignatureHeaderName = "authorization"
+        });
+        services.AddSingleton<ShopeeWebhookTimestampValidator>();
+        services.AddSingleton<IShopeeWebhookParser, ShopeeWebhookParser>();
         services.AddScoped<ShopeeSdk.Abstractions.Managers.Generated.IAccountHealthApi, ShopeeSdk.Core.Managers.Generated.AccountHealthApi>();
         services.AddScoped<ShopeeSdk.Abstractions.Managers.Generated.IAddOnDealApi, ShopeeSdk.Core.Managers.Generated.AddOnDealApi>();
         services.AddScoped<ShopeeSdk.Abstractions.Managers.Generated.IAdsApi, ShopeeSdk.Core.Managers.Generated.AdsApi>();

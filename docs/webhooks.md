@@ -24,3 +24,33 @@ Shopee
 ```
 
 The captured Shopee push mechanism reference is stored at `docs/webhooks/shopee-push-mechanisms.yaml`.
+
+## Responsibilities
+
+SDK responsibilities:
+
+- verify Shopee signature
+- validate callback timestamp
+- compute idempotency key
+- parse known Shopee push payloads
+- expose raw envelope interfaces
+
+Application responsibilities:
+
+- implement `IShopeeWebhookQueue`
+- implement `IShopeeWebhookRawPayloadSink` when raw payload archiving is required
+- implement idempotency storage
+- run worker consumers
+- normalize Shopee/TikTok/Tokopedia events into internal domain events
+
+## Worker Flow
+
+```text
+Raw verified envelope
+  -> broker message
+  -> worker receives message
+  -> idempotency store checks key
+  -> parse typed Shopee payload
+  -> map to application event
+  -> commit offset or ack message
+```

@@ -12,6 +12,7 @@
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="8.9.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.7" />
     <PackageReference Include="Moq" Version="4.20.72" />
     <PackageReference Include="RichardSzalay.MockHttp" Version="7.0.0" />
     <PackageReference Include="xunit" Version="2.4.2" />
@@ -28,6 +29,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\ShopeeSdk.Abstractions\ShopeeSdk.Abstractions.csproj" />
     <ProjectReference Include="..\..\src\ShopeeSdk.Core\ShopeeSdk.Core.csproj" />
+    <ProjectReference Include="..\..\src\ShopeeSdk.Extensions.DependencyInjection\ShopeeSdk.Extensions.DependencyInjection.csproj" />
     <ProjectReference Include="..\..\src\ShopeeSdk.Generator\ShopeeSdk.Generator.csproj" />
     <ProjectReference Include="..\..\src\ShopeeSdk.Generated\ShopeeSdk.Generated.csproj" />
     <ProjectReference Include="..\..\samples\ShopeeSdk.SampleConsole\ShopeeSdk.SampleConsole.csproj" />
