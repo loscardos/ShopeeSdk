@@ -1,0 +1,5205 @@
+source:
+  page_url: "https://open.shopee.com/push-mechanism/5"
+  category_api_path: /opservice/api/v1/push/category
+  doc_api_path_template: "/opservice/api/v1/push/doc?push_api_id={push_api_id}"
+  fetched_at: "2026-05-04T14:20:32.973024Z"
+app_types:
+  -
+    id: 1
+    name: Original
+  -
+    id: 2
+    name: ERP System
+  -
+    id: 3
+    name: Seller In House System
+  -
+    id: 4
+    name: Product Management
+  -
+    id: 5
+    name: Order Management
+  -
+    id: 6
+    name: Accounting And Finance
+  -
+    id: 7
+    name: Marketing
+  -
+    id: 8
+    name: Customer Service
+  -
+    id: 10
+    name: Brand Membership
+  -
+    id: 11
+    name: Customized APP
+  -
+    id: 12
+    name: Ads Service
+  -
+    id: 13
+    name: Consignment Service System
+  -
+    id: 14
+    name: Seller Logistics
+  -
+    id: 15
+    name: Custom APP
+  -
+    id: 16
+    name: Ads Service App
+  -
+    id: 17
+    name: "Ads's Service App"
+  -
+    id: 18
+    name: Swam ERP
+  -
+    id: 19
+    name: Livestream Management
+  -
+    id: 20
+    name: Ads Facil
+  -
+    id: 21
+    name: Affiliate Marketing Solution Management
+  -
+    id: 22
+    name: Shopee Video Management
+categories:
+  -
+    id: 1000
+    name: Product Push
+    push_api_ids:
+      - 5
+      - 11
+      - 13
+      - 18
+      - 25
+      - 30
+  -
+    id: 1001
+    name: Order Push
+    push_api_ids:
+      - 1
+      - 2
+      - 17
+      - 26
+      - 27
+      - 28
+      - 33
+      - 34
+      - 44
+  -
+    id: 2078
+    name: Return Push
+    push_api_ids:
+      - 32
+  -
+    id: 1002
+    name: Marketing Push
+    push_api_ids:
+      - 6
+      - 7
+  -
+    id: 1003
+    name: Shopee Push
+    push_api_ids:
+      - 3
+      - 12
+      - 15
+      - 16
+      - 31
+      - 43
+  -
+    id: 1004
+    name: Webchat Push
+    push_api_ids:
+      - 10
+  -
+    id: 2063
+    name: Consignment Service Push
+    push_api_ids:
+      - 20
+      - 22
+      - 23
+      - 24
+  -
+    id: 2085
+    name: Fulfillment by Shopee Push
+    push_api_ids:
+      - 36
+      - 38
+      - 39
+      - 40
+      - 41
+push_mechanisms:
+  -
+    push_api_id: 5
+    name: reserved_stock_change_push
+    category:
+      id: 1000
+      name: Product Push
+    code: 8
+    description: Get the reserved stock change log
+    subscription_rules:
+      -
+        id: 1
+        name: Original
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 4
+        name: Product Management
+      -
+        id: 7
+        name: Marketing
+      -
+        id: 11
+        name: Customized APP
+      -
+        id: 18
+        name: Swam ERP
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2023-08-01T08:45:00Z"
+    parameters:
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: Main Push message info
+        children:
+          -
+            name: shop_id
+            type: int
+            required: null
+            sample: 12744916
+            description: "Shopee's unique identifier for a shop."
+          -
+            name: item_id
+            type: int
+            required: null
+            sample: 1861418518
+            description: "Shopee's unique identifier for an item."
+          -
+            name: variation_id
+            type: int
+            required: null
+            sample: 8791278571
+            description: "Shopee's unique identifier for a variation of an item."
+          -
+            name: changed_values
+            type: "object[]"
+            required: null
+            sample: ""
+            description: Changed event.
+            children:
+              -
+                name: name
+                type: string
+                required: null
+                sample: reserved_stock
+                description: The field value we changed.
+              -
+                name: old
+                type: int
+                required: null
+                sample: 4951
+                description: The value before change.
+              -
+                name: new
+                type: int
+                required: null
+                sample: 4950
+                description: The value after change.
+          -
+            name: promotion_type
+            type: string
+            required: null
+            sample: flash_sale
+            description: "Promotion type：seller_discount / product_promotion_SG / product_promotion_MY / product_promotion_ID / product_promotion_VN / product_promotion_TW / product_promotion_TH / product_promotion_PH / flash_sale (contains: in_shop_flash_sale, flash_sale, brand_sale) / add_on_deal_main / add_on_deal_sub / bundle_deal / group_buy / Platform Streaming / Seller Streaming / Campaign (contains: deep_discount, platform_sale, low_price_promotion)"
+          -
+            name: promotion_id
+            type: int
+            required: null
+            sample: 137899002020202
+            description: The identity of item promotion.
+          -
+            name: action
+            type: string
+            required: null
+            sample: place_order
+            description: "The action of the event. Can be \"place_order\" or \"cancel_order\""
+          -
+            name: ordersn
+            type: string
+            required: null
+            sample: 210810QXVJM3EX
+            description: The ordersn associated with the event.
+          -
+            name: update_time
+            type: string
+            required: null
+            sample: 1660124246
+            description: The time of event.
+      -
+        name: shop_id
+        type: int
+        required: null
+        sample: 127449165
+        description: "Shopee's unique identifier for a shop."
+      -
+        name: code
+        type: int
+        required: null
+        sample: 8
+        description: "Shopee's unique identifier for a push notification"
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1660124246
+        description: Timestamp that indicates the message was sent.
+    examples:
+      -
+        label: "Action: place_order"
+        language: json
+        body:
+          data:
+            shop_id: 1274495
+            item_id: 18614185187
+            variation_id: 87912785718
+            changed_values:
+              -
+                name: reserved_stock
+                old: 4951
+                new: 4950
+            promotion_type: flash_sale
+            promotion_id: 104993304719361
+            action: place_order
+            ordersn: 220810QXVJM3EX
+            update_time: 1660124246
+          shop_id: 1274495
+          code: 8
+          timestamp: 1660124246
+      -
+        label: "Action:cancel_order"
+        language: json
+        body:
+          data:
+            shop_id: 1274495
+            item_id: 19213740442
+            variation_id: 154918396482
+            changed_values:
+              -
+                name: reserved_stock
+                old: 199
+                new: 200
+            promotion_type: flash_sale
+            promotion_id: 103363389812736
+            action: cancel_order
+            ordersn: 220809KS77DXTS
+            update_time: 1660124321
+          shop_id: 1274495
+          code: 8
+          timestamp: 1660124321
+    update_logs:
+      -
+        date: 2023-08-01
+        timestamp: "2023-08-01T08:44:59Z"
+        description: update promotion_type
+      -
+        date: 2022-08-18
+        timestamp: "2022-08-18T12:48:21Z"
+        description: New Push Mechanism
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/5"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=5
+  -
+    push_api_id: 11
+    name: video_upload_push
+    category:
+      id: 1000
+      name: Product Push
+    code: 11
+    description: Get the video upload push result
+    subscription_rules:
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 4
+        name: Product Management
+      -
+        id: 18
+        name: Swam ERP
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2022-08-19T02:49:19Z"
+    parameters:
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: ""
+        children:
+          -
+            name: video_upload_id
+            type: string
+            required: null
+            sample: sg_a106a162-8a60-4a3e-9eba-7844d7a6f4f2_000197
+            description: "The identifier of this upload session, used in following video upload request and item creating and/or updating."
+          -
+            name: status
+            type: string
+            required: null
+            sample: FAILED
+            description: Video upload result. Can be SUCCEEDED / FAILED
+          -
+            name: message
+            type: string
+            required: null
+            sample: Video is too short
+            description: More about failed uploads.
+          -
+            name: video_info
+            type: object
+            required: null
+            sample: ""
+            description: Video id and video url for each markets.
+            children:
+              -
+                name: video_id
+                type: string
+                required: null
+                sample: ""
+                description: "Equal to video_upload_id, the identifier for this upload session, used for subsequent video upload requests and item creation and/or updates"
+              -
+                name: video_url
+                type: "object[]"
+                required: null
+                sample: ""
+                description: Video URLs for each markets
+                children:
+                  -
+                    name: video_url_region
+                    type: string
+                    required: null
+                    sample: ""
+                    description: Video region.
+                  -
+                    name: video_url
+                    type: string
+                    required: null
+                    sample: ""
+                    description: Video URL
+              -
+                name: thumbnail_url
+                type: "object[]"
+                required: null
+                sample: ""
+                description: Video thumbnails for each markets.
+                children:
+                  -
+                    name: image_url_region
+                    type: string
+                    required: null
+                    sample: ""
+                    description: Video Thumbnail region.
+                  -
+                    name: image_url
+                    type: string
+                    required: null
+                    sample: ""
+                    description: image url.
+      -
+        name: shop_id
+        type: int
+        required: null
+        sample: 608118757
+        description: "Shopee's unique identifier for a shop."
+      -
+        name: code
+        type: int
+        required: null
+        sample: 11
+        description: "Shopee's unique identifier for a push notification."
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1660125113
+        description: Timestamp that indicates the message was sent.
+    examples:
+      -
+        label: "If video upload successfully, push notification will be"
+        language: json
+        body: "{\t\"data\": {\t\t\"video_upload_id\": \"sg_f12ebfcb-a415-4c8a-b873-cc2ea8803c11_000203\",\t\t\"status\": \"SUCCEEDED\",\t\t\"message\": \"Success\",\t\t\"video_info\": {\t\t\t\"video_id\": \"0b6b0046852b64676545cf734ef52441\",\t\t\t\"video_url\": [{\t\t\t\t\"video_url_region\": \"MX\",\t\t\t\t\"video_url\": \"https://cvf.shopee.com.mx/file/0b6b0046852b64676545cf734ef52441\"\t\t\t}, {\t\t\t\t\"video_url_region\": \"CO\",\t\t\t\t\"video_url\": \"https://cvf.shopee.com.co/file/0b6b0046852b64676545cf734ef52441\"\t\t\t}, {\t\t\t\t\"video_url_region\": \"BR\",\t\t\t\t\"video_url\": \"https://cvf.shopee.com.br/file/0b6b0046852b64676545cf734ef52441\"\t\t\t}, {\t\t\t\t\"video_url_region\": \"ID\",\t\t\t\t\"video_url\": \"https://cvf.shopee.co.id/file/0b6b0046852b64676545cf734ef52441\"\t\t\t}, {\t\t\t\t\"video_url_region\": \"PH\",\t\t\t\t\"video_url\": \"https://cvf.shopee.ph/file/0b6b0046852b64676545cf734ef52441\"\t\t\t}, {\t\t\t\t\"video_url_region\": \"TH\",\t\t\t\t\"video_url\": \"https://cvf.shopee.co.th/file/0b6b0046852b64676545cf734ef52441\"\t\t\t}, {\t\t\t\t\"video_url_region\": \"TW\",\t\t\t\t\"video_url\": \"https://cvf.shopee.tw/file/0b6b0046852b64676545cf734ef52441\"\t\t\t}, {\t\t\t\t\"video_url_region\": \"VN\",\t\t\t\t\"video_url\": \"https://cvf.shopee.vn/file/0b6b0046852b64676545cf734ef52441\"\t\t\t}, {\t\t\t\t\"video_url_region\": \"CL\",\t\t\t\t\"video_url\": \"https://cvf.shopee.cl/file/0b6b0046852b64676545cf734ef52441\"\t\t\t}, {\t\t\t\t\"video_url_region\": \"PL\",\t\t\t\t\"video_url\": \"https://cvf.shopee.pl/file/0b6b0046852b64676545cf734ef52441\"\t\t\t}, {\t\t\t\t\"video_url_region\": \"MY\",\t\t\t\t\"video_url\": \"https://cvf.shopee.com.my/file/0b6b0046852b64676545cf734ef52441\"\t\t\t}, {\t\t\t\t\"video_url_region\": \"SG\",\t\t\t\t\"video_url\": \"https://cvf.shopee.sg/file/0b6b0046852b64676545cf734ef52441\"\t\t\t}],\t\t\t       \"thumbnail_url\": [          {             \t\t\t\t\"image_url_region\": \"BR\",\t\t\t\t             \"image_url\": \"https://cf.shopee.com.br/file/023397b8fe760c31c2185dd6dc93be64\"          \t\t\t},            {             \t\t\t\t\"image_url_region\": \"SG\",\t\t\t\t             \"image_url\": \"https://cf.shopee.sg/file/023397b8fe760c31c2185dd6dc93be64\"          \t\t\t},            {             \t\t\t\t\"image_url_region\": \"TW\",\t\t\t\t             \"image_url\": \"https://cf.shopee.tw/file/023397b8fe760c31c2185dd6dc93be64\"          \t\t\t},            {             \t\t\t\t\"image_url_region\": \"VN\",\t\t\t\t             \"image_url\": \"https://cf.shopee.vn/file/023397b8fe760c31c2185dd6dc93be64\"          \t\t\t},            {             \t\t\t\t\"image_url_region\": \"PH\",\t\t\t\t             \"image_url\": \"https://cf.shopee.ph/file/023397b8fe760c31c2185dd6dc93be64\"          \t\t\t},            {             \t\t\t\t\"image_url_region\": \"TH\",\t\t\t\t             \"image_url\": \"https://cf.shopee.co.th/file/023397b8fe760c31c2185dd6dc93be64\"          \t\t\t},            {             \t\t\t\t\"image_url_region\": \"ID\",\t\t\t\t             \"image_url\": \"https://cf.shopee.co.id/file/023397b8fe760c31c2185dd6dc93be64\"          \t\t\t},            {             \t\t\t\t\"image_url_region\": \"MY\",\t\t\t\t             \"image_url\": \"https://cf.shopee.com.my/file/023397b8fe760c31c2185dd6dc93be64\"          \t\t\t}, {             \t\t\t\t\"image_url_region\": \"CO\",\t\t\t\t             \"image_url\": \"https://cf.shopee.com.co/file/023397b8fe760c31c2185dd6dc93be64\"          \t\t\t},{             \t\t\t\t\"image_url_region\": \"CL\",\t\t\t\t             \"image_url\": \"https://cf.shopee.cl/file/023397b8fe760c31c2185dd6dc93be64\"          \t\t\t},{             \t\t\t\t\"image_url_region\": \"MX\",\t\t\t\t             \"image_url\": \"https://cf.shopee.com.mx/file/023397b8fe760c31c2185dd6dc93be64\"          \t\t\t},{             \t\t\t\t\"image_url_region\": \"PL\",\t\t\t\t             \"image_url\": \"https://cf.shopee.com.pl/file/023397b8fe760c31c2185dd6dc93be64\"          \t\t\t}                                    ],\t\t\t       \"duration\": 60    \t\t} \t},\t\"shop_id\":908118757,\t\"code\":11,\t\"timestamp\":1660125113}"
+      -
+        label: "If video upload failed, push notification will be"
+        language: json
+        body:
+          data:
+            video_upload_id: sg_a106a162-8a60-4a3e-9eba-7844d7a6f4f2_000197
+            status: FAILED
+            message: Video is too short
+          shop_id: 608118757
+          code: 11
+          timestamp: 1660125113
+    update_logs:
+      -
+        date: 2022-08-18
+        timestamp: "2022-08-18T13:04:37Z"
+        description: New Push Mechanism
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/11"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=11
+  -
+    push_api_id: 13
+    name: brand_register_result
+    category:
+      id: 1000
+      name: Product Push
+    code: 13
+    description: Get the brand register result
+    subscription_rules:
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 4
+        name: Product Management
+      -
+        id: 18
+        name: Swam ERP
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2022-08-18T12:50:47Z"
+    parameters:
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: ""
+        children:
+          -
+            name: shop_id
+            type: int
+            required: null
+            sample: 7487788
+            description: "Shopee's unique identifier for a shop."
+          -
+            name: register_brand
+            type: object
+            required: null
+            sample: ""
+            description: Seller registered brand information.
+            children:
+              -
+                name: brand_id
+                type: int
+                required: null
+                sample: 3232262
+                description: The brand id returned by Shopee for the brand registration.
+              -
+                name: brand_name
+                type: string
+                required: null
+                sample: ABC
+                description: The brand name applied by the seller.
+          -
+            name: register_result
+            type: object
+            required: null
+            sample: ""
+            description: Registration result
+            children:
+              -
+                name: result
+                type: string
+                required: null
+                sample: Brand Registration Successfully
+                description: Registration result. Can be Brand Registration Successfully / Brand Registration Reject / Brand combined with an exist brand
+              -
+                name: reason
+                type: string
+                required: null
+                sample: ""
+                description: More detail about the result.
+      -
+        name: shop_id
+        type: int
+        required: null
+        sample: 7487788
+        description: "Shopee's unique identifier for a shop."
+      -
+        name: code
+        type: int
+        required: null
+        sample: 13
+        description: "Shopee's unique identifier for a shop."
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1660123176
+        description: Timestamp that indicates the message was sent.
+    examples:
+      -
+        label: "1.After the brand is approved, the developer will receive Push messages, such as:"
+        language: json
+        body:
+          data:
+            shop_id: 748773
+            register_brand:
+              brand_id: 3232262
+              brand_name: Omiz
+            register_result:
+              result: Brand Registration Successfully
+              reason: ""
+          shop_id: 74877883
+          code: 13
+          timestamp: 1660123176
+      -
+        label: "2. When the brand is rejected, the developer will receive Push messages, such as:"
+        language: json
+        body:
+          data:
+            shop_id: 832182
+            register_brand:
+              brand_id: 3228538
+              brand_name: Pop Up Squishy
+            register_result:
+              result: Brand Registration Reject
+              reason: Merek tidak sah.
+          shop_id: 832182994
+          code: 13
+          timestamp: 1660122620
+      -
+        label: "3. After the brand is merged, the developer will receive Push messages, such as:"
+        language: json
+        body:
+          data:
+            shop_id: 220181
+            register_brand:
+              brand_id: 3228577
+              brand_name: Cavero
+            register_result:
+              result: Brand combined with an exist brand
+              reason: ""
+            combined_brand:
+              brand_id: 1017064
+              brand_name: Cavero
+          shop_id: 220140481
+          code: 13
+          timestamp: 1660124291
+    update_logs:
+      -
+        date: 2022-08-18
+        timestamp: "2022-08-18T12:50:45Z"
+        description: New Push Mechanism
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/13"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=13
+  -
+    push_api_id: 18
+    name: violation_item_push
+    category:
+      id: 1000
+      name: Product Push
+    code: 16
+    description: "Get notified when item status becomes BANNED or SHOPEE_DELETE, or marked as deboost, including the violation type, violation reason, suggestion and fix deadline time."
+    subscription_rules:
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 4
+        name: Product Management
+      -
+        id: 7
+        name: Marketing
+      -
+        id: 18
+        name: Swam ERP
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2025-02-20T02:48:57Z"
+    parameters:
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: Main Push message data
+        children:
+          -
+            name: item_id
+            type: int64
+            required: null
+            sample: 3400133011
+            description: "Shopee's unique identifier for an item."
+          -
+            name: item_name
+            type: string
+            required: null
+            sample: test
+            description: Name of the item.
+          -
+            name: item_status
+            type: string
+            required: null
+            sample: BANNED
+            description: "Enumerated type that defines the current status of the item. Applicable values: NORMAL, BANNED, UNLIST, SELLER_DELETE, SHOPEE_DELETE, REVIEWING."
+          -
+            name: deboost
+            type: boolean
+            required: null
+            sample: "true"
+            description: "If deboost is true, means that the item's search ranking is lowered."
+          -
+            name: item_status_details
+            type: "object[]"
+            required: null
+            sample: ""
+            description: ""
+            children:
+              -
+                name: violation_type
+                type: string
+                required: null
+                sample: Prohibited Listing
+                description: |-
+                  Violation types defined by Shopee. Applicable values:
+                  Prohibited Listing
+                  Counterfeit and IP Infringement
+                  Spam
+                  Inappropriate Image
+                  Insufficient Information
+                  Mall Listing Improvement
+                  Other Listing Improvement
+              -
+                name: violation_reason
+                type: string
+                required: null
+                sample: License Reason
+                description: The reason for violation.
+              -
+                name: suggestion
+                type: string
+                required: null
+                sample: Upload license
+                description: Shopee provides you with suggestions for modifying items.
+              -
+                name: fix_deadline_time
+                type: timestamp
+                required: null
+                sample: 1705227588
+                description: Action required deadline. Empty if no deadline.
+              -
+                name: update_time
+                type: timestamp
+                required: null
+                sample: 1705054788
+                description: Latest update time.
+          -
+            name: deboost_details
+            type: "object[]"
+            required: null
+            sample: ""
+            description: ""
+            children:
+              -
+                name: violation_type
+                type: string
+                required: null
+                sample: Prohibited Listing
+                description: |-
+                  Violation types defined by Shopee. Applicable values:
+                  Prohibited Listing
+                  Counterfeit and IP Infringement
+                  Spam
+                  Inappropriate Image
+                  Insufficient Information
+                  Mall Listing Improvement
+                  Other Listing Improvement
+              -
+                name: violation_reason
+                type: string
+                required: null
+                sample: Wrong Category
+                description: The reason for violation.
+              -
+                name: suggestion
+                type: string
+                required: null
+                sample: "The item is in wrong category, please update to the suggested_category"
+                description: Shopee provides you with suggestions for modifying items.
+              -
+                name: suggested_category
+                type: "object[]"
+                required: null
+                sample: ""
+                description: ""
+                children:
+                  -
+                    name: category_id
+                    type: int64
+                    required: null
+                    sample: 107478
+                    description: ID for Shopee suggested category.
+                  -
+                    name: category_name
+                    type: string
+                    required: null
+                    sample: Personal Care
+                    description: Default name for Shopee suggested category.
+              -
+                name: fix_deadline_time
+                type: timestamp
+                required: null
+                sample: 1705202227
+                description: Action required deadline. Empty if no deadline.
+              -
+                name: update_time
+                type: timestamp
+                required: null
+                sample: 1704943027
+                description: Latest update time.
+      -
+        name: shop_id
+        type: int64
+        required: null
+        sample: ""
+        description: "Shopee's unique identifier for a shop."
+      -
+        name: code
+        type: int32
+        required: null
+        sample: ""
+        description: "Shopee's unique identifier for a push notification."
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: ""
+        description: Timestamp that indicates the message was sent.
+    examples:
+      -
+        label: "1. When the item is banned by Shopee:"
+        language: java
+        body:
+          data:
+            item_id: 3903127451
+            item_name: MZH制造商品1
+            item_status: BANNED
+            deboost: false
+            item_status_details:
+              -
+                violation_type: Prohibited Listing
+                violation_reason: License Reason
+                suggestion: Upload license
+                fix_deadline_time: 1705228281
+                update_time: 1705055481
+              -
+                violation_type: Inappropriate Image
+                violation_reason: Image Reason
+                suggestion: Update image
+                fix_deadline_time: 1705228281
+                update_time: 1705055481
+          shop_id: 602228340
+          code: 16
+          timestamp: 1705055481
+      -
+        label: "2. When the item is deleted by Shopee:"
+        language: java
+        body:
+          data:
+            item_id: 3903127452
+            item_name: MZH制造商品2
+            item_status: SHOPEE_DELETE
+            deboost: false
+            item_status_details:
+              -
+                violation_type: Prohibited Listing
+                violation_reason: License Reason
+                suggestion: Upload license
+                fix_deadline_time: 1700638193
+                update_time: 1699428593
+          shop_id: 602228340
+          code: 16
+          timestamp: 1699428593
+      -
+        label: "3. When the item is marked as deboost by Shopee:"
+        language: json
+        body:
+          data:
+            item_id: 3603542555
+            item_name: MZH制造商品3
+            item_status: NORMAL
+            deboost: true
+            deboosted_details:
+              -
+                violation_type: Inappropriate Image
+                violation_reason: Image Reason
+                suggestion: Update image
+                fix_deadline_time: 1704943027
+                update_time: 1704943027
+              -
+                violation_type: Prohibited Listing
+                violation_reason: Wrong Category
+                suggestion: "The item is in wrong category, please update to the suggested_category"
+                suggested_category:
+                  -
+                    category_id: 100005
+                    category_name: Health
+                  -
+                    category_id: 107478
+                    category_name: Personal Care
+                fix_deadline_time: 1704943027
+                update_time: 1704943027
+          shop_id: 605748501
+          code: 16
+          timestamp: 1704943027
+    update_logs:
+      -
+        date: 2024-01-18
+        timestamp: "2024-01-18T02:56:57Z"
+        description: New Push
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/18"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=18
+  -
+    push_api_id: 25
+    name: item_price_update_push
+    category:
+      id: 1000
+      name: Product Push
+    code: 22
+    description: Send the push when the seller updates the original_price of the item or model.
+    subscription_rules:
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 4
+        name: Product Management
+      -
+        id: 18
+        name: Swam ERP
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2025-09-08T06:35:58Z"
+    parameters:
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: Main Push message info.
+        children:
+          -
+            name: item_id
+            type: int64
+            required: null
+            sample: 1861418518
+            description: "Shopee's unique identifier for an item."
+          -
+            name: model_id
+            type: int64
+            required: null
+            sample: 8791278571
+            description: "Shopee's unique identifier for a model of an item."
+          -
+            name: update_field
+            type: string
+            required: null
+            sample: "\"original_price\""
+            description: "The field value we changed. It will be \"original_price\" and \"local_price\""
+          -
+            name: old_value
+            type: float
+            required: null
+            sample: 119.99
+            description: The original_price value before the updates.
+          -
+            name: new_value
+            type: float
+            required: null
+            sample: 99.99
+            description: The original_price value after the updates.
+          -
+            name: update_time
+            type: timestamp
+            required: null
+            sample: 1660124246
+            description: The time of original_price updates.
+      -
+        name: shop_id
+        type: int64
+        required: null
+        sample: 127449165
+        description: "Shopee's unique identifier for a shop."
+      -
+        name: code
+        type: int32
+        required: null
+        sample: 22
+        description: "Shopee's unique identifier for a push notification."
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1660124246
+        description: Timestamp that indicates the message was sent.
+    examples:
+      -
+        label: "Action: Seller updates the original_price of the item or model."
+        language: json
+        body:
+          data:
+            item_id: 1861418518
+            model_id: 8791278571
+            update_field: original_price
+            old_value: 119.99
+            new_value: 99.99
+            update_time: 1660124246
+          shop_id: 127449165
+          code: 22
+          timestamp: 1660124246
+    update_logs:
+      -
+        date: 2025-09-08
+        timestamp: "2025-09-08T06:35:58Z"
+        description: "The field update_field now supports a new enum value \"local_price\""
+      -
+        date: 2024-06-27
+        timestamp: "2024-06-27T09:40:17Z"
+        description: New Push
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/25"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=25
+  -
+    push_api_id: 30
+    name: item_scheduled_publish_failed_push
+    category:
+      id: 1000
+      name: Product Push
+    code: 27
+    description: Get notified when the product fails to publish at scheduled publish time
+    subscription_rules:
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 4
+        name: Product Management
+      -
+        id: 18
+        name: Swam ERP
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2024-09-25T09:15:37Z"
+    parameters:
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: Main Push message info.
+        children:
+          -
+            name: shop_id
+            type: int64
+            required: null
+            sample: 220904434
+            description: "Shopee's unique identifier for a shop."
+          -
+            name: item_id
+            type: int64
+            required: null
+            sample: 885138337
+            description: "Shopee's unique identifier for an item."
+          -
+            name: scheduled_publish_time
+            type: timestamp
+            required: null
+            sample: 1725922200
+            description: Scheduled publish time of this item.
+      -
+        name: shop_id
+        type: int64
+        required: null
+        sample: 220904434
+        description: "Shopee's unique identifier for a shop."
+      -
+        name: code
+        type: int32
+        required: null
+        sample: 27
+        description: "Shopee's unique identifier for a push notification."
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1725922200
+        description: Timestamp that indicates the message was sent.
+    examples:
+      -
+        label: If the product fails to publish at scheduled publish time：
+        language: json
+        body:
+          data:
+            shop_id: 220904434
+            item_id: 885138337
+            scheduled_publish_time: 1725922200
+          shop_id: 220904434
+          code: 27
+          timestamp: 1725922200
+    update_logs:
+      -
+        date: 2024-09-25
+        timestamp: "2024-09-25T09:15:30Z"
+        description: New Push
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/30"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=30
+  -
+    push_api_id: 1
+    name: order_status_push
+    category:
+      id: 1001
+      name: Order Push
+    code: 3
+    description: "Get notified immediately on all order status updates. This includes order cancellations that occur before shipping, so that you can take the necessary steps in time."
+    subscription_rules:
+      -
+        id: 1
+        name: Original
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 5
+        name: Order Management
+      -
+        id: 8
+        name: Customer Service
+      -
+        id: 18
+        name: Swam ERP
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2023-08-14T13:25:38Z"
+    parameters:
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: Main Push message data
+        children:
+          -
+            name: ordersn
+            type: string
+            required: null
+            sample: 220810QSK8S7BX
+            description: "Return by default. Shopee's unique identifier for an order."
+          -
+            name: status
+            type: string
+            required: null
+            sample: PROCESSED
+            description: Return by default. Enumerated type that defines the current status of the order.
+          -
+            name: completed_scenario
+            type: string
+            required: null
+            sample: NORMAL
+            description: |-
+              To indicate which COMPLETED status order is in.
+              NORMAL: The order has been completed.
+              RRAOC: The whole RRAOC (raise return&refund after order completed) progress has been completed.
+          -
+            name: update_time
+            type: timestamp
+            required: null
+            sample: 1660123127
+            description: "Return by default. Timestamp that indicates the last time that there was a change in value of order, such as order status changed from 'Paid' to 'Completed'."
+      -
+        name: shop_id
+        type: int
+        required: null
+        sample: 727720655
+        description: "Shopee's unique identifier for a shop. Required param for most APIs."
+      -
+        name: code
+        type: int
+        required: null
+        sample: 3
+        description: "Shopee's unique identifier for a push notification."
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1660123127
+        description: Timestamp that indicates the message was sent.
+    examples:
+      -
+        label: null
+        language: json
+        body:
+          data:
+            items:
+              []
+            ordersn: 220810QSK8S7BX
+            status: PROCESSED
+            completed_scenario: ""
+            update_time: 1660123127
+          shop_id: 727720655
+          code: 3
+          timestamp: 1660123127
+    update_logs:
+      -
+        date: 2023-08-14
+        timestamp: "2023-08-14T13:25:37Z"
+        description: "Shopee now support buyer to raise return& refund after order completed, for order_status_push add new field \"completed_scenario\" to indicate which COMPLETED status order is in."
+      -
+        date: 2022-08-18
+        timestamp: "2022-08-18T13:48:31Z"
+        description: New Push Mechanism
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/1"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=1
+  -
+    push_api_id: 2
+    name: order_trackingno_push
+    category:
+      id: 1001
+      name: Order Push
+    code: 4
+    description: |-
+      Get notified immediately when order tracking numbers are updated so that you can ship promptly, and avoid having to query the v2.logistics.get_tracking_number API repeatedly. 
+      This can be useful when logistics partners take some time to update tracking numbers which may be required on shipping documents.
+    subscription_rules:
+      -
+        id: 1
+        name: Original
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 5
+        name: Order Management
+      -
+        id: 18
+        name: Swam ERP
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2022-08-18T13:49:02Z"
+    parameters:
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: Main Push message data
+        children:
+          -
+            name: ordersn
+            type: string
+            required: null
+            sample: 220809MDBFYFT2
+            description: "Shopee's unique identifier for an order."
+          -
+            name: forder_id
+            type: string
+            required: null
+            sample: 4965804244309504855
+            description: Coming offline
+          -
+            name: package_number
+            type: string
+            required: null
+            sample: OFG113701539238152
+            description: "Shopee's unique identifier for the package under an order."
+          -
+            name: tracking_no
+            type: string
+            required: null
+            sample: BR222263688572VSPXLM71894
+            description: The tracking number of this order.
+      -
+        name: shop_id
+        type: int
+        required: null
+        sample: 296363855
+        description: "Shopee's unique identifier for a shop. Required param for most APIs."
+      -
+        name: code
+        type: int
+        required: null
+        sample: 4
+        description: "Shopee's unique identifier for a push notification."
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1660123089
+        description: This is to indicate the timestamp of the request.
+    examples:
+      -
+        label: null
+        language: json
+        body:
+          data:
+            ordersn: 220809MDBFYFT2
+            forder_id: 4965804244309504855
+            package_number: OFG113701539238152
+            tracking_no: BR222263688572VSPXLM71894
+          shop_id: 296363855
+          code: 4
+          timestamp: 1660123089
+    update_logs:
+      -
+        date: 2022-08-18
+        timestamp: "2022-08-18T13:49:00Z"
+        description: New Push Mechanism
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/2"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=2
+  -
+    push_api_id: 17
+    name: shipping_document_status_push
+    category:
+      id: 1001
+      name: Order Push
+    code: 15
+    description: shipping_document_status_push
+    subscription_rules:
+      -
+        id: 1
+        name: Original
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 5
+        name: Order Management
+      -
+        id: 18
+        name: Swam ERP
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2023-04-04T06:02:05Z"
+    parameters:
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: Main Push message data.
+        children:
+          -
+            name: order_sn
+            type: string
+            required: null
+            sample: 201118BCKPJQQ8
+            description: "Shopee's unique identifier for an order."
+          -
+            name: package_number
+            type: string
+            required: null
+            sample: 2485710696837122445
+            description: "Shopee's unique identifier for the package under an order."
+          -
+            name: status
+            type: string
+            required: null
+            sample: READY
+            description: |-
+              The status of the shipping document generation.
+              -READY
+              -FAILED
+      -
+        name: shop_id
+        type: int
+        required: null
+        sample: 296363855
+        description: "Shopee's unique identifier for a shop. Required param for most APIs."
+      -
+        name: code
+        type: int
+        required: null
+        sample: 15
+        description: "Shopee's unique identifier for a push notification."
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1660123089
+        description: This is to indicate the timestamp of the request.
+    examples:
+      -
+        label: null
+        language: java
+        body:
+          data:
+            ordersn: 201118BCKPJQQ8
+            package_number: 2485710696837122445
+            status: READY
+          shop_id: 296363855
+          code: 15
+          timestamp: 1660123089
+    update_logs:
+      -
+        date: 2023-01-12
+        timestamp: "2023-01-12T08:52:27Z"
+        description: New Push
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/17"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=17
+  -
+    push_api_id: 26
+    name: booking_status_push
+    category:
+      id: 1001
+      name: Order Push
+    code: 23
+    description: "Get notified immediately on all booking status updates. This includes booking cancellations that occur before shipping, so that you can take the necessary steps in time."
+    subscription_rules:
+      -
+        id: 1
+        name: Original
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 5
+        name: Order Management
+      -
+        id: 18
+        name: Swam ERP
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2024-07-02T09:17:55Z"
+    parameters:
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: Main Push message data
+        children:
+          -
+            name: booking_sn
+            type: string
+            required: null
+            sample: 220810QSK8S7BX
+            description: "Return by default. Shopee's unique identifier for a booking."
+          -
+            name: booking_status
+            type: string
+            required: null
+            sample: PROCESSED
+            description: Return by default. Enumerated type that defines the current status of the booking.
+          -
+            name: update_time
+            type: timestamp
+            required: null
+            sample: 1660123127
+            description: "Return by default. Timestamp that indicates the last time that there was a change in value of booking, such as booking status changed from 'Processed' to 'Shipped'."
+      -
+        name: shop_id
+        type: int64
+        required: null
+        sample: 727720655
+        description: "Shopee's unique identifier for a shop. Required param for most APIs."
+      -
+        name: code
+        type: int32
+        required: null
+        sample: 3
+        description: "Shopee's unique identifier for a push notification."
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1660123127
+        description: Timestamp that indicates the message was sent.
+    examples:
+      []
+    update_logs:
+      -
+        date: 2024-07-02
+        timestamp: "2024-07-02T09:17:17Z"
+        description: New Push
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/26"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=26
+  -
+    push_api_id: 27
+    name: booking_trackingno_push
+    category:
+      id: 1001
+      name: Order Push
+    code: 24
+    description: "Get notified immediately when booking tracking numbers are updated so that you can ship promptly, and avoid having to query the v2.logistics.get_booking_tracking_number API repeatedly. This can be useful when logistics partners take some time to update tracking numbers which may be required on shipping documents."
+    subscription_rules:
+      -
+        id: 1
+        name: Original
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 5
+        name: Order Management
+      -
+        id: 18
+        name: Swam ERP
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2024-07-02T09:18:01Z"
+    parameters:
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: Main Push message data
+        children:
+          -
+            name: booking_sn
+            type: string
+            required: null
+            sample: 220809MDBFYFT2
+            description: "Shopee's unique identifier for a booking."
+          -
+            name: tracking_number
+            type: string
+            required: null
+            sample: BR222263688572VSPXLM71894
+            description: The tracking number of this booking.
+      -
+        name: shop_id
+        type: int64
+        required: null
+        sample: 296363855
+        description: "Shopee's unique identifier for a shop. Required param for most APIs."
+      -
+        name: code
+        type: int32
+        required: null
+        sample: 4
+        description: "Shopee's unique identifier for a push notification."
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1660123089
+        description: This is to indicate the timestamp of the request.
+    examples:
+      []
+    update_logs:
+      -
+        date: 2024-07-02
+        timestamp: "2024-07-02T09:17:34Z"
+        description: New Push
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/27"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=27
+  -
+    push_api_id: 28
+    name: booking_shipping_document_status_push
+    category:
+      id: 1001
+      name: Order Push
+    code: 25
+    description: Get notified immediately when booking shipping document status is updated.
+    subscription_rules:
+      -
+        id: 1
+        name: Original
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 5
+        name: Order Management
+      -
+        id: 18
+        name: Swam ERP
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2024-07-02T09:18:07Z"
+    parameters:
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: Main Push message data.
+        children:
+          -
+            name: booking_sn
+            type: string
+            required: null
+            sample: 201118BCKPJQQ8
+            description: "Shopee's unique identifier for a booking."
+          -
+            name: status
+            type: string
+            required: null
+            sample: READY
+            description: |-
+              The status of the shipping document generation.
+              -READY
+              -FAILED
+      -
+        name: shop_id
+        type: int64
+        required: null
+        sample: 296363855
+        description: "Shopee's unique identifier for a shop. Required param for most APIs."
+      -
+        name: code
+        type: int32
+        required: null
+        sample: 15
+        description: "Shopee's unique identifier for a push notification."
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1660123089
+        description: This is to indicate the timestamp of the request.
+    examples:
+      []
+    update_logs:
+      -
+        date: 2024-07-02
+        timestamp: "2024-07-02T09:17:47Z"
+        description: New Push
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/28"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=28
+  -
+    push_api_id: 33
+    name: package_fulfillment_status_push
+    category:
+      id: 1001
+      name: Order Push
+    code: 30
+    description: "Get notified immediately on all package fulfillment status updates. This includes package cancellations that occur before shipping, so that you can take the necessary steps in time."
+    subscription_rules:
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 5
+        name: Order Management
+      -
+        id: 18
+        name: Swam ERP
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2025-06-17T10:38:56Z"
+    parameters:
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: ""
+        children:
+          -
+            name: ordersn
+            type: string
+            required: null
+            sample: 250421TPSF33R6
+            description: "Shopee's unique identifier for an order."
+          -
+            name: package_number
+            type: string
+            required: null
+            sample: OFG198917831207390
+            description: "Shopee's unique identifier for the package under an order."
+          -
+            name: fulfillment_status
+            type: string
+            required: null
+            sample: LOGISTICS_REQUEST_CREATED
+            description: "The Shopee fulfillment status for the package. Applicable values: See V2.0 Data Definition - PackageFulfillmentStatus."
+          -
+            name: update_time
+            type: int64
+            required: null
+            sample: 1660123127
+            description: "Timestamp that indicates the last time that there was a change in value of package fulfillment status, such as package fulfillment status changed from 'LOGISTICS_READY' to 'LOGISTICS_REQUEST_CREATED'."
+      -
+        name: shop_id
+        type: int64
+        required: null
+        sample: 727720655
+        description: "Shopee's unique identifier for a shop."
+      -
+        name: code
+        type: int64
+        required: null
+        sample: 30
+        description: "Shopee's unique identifier for a push notification."
+      -
+        name: timestamp
+        type: int64
+        required: null
+        sample: 1660123127
+        description: Timestamp that indicates the message was sent.
+    examples:
+      -
+        label: null
+        language: json
+        body:
+          data:
+            ordersn: 250421TPSF33R6
+            package_number: OFG198917831207390
+            fulfillment_status: LOGISTICS_REQUEST_CREATED
+            update_time: 1660123127
+          shop_id: 727720655
+          code: 30
+          timestamp: 1660123127
+    update_logs:
+      -
+        date: 2025-05-28
+        timestamp: "2025-05-28T06:39:46Z"
+        description: New Push
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/33"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=33
+  -
+    push_api_id: 34
+    name: courier_delivery_binding_status_push
+    category:
+      id: 1001
+      name: Order Push
+    code: 37
+    description: Get notified immediately on all first mile tracking number status updates for courier delivery.
+    subscription_rules:
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 5
+        name: Order Management
+      -
+        id: 18
+        name: Swam ERP
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2025-07-22T04:29:51Z"
+    parameters:
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: Main Push message data.
+        children:
+          -
+            name: binding_id
+            type: string
+            required: null
+            sample: DCN249237197572VU
+            description: Binding ID.
+          -
+            name: first_mile_tracking_number
+            type: string
+            required: null
+            sample: DCN249237197572VU
+            description: The first mile tracking number.
+          -
+            name: status
+            type: string
+            required: null
+            sample: ORDER_RECEIVED
+            description: |-
+              The logistics status for first-mile tracking number. Status could be:
+              CANCELED
+              CANCELING
+              DELIVERED
+              NOT_AVAILABLE
+              ORDER_CREATED
+              ORDER_RECEIVED
+              PICKED_UP
+          -
+            name: update_time
+            type: timestamp
+            required: null
+            sample: 1660123089
+            description: "Timestamp that indicates the last time that there was a change in value of first mile tracking number status, such as status changed from 'PICKED_UP' to 'ORDER_RECEIVED'."
+      -
+        name: shop_id
+        type: int64
+        required: null
+        sample: 296363855
+        description: "Shopee's unique identifier for a shop."
+      -
+        name: code
+        type: int32
+        required: null
+        sample: 37
+        description: "Shopee's unique identifier for a push notification."
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1660123089
+        description: Timestamp that indicates the message was sent.
+    examples:
+      -
+        label: null
+        language: json
+        body:
+          data:
+            binding_id: DCN249237197572VU
+            first_mile_tracking_number: DCN249237197572VU
+            status: ORDER_RECEIVED
+            update_time: 1660123089
+          shop_id: 296363855
+          code: 37
+          timestamp: 1660123089
+    update_logs:
+      -
+        date: 2025-06-27
+        timestamp: "2025-06-27T04:06:59Z"
+        description: New Push
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/34"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=34
+  -
+    push_api_id: 44
+    name: package_info_push
+    category:
+      id: 1001
+      name: Order Push
+    code: 47
+    description: "Get notified immediately on package information updates, including Ship By Date and Logistics Channel changes, and Return Code generation for Return To Seller scenarios (Return Code only applies to packages under the SPX Instant & Sameday channel in ID region), so you can take the necessary steps in time."
+    subscription_rules:
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 5
+        name: Order Management
+      -
+        id: 18
+        name: Swam ERP
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2026-04-24T10:02:29Z"
+    parameters:
+      -
+        name: shop_id
+        type: int64
+        required: null
+        sample: 220688102
+        description: "Shopee's unique identifier for a shop."
+      -
+        name: code
+        type: int32
+        required: null
+        sample: 47
+        description: "Shopee's unique identifier for a push notification."
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1764569832
+        description: Timestamp that indicates the message was sent.
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: ""
+        children:
+          -
+            name: order_sn
+            type: string
+            required: null
+            sample: 2512017TFPB0HF
+            description: "Shopee's unique identifier for an order."
+          -
+            name: package_number
+            type: string
+            required: null
+            sample: OFG218268963204539
+            description: "Shopee's unique identifier for the package under an order."
+          -
+            name: changed_fields
+            type: "string[]"
+            required: null
+            sample: "[\"ship_by_date\"]"
+            description: "Returns value: ship_by_date, logistics_channel_id, or return_code, depending on which field has been updated. Both values will be returned if both fields have been updated."
+          -
+            name: old
+            type: object
+            required: null
+            sample: ""
+            description: Previous Ship By Date and logistics channel assigned to order.
+            children:
+              -
+                name: logistics_channel_id
+                type: int64
+                required: null
+                sample: 70124
+                description: "Shopee's unique identifier for the previous logistics channel assigned to the order."
+              -
+                name: ship_by_date
+                type: timestamp
+                required: null
+                sample: 1764746165
+                description: Previous Ship By Date assigned to the order.
+              -
+                name: return_code
+                type: string
+                required: null
+                sample: "\"\""
+                description: |-
+                  The previous Return Code of the package.
+                  Note: Since return_code is generated only once and will not change, this field will always be empty when return_code is pushed.
+          -
+            name: new
+            type: object
+            required: null
+            sample: ""
+            description: New Ship By Date and logistics channel assigned to order.
+            children:
+              -
+                name: logistics_channel_id
+                type: int64
+                required: null
+                sample: 70124
+                description: "Shopee's unique identifier for the new logistics channel assigned to the order."
+              -
+                name: ship_by_date
+                type: timestamp
+                required: null
+                sample: 1764573365
+                description: New Ship By Date assigned to the order.
+              -
+                name: return_code
+                type: string
+                required: null
+                sample: 1234
+                description: |-
+                  The OTP generated after the package enters the RTS (Return to Seller) process. Sellers need to provide this OTP to the driver to complete the return confirmation.
+                  Note: This field only applies to packages under the SPX Instant& Sameday channel in ID region.
+          -
+            name: update_time
+            type: timestamp
+            required: null
+            sample: 1764569831
+            description: Timestamp that indicates the last time that there was a change in value of ship_by_date or logistics_channel_id.
+    examples:
+      -
+        label: null
+        language: java
+        body:
+          data:
+            changed_fields:
+              - ship_by_date
+            old:
+              logistics_channel_id: 70124
+              ship_by_date: 1764573365
+            new:
+              logistics_channel_id: 70124
+              ship_by_date: 1764746165
+            order_sn: 2512017TFPB0HF
+            package_number: OFG218268963204539
+            update_time: 1764569831
+          shop_id: 220688102
+          code: 47
+          timestamp: 1764569832
+    update_logs:
+      -
+        date: 2026-04-24
+        timestamp: "2026-04-24T09:07:01Z"
+        description: Support return_code field generation push notification
+      -
+        date: 2025-12-18
+        timestamp: "2025-12-18T02:27:31Z"
+        description: New Push
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/44"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=44
+  -
+    push_api_id: 6
+    name: item_promotion_push
+    category:
+      id: 1002
+      name: Marketing Push
+    code: 7
+    description: Get the promotion update info
+    subscription_rules:
+      -
+        id: 1
+        name: Original
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 4
+        name: Product Management
+      -
+        id: 7
+        name: Marketing
+      -
+        id: 11
+        name: Customized APP
+      -
+        id: 18
+        name: Swam ERP
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2023-08-01T08:44:10Z"
+    parameters:
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: ""
+        children:
+          -
+            name: shop_id
+            type: int
+            required: null
+            sample: 180727490
+            description: "Shopee's unique identifier for a shop."
+          -
+            name: item_id
+            type: int
+            required: null
+            sample: 15183813372
+            description: "Shopee's unique identifier for an item."
+          -
+            name: variation_id
+            type: int
+            required: null
+            sample: 12572585702
+            description: "Shopee's unique identifier for a variation of an item."
+          -
+            name: promotion_type
+            type: string
+            required: null
+            sample: flash_sale
+            description: "Promotion type：seller_discount / product_promotion_SG / product_promotion_MY / product_promotion_ID / product_promotion_VN / product_promotion_TW / product_promotion_TH / product_promotion_PH / flash_sale (contains: in_shop_flash_sale, flash_sale, brand_sale) / add_on_deal_main / add_on_deal_sub / bundle_deal / group_buy / Platform Streaming / Seller Streaming / Campaign (contains: deep_discount, platform_sale, low_price_promotion)"
+          -
+            name: promotion_id
+            type: int
+            required: null
+            sample: 169262197127658
+            description: The identity of item promotion.
+          -
+            name: action
+            type: string
+            required: null
+            sample: promo_cancelled
+            description: "`action` could be one of `promo_lock_stock`, `promo_cancelled` and `promo_end`."
+          -
+            name: update_time
+            type: timestamp
+            required: null
+            sample: 1660124045
+            description: Promotion update time.
+          -
+            name: start_time
+            type: timestamp
+            required: null
+            sample: 1660410000
+            description: Promotion start time.
+          -
+            name: end_time
+            type: timestamp
+            required: null
+            sample: 1660453200
+            description: Promotion end time.
+          -
+            name: reserved_stock
+            type: int
+            required: null
+            sample: 0
+            description: The reserved stock set by the seller for the promotion.
+      -
+        name: shop_id
+        type: int
+        required: null
+        sample: 18072749
+        description: "Shopee's unique identifier for a shop."
+      -
+        name: code
+        type: int
+        required: null
+        sample: 7
+        description: "Shopee's unique identifier for a push notification."
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1660124045
+        description: Timestamp that indicates the message was sent.
+    examples:
+      -
+        label: action will return promo_lock_stock.
+        language: json
+        body:
+          data:
+            shop_id: 46641242
+            item_id: 14946910660
+            variation_id: 58301485734
+            promotion_type: flash_sale
+            promotion_id: 669260829761778
+            action: promo_lock_stock
+            update_time: 1660123421
+            start_time: 1660453200
+            end_time: 1660474800
+            reserved_stock: 100
+          shop_id: 46641242
+          code: 7
+          timestamp: 1660123421
+      -
+        label: "2.When the promotion ends or promo_cancelled, the remaining promotion stock will be added back to the normal stock. At this time, action will return promotion ends or promo_cancelled."
+        language: json
+        body:
+          data:
+            shop_id: 180727490
+            item_id: 15183813372
+            variation_id: 125725857023
+            promotion_type: flash_sale
+            promotion_id: 669262197127658
+            action: promo_cancelled
+            update_time: 1660124045
+            start_time: 1660410000
+            end_time: 1660453200
+            reserved_stock: 0
+          shop_id: 180727490
+          code: 7
+          timestamp: 1660124045
+      -
+        label: null
+        language: json
+        body:
+          data:
+            shop_id: 498881374
+            item_id: 20109158685
+            variation_id: 87837495102
+            promotion_type: flash_sale
+            promotion_id: 669083704356214
+            action: promo_end
+            update_time: 1660122009
+            start_time: 1660114800
+            end_time: 1660122000
+            reserved_stock: 0
+          shop_id: 498881374
+          code: 7
+          timestamp: 1660122018
+    update_logs:
+      -
+        date: 2023-08-01
+        timestamp: "2023-08-01T08:44:09Z"
+        description: update promotion_type
+      -
+        date: 2022-08-18
+        timestamp: "2022-08-18T13:44:27Z"
+        description: New Push Mechanism
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/6"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=6
+  -
+    push_api_id: 7
+    name: promotion_update_push
+    category:
+      id: 1002
+      name: Marketing Push
+    code: 9
+    description: Get the promotion update
+    subscription_rules:
+      -
+        id: 1
+        name: Original
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 4
+        name: Product Management
+      -
+        id: 7
+        name: Marketing
+      -
+        id: 11
+        name: Customized APP
+      -
+        id: 18
+        name: Swam ERP
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2022-08-18T13:45:00Z"
+    parameters:
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: ""
+        children:
+          -
+            name: shop_id
+            type: int
+            required: null
+            sample: 122406687
+            description: "Shopee's unique identifier for a shop."
+          -
+            name: promotion_id
+            type: int
+            required: null
+            sample: 965808642693807
+            description: The identity of item promotion.
+          -
+            name: promotion_type
+            type: string
+            required: null
+            sample: seller_discount
+            description: "The type of promotion.Promotion type：seller_discount / product_promotion_SG / product_promotion_MY / product_promotion_ID / product_promotion_VN / product_promotion_TW / product_promotion_TH / product_promotion_PH / flash_sale (contains: in_shop_flash_sale, flash_sale, brand_sale) / add_on_deal_main / add_on_deal_sub / bundle_deal / group_buy"
+          -
+            name: end_time
+            type: timestamp
+            required: null
+            sample: 1660123171
+            description: Promotion end time.
+          -
+            name: action
+            type: string
+            required: null
+            sample: promo_time_updated
+            description: "The action of the event. Action: added_in_promo / removed_from_promo / promo_time_updated"
+          -
+            name: item_id
+            type: int
+            required: null
+            sample: 89526059511
+            description: "Shopee's unique identifier for an item."
+          -
+            name: variation_id
+            type: int
+            required: null
+            sample: 163967197734
+            description: "Shopee's unique identifier for a variation of an item."
+      -
+        name: shop_id
+        type: int
+        required: null
+        sample: 122406687
+        description: "Shopee's unique identifier for a shop."
+      -
+        name: code
+        type: int
+        required: null
+        sample: 9
+        description: "Shopee's unique identifier for a push notification."
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1660123173
+        description: Timestamp that indicates the message was sent.
+    examples:
+      -
+        label: "1.when item is added in a promotion:"
+        language: json
+        body:
+          data:
+            shop_id: 712661865
+            promotion_id: 22775521
+            promotion_type: bundle_deal
+            start_time: 1660124460
+            end_time: 1661943600
+            action: added_in_promo
+            item_id: 14662380213
+            variation_id: 0
+          shop_id: 712661865
+          code: 9
+          timestamp: 1660124466
+      -
+        label: "2.when item is removed form a promotion:"
+        language: json
+        body:
+          data:
+            shop_id: 526225965
+            promotion_id: 668908774363077
+            promotion_type: seller_discount
+            action: removed_from_promo
+            item_id: 20332329221
+            variation_id: 145413438373
+          shop_id: 526225965
+          code: 9
+          timestamp: 1660124435
+      -
+        label: "3.when promotion start/end time is update (include upcoming and ongoing promotion):"
+        language: json
+        body:
+          data:
+            shop_id: 722406687
+            promotion_id: 665808642693807
+            promotion_type: seller_discount
+            end_time: 1660123171
+            action: promo_time_updated
+            item_id: 19526059511
+            variation_id: 163767197734
+          shop_id: 722406687
+          code: 9
+          timestamp: 1660123173
+    update_logs:
+      -
+        date: 2022-08-18
+        timestamp: "2022-08-18T13:44:58Z"
+        description: New Push Mechanism
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/7"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=7
+  -
+    push_api_id: 3
+    name: shopee_updates
+    category:
+      id: 1003
+      name: Shopee Push
+    code: 5
+    description: "The push refers to the Shopee updates under \"My Inbox\" in Seller Center. The push notification will include the title and content of the update but not the details. "
+    subscription_rules:
+      -
+        id: 1
+        name: Original
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 8
+        name: Customer Service
+      -
+        id: 10
+        name: Brand Membership
+      -
+        id: 11
+        name: Customized APP
+      -
+        id: 12
+        name: Ads Service
+      -
+        id: 13
+        name: Consignment Service System
+      -
+        id: 15
+        name: Custom APP
+      -
+        id: 18
+        name: Swam ERP
+      -
+        id: 19
+        name: Livestream Management
+      -
+        id: 21
+        name: Affiliate Marketing Solution Management
+      -
+        id: 22
+        name: Shopee Video Management
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2022-08-18T13:40:51Z"
+    parameters:
+      -
+        name: code
+        type: int
+        required: null
+        sample: 5
+        description: "Shopee's unique identifier for a push notification"
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1610000000
+        description: Timestamp that indicates the message was sent.
+      -
+        name: shop_id
+        type: int
+        required: null
+        sample: 1231234
+        description: "Shopee's unique identifier for a shop. It indicates which shop has been authorized."
+      -
+        name: data
+        type: "object[]"
+        required: null
+        sample: ""
+        description: ""
+        children:
+          -
+            name: actions
+            type: "object[]"
+            required: null
+            sample: ""
+            description: It may include multiple Shopee Updates notifications.
+            children:
+              -
+                name: content
+                type: string
+                required: null
+                sample: Boost your growth when you engage a Shopee-Certified enabler ⭐ Learn how we can help optimise your performance during campaign season 👉
+                description: Content of the Shopee Updates notification
+              -
+                name: update_time
+                type: timestamp
+                required: null
+                sample: 1610000000
+                description: The push time of the Shopee Updates notification.
+              -
+                name: title
+                type: string
+                required: null
+                sample: Find a Shopee-endorsed enabler
+                description: Title of the Shopee Updates notification
+              -
+                name: url
+                type: string
+                required: null
+                sample: "https://shopee.sg/m/shopee-certified-enablers-q2-2022"
+                description: The URL of the Shopee Updates notification
+    examples:
+      -
+        label: null
+        language: json
+        body: "{\"code\":5, \"timestamp\":1610000000 ,\"shop_id\":1231234, \"data\":{\"actions\":[{\"content\":\"Boost your growth when you engage a Shopee-Certified enabler ⭐ Learn how we can help optimise your performance during campaign season 👉\", \"update_time\":1610000000, \"title\":\"Find a Shopee-endorsed enabler\", \"url\":\"https://shopee.sg/m/shopee-certified-enablers-q2-2022\"}, {\"content\":\"Your feedback matters. Help us shape your Shopee experience! Take part in our survey now.\", \"update_time\":16100002222, \"title\":\"We want to hear from you\", \"url\":\"https://shopee.qualtrics.com/\"}]}"
+    update_logs:
+      -
+        date: 2022-08-18
+        timestamp: "2022-08-18T13:40:49Z"
+        description: New Push Mechanism
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/3"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=3
+  -
+    push_api_id: 12
+    name: open_api_authorization_expiry
+    category:
+      id: 1003
+      name: Shopee Push
+    code: 12
+    description: "Push shops, merchants, and users whose authorization expires within a week."
+    subscription_rules:
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 4
+        name: Product Management
+      -
+        id: 5
+        name: Order Management
+      -
+        id: 6
+        name: Accounting And Finance
+      -
+        id: 7
+        name: Marketing
+      -
+        id: 8
+        name: Customer Service
+      -
+        id: 11
+        name: Customized APP
+      -
+        id: 12
+        name: Ads Service
+      -
+        id: 13
+        name: Consignment Service System
+      -
+        id: 14
+        name: Seller Logistics
+      -
+        id: 15
+        name: Custom APP
+      -
+        id: 18
+        name: Swam ERP
+      -
+        id: 19
+        name: Livestream Management
+      -
+        id: 20
+        name: Ads Facil
+      -
+        id: 21
+        name: Affiliate Marketing Solution Management
+      -
+        id: 22
+        name: Shopee Video Management
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2025-12-29T10:03:03Z"
+    parameters:
+      -
+        name: code
+        type: int32
+        required: null
+        sample: 12
+        description: "Shopee's unique identifier for a push notification"
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1568606634
+        description: Timestamp that indicates the message was sent.
+      -
+        name: data
+        type: "object[]"
+        required: null
+        sample: ""
+        description: ""
+        children:
+          -
+            name: merchant_expire_soon
+            type: "int64[]"
+            required: null
+            sample: "[123123,123123,4342,3242342]"
+            description: The merchant id of the merchants whose authorization expires within one week.
+          -
+            name: shop_expire_soon
+            type: "int64[]"
+            required: null
+            sample: "[23213,243242,342343,42342345656,45345]"
+            description: The shop id of the shops whose authorization expires within one week.
+          -
+            name: user_expire_soon
+            type: "int64[]"
+            required: null
+            sample: "[368765104, 368765105, 368765106]"
+            description: The user_id of the users whose authorization expires within one week.
+          -
+            name: expire_before
+            type: timestamp
+            required: null
+            sample: 1619740800
+            description: The expiration time of pushed merchants and shops is before this time
+          -
+            name: page_no
+            type: int32
+            required: null
+            sample: 1
+            description: ""
+          -
+            name: total_page
+            type: int32
+            required: null
+            sample: 2
+            description: ""
+    examples:
+      -
+        label: null
+        language: json
+        body:
+          code: 12
+          timestamp: 1568606634
+          data:
+            merchant_expire_soon:
+              - 123123
+              - 123123
+              - 4342
+              - 3242342
+            shop_expire_soon:
+              - 23213
+              - 243242
+              - 342343
+              - 42342345656
+              - 45345
+            user_expire_soon:
+              - 368765104
+              - 368765105
+              - 368765106
+            expire_before: 1619740800
+            page_no: 1
+            total_page: 2
+    update_logs:
+      -
+        date: 2022-08-18
+        timestamp: "2022-08-18T13:41:52Z"
+        description: New Push Mechanism
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/12"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=12
+  -
+    push_api_id: 15
+    name: shop_authorization_push
+    category:
+      id: 1003
+      name: Shopee Push
+    code: 1
+    description: This push allows you to be notified once shops or merchants are authorized to your app
+    subscription_rules:
+      -
+        id: 1
+        name: Original
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 4
+        name: Product Management
+      -
+        id: 5
+        name: Order Management
+      -
+        id: 6
+        name: Accounting And Finance
+      -
+        id: 7
+        name: Marketing
+      -
+        id: 8
+        name: Customer Service
+      -
+        id: 11
+        name: Customized APP
+      -
+        id: 12
+        name: Ads Service
+      -
+        id: 13
+        name: Consignment Service System
+      -
+        id: 14
+        name: Seller Logistics
+      -
+        id: 15
+        name: Custom APP
+      -
+        id: 18
+        name: Swam ERP
+      -
+        id: 19
+        name: Livestream Management
+      -
+        id: 20
+        name: Ads Facil
+      -
+        id: 21
+        name: Affiliate Marketing Solution Management
+      -
+        id: 22
+        name: Shopee Video Management
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2022-09-02T09:31:11Z"
+    parameters:
+      -
+        name: partner_id
+        type: int
+        required: null
+        sample: 200000
+        description: "Shopee's unique identifier for your App. Partner ID is assigned upon registration is successful."
+      -
+        name: code
+        type: int
+        required: null
+        sample: 1
+        description: "Shopee's unique identifier for a push notification"
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1610000000
+        description: Timestamp that indicates the message was sent.
+      -
+        name: data
+        type: "object[]"
+        required: null
+        sample: ""
+        description: ""
+        children:
+          -
+            name: shop_id
+            type: int
+            required: null
+            sample: 600000
+            description: |-
+              [Optional]
+              Shopee's unique identifier for a shop. It indicates which shop has been authorized.
+          -
+            name: shop_id_list
+            type: "int[]"
+            required: null
+            sample: "[6000000,60000001]"
+            description: |-
+              [Optional]
+              If the seller uses a main account to authorize multiple shops at the same time, there will be this parameter to indicate all authorized shops
+          -
+            name: merchant_id
+            type: int
+            required: null
+            sample: 600000
+            description: |-
+              [Optional]
+              Shopee's unique identifier for a merchant. It indicates which merchant has been authorized.
+          -
+            name: merchant_id_list
+            type: "int[]"
+            required: null
+            sample: "[6000000,60000001]"
+            description: |-
+              [Optional]
+              If the seller uses a main account to authorize multiple merchants at the same time, there will be this parameter to indicate all authorized merchants
+          -
+            name: authorize_type
+            type: string
+            required: null
+            sample: shop authorization by user
+            description: In which way shops are authorized to App
+          -
+            name: extra
+            type: string
+            required: null
+            sample: shop id 600000 (SG) has been authorized
+            description: Details of the authorization
+          -
+            name: main_account_id
+            type: int
+            required: null
+            sample: 60000
+            description: |-
+              [Optional]
+              Shopee's unique identifier for a main account.
+              If a seller uses a main account to authorize, it would have this parameter to indicate which main account seller use to authorize
+          -
+            name: success
+            type: int
+            required: null
+            sample: 1
+            description: Indicates if the push is success
+    examples:
+      -
+        label: Seller shop authorization
+        language: json
+        body:
+          data:
+            authorize_type: shop authorization by user
+            extra: shop id 600000 (SG) has been authorized successfully
+            shop_id: 60011111
+            success: 1
+          partner_id: 2000002
+          code: 1
+          timestamp: 1660616278
+      -
+        label: Seller uses main account to authorize shops
+        language: json
+        body:
+          data:
+            authorize_type: shop authorization by user
+            extra: Shop has been authorized successfully
+            main_account_id: 68272
+            shop_id_list:
+              - 62000001
+              - 62000002
+              - 62000003
+              - 62000004
+            success: 1
+          partner_id: 2000002
+          code: 1
+          timestamp: 1660616631
+      -
+        label: Seller uses main account to authorize a merchant
+        language: json
+        body:
+          data:
+            authorize_type: merchant authorization by user
+            extra: merchant id 600000 has been authorized successfully
+            merchant_id: 600222872
+            success: 1
+          partner_id: 2000007
+          code: 1
+          timestamp: 1660616278
+    update_logs:
+      -
+        date: 2022-08-18
+        timestamp: "2022-08-18T13:42:29Z"
+        description: New Push Mechanism
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/15"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=15
+  -
+    push_api_id: 16
+    name: shop_authorization_canceled_push
+    category:
+      id: 1003
+      name: Shopee Push
+    code: 2
+    description: |-
+      This push allows you to be notified once shops or merchants or users are deauthorized to your app
+      
+    subscription_rules:
+      -
+        id: 1
+        name: Original
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 4
+        name: Product Management
+      -
+        id: 5
+        name: Order Management
+      -
+        id: 6
+        name: Accounting And Finance
+      -
+        id: 7
+        name: Marketing
+      -
+        id: 8
+        name: Customer Service
+      -
+        id: 11
+        name: Customized APP
+      -
+        id: 12
+        name: Ads Service
+      -
+        id: 13
+        name: Consignment Service System
+      -
+        id: 14
+        name: Seller Logistics
+      -
+        id: 15
+        name: Custom APP
+      -
+        id: 18
+        name: Swam ERP
+      -
+        id: 19
+        name: Livestream Management
+      -
+        id: 20
+        name: Ads Facil
+      -
+        id: 21
+        name: Affiliate Marketing Solution Management
+      -
+        id: 22
+        name: Shopee Video Management
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2025-12-29T10:06:39Z"
+    parameters:
+      -
+        name: partner_id
+        type: int64
+        required: null
+        sample: 200000
+        description: "Shopee's unique identifier for your App. Partner ID is assigned upon registration is successful."
+      -
+        name: code
+        type: int32
+        required: null
+        sample: 2
+        description: "Shopee's unique identifier for a push notification"
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1610000000
+        description: "timestamp: Timestamp that indicates the message was sent."
+      -
+        name: data
+        type: "object[]"
+        required: null
+        sample: ""
+        description: ""
+        children:
+          -
+            name: shop_id
+            type: int64
+            required: null
+            sample: 600000
+            description: |-
+              [Optional]
+              Shopee's unique identifier for a shop. It indicates which shop has been cancel authorization.
+          -
+            name: shop_id_list
+            type: "int64[]"
+            required: null
+            sample: "[6000000,60000001]"
+            description: |-
+              [Optional]
+              Shopee's unique identifier for a shop. It indicates which shops have been cancel authorization.
+          -
+            name: merchant_id
+            type: int64
+            required: null
+            sample: 600000
+            description: |-
+              [Optional]
+              Shopee's unique identifier for a merchant. It indicates which merchant has been cancel authorization.
+          -
+            name: merchant_id_list
+            type: "int64[]"
+            required: null
+            sample: "[6000000,60000001]"
+            description: |-
+              [Optional]
+              Shopee's unique identifier for a merchant. It indicates which merchants have been cancel authorization.
+          -
+            name: user_id
+            type: int64
+            required: null
+            sample: 368765104
+            description: |-
+              [Optional]
+              Shopee's unique identifier for a user. It indicates which user has been cancel authorization.
+          -
+            name: user_id_list
+            type: "int64[]"
+            required: null
+            sample: "[368765100, 368765098, 368765097]"
+            description: |-
+              [Optional]
+              Shopee's unique identifier for a user. It indicates which users have been cancel authorization.
+          -
+            name: authorize_type
+            type: string
+            required: null
+            sample: shop authorization by user
+            description: In which way the authorization is cancelled
+          -
+            name: extra
+            type: string
+            required: null
+            sample: shop id 600000 (SG) has been authorized
+            description: Details of the deauthorization
+          -
+            name: main_account_id
+            type: int64
+            required: null
+            sample: 60000
+            description: |-
+              [Optional]
+              Shopee's unique identifier for a main account. If a seller uses a main account to cancel authorize, it would have this parameter to indicate which main account seller use to cancel authorize.
+          -
+            name: success
+            type: int32
+            required: null
+            sample: 1
+            description: Indicates if the push is success
+    examples:
+      -
+        label: Shop authorization canecled by seller
+        language: json
+        body:
+          data:
+            authorize_type: user cancel shop authorization
+            success: 1
+            extra: shop id 22000000 (VN) has been cancelled its authorization
+          code: 2
+          partner_id: 800000
+          timestamp: 1653394175
+      -
+        label: Seller uses a main account to cancel the authorization
+        language: json
+        body:
+          data:
+            authorize_type: user cancel merchant authorization
+            merchant_id_list:
+              - 1001000
+            main_account_id: 19000
+            success: 1
+            extra: merchant shop cancelled its authorization
+          code: 2
+          partner_id: 800000
+          timestamp: 1653026849
+      -
+        label: Authorization expired
+        language: json
+        body:
+          data:
+            authorize_type: expiry
+            shopid: 22000000
+            success: 1
+            extra: The authorization is expired.
+          code: 2
+          partner_id: 800000
+          timestamp: 1653026985
+      -
+        label: Deauthorization because of abnormal shop status
+        language: json
+        body:
+          data:
+            authorize_type: App status is abnormal
+            shopid: 22000000
+            success: 1
+            extra: Shop ID 22000000 is currently frozen. The authorization cannot be completed.
+          code: 2
+          partner_id: 800000
+          timestamp: 1653026985
+      -
+        label: Deauthorization because Shop and main account are disconnected
+        language: json
+        body:
+          data:
+            authorize_type: shop and main account is disconnected
+            shopid: 22000000
+            success: 1
+            extra: "Shop (ID: 22000000) is disconnected from the main seller account (ID:30000). The authorization cannot be completed."
+          code: 2
+          partner_id: 800000
+          timestamp: 1653026985
+    update_logs:
+      -
+        date: 2022-08-18
+        timestamp: "2022-08-18T13:43:24Z"
+        description: New Push Mechanism
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/16"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=16
+  -
+    push_api_id: 31
+    name: shop_penalty_update_push
+    category:
+      id: 1003
+      name: Shopee Push
+    code: 28
+    description: "Get notified when shop's penalty such as penalty point or punishment tier are updated."
+    subscription_rules:
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 4
+        name: Product Management
+      -
+        id: 5
+        name: Order Management
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 18
+        name: Swam ERP
+      -
+        id: 19
+        name: Livestream Management
+      -
+        id: 21
+        name: Affiliate Marketing Solution Management
+      -
+        id: 22
+        name: Shopee Video Management
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2024-11-05T08:24:26Z"
+    parameters:
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: Main Push message info.
+        children:
+          -
+            name: action_type
+            type: int32
+            required: null
+            sample: ""
+            description: |-
+              The action type of the event：
+              1: Penalty Point Issued
+              2: Penalty Point Removed
+              3: Punishment Tier Update
+          -
+            name: points_issued_data
+            type: object
+            required: null
+            sample: ""
+            description: ""
+            children:
+              -
+                name: issued_points
+                type: int32
+                required: null
+                sample: 3
+                description: The penalty point issued of the updates.
+              -
+                name: violation_type
+                type: int32
+                required: null
+                sample: 10
+                description: |-
+                  The violation type of the penalty point：
+                  5: High Late Shipment Rate
+                  6: High Non-fulfillment Rate
+                  7: High number of non-fulfilled orders
+                  8: High number of late shipped orders
+                  9: Prohibited Listings
+                  10: Counterfeit / IP infringement
+                  11: Spam
+                  12: Copy/Steal images
+                  13: Re-uploading deleted listings with no change
+                  14: Bought counterfeit from mall
+                  15: Counterfeit caught by Shopee
+                  16: High percentage of pre-order listings
+                  17: Confirmed Fraud attempts (total)
+                  18: Confirmed Fraud attempts per week (All with vouchers only)
+                  19: Fake return address
+                  20: Shipping fraud/abuse
+                  21: High No. of Non-responded Chat
+                  22: Rude chat replies
+                  23: Request buyer to cancel order
+                  24: Rude reply to buyer's review
+                  25: Violate Return/Refund policy
+                  101: Tier Reason
+                  3026: Misuse of Shopee’s IP
+                  3028: Violate Shop Name Regulations
+                  3030: Direct transactions outside of the Shopee platform
+                  3032: Shipping empty / incomplete parcels
+                  3034: Severe Violations on Shopee Feed
+                  3036: Severe Violations on Shopee LIVE
+                  3038: Misuse of Local Vendor Tag
+                  3040: Use of misleading shop tag in listing image
+                  3042","Counterfeit / IP Infringement test
+                  3044: Repeat Offender - IP infringement and Counterfeit listings
+                  3046: Violation of Live Animals Selling Policy
+                  3048: Chat Spam
+                  3050: High Overseas Return Refunds Rate
+                  3052: Privacy breach in buyer's review reply
+                  3054: Order Brushing
+                  3056: porn image
+                  3058: Incorrect Product Categories
+                  3060: Extremely High Non-Fulfilment Rate
+                  3062: Penalty of Affiliate Marketing Solution (AMS) Overdue Invoice Payment
+                  3064: Government-related listing
+                  3066: Listing invalid gifted items
+                  3068: High non-fulfilment rate (Next Day Delivery Orders)
+                  3070: High Late Shipment Rate (Next Day Delivery Orders)
+                  3072: OPFR Violation Value
+                  3074: Direct transactions outside Shopee platform via chat
+                  3090: Prohibited Listings-Extreme Violations
+                  3091: Prohibited Listings-High Violations
+                  3092: Prohibited Listings-Mid Violations
+                  3093: Prohibited Listings-Low Violations
+                  3094: Counterfeit Listings-Extreme Violations
+                  3095: Counterfeit Listings-High Violations
+                  3096: Counterfeit Listings-Mid Violations
+                  3097: Counterfeit Listings-Low Violations
+                  3098: Spam Listings-Extreme Violations
+                  3099: Spam Listings-High Violations
+                  3100: Spam Listings-Mid Violations
+                  3101: Spam Listings-Low Violations
+                  3145: Return/Refund Rate (Non-integrated Channel)
+          -
+            name: points_removed_data
+            type: object
+            required: null
+            sample: ""
+            description: ""
+            children:
+              -
+                name: removed_points
+                type: int32
+                required: null
+                sample: 3
+                description: The penalty point removed of the updates.
+              -
+                name: violation_type
+                type: int32
+                required: null
+                sample: 10
+                description: |-
+                  The violation type of the penalty point：
+                  5: High Late Shipment Rate
+                  6: High Non-fulfillment Rate
+                  7: High number of non-fulfilled orders
+                  8: High number of late shipped orders
+                  9: Prohibited Listings
+                  10: Counterfeit / IP infringement
+                  11: Spam
+                  12: Copy/Steal images
+                  13: Re-uploading deleted listings with no change
+                  14: Bought counterfeit from mall
+                  15: Counterfeit caught by Shopee
+                  16: High percentage of pre-order listings
+                  17: Confirmed Fraud attempts (total)
+                  18: Confirmed Fraud attempts per week (All with vouchers only)
+                  19: Fake return address
+                  20: Shipping fraud/abuse
+                  21: High No. of Non-responded Chat
+                  22: Rude chat replies
+                  23: Request buyer to cancel order
+                  24: Rude reply to buyer's review
+                  25: Violate Return/Refund policy
+                  101: Tier Reason
+                  3026: Misuse of Shopee’s IP
+                  3028: Violate Shop Name Regulations
+                  3030: Direct transactions outside of the Shopee platform
+                  3032: Shipping empty / incomplete parcels
+                  3034: Severe Violations on Shopee Feed
+                  3036: Severe Violations on Shopee LIVE
+                  3038: Misuse of Local Vendor Tag
+                  3040: Use of misleading shop tag in listing image
+                  3042","Counterfeit / IP Infringement test
+                  3044: Repeat Offender - IP infringement and Counterfeit listings
+                  3046: Violation of Live Animals Selling Policy
+                  3048: Chat Spam
+                  3050: High Overseas Return Refunds Rate
+                  3052: Privacy breach in buyer's review reply
+                  3054: Order Brushing
+                  3056: porn image
+                  3058: Incorrect Product Categories
+                  3060: Extremely High Non-Fulfilment Rate
+                  3062: Penalty of Affiliate Marketing Solution (AMS) Overdue Invoice Payment
+                  3064: Government-related listing
+                  3066: Listing invalid gifted items
+                  3068: High non-fulfilment rate (Next Day Delivery Orders)
+                  3070: High Late Shipment Rate (Next Day Delivery Orders)
+                  3072: OPFR Violation Value
+                  3074: Direct transactions outside Shopee platform via chat
+                  3090: Prohibited Listings-Extreme Violations
+                  3091: Prohibited Listings-High Violations
+                  3092: Prohibited Listings-Mid Violations
+                  3093: Prohibited Listings-Low Violations
+                  3094: Counterfeit Listings-Extreme Violations
+                  3095: Counterfeit Listings-High Violations
+                  3096: Counterfeit Listings-Mid Violations
+                  3097: Counterfeit Listings-Low Violations
+                  3098: Spam Listings-Extreme Violations
+                  3099: Spam Listings-High Violations
+                  3100: Spam Listings-Mid Violations
+                  3101: Spam Listings-Low Violations
+                  3145: Return/Refund Rate (Non-integrated Channel)
+              -
+                name: removed_reason
+                type: int32
+                required: null
+                sample: 102
+                description: |-
+                  The reason for removing penalty points：
+                  101: Other Reasons
+                  102: Shopee System Error
+                  103: Third Party Logistics Issue
+                  104: Weather / Natural disaster
+                  105: Special Exemption
+                  106: Waiver for SBS fulfillment
+                  107: Waiver for SIP listing violation
+                  108: Validated IPR
+          -
+            name: tier_update_data
+            type: object
+            required: null
+            sample: ""
+            description: ""
+            children:
+              -
+                name: old_tier
+                type: int32
+                required: null
+                sample: 3
+                description: The punishment tier before the updates.
+              -
+                name: new_tier
+                type: int32
+                required: null
+                sample: 4
+                description: The punishment tier after the updates.
+          -
+            name: update_time
+            type: timestamp
+            required: null
+            sample: 1660124246
+            description: The time of penalty point or punishment tier updates.
+      -
+        name: shop_id
+        type: int64
+        required: null
+        sample: 127449165
+        description: "Shopee's unique identifier for a shop."
+      -
+        name: code
+        type: int32
+        required: null
+        sample: 28
+        description: "Shopee's unique identifier for a push notification."
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1660124246
+        description: Timestamp that indicates the message was sent.
+    examples:
+      -
+        label: null
+        language: json
+        body:
+          data:
+            action_type: 1
+            points_issued_data:
+              issued_points: 3
+              violation_type: 10
+            update_time: 1660124246
+          shop_id: 127449165
+          code: 28
+          timestamp: 1660124246
+    update_logs:
+      -
+        date: 2024-10-30
+        timestamp: "2024-10-30T08:08:56Z"
+        description: New Push
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/31"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=31
+  -
+    push_api_id: 43
+    name: video_upload_result_push
+    category:
+      id: 1003
+      name: Shopee Push
+    code: 38
+    description: "Get notified immediately when a video upload reaches a final status (SUCCEEDED, FAILED, or CANCELLED). Intermediate status (INITIATED, UPLOADING, UPLOADED, PROCESSING) are not pushed to avoid unnecessary callbacks, can call v2.media.get_video_upload_result if need progress updates."
+    subscription_rules:
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 4
+        name: Product Management
+      -
+        id: 8
+        name: Customer Service
+      -
+        id: 13
+        name: Consignment Service System
+      -
+        id: 22
+        name: Shopee Video Management
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2025-11-06T09:59:05Z"
+    parameters:
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: ""
+        children:
+          -
+            name: video_upload_id
+            type: string
+            required: null
+            sample: sg-11110201-6kh48-mepm7a0ttcw3c3
+            description: The unique ID of the upload task.
+          -
+            name: status
+            type: string
+            required: null
+            sample: SUCCEEDED
+            description: |-
+              Final status of the upload task. Possible values:
+              - SUCCEEDED
+              - FAILED
+              - CANCELLED
+              Note: Intermediate status (INITIATED, UPLOADING, UPLOADED, PROCESSING) are not pushed to avoid unnecessary callbacks, can call v2.media.get_video_upload_result if need progress updates.
+          -
+            name: reason
+            type: string
+            required: null
+            sample: ""
+            description: "Detailed fail or cancel reason, will be returned if status is FAILED or CANCELLED."
+          -
+            name: video_info
+            type: object
+            required: null
+            sample: ""
+            description: "Transcoded video info, will be returned if status is SUCCEEDED."
+            children:
+              -
+                name: video_url
+                type: string
+                required: null
+                sample: "http://play-src.vod.shopee.com/api/v4/11110201/mms/sg-11110201-6kh48-mepm7a0ttcw3c3."
+                description: Video playback URL.
+              -
+                name: video_thumbnail_url
+                type: string
+                required: null
+                sample: "http://img.sp.mms.shopee.sg/sg-11110201-6kh48-mepm7a0ttcw3c3_cover"
+                description: Video thumbnail image URL.
+              -
+                name: thumbnail_width
+                type: int32
+                required: null
+                sample: 1920
+                description: Video thumbnail image width.
+              -
+                name: thumbnail_height
+                type: int32
+                required: null
+                sample: 1080
+                description: Video thumbnail image height.
+              -
+                name: duration
+                type: int32
+                required: null
+                sample: 105
+                description: Video duration in seconds.
+              -
+                name: resolution
+                type: string
+                required: null
+                sample: 960x540
+                description: "Video resolution, e.g., \"1280x1280\"."
+          -
+            name: update_time
+            type: timestamp
+            required: null
+            sample: 1758018336
+            description: The time of video status updates.
+      -
+        name: code
+        type: int32
+        required: null
+        sample: 38
+        description: "Shopee's unique identifier for a push notification."
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1758018336
+        description: Timestamp that indicates the message was sent.
+    examples:
+      -
+        label: null
+        language: json
+        body:
+          data:
+            status: SUCCEEDED
+            reason: ""
+            update_time: 1758018336
+            video_info:
+              video_url: "http://play-src.vod.shopee.com/api/v4/11110201/mms/sg-11110201-6kh48-mepm7a0ttcw3c3."
+              video_thumbnail_url: "http://img.sp.mms.shopee.sg/sg-11110201-6kh48-mepm7a0ttcw3c3_cover"
+              thumbnail_width: 1920
+              thumbnail_height: 1080
+              duration: 105
+              resolution: 960x540
+          code: 37
+          timestamp: 1758018336
+    update_logs:
+      -
+        date: 2025-09-19
+        timestamp: "2025-09-19T02:10:13Z"
+        description: New Push
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/43"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=43
+  -
+    push_api_id: 10
+    name: webchat_push
+    category:
+      id: 1004
+      name: Webchat Push
+    code: 10
+    description: Get the chat message 
+    subscription_rules:
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 8
+        name: Customer Service
+      -
+        id: 1
+        name: Original
+      -
+        id: 16
+        name: Ads Service App
+    timeout_seconds: 2
+    sequence_guaranteed: true
+    push_guarantee_raw: 1
+    can_repeat_same_message: true
+    retry_seconds:
+      - 1
+      - 2
+      - 3
+    modified_at: "2025-04-18T06:40:43Z"
+    parameters:
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: ""
+        children:
+          -
+            name: type
+            type: string
+            required: null
+            sample: ""
+            description: Can be notification / message
+          -
+            name: region
+            type: string
+            required: null
+            sample: ""
+            description: The region info.
+          -
+            name: content
+            type: object
+            required: null
+            sample: ""
+            description: The detailed message.
+            children:
+              -
+                name: user_id
+                type: string
+                required: null
+                sample: ""
+                description: Returned when the type = notification.
+              -
+                name: conversation_id
+                type: string
+                required: null
+                sample: ""
+                description: "Shopee's unique identifier for a conversation."
+              -
+                name: type
+                type: string
+                required: null
+                sample: ""
+                description: Returned when the type = notification.
+              -
+                name: timestamp
+                type: timestamp
+                required: null
+                sample: ""
+                description: Returned when the type = notification.
+              -
+                name: msg_id
+                type: int64
+                required: null
+                sample: ""
+                description: Returned when the type = notification.
+              -
+                name: biz_id
+                type: int64
+                required: null
+                sample: ""
+                description: Returned when the type = notification.
+              -
+                name: message_id
+                type: string
+                required: null
+                sample: ""
+                description: "Returned when type= message. Shopee's unique identifier for a message."
+              -
+                name: shop_id
+                type: int64
+                required: null
+                sample: ""
+                description: Returned when type= message. The shop_id of the shop message sent to (to_shop_id)
+              -
+                name: request_id
+                type: string
+                required: null
+                sample: ""
+                description: Returned when type= message. The identifier for an request for error tracking.
+              -
+                name: from_user_name
+                type: string
+                required: null
+                sample: ""
+                description: Returned when type= message. The user name for the message sender in the conversation.
+              -
+                name: from_id
+                type: int64
+                required: null
+                sample: ""
+                description: The user id for the message sender in the conversation.
+              -
+                name: to_id
+                type: int64
+                required: null
+                sample: ""
+                description: Returned when type= message. The user id for the message recipient in the conversation.
+              -
+                name: to_user_name
+                type: string
+                required: null
+                sample: ""
+                description: Returned when type= message. The user name for the message recipient in the conversation.
+              -
+                name: message_type
+                type: string
+                required: null
+                sample: ""
+                description: Returned when type= message. text / video / image / item / faq_liveagent
+              -
+                name: content
+                type: object
+                required: null
+                sample: ""
+                description: ""
+                children:
+                  -
+                    name: text
+                    type: timestamp
+                    required: null
+                    sample: ""
+                    description: "Returned when message type=text or faq_liveagent, specific dialog text information."
+                  -
+                    name: translation
+                    type: object
+                    required: null
+                    sample: ""
+                    description: Returned when message type=text.
+                    children:
+                      -
+                        name: text
+                        type: string
+                        required: null
+                        sample: ""
+                        description: ""
+                      -
+                        name: source
+                        type: string
+                        required: null
+                        sample: ""
+                        description: ""
+                      -
+                        name: target_language
+                        type: string
+                        required: null
+                        sample: ""
+                        description: ""
+                      -
+                        name: source_language
+                        type: string
+                        required: null
+                        sample: ""
+                        description: ""
+                  -
+                    name: mid
+                    type: object
+                    required: null
+                    sample: ""
+                    description: Returned when message type=text.
+                    children:
+                      -
+                        name: text
+                        type: string
+                        required: null
+                        sample: ""
+                        description: ""
+                      -
+                        name: source
+                        type: string
+                        required: null
+                        sample: ""
+                        description: ""
+                      -
+                        name: target_language
+                        type: string
+                        required: null
+                        sample: ""
+                        description: ""
+                      -
+                        name: source_language
+                        type: string
+                        required: null
+                        sample: ""
+                        description: ""
+                  -
+                    name: url
+                    type: string
+                    required: null
+                    sample: ""
+                    description: Returned when message type=image.
+                  -
+                    name: thumb_url
+                    type: string
+                    required: null
+                    sample: ""
+                    description: Returned when message type=image or video.
+                  -
+                    name: thumb_height
+                    type: int64
+                    required: null
+                    sample: ""
+                    description: Returned when message type=image or video.
+                  -
+                    name: thumb_width
+                    type: int64
+                    required: null
+                    sample: ""
+                    description: Returned when message type=image or video.
+                  -
+                    name: file_server_id
+                    type: int64
+                    required: null
+                    sample: ""
+                    description: Returned when message type=image.
+                  -
+                    name: video_url
+                    type: string
+                    required: null
+                    sample: ""
+                    description: Returned when message type=video.
+                  -
+                    name: duration_seconds
+                    type: int64
+                    required: null
+                    sample: ""
+                    description: Returned when message type=video.
+                  -
+                    name: shop_id
+                    type: int64
+                    required: null
+                    sample: ""
+                    description: Returned when message type=item. The shop_id of the shop message sent to (to_shop_id)
+                  -
+                    name: item_id
+                    type: int64
+                    required: null
+                    sample: ""
+                    description: Returned when message type=item.
+                  -
+                    name: pass_through_data
+                    type: string
+                    required: null
+                    sample: ""
+                    description: Returned when message type=faq_liveagent.
+                  -
+                    name: messages
+                    type: "string[]"
+                    required: null
+                    sample: "[\"23234234234\",\"234232423\"]"
+                    description: Returned when type=bundle_message. return all the message_id in the bundle_message
+                  -
+                    name: shopee_chatbot_replied
+                    type: boolean
+                    required: null
+                    sample: "true"
+                    description: |-
+                      Return when message_type=bundle_message
+                      if there is Shopee Chatbot session in the bundle message
+                      We recommend transfer to manual reply mode if shopee_chatbot_replied=true(Shopee Chatbot already involved)
+              -
+                name: created_timestamp
+                type: timestamp
+                required: null
+                sample: ""
+                description: Returned when type= message. The creation time of conversation.
+              -
+                name: region
+                type: string
+                required: null
+                sample: ""
+                description: Returned when type= message. The region where the conversation take places.
+              -
+                name: is_in_chatbot_session
+                type: boolean
+                required: null
+                sample: ""
+                description: Returned when type= message.
+              -
+                name: source_content
+                type: object
+                required: null
+                sample: ""
+                description: Returned when type= message.
+                children:
+                  -
+                    name: item_id
+                    type: int
+                    required: null
+                    sample: ""
+                    description: Returned when message type= item.
+              -
+                name: sub_account_id
+                type: int64
+                required: null
+                sample: ""
+                description: |-
+                  if the message is sent from sub-account/main account, then will indicate the sub_account_id
+                  If not, =0
+              -
+                name: sub_account_name
+                type: string
+                required: null
+                sample: ""
+                description: |-
+                  if the message is sent from sub-account/main account, then will indicate the sub_account_id
+                  If not, =0
+              -
+                name: quoted_msg
+                type: "object[]"
+                required: null
+                sample: ""
+                description: ""
+                children:
+                  -
+                    name: message_id
+                    type: int64
+                    required: null
+                    sample: ""
+                    description: |-
+                      Return message_id when a quoted message is present.
+                      If there is no quoted message, message_id will be empty.
+              -
+                name: business_type
+                type: int32
+                required: null
+                sample: ""
+                description: |-
+                  business_type=0 means it is a conversation chat between buyer and seller
+                  business_type=11 means it is a conversation chat between affiliate and seller
+              -
+                name: to_shop_id
+                type: int64
+                required: null
+                sample: ""
+                description: |-
+                  shopee shop id who receive the message
+                  <path></path>
+              -
+                name: from_shop_id
+                type: int64
+                required: null
+                sample: ""
+                description: shopee shop id who send the message
+              -
+                name: status
+                type: string
+                required: null
+                sample: ""
+                description: "The message status, the possible values are: normal; auto_reply; blocked; user_chat; web_chat; censored_whitelist; censored_blacklist; offwork_autoreply"
+      -
+        name: shop_id
+        type: int
+        required: null
+        sample: ""
+        description: |-
+          shop_id of shop receives the push message
+          Shopee's unique identifier for a shop.
+      -
+        name: code
+        type: int
+        required: null
+        sample: ""
+        description: "Shopee's unique identifier for a push notification."
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: ""
+        description: Timestamp that indicates the message was sent.
+    examples:
+      -
+        label: "If it is notification type:"
+        language: json
+        body: "{\"msg_id\": null,\"data\": {\"type\": \"notification\",\"region\": \"PH\",\"content\": {\"user_id\": 12252079,\"conversation_id\": \"4670954831706433\",\"type\": \"mark_as_replied\",\"content\": {\"conversation_id\": \"4670954310906433\"},\"timestamp\": 1719883961,\"msg_id\": 0,\"biz_id\": 0,\"from_id\": 0}"
+      -
+        label: "If it is message type and message including text:"
+        language: json
+        body:
+          msg_id: ""
+          data:
+            type: message
+            region: ID
+            content:
+              message_id: 2302748948493123953
+              shop_id: 165103149
+              request_id: 35f9478b-7482-46eb-a268-8f828fedb673
+              from_id: 165105353
+              from_user_name: vn_cstoreponorogo
+              to_id: 947151379
+              to_user_name: keelatofficial
+              message_type: text
+              content:
+                text: Baik kak .. 🤗
+              conversation_id: 709122092476686867
+              created_timestamp: 1726044721
+              region: ID
+              is_in_chatbot_session: false
+              source_content:
+
+              quoted_msg:
+                message_id: ""
+              sub_account_id: 0
+              sub_account_name: 0
+          shop_id: 947042923
+          code: 10
+          timestamp: 1726044722
+      -
+        label: If it is message type and message including video
+        language: json
+        body:
+          data:
+            type: message
+            region: VN
+            content:
+              message_id: 2165920666211451249
+              shop_id: 123456789
+              request_id: 1091617252119662617
+              from_id: 161057467
+              from_user_name: hyhy2606
+              to_id: 213245905
+              to_user_name: sixhd.vn
+              message_type: video
+              content:
+                video_url: cf03c9e1fe2c0992cdb51c3cb6eab2bd
+                thumb_url: 6c710d7679c9f3a9a7287250421d17d3_dynamic_tn
+                thumb_width: 399
+                thumb_height: 713
+                duration_seconds: 15
+              conversation_id: 691736553754845137
+              created_timestamp: 1660799912
+              region: VN
+              is_in_chatbot_session: false
+              source_content:
+
+              quoted_msg:
+                message_id: ""
+              sub_account_id: 0
+              sub_account_name: 0
+          shop_id: 123456789
+          code: 10
+          timestamp: 1660799912
+      -
+        label: If it is message type and message including image
+        language: json
+        body:
+          data:
+            type: message
+            region: VN
+            content:
+              message_id: 2165920671942967665
+              shop_id: 123456789
+              request_id: 313F2D/BTMessage/p108
+              from_id: 679422730
+              from_user_name: thutrang290402
+              to_id: 6343861
+              to_user_name: thanhnga_hcm
+              message_type: image
+              content:
+                url: "https://cf.shopee.vn/file/09591ecdc9f1dc7bd507817797d826fe_dynamic"
+                thumb_url: b9591ecdc9f1dc7bd507817797d826fe_dynamic_tn
+                thumb_height: 711
+                thumb_width: 400
+                file_server_id: 0
+              conversation_id: 27246676204792586
+              created_timestamp: 1660799915
+              region: VN
+              is_in_chatbot_session: false
+              source_content:
+
+              quoted_msg:
+                message_id: ""
+              sub_account_id: 0
+              sub_account_name: 0
+          shop_id: 123456789
+          code: 10
+          timestamp: 1660799915
+      -
+        label: If it is message type and message including item info
+        language: json
+        body:
+          data:
+            type: message
+            region: ID
+            content:
+              message_id: 2165920670806327665
+              shop_id: 123456789
+              request_id: 389465101372418716
+              from_id: 163219823
+              from_user_name: fadlyjo.
+              to_id: 119159078
+              to_user_name: zhousijia
+              message_type: item
+              content:
+                shop_id: 109157255
+                item_id: 9112503530
+              conversation_id: 511784343194732911
+              created_timestamp: 1660799914
+              region: ID
+              is_in_chatbot_session: false
+              quoted_msg:
+                message_id: ""
+              sub_account_id: 0
+              sub_account_name: 0
+              source_content:
+                item_id: 4112503530
+          shop_id: 123456789
+          code: 10
+          timestamp: 1660799915
+      -
+        label: If it is message type and message including faq_liveagent
+        language: json
+        body:
+          data:
+            type: message
+            region: ID
+            content:
+              message_id: 2165920670296736113
+              shop_id: 123456789
+              request_id: 4600339818579251427
+              from_id: 172765311
+              from_user_name: bundhakevinabizar
+              to_id: 94311357
+              to_user_name: madamegieofficial
+              message_type: faq_liveagent
+              content:
+                text: Chat dengan Penjual
+                pass_through_data: ""
+              conversation_id: 405064194129145983
+              created_timestamp: 1660799914
+              region: ID
+              is_in_chatbot_session: false
+              quoted_msg:
+                message_id: ""
+              sub_account_id: 0
+              sub_account_name: 0
+              source_content:
+                order_sn: 220818EGS328B9
+          shop_id: 123456789
+          code: 10
+          timestamp: 1660799915
+    update_logs:
+      -
+        date: 2025-04-18
+        timestamp: "2025-04-18T06:40:43Z"
+        description: "Add from_shop_id, to_shop_id, status"
+      -
+        date: 2024-11-05
+        timestamp: "2024-11-05T07:11:20Z"
+        description: |-
+          Add business_type for affiliate marketing solution chat
+          Add bundle_message for FAQ and chatbot message
+          Add shopee_chatbot_replied to indicate if Shopee Chatbot involved
+      -
+        date: 2024-09-23
+        timestamp: "2024-09-23T09:16:10Z"
+        description: |-
+          Add sub_account_id and sub_account_name; 
+          Add quoted_message
+      -
+        date: 2024-09-04
+        timestamp: "2024-09-04T09:07:59Z"
+        description: "Update the definition of the shop_id inside \"content\""
+      -
+        date: 2022-09-24
+        timestamp: "2022-09-24T14:24:15Z"
+        description: roll back retry config
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/10"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=10
+  -
+    push_api_id: 20
+    name: inbound_status_push
+    category:
+      id: 2063
+      name: Consignment Service Push
+    code: 21
+    description: "When the inbound status changed, it will send a push"
+    subscription_rules:
+      -
+        id: 13
+        name: Consignment Service System
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2024-05-14T08:48:22Z"
+    parameters:
+      -
+        name: code
+        type: int
+        required: null
+        sample: ""
+        description: ""
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: ""
+        description: ""
+      -
+        name: supplier_id
+        type: int
+        required: null
+        sample: ""
+        description: ""
+      -
+        name: data
+        type: "object[]"
+        required: null
+        sample: ""
+        description: ""
+        children:
+          -
+            name: inbound_id
+            type: string
+            required: null
+            sample: INCNN00001
+            description: inbound 唯一id
+          -
+            name: inbound_status
+            type: string
+            required: null
+            sample: InboundStatusInTransit
+            description: |-
+              入库单的状态，枚举：
+              InboundStatusPendingSupplierDeclare-待申报
+              InboundStatusInTransit-运输中
+              InboundStatusArrived-已到达
+              InboundStatusDone-已接收
+              InboundStatusRejected-已拒绝
+              InboundStatusCancelled-已取消
+    examples:
+      []
+    update_logs:
+      -
+        date: 2024-03-27
+        timestamp: "2024-03-27T06:51:36Z"
+        description: New Push
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/20"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=20
+  -
+    push_api_id: 22
+    name: supplier_create_product_push
+    category:
+      id: 2063
+      name: Consignment Service Push
+    code: 18
+    description: get message when product create success
+    subscription_rules:
+      -
+        id: 13
+        name: Consignment Service System
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 1
+      - 3
+      - 5
+    modified_at: "2025-04-27T10:38:31Z"
+    parameters:
+      -
+        name: code
+        type: int32
+        required: null
+        sample: ""
+        description: ""
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: ""
+        description: ""
+      -
+        name: supplier_id
+        type: int32
+        required: null
+        sample: ""
+        description: ""
+      -
+        name: data
+        type: "object[]"
+        required: null
+        sample: ""
+        description: ""
+        children:
+          -
+            name: supplier_product_id
+            type: string
+            required: null
+            sample: ""
+            description: supplier_product_id
+          -
+            name: supplier_product_model_id_list
+            type: "string[]"
+            required: null
+            sample: ""
+            description: supplier product model id list
+          -
+            name: create_time
+            type: int32
+            required: null
+            sample: ""
+            description: ""
+    examples:
+      []
+    update_logs:
+      -
+        date: 2024-03-27
+        timestamp: "2024-03-27T06:54:08Z"
+        description: New Push
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/22"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=22
+  -
+    push_api_id: 23
+    name: supplier_prouduct_review_result_push
+    category:
+      id: 2063
+      name: Consignment Service Push
+    code: 19
+    description: get message when supplier product review result has change
+    subscription_rules:
+      -
+        id: 13
+        name: Consignment Service System
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 1
+      - 3
+      - 5
+    modified_at: "2025-04-27T10:39:01Z"
+    parameters:
+      -
+        name: code
+        type: int32
+        required: null
+        sample: 18
+        description: "Shopee's unique identifier for a push notification"
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: ""
+        description: Timestamp that indicates the message was sent.
+      -
+        name: data
+        type: "object[]"
+        required: null
+        sample: ""
+        description: ""
+        children:
+          -
+            name: supplier_product_id
+            type: string
+            required: null
+            sample: ""
+            description: 货品id
+          -
+            name: supplier_product_model_id
+            type: string
+            required: null
+            sample: ""
+            description: 货品规格id
+          -
+            name: approval_result
+            type: string
+            required: null
+            sample: ""
+            description: "审核结果，值为下列结果之一：\"Pending Info Revision\"\"Pending Sample Providing\"\"Pending Sample Revision\"\"Selected\"\"Rejected\""
+          -
+            name: approval_time
+            type: timestamp
+            required: null
+            sample: ""
+            description: 审核时间
+      -
+        name: supplier_id
+        type: int32
+        required: null
+        sample: ""
+        description: ""
+    examples:
+      []
+    update_logs:
+      -
+        date: 2024-03-27
+        timestamp: "2024-03-27T06:55:26Z"
+        description: New Push
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/23"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=23
+  -
+    push_api_id: 24
+    name: purchase_order_Push
+    category:
+      id: 2063
+      name: Consignment Service Push
+    code: 20
+    description: "When there is a new purchase order, a push will be sent"
+    subscription_rules:
+      -
+        id: 13
+        name: Consignment Service System
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2025-04-27T10:41:29Z"
+    parameters:
+      -
+        name: code
+        type: int32
+        required: null
+        sample: ""
+        description: ""
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: ""
+        description: ""
+      -
+        name: supplier_id
+        type: int32
+        required: null
+        sample: ""
+        description: ""
+      -
+        name: data
+        type: "object[]"
+        required: null
+        sample: ""
+        description: ""
+        children:
+          -
+            name: purchase_order_id
+            type: string
+            required: null
+            sample: PO00001
+            description: |-
+              采购单号
+              <path></path>
+          -
+            name: purchase_order_status
+            type: string
+            required: null
+            sample: PoStatusPendingSupplierConfirmation
+            description: 采购单据的状态枚举： PoStatusPendingSupplierConfirmation-待确认PoStatusPendingPurchaserConfirmation-待买手确认PoStatusPendingAsnCreation-待asn创建PoStatusPendingShipment-待发货PoStatusPartiallyInbound-部分入库 PoStatusInbound-入库完成 PoStatusCancelled-取消 PoStatusClosed-关闭
+          -
+            name: purchase_reason
+            type: string
+            required: null
+            sample: FirstPurchase
+            description: "采购原因可分为两类，用于区分该采购单是首单还是常规补货单枚举如下：FirstPurchase-首次备货 Replenishment-补货tips:不传参数类型，默认返回全部"
+          -
+            name: purchase_function_tag_list
+            type: "string[]"
+            required: null
+            sample: "[\"JIT\",\"Urgent\",\"InTransitSellable\"]"
+            description: "采购单据的标签，采购单上可以有多个标签参数为枚举值，枚举映射如下：General-普通采购单JIT-准时化采购（just in time）的采购单 Urgent-加急的采购单InTransitSellable-在途可售的采购单tips:普通采购单没有标签"
+          -
+            name: create_time
+            type: timestamp
+            required: null
+            sample: 1234567890
+            description: |-
+              采购单创建时间
+              <path></path>
+    examples:
+      []
+    update_logs:
+      -
+        date: 2024-03-27
+        timestamp: "2024-03-27T07:00:14Z"
+        description: New Push
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/24"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=24
+  -
+    push_api_id: 32
+    name: return_updates_push
+    category:
+      id: 2078
+      name: Return Push
+    code: 29
+    description: "Get notified when the following fields of Return Refund change: return_status, return_solution, seller_proof_status, logistics_status"
+    subscription_rules:
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+      -
+        id: 5
+        name: Order Management
+      -
+        id: 8
+        name: Customer Service
+      -
+        id: 17
+        name: "Ads's Service App"
+      -
+        id: 18
+        name: Swam ERP
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 300
+      - 1800
+      - 10800
+    modified_at: "2024-12-31T09:43:03Z"
+    parameters:
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: Main Push message data.
+        children:
+          -
+            name: order_sn
+            type: string
+            required: null
+            sample: 241128EDQ9YKJ0
+            description: "Return by default. Shopee's unique serial number identifier for an order."
+          -
+            name: return_sn
+            type: string
+            required: null
+            sample: 2411280EDT4JRV5
+            description: "Return by default. Shopee's unique serial number identifier for a Return Refund request."
+          -
+            name: updated_values
+            type: "object[]"
+            required: null
+            sample: ""
+            description: ""
+            children:
+              -
+                name: update_field
+                type: string
+                required: null
+                sample: return_status
+                description: |-
+                  The field whose value is updated.
+                  - return_status
+                  - return_solution
+                  - seller_proof_status
+                  - logistics_status
+              -
+                name: old_value
+                type: string
+                required: null
+                sample: JUDGING
+                description: The value before the updates.
+              -
+                name: new_value
+                type: string
+                required: null
+                sample: PROCESSING
+                description: The value after the updates.
+              -
+                name: update_time
+                type: timestamp
+                required: null
+                sample: 1732796767
+                description: The time of the updates.
+      -
+        name: shop_id
+        type: int64
+        required: null
+        sample: 220004993
+        description: "Shopee's unique identifier for a shop. Required param for most APIs."
+      -
+        name: code
+        type: int64
+        required: null
+        sample: 29
+        description: "Shopee's unique identifier for a push notification."
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1732796767
+        description: This is to indicate the timestamp of the request.
+    examples:
+      -
+        label: null
+        language: json
+        body:
+          data:
+            order_sn: 241128EDQ9YKJ0
+            return_sn: 2411280EDT4JRV5
+            updated_values:
+              -
+                update_field: return_status
+                old_value: JUDGING
+                new_value: PROCESSING
+                update_time: 1732796767
+              -
+                update_field: logistics_status
+                old_value: LOGISTICS_NOT_STARTED
+                new_value: LOGISTICS_PENDING_ARRANGE
+                update_time: 1732796767
+          shop_id: 220004993
+          code: 29
+          timestamp: 1732796767
+    update_logs:
+      -
+        date: 2024-12-24
+        timestamp: "2024-12-24T02:46:12Z"
+        description: New Push
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/32"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=32
+  -
+    push_api_id: 36
+    name: fbs_sellable_stock
+    category:
+      id: 2085
+      name: Fulfillment by Shopee Push
+    code: 36
+    description: |-
+      Get notified on the sellable stock in warehouse when there is any changing update in the stock. For the fbs_sellable_stock, which means that the sellable stock in the warehouse, exclude the stock in isolated zone and damage zone from the warehouse.
+    subscription_rules:
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 60
+      - 300
+      - 1800
+    modified_at: "2025-07-07T09:17:23Z"
+    parameters:
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: Main Push message info.
+        children:
+          -
+            name: list
+            type: "object[]"
+            required: null
+            sample: ""
+            description: ""
+            children:
+              -
+                name: mt_sku_id
+                type: string
+                required: null
+                sample: 901240351_4259251776
+                description: Warehouse SKU ID
+              -
+                name: whs_id
+                type: string
+                required: null
+                sample: BRFSP1
+                description: Warehouse ID
+              -
+                name: shop_id
+                type: int64
+                required: null
+                sample: 302235160
+                description: Shop ID
+              -
+                name: whs_region
+                type: string
+                required: null
+                sample: BR
+                description: The region that warehouse located
+              -
+                name: whs_sellable_qty
+                type: int64
+                required: null
+                sample: 50
+                description: Warehouse sellable stock qty
+              -
+                name: update_time
+                type: timestamp
+                required: null
+                sample: 1750746789
+                description: Update time
+      -
+        name: shop_id
+        type: int64
+        required: null
+        sample: 302235160
+        description: Shop ID
+      -
+        name: code
+        type: int32
+        required: null
+        sample: 36
+        description: "Shopee's unique identifier for a push notification."
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: 1750746789
+        description: Timestamp that indicates the message was sent.
+    examples:
+      -
+        label: null
+        language: java
+        body:
+          data:
+            list:
+              -
+                mt_sku_id: 901240351_4259251776
+                whs_id: BRFSP1
+                shop_id: 302235160
+                whs_region: BR
+                whs_sellable_qty: 50
+                update_time: 1750746789
+              -
+                mt_sku_id: 901240351_4259251776
+                whs_id: BRX
+                shop_id: 302235160
+                whs_region: BR
+                whs_sellable_qty: 370
+                update_time: 1750746789
+              -
+                mt_sku_id: 901240351_4259251776
+                whs_id: BRK
+                shop_id: 302235160
+                whs_region: BR
+                whs_sellable_qty: 720
+                update_time: 1750746789
+          shop_id: 302071623
+          code: 36
+          timestamp: 1751860958
+    update_logs:
+      -
+        date: 2025-07-07
+        timestamp: "2025-07-07T09:17:15Z"
+        description: New Push
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/36"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=36
+  -
+    push_api_id: 38
+    name: fbs_br_invoice_error_push
+    category:
+      id: 2085
+      name: Fulfillment by Shopee Push
+    code: 33
+    description: "Get notified on FBS relevant failed invoice issuance. This includes Inbound Request, RTS Request, sales orders and move transfer orders."
+    subscription_rules:
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 60
+      - 300
+      - 1800
+    modified_at: "2025-08-13T08:19:04Z"
+    parameters:
+      -
+        name: code
+        type: int32
+        required: null
+        sample: 33
+        description: "Shopee's unique identifier for a push notification."
+      -
+        name: timestamp
+        type: timestamp
+        required: null
+        sample: ""
+        description: Timestamp that indicates the message was sent.
+      -
+        name: shop_id
+        type: int64
+        required: null
+        sample: ""
+        description: "Shopee's unique identifier for a shop. Required param for most APIs."
+      -
+        name: data
+        type: "object[]"
+        required: null
+        sample: ""
+        description: Main Push message data
+        children:
+          -
+            name: shop_id
+            type: int64
+            required: null
+            sample: ""
+            description: "Shopee's unique identifier for a shop."
+          -
+            name: biz_request_type
+            type: int32
+            required: null
+            sample: ""
+            description: |-
+              1: Inbound
+              2: Return From Warehouse
+              3: Sales order invoice
+              4: Move Transfer
+              5：IA
+          -
+            name: biz_request_id
+            type: string
+            required: null
+            sample: ""
+            description: Return by default. The business FBS request order ID.
+          -
+            name: fail_reason
+            type: string
+            required: null
+            sample: ""
+            description: Invoice issuance failed reason.
+          -
+            name: fail_type
+            type: int32
+            required: null
+            sample: ""
+            description: |-
+              1: sku tax info error
+              2: seller tax info error
+          -
+            name: invoice_deadline_time
+            type: int64
+            required: null
+            sample: ""
+            description: "The expired time of this failed invoice. If expired, then this request order would be cancelled."
+          -
+            name: invoice_id
+            type: string
+            required: null
+            sample: ""
+            description: Invoice ID
+          -
+            name: shop_sku_list
+            type: "object[]"
+            required: null
+            sample: ""
+            description: ""
+            children:
+              -
+                name: shop_item_id
+                type: int64
+                required: null
+                sample: ""
+                description: ID of item
+              -
+                name: shop_model_id
+                type: int64
+                required: null
+                sample: ""
+                description: ID of model
+              -
+                name: shop_item_name
+                type: string
+                required: null
+                sample: ""
+                description: Name of item
+              -
+                name: shop_model_name
+                type: string
+                required: null
+                sample: ""
+                description: Name of model
+              -
+                name: shop_sku_id
+                type: string
+                required: null
+                sample: ""
+                description: itemID_modelID
+    examples:
+      []
+    update_logs:
+      -
+        date: 2025-08-13
+        timestamp: "2025-08-13T08:17:51Z"
+        description: New Push
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/38"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=38
+  -
+    push_api_id: 39
+    name: fbs_br_block_shop_push
+    category:
+      id: 2085
+      name: Fulfillment by Shopee Push
+    code: 34
+    description: Get notified on FBS shop would be blocked due to invoice error. It is not allowed to raise new Inbound Request and not allow warehouse stock being sellable.
+    subscription_rules:
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 60
+      - 300
+      - 1800
+    modified_at: "2025-08-13T08:19:10Z"
+    parameters:
+      -
+        name: code
+        type: int32
+        required: null
+        sample: ""
+        description: "Shopee's unique identifier for a push notification."
+      -
+        name: timestamp
+        type: int64
+        required: null
+        sample: ""
+        description: Timestamp that indicates the message was sent.
+      -
+        name: shop_id
+        type: int64
+        required: null
+        sample: ""
+        description: "Shopee's unique identifier for a shop."
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: Main Push message data
+        children:
+          -
+            name: shop_id
+            type: int64
+            required: null
+            sample: ""
+            description: "Shopee's unique identifier for a shop."
+    examples:
+      []
+    update_logs:
+      -
+        date: 2025-08-13
+        timestamp: "2025-08-13T08:18:21Z"
+        description: New Push
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/39"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=39
+  -
+    push_api_id: 40
+    name: fbs_br_block_sku_push
+    category:
+      id: 2085
+      name: Fulfillment by Shopee Push
+    code: 35
+    description: Get notified on FBS Product would be blocked due to invoice error. It is not allowed to raise new Inbound Request and not allow warehouse stock being sellable.
+    subscription_rules:
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 60
+      - 300
+      - 1800
+    modified_at: "2025-08-13T08:19:23Z"
+    parameters:
+      -
+        name: code
+        type: int32
+        required: null
+        sample: ""
+        description: "Shopee's unique identifier for a push notification"
+      -
+        name: timestamp
+        type: int64
+        required: null
+        sample: ""
+        description: Timestamp that indicates the message was sent.
+      -
+        name: shop_id
+        type: int64
+        required: null
+        sample: ""
+        description: "Shopee's unique identifier for a shop"
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: Main Push message data
+        children:
+          -
+            name: shop_sku_id
+            type: string
+            required: null
+            sample: ""
+            description: itemID_modelID
+          -
+            name: shop_item_id
+            type: int64
+            required: null
+            sample: ""
+            description: ID of item
+          -
+            name: shop_model_id
+            type: int64
+            required: null
+            sample: ""
+            description: ID of model
+          -
+            name: shop_item_name
+            type: string
+            required: null
+            sample: ""
+            description: Name of item
+          -
+            name: shop_model_name
+            type: string
+            required: null
+            sample: ""
+            description: Name of model
+    examples:
+      []
+    update_logs:
+      -
+        date: 2025-08-13
+        timestamp: "2025-08-13T08:18:39Z"
+        description: New Push
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/40"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=40
+  -
+    push_api_id: 41
+    name: fbs_br_invoice_issued_push
+    category:
+      id: 2085
+      name: Fulfillment by Shopee Push
+    code: 31
+    description: fbs_br_invoice_issued_push
+    subscription_rules:
+      -
+        id: 2
+        name: ERP System
+      -
+        id: 3
+        name: Seller In House System
+    timeout_seconds: 3
+    sequence_guaranteed: false
+    push_guarantee_raw: 0
+    can_repeat_same_message: true
+    retry_seconds:
+      - 30
+      - 600
+      - 1800
+    modified_at: "2025-07-13T15:21:33Z"
+    parameters:
+      -
+        name: data
+        type: object
+        required: null
+        sample: ""
+        description: ""
+        children:
+          -
+            name: document_type
+            type: string
+            required: null
+            sample: ""
+            description: |-
+              Remessa
+              Return
+              Symbolic Return
+              Sale
+              Entrada
+              Symbolic Remessa
+          -
+            name: order_sn
+            type: string
+            required: null
+            sample: ""
+            description: "if document_type = sale, then pass the related Order SN"
+          -
+            name: issue_date
+            type: timestamp
+            required: null
+            sample: ""
+            description: Timestamp that indicates the time invoice was issued.
+      -
+        name: update_time
+        type: timestamp
+        required: null
+        sample: ""
+        description: Indicate when the push message was triggered
+      -
+        name: shop_id
+        type: int64
+        required: null
+        sample: ""
+        description: |-
+          Shopee’s unique identifier for shop.
+          E.g. 1660123127
+      -
+        name: code
+        type: int32
+        required: null
+        sample: 31
+        description: Shopee’s unique identifier for a push notification.
+    examples:
+      []
+    update_logs:
+      -
+        date: 2025-07-11
+        timestamp: "2025-07-11T09:11:42Z"
+        description: New Push
+    source:
+      page_url: "https://open.shopee.com/push-mechanism/41"
+      doc_api_path: /opservice/api/v1/push/doc?push_api_id=41
