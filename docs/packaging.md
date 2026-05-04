@@ -16,12 +16,14 @@ dotnet test ShopeeSdk.sln --no-build
 ## Package Build
 
 ```bash
-dotnet pack ShopeeSdk.sln --no-build --output artifacts
+./scripts/pack-local.sh
 ./scripts/inspect-nuget.sh
 ./scripts/test-local-nuget.sh
 ```
 
-`inspect-nuget.sh` checks package contents for common packaging mistakes. `test-local-nuget.sh` creates a temporary consumer project and installs the local packages from `artifacts`.
+Local packages are written to `artifacts/packages`, which is also registered as `shopeesdk-local` in `NuGet.Config`.
+
+`inspect-nuget.sh` checks package contents for common packaging mistakes. `test-local-nuget.sh` creates a temporary consumer project and installs the local packages from `artifacts/packages`.
 
 ## Package Metadata
 

@@ -130,7 +130,7 @@ dotnet restore ShopeeSdk.sln
 dotnet build ShopeeSdk.sln --no-restore
 dotnet test ShopeeSdk.sln --no-build
 ./scripts/verify-generated.sh
-dotnet pack ShopeeSdk.sln --no-build --output artifacts
+./scripts/pack-local.sh
 ./scripts/inspect-nuget.sh
 ./scripts/test-local-nuget.sh
 ```

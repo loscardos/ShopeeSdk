@@ -20,7 +20,8 @@ jobs:
         env:
           SHOPEE_PARTNER_ID: ${{ secrets.SHOPEE_PARTNER_ID }}
           SHOPEE_PARTNER_KEY: ${{ secrets.SHOPEE_PARTNER_KEY }}
-      - run: dotnet pack ShopeeSdk.sln --no-build --output artifacts
+      - run: ./scripts/pack-local.sh
+      - run: ./scripts/inspect-nuget.sh
       - run: ./scripts/test-local-nuget.sh
       - name: Verify generated SDK surface
         run: ./scripts/verify-generated.sh

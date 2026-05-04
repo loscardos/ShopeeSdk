@@ -10,6 +10,7 @@
     <Authors>Loscardos</Authors>
     <Company>Loscardos</Company>
     <Product>ShopeeSdk</Product>
+    <PackageId>Loscardos.$(MSBuildProjectName)</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>shopee;openapi;sdk;aspnet;omnichannel;ecommerce</PackageTags>

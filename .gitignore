@@ -8,5 +8,8 @@ TestResults/
 *.nupkg
 .token/
 .tmp/
-artifacts/
+artifacts/*
+!artifacts/packages/
+artifacts/packages/*
+!artifacts/packages/.gitkeep
 .idea/

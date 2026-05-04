@@ -14,7 +14,6 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PackageId>Loscardos.ShopeeSdk.Extensions.DependencyInjection</PackageId>
     <Description>ASP.NET Core dependency injection registration for the Loscardos Shopee SDK.</Description>
   </PropertyGroup>
 

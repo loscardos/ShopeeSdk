@@ -2,20 +2,34 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-ARTIFACTS="$ROOT/artifacts"
+ARTIFACTS="$ROOT/artifacts/packages"
 TMP="$ROOT/.tmp/local-nuget-consumer"
 
-rm -rf "$ARTIFACTS" "$TMP"
+rm -rf "$TMP"
+mkdir -p "$ARTIFACTS"
+find "$ARTIFACTS" -maxdepth 1 -type f -name '*.nupkg' -delete
 rm -rf "$HOME/.nuget/packages/loscardos.shopeesdk."*
-dotnet pack "$ROOT/ShopeeSdk.sln" --output "$ARTIFACTS"
+"$ROOT/scripts/pack-local.sh" "$ARTIFACTS"
 "$ROOT/scripts/inspect-nuget.sh" "$ARTIFACTS"
 
 mkdir -p "$TMP"
 dotnet new console -n LocalNuGetConsumer -o "$TMP"
-dotnet add "$TMP/LocalNuGetConsumer.csproj" package Loscardos.ShopeeSdk.Core --version 0.1.0-preview --source "$ARTIFACTS"
-dotnet add "$TMP/LocalNuGetConsumer.csproj" package Loscardos.ShopeeSdk.Extensions.DependencyInjection --version 0.1.0-preview --source "$ARTIFACTS"
-dotnet add "$TMP/LocalNuGetConsumer.csproj" package Loscardos.ShopeeSdk.Storage.EntityFramework --version 0.1.0-preview --source "$ARTIFACTS"
-dotnet add "$TMP/LocalNuGetConsumer.csproj" package Microsoft.Extensions.DependencyInjection --version 10.0.7
+
+cat > "$TMP/NuGet.config" <<EOF
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <clear />
+    <add key="shopeesdk-local" value="$ARTIFACTS" />
+    <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
+  </packageSources>
+</configuration>
+EOF
+
+dotnet add "$TMP/LocalNuGetConsumer.csproj" package Loscardos.ShopeeSdk.Core --version 0.1.0-preview --no-restore
+dotnet add "$TMP/LocalNuGetConsumer.csproj" package Loscardos.ShopeeSdk.Extensions.DependencyInjection --version 0.1.0-preview --no-restore
+dotnet add "$TMP/LocalNuGetConsumer.csproj" package Loscardos.ShopeeSdk.Storage.EntityFramework --version 0.1.0-preview --no-restore
+dotnet add "$TMP/LocalNuGetConsumer.csproj" package Microsoft.Extensions.DependencyInjection --version 10.0.7 --no-restore
 
 cat > "$TMP/Program.cs" <<'CS'
 using Microsoft.Extensions.DependencyInjection;
@@ -65,4 +79,5 @@ public sealed class SmokeTokenStore : IShopeeTokenStore
 }
 CS
 
-dotnet run --project "$TMP/LocalNuGetConsumer.csproj"
+dotnet restore "$TMP/LocalNuGetConsumer.csproj" --configfile "$TMP/NuGet.config"
+dotnet run --project "$TMP/LocalNuGetConsumer.csproj" --no-restore
