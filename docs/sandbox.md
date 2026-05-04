@@ -51,6 +51,20 @@ Run a read-only product and shop check:
 dotnet run --project samples/ShopeeSdk.SampleConsole -- sandbox-check
 ```
 
+Write an offline endpoint certification matrix from generated managers:
+
+```bash
+dotnet run --project samples/ShopeeSdk.SampleConsole -- certify-matrix
+```
+
+Run broader read-only canary certification and write `.tmp/shopee-readonly-certification.md`:
+
+```bash
+dotnet run --project samples/ShopeeSdk.SampleConsole -- certify-readonly
+```
+
+`certify-readonly` calls representative read-only product, shop, and order endpoints. Order detail, payment escrow, and logistics tracking are marked `SkipNoData` unless `SHOPEE_CANARY_ORDER_SN` or `SHOPEE_SANDBOX_ORDER_SN` is configured. `SHOPEE_CANARY_PACKAGE_NUMBER` or `SHOPEE_SANDBOX_PACKAGE_NUMBER` is optional for logistics tracking.
+
 ## Integration Tests
 
 Sandbox integration tests are skipped by default. Enable them explicitly:

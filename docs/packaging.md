@@ -46,5 +46,6 @@ Shared package metadata is configured in `Directory.Build.props`:
 - pack
 - local NuGet consumer validation
 - generated SDK surface verification
+- offline endpoint certification matrix generation
 
 Sandbox tests stay gated and are not run unless sandbox environment variables are explicitly configured.

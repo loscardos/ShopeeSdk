@@ -110,6 +110,8 @@ dotnet run --project samples/ShopeeSdk.SampleConsole -- refresh-token
 dotnet run --project samples/ShopeeSdk.SampleConsole -- refresh-token --update-env .token/shopee-sandbox.env
 dotnet run --project samples/ShopeeSdk.SampleConsole -- get-orders
 dotnet run --project samples/ShopeeSdk.SampleConsole -- sandbox-check
+dotnet run --project samples/ShopeeSdk.SampleConsole -- certify-matrix
+dotnet run --project samples/ShopeeSdk.SampleConsole -- certify-readonly
 ```
 
 Use ignored local files such as `.token/shopee-sandbox.env` for sandbox credentials. Do not commit access tokens, refresh tokens, partner keys, or shop credentials.

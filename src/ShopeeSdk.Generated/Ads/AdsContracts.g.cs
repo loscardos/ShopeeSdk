@@ -465,11 +465,20 @@ public sealed record AdsGetProductRecommendedRoiTargetResponse(
 public sealed record AdsGetRecommendedItemListRequest(
 );
 
-public sealed record AdsGetRecommendedItemListResponse(
+public sealed record AdsGetRecommendedItemListResponseItem(
     [property: JsonPropertyName("item_id")] int? ItemId = null,
     [property: JsonPropertyName("item_status_list")] IReadOnlyList<string>? ItemStatusList = null,
     [property: JsonPropertyName("sku_tag_list")] IReadOnlyList<string>? SkuTagList = null,
     [property: JsonPropertyName("ongoing_ad_type_list")] IReadOnlyList<string>? OngoingAdTypeList = null
+);
+
+[JsonConverter(typeof(AdsGetRecommendedItemListResponseJsonConverter))]
+public sealed record AdsGetRecommendedItemListResponse(
+    [property: JsonIgnore] int? ItemId = null,
+    [property: JsonIgnore] IReadOnlyList<string>? ItemStatusList = null,
+    [property: JsonIgnore] IReadOnlyList<string>? SkuTagList = null,
+    [property: JsonIgnore] IReadOnlyList<string>? OngoingAdTypeList = null,
+    [property: JsonPropertyName("items")] IReadOnlyList<AdsGetRecommendedItemListResponseItem>? Items = null
 );
 
 public sealed record AdsGetRecommendedKeywordListRequest(
@@ -518,4 +527,3 @@ public sealed record AdsListGmsUserDeletedItemResponse(
     [property: JsonPropertyName("total")] long? Total = null,
     [property: JsonPropertyName("has_next_page")] bool? HasNextPage = null
 );
-

@@ -25,3 +25,4 @@ jobs:
       - run: ./scripts/test-local-nuget.sh
       - name: Verify generated SDK surface
         run: ./scripts/verify-generated.sh
+      - run: dotnet run --project samples/ShopeeSdk.SampleConsole -- certify-matrix

@@ -1,5 +1,7 @@
 using FluentAssertions;
 using ShopeeSdk.Core.Http;
+using ShopeeSdk.Generated.Ads;
+using ShopeeSdk.Generated.Payment;
 
 namespace ShopeeSdk.Tests.Http;
 
@@ -32,6 +34,53 @@ public sealed class ShopeeResponseReaderTests
     {
         var act = () => ShopeeResponseReader.ReadJsonEnvelope<TestPayload>("");
         act.Should().Throw<Exception>().WithMessage("*empty*");
+    }
+
+    [Fact]
+    public void ReadJsonEnvelope_HandlesAdsRecommendedItemListArrayPayload()
+    {
+        var envelope = ShopeeResponseReader.ReadJsonEnvelope<AdsGetRecommendedItemListResponse>("""
+        {
+          "request_id": "req-ads",
+          "error": "",
+          "message": "",
+          "warning": "",
+          "response": [
+            {
+              "item_id": 123,
+              "item_status_list": ["NORMAL"],
+              "sku_tag_list": ["ADS_ELIGIBLE"],
+              "ongoing_ad_type_list": ["product_manual_bidding"]
+            }
+          ]
+        }
+        """);
+
+        envelope.RequestId.Should().Be("req-ads");
+        envelope.Response!.Items.Should().ContainSingle()
+            .Which.ItemId.Should().Be(123);
+    }
+
+    [Fact]
+    public void ReadJsonEnvelope_HandlesPaymentMethodListArrayPayload()
+    {
+        var envelope = ShopeeResponseReader.ReadJsonEnvelope<PaymentGetPaymentMethodListResponse>("""
+        {
+          "code": "",
+          "message": "",
+          "request_id": "req-payment",
+          "response": [
+            {
+              "region": "ID",
+              "payment_method": ["COD", "Credit Card"]
+            }
+          ]
+        }
+        """);
+
+        envelope.RequestId.Should().Be("req-payment");
+        envelope.Response!.Items.Should().ContainSingle()
+            .Which.PaymentMethod.Should().Contain("COD");
     }
 
     private sealed record TestPayload(string Value);

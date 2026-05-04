@@ -543,9 +543,16 @@ public sealed record PaymentGetItemInstallmentStatusResponse(
 public sealed record PaymentGetPaymentMethodListRequest(
 );
 
-public sealed record PaymentGetPaymentMethodListResponse(
+public sealed record PaymentGetPaymentMethodListResponseItem(
     [property: JsonPropertyName("payment_method")] IReadOnlyList<string>? PaymentMethod = null,
     [property: JsonPropertyName("region")] string? Region = null
+);
+
+[JsonConverter(typeof(PaymentGetPaymentMethodListResponseJsonConverter))]
+public sealed record PaymentGetPaymentMethodListResponse(
+    [property: JsonIgnore] IReadOnlyList<string>? PaymentMethod = null,
+    [property: JsonIgnore] string? Region = null,
+    [property: JsonPropertyName("items")] IReadOnlyList<PaymentGetPaymentMethodListResponseItem>? Items = null
 );
 
 public sealed record PaymentGetPayoutDetailRequest(
@@ -695,4 +702,3 @@ public sealed record PaymentSetShopInstallmentStatusRequest(
 public sealed record PaymentSetShopInstallmentStatusResponse(
     [property: JsonPropertyName("installment_status")] int? InstallmentStatus = null
 );
-

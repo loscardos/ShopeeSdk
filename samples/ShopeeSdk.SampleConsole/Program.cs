@@ -3,6 +3,7 @@ using Microsoft.Extensions.Options;
 using ShopeeSdk.Abstractions.Auth;
 using ShopeeSdk.Abstractions.Configuration;
 using ShopeeSdk.Abstractions.Errors;
+using ShopeeSdk.Abstractions.Http;
 using ShopeeSdk.Abstractions.Managers;
 using ShopeeSdk.Core.Auth;
 using ShopeeSdk.Core.Http;
@@ -41,6 +42,12 @@ var client = new ShopeeClient(
     new NoopShopeeRateLimiter(),
     NullLogger<ShopeeClient>.Instance);
 var authApi = new ShopeeAuthApi(client, options, new SystemShopeeClock(), tokenStore);
+
+if (args is ["certify-matrix"])
+{
+    RunEndpointCertificationMatrix();
+    return;
+}
 
 if (args is ["auth-url"])
 {
@@ -166,13 +173,92 @@ if (args is ["sandbox-check"])
     return;
 }
 
+if (args is ["certify-readonly"])
+{
+    options.Value.PartnerId = long.Parse(Required("SHOPEE_PARTNER_ID"));
+    options.Value.PartnerKey = Required("SHOPEE_PARTNER_KEY");
+
+    var shopId = long.Parse(Required("SHOPEE_SHOP_ID"));
+    await tokenStore.StoreAsync(
+        new ShopeeToken(
+            shopId,
+            null,
+            Required("SHOPEE_ACCESS_TOKEN"),
+            Environment.GetEnvironmentVariable("SHOPEE_REFRESH_TOKEN") ?? string.Empty,
+            DateTimeOffset.UtcNow.AddHours(1),
+            "certification-env"),
+        CancellationToken.None);
+
+    var tokenService = new ShopeeTokenService(tokenStore, new MissingAuthApi(), options, new SystemShopeeClock());
+    await RunReadonlyCertificationAsync(client, tokenService, shopId, CancellationToken.None);
+    return;
+}
+
 Console.WriteLine("Usage:");
+Console.WriteLine("  dotnet run --project samples/ShopeeSdk.SampleConsole -- certify-matrix");
 Console.WriteLine("  dotnet run --project samples/ShopeeSdk.SampleConsole -- auth-url");
 Console.WriteLine("  dotnet run --project samples/ShopeeSdk.SampleConsole -- exchange-code");
 Console.WriteLine("  dotnet run --project samples/ShopeeSdk.SampleConsole -- refresh-token");
 Console.WriteLine("  dotnet run --project samples/ShopeeSdk.SampleConsole -- refresh-token --update-env .token/shopee-sandbox.env");
 Console.WriteLine("  dotnet run --project samples/ShopeeSdk.SampleConsole -- get-orders");
 Console.WriteLine("  dotnet run --project samples/ShopeeSdk.SampleConsole -- sandbox-check");
+Console.WriteLine("  dotnet run --project samples/ShopeeSdk.SampleConsole -- certify-readonly");
+
+static void RunEndpointCertificationMatrix()
+{
+    var endpoints = GeneratedEndpointInventory.ReadFromDirectory(GeneratedEndpointInventory.DefaultGeneratedManagersDirectory);
+    var rows = EndpointCertificationMatrix.Create(endpoints, ReadonlyCertificationCatalog.CertifiedEndpoints);
+    EndpointCertificationMatrix.WriteMarkdown(EndpointCertificationMatrix.DefaultPath, rows);
+    Console.WriteLine($"endpoint_matrix={EndpointCertificationMatrix.DefaultPath}");
+    PrintEndpointMatrixSummary(rows);
+}
+
+static async Task RunReadonlyCertificationAsync(
+    IShopeeClient client,
+    ShopeeTokenService tokenService,
+    long shopId,
+    CancellationToken cancellationToken)
+{
+    var now = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+    var lookbackDays = ParseInt64("SHOPEE_CANARY_LOOKBACK_DAYS", 7);
+    var from = now - (long)TimeSpan.FromDays(lookbackDays).TotalSeconds;
+    var pageSize = (int)ParseInt64("SHOPEE_CANARY_PAGE_SIZE", 20);
+    var merchantId = long.TryParse(Environment.GetEnvironmentVariable("SHOPEE_MERCHANT_ID"), out var configuredMerchantId)
+        ? configuredMerchantId
+        : (long?)null;
+    var runner = new ReadonlyCertificationRunner(client, tokenService, shopId, merchantId, pageSize, from, now);
+    var results = await runner.RunAsync(cancellationToken);
+
+    CertificationReport.WriteMarkdown(CertificationReport.DefaultPath, results);
+    Console.WriteLine($"certification_report={CertificationReport.DefaultPath}");
+    PrintCertificationSummary(results);
+
+    if (results.Any(static result => result.Status == CertificationStatus.Fail))
+    {
+        Environment.ExitCode = 1;
+    }
+}
+
+static void PrintCertificationSummary(IReadOnlyList<CertificationResult> results)
+{
+    foreach (var group in results.GroupBy(static result => result.Status).OrderBy(static group => group.Key.ToString()))
+    {
+        Console.WriteLine($"{group.Key}={group.Count()}");
+    }
+}
+
+static void PrintEndpointMatrixSummary(IReadOnlyList<EndpointCertificationRow> rows)
+{
+    foreach (var group in rows.GroupBy(static row => row.Status).OrderBy(static group => group.Key.ToString()))
+    {
+        Console.WriteLine($"{group.Key}={group.Count()}");
+    }
+}
+
+static long ParseInt64(string name, long fallback)
+{
+    return long.TryParse(Environment.GetEnvironmentVariable(name), out var value) ? value : fallback;
+}
 
 internal sealed class SampleTokenStore : IShopeeTokenStore
 {

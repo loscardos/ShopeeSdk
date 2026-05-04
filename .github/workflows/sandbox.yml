@@ -1,0 +1,33 @@
+name: sandbox
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sandbox:
+    runs-on: ubuntu-latest
+    env:
+      SHOPEE_RUN_SANDBOX: true
+      SHOPEE_PARTNER_ID: ${{ secrets.SHOPEE_PARTNER_ID }}
+      SHOPEE_PARTNER_KEY: ${{ secrets.SHOPEE_PARTNER_KEY }}
+      SHOPEE_REGION: ${{ secrets.SHOPEE_REGION }}
+      SHOPEE_REDIRECT_URL: ${{ secrets.SHOPEE_REDIRECT_URL }}
+      SHOPEE_SHOP_ID: ${{ secrets.SHOPEE_SHOP_ID }}
+      SHOPEE_AUTH_CODE: ${{ secrets.SHOPEE_AUTH_CODE }}
+      SHOPEE_ACCESS_TOKEN: ${{ secrets.SHOPEE_ACCESS_TOKEN }}
+      SHOPEE_REFRESH_TOKEN: ${{ secrets.SHOPEE_REFRESH_TOKEN }}
+      SHOPEE_SANDBOX_ORDER_SN: ${{ secrets.SHOPEE_SANDBOX_ORDER_SN }}
+      SHOPEE_SANDBOX_PACKAGE_NUMBER: ${{ secrets.SHOPEE_SANDBOX_PACKAGE_NUMBER }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - run: dotnet restore ShopeeSdk.sln
+      - run: dotnet test tests/ShopeeSdk.IntegrationTests/ShopeeSdk.IntegrationTests.csproj -c Release
+      - run: dotnet run --project samples/ShopeeSdk.SampleConsole -- certify-readonly
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: shopee-readonly-certification
+          path: .tmp/shopee-readonly-certification.md
