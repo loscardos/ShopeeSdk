@@ -100,6 +100,9 @@ ShopeeSdk.Core:ShopeeSdk.Core.RateLimiting.PartitionedShopeeRateLimiter
 ShopeeSdk.Core:ShopeeSdk.Core.Time.IShopeeClock
 ShopeeSdk.Core:ShopeeSdk.Core.Time.SystemShopeeClock
 ShopeeSdk.Core:ShopeeSdk.Core.Validation.ShopeeRequestValidator
+ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookIdempotencyKeyFactory
+ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookOptions
+ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookTimestampValidator
 ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookVerifier
 ShopeeSdk.Generated:ShopeeSdk.Generated.AccountHealth.AccountHealthGetLateOrdersRequest
 ShopeeSdk.Generated:ShopeeSdk.Generated.AccountHealth.AccountHealthGetLateOrdersResponse
@@ -2017,3 +2020,6 @@ ShopeeSdk.Generated:ShopeeSdk.Generated.Voucher.VoucherGetVoucherRequest
 ShopeeSdk.Generated:ShopeeSdk.Generated.Voucher.VoucherGetVoucherResponse
 ShopeeSdk.Generated:ShopeeSdk.Generated.Voucher.VoucherUpdateVoucherRequest
 ShopeeSdk.Generated:ShopeeSdk.Generated.Voucher.VoucherUpdateVoucherResponse
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookCatalog
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookEventCode
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism

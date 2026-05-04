@@ -1077,6 +1077,13 @@ ShopeeSdk.Core:ShopeeSdk.Core.Validation.ShopeeRequestValidator.method System.Vo
 ShopeeSdk.Core:ShopeeSdk.Core.Validation.ShopeeRequestValidator.method System.Void EnsurePageSize(System.Int32 pageSize, System.Int32 min, System.Int32 max, System.String fieldName)
 ShopeeSdk.Core:ShopeeSdk.Core.Validation.ShopeeRequestValidator.method System.Void EnsureRequiredString(System.String value, System.String fieldName)
 ShopeeSdk.Core:ShopeeSdk.Core.Validation.ShopeeRequestValidator.method System.Void EnsureTimeRange(System.Int64 fromUnixSeconds, System.Int64 toUnixSeconds, System.TimeSpan maxRange, System.String fieldName)
+ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookIdempotencyKeyFactory..ctor()
+ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookIdempotencyKeyFactory.method System.String Create(System.String rawBody, ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent webhookEvent)
+ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookOptions..ctor()
+ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookOptions.property System.String SignatureHeaderName
+ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookOptions.property System.TimeSpan TimestampTolerance
+ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookTimestampValidator..ctor(ShopeeSdk.Core.Webhooks.ShopeeWebhookOptions options)
+ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookTimestampValidator.method System.Boolean IsFresh(ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent webhookEvent, System.DateTimeOffset receivedAt)
 ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookVerifier..ctor(Microsoft.Extensions.Options.IOptions<ShopeeSdk.Abstractions.Configuration.ShopeeOptions> options)
 ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookVerifier.method ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent ParseVerified(System.String rawBody, System.String signature)
 ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookVerifier.method System.Boolean Verify(System.String rawBody, System.String signature)
@@ -21333,3 +21340,22 @@ ShopeeSdk.Generated:ShopeeSdk.Generated.Voucher.VoucherUpdateVoucherResponse.met
 ShopeeSdk.Generated:ShopeeSdk.Generated.Voucher.VoucherUpdateVoucherResponse.method System.Int32 GetHashCode()
 ShopeeSdk.Generated:ShopeeSdk.Generated.Voucher.VoucherUpdateVoucherResponse.method System.String ToString()
 ShopeeSdk.Generated:ShopeeSdk.Generated.Voucher.VoucherUpdateVoucherResponse.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& VoucherId)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookCatalog.property System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism> All
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookCatalog.method ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism FindByCode(System.Int32 code)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookCatalog.method ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism FindByName(System.String name)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism..ctor(System.Int32 PushApiId, System.String Name, System.Int32 CategoryId, System.String CategoryName, System.Int32 Code, System.String Description, System.Int32 TimeoutSeconds, System.Boolean SequenceGuaranteed, System.Collections.Generic.IReadOnlyList<System.Int32> RetrySeconds)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism.property System.Int32 CategoryId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism.property System.String CategoryName
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism.property System.Int32 Code
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism.property System.String Description
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism.property System.String Name
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism.property System.Int32 PushApiId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism.property System.Collections.Generic.IReadOnlyList<System.Int32> RetrySeconds
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism.property System.Boolean SequenceGuaranteed
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism.property System.Int32 TimeoutSeconds
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism.method ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism.method System.Void Deconstruct(System.Int32& PushApiId, System.String& Name, System.Int32& CategoryId, System.String& CategoryName, System.Int32& Code, System.String& Description, System.Int32& TimeoutSeconds, System.Boolean& SequenceGuaranteed, System.Collections.Generic.IReadOnlyList`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& RetrySeconds)
