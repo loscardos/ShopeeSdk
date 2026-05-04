@@ -1082,6 +1082,10 @@ ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookIdempotencyKeyFactory.method
 ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookOptions..ctor()
 ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookOptions.property System.String SignatureHeaderName
 ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookOptions.property System.TimeSpan TimestampTolerance
+ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookParser..ctor(ShopeeSdk.Abstractions.Webhooks.IShopeeWebhookVerifier verifier, ShopeeSdk.Core.Webhooks.ShopeeWebhookTimestampValidator timestampValidator, ShopeeSdk.Abstractions.Webhooks.IShopeeWebhookIdempotencyKeyFactory idempotencyKeyFactory)
+ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookParser.method ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookReceiveResult TryReceive(System.String rawBody, System.String signature, System.DateTimeOffset receivedAt)
+ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookParser.method System.Object ParseData(ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent webhookEvent)
+ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookParser.method TData ParseData(ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent webhookEvent)
 ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookTimestampValidator..ctor(ShopeeSdk.Core.Webhooks.ShopeeWebhookOptions options)
 ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookTimestampValidator.method System.Boolean IsFresh(ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent webhookEvent, System.DateTimeOffset receivedAt)
 ShopeeSdk.Core:ShopeeSdk.Core.Webhooks.ShopeeWebhookVerifier..ctor(Microsoft.Extensions.Options.IOptions<ShopeeSdk.Abstractions.Configuration.ShopeeOptions> options)
@@ -21340,6 +21344,460 @@ ShopeeSdk.Generated:ShopeeSdk.Generated.Voucher.VoucherUpdateVoucherResponse.met
 ShopeeSdk.Generated:ShopeeSdk.Generated.Voucher.VoucherUpdateVoucherResponse.method System.Int32 GetHashCode()
 ShopeeSdk.Generated:ShopeeSdk.Generated.Voucher.VoucherUpdateVoucherResponse.method System.String ToString()
 ShopeeSdk.Generated:ShopeeSdk.Generated.Voucher.VoucherUpdateVoucherResponse.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& VoucherId)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingShippingDocumentStatusPushData..ctor(System.String BookingSn = default, System.String Status = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingShippingDocumentStatusPushData.property System.String BookingSn
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingShippingDocumentStatusPushData.property System.String Status
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingShippingDocumentStatusPushData.method ShopeeSdk.Generated.Webhooks.BookingShippingDocumentStatusPushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingShippingDocumentStatusPushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.BookingShippingDocumentStatusPushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingShippingDocumentStatusPushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingShippingDocumentStatusPushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingShippingDocumentStatusPushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingShippingDocumentStatusPushData.method System.Void Deconstruct(System.String& BookingSn, System.String& Status)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingStatusPushData..ctor(System.String BookingSn = default, System.String BookingStatus = default, System.Nullable<System.Int64> UpdateTime = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingStatusPushData.property System.String BookingSn
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingStatusPushData.property System.String BookingStatus
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingStatusPushData.property System.Nullable<System.Int64> UpdateTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingStatusPushData.method ShopeeSdk.Generated.Webhooks.BookingStatusPushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingStatusPushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.BookingStatusPushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingStatusPushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingStatusPushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingStatusPushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingStatusPushData.method System.Void Deconstruct(System.String& BookingSn, System.String& BookingStatus, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& UpdateTime)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingTrackingnoPushData..ctor(System.String BookingSn = default, System.String TrackingNumber = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingTrackingnoPushData.property System.String BookingSn
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingTrackingnoPushData.property System.String TrackingNumber
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingTrackingnoPushData.method ShopeeSdk.Generated.Webhooks.BookingTrackingnoPushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingTrackingnoPushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.BookingTrackingnoPushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingTrackingnoPushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingTrackingnoPushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingTrackingnoPushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BookingTrackingnoPushData.method System.Void Deconstruct(System.String& BookingSn, System.String& TrackingNumber)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultData..ctor(System.Nullable<System.Int64> ShopId = default, ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterBrandItem RegisterBrand = default, ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterResultItem RegisterResult = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultData.property ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterBrandItem RegisterBrand
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultData.property ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterResultItem RegisterResult
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultData.property System.Nullable<System.Int64> ShopId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultData.method ShopeeSdk.Generated.Webhooks.BrandRegisterResultData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.BrandRegisterResultData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultData.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShopId, ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterBrandItem& RegisterBrand, ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterResultItem& RegisterResult)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterBrandItem..ctor(System.Nullable<System.Int64> BrandId = default, System.String BrandName = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterBrandItem.property System.Nullable<System.Int64> BrandId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterBrandItem.property System.String BrandName
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterBrandItem.method ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterBrandItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterBrandItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterBrandItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterBrandItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterBrandItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterBrandItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterBrandItem.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& BrandId, System.String& BrandName)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterResultItem..ctor(System.String Result = default, System.String Reason = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterResultItem.property System.String Reason
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterResultItem.property System.String Result
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterResultItem.method ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterResultItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterResultItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterResultItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterResultItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterResultItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterResultItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.BrandRegisterResultDataRegisterResultItem.method System.Void Deconstruct(System.String& Result, System.String& Reason)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.CourierDeliveryBindingStatusPushData..ctor(System.String BindingId = default, System.String FirstMileTrackingNumber = default, System.String Status = default, System.Nullable<System.Int64> UpdateTime = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.CourierDeliveryBindingStatusPushData.property System.String BindingId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.CourierDeliveryBindingStatusPushData.property System.String FirstMileTrackingNumber
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.CourierDeliveryBindingStatusPushData.property System.String Status
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.CourierDeliveryBindingStatusPushData.property System.Nullable<System.Int64> UpdateTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.CourierDeliveryBindingStatusPushData.method ShopeeSdk.Generated.Webhooks.CourierDeliveryBindingStatusPushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.CourierDeliveryBindingStatusPushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.CourierDeliveryBindingStatusPushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.CourierDeliveryBindingStatusPushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.CourierDeliveryBindingStatusPushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.CourierDeliveryBindingStatusPushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.CourierDeliveryBindingStatusPushData.method System.Void Deconstruct(System.String& BindingId, System.String& FirstMileTrackingNumber, System.String& Status, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& UpdateTime)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrBlockShopPushData..ctor(System.Nullable<System.Int64> ShopId = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrBlockShopPushData.property System.Nullable<System.Int64> ShopId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrBlockShopPushData.method ShopeeSdk.Generated.Webhooks.FbsBrBlockShopPushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrBlockShopPushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.FbsBrBlockShopPushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrBlockShopPushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrBlockShopPushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrBlockShopPushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrBlockShopPushData.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShopId)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrBlockSkuPushData..ctor(System.String ShopSkuId = default, System.Nullable<System.Int64> ShopItemId = default, System.Nullable<System.Int64> ShopModelId = default, System.String ShopItemName = default, System.String ShopModelName = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrBlockSkuPushData.property System.Nullable<System.Int64> ShopItemId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrBlockSkuPushData.property System.String ShopItemName
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrBlockSkuPushData.property System.Nullable<System.Int64> ShopModelId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrBlockSkuPushData.property System.String ShopModelName
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrBlockSkuPushData.property System.String ShopSkuId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrBlockSkuPushData.method ShopeeSdk.Generated.Webhooks.FbsBrBlockSkuPushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrBlockSkuPushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.FbsBrBlockSkuPushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrBlockSkuPushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrBlockSkuPushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrBlockSkuPushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrBlockSkuPushData.method System.Void Deconstruct(System.String& ShopSkuId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShopItemId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShopModelId, System.String& ShopItemName, System.String& ShopModelName)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushData..ctor()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItem..ctor(System.Nullable<System.Int64> ShopId = default, System.Nullable<System.Int64> BizRequestType = default, System.String BizRequestId = default, System.String FailReason = default, System.Nullable<System.Int64> FailType = default, System.Nullable<System.Int64> InvoiceDeadlineTime = default, System.String InvoiceId = default, System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItemShopSkuListItem> ShopSkuList = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItem.property System.String BizRequestId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItem.property System.Nullable<System.Int64> BizRequestType
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItem.property System.String FailReason
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItem.property System.Nullable<System.Int64> FailType
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItem.property System.Nullable<System.Int64> InvoiceDeadlineTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItem.property System.String InvoiceId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItem.property System.Nullable<System.Int64> ShopId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItem.property System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItemShopSkuListItem> ShopSkuList
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItem.method ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItem.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShopId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& BizRequestType, System.String& BizRequestId, System.String& FailReason, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& FailType, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& InvoiceDeadlineTime, System.String& InvoiceId, System.Collections.Generic.IReadOnlyList`1[[ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItemShopSkuListItem, ShopeeSdk.Generated, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]& ShopSkuList)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItemShopSkuListItem..ctor(System.Nullable<System.Int64> ShopItemId = default, System.Nullable<System.Int64> ShopModelId = default, System.String ShopItemName = default, System.String ShopModelName = default, System.String ShopSkuId = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItemShopSkuListItem.property System.Nullable<System.Int64> ShopItemId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItemShopSkuListItem.property System.String ShopItemName
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItemShopSkuListItem.property System.Nullable<System.Int64> ShopModelId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItemShopSkuListItem.property System.String ShopModelName
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItemShopSkuListItem.property System.String ShopSkuId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItemShopSkuListItem.method ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItemShopSkuListItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItemShopSkuListItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItemShopSkuListItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItemShopSkuListItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItemShopSkuListItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItemShopSkuListItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceErrorPushDataItemShopSkuListItem.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShopItemId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShopModelId, System.String& ShopItemName, System.String& ShopModelName, System.String& ShopSkuId)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceIssuedPushData..ctor(System.String DocumentType = default, System.String OrderSn = default, System.Nullable<System.Int64> IssueDate = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceIssuedPushData.property System.String DocumentType
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceIssuedPushData.property System.Nullable<System.Int64> IssueDate
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceIssuedPushData.property System.String OrderSn
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceIssuedPushData.method ShopeeSdk.Generated.Webhooks.FbsBrInvoiceIssuedPushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceIssuedPushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.FbsBrInvoiceIssuedPushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceIssuedPushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceIssuedPushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceIssuedPushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsBrInvoiceIssuedPushData.method System.Void Deconstruct(System.String& DocumentType, System.String& OrderSn, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& IssueDate)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsSellableStockData..ctor(System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.FbsSellableStockDataListItem> List = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsSellableStockData.property System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.FbsSellableStockDataListItem> List
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsSellableStockData.method ShopeeSdk.Generated.Webhooks.FbsSellableStockData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsSellableStockData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.FbsSellableStockData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsSellableStockData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsSellableStockData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsSellableStockData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsSellableStockData.method System.Void Deconstruct(System.Collections.Generic.IReadOnlyList`1[[ShopeeSdk.Generated.Webhooks.FbsSellableStockDataListItem, ShopeeSdk.Generated, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]& List)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsSellableStockDataListItem..ctor(System.String MtSkuId = default, System.String WhsId = default, System.Nullable<System.Int64> ShopId = default, System.String WhsRegion = default, System.Nullable<System.Int64> WhsSellableQty = default, System.Nullable<System.Int64> UpdateTime = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsSellableStockDataListItem.property System.String MtSkuId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsSellableStockDataListItem.property System.Nullable<System.Int64> ShopId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsSellableStockDataListItem.property System.Nullable<System.Int64> UpdateTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsSellableStockDataListItem.property System.String WhsId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsSellableStockDataListItem.property System.String WhsRegion
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsSellableStockDataListItem.property System.Nullable<System.Int64> WhsSellableQty
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsSellableStockDataListItem.method ShopeeSdk.Generated.Webhooks.FbsSellableStockDataListItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsSellableStockDataListItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.FbsSellableStockDataListItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsSellableStockDataListItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsSellableStockDataListItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsSellableStockDataListItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.FbsSellableStockDataListItem.method System.Void Deconstruct(System.String& MtSkuId, System.String& WhsId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShopId, System.String& WhsRegion, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& WhsSellableQty, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& UpdateTime)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.InboundStatusPushData..ctor()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.InboundStatusPushDataItem..ctor(System.String InboundId = default, System.String InboundStatus = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.InboundStatusPushDataItem.property System.String InboundId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.InboundStatusPushDataItem.property System.String InboundStatus
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.InboundStatusPushDataItem.method ShopeeSdk.Generated.Webhooks.InboundStatusPushDataItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.InboundStatusPushDataItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.InboundStatusPushDataItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.InboundStatusPushDataItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.InboundStatusPushDataItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.InboundStatusPushDataItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.InboundStatusPushDataItem.method System.Void Deconstruct(System.String& InboundId, System.String& InboundStatus)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPriceUpdatePushData..ctor(System.Nullable<System.Int64> ItemId = default, System.Nullable<System.Int64> ModelId = default, System.String UpdateField = default, System.Nullable<System.Decimal> OldValue = default, System.Nullable<System.Decimal> NewValue = default, System.Nullable<System.Int64> UpdateTime = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPriceUpdatePushData.property System.Nullable<System.Int64> ItemId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPriceUpdatePushData.property System.Nullable<System.Int64> ModelId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPriceUpdatePushData.property System.Nullable<System.Decimal> NewValue
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPriceUpdatePushData.property System.Nullable<System.Decimal> OldValue
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPriceUpdatePushData.property System.String UpdateField
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPriceUpdatePushData.property System.Nullable<System.Int64> UpdateTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPriceUpdatePushData.method ShopeeSdk.Generated.Webhooks.ItemPriceUpdatePushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPriceUpdatePushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.ItemPriceUpdatePushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPriceUpdatePushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPriceUpdatePushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPriceUpdatePushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPriceUpdatePushData.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ItemId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ModelId, System.String& UpdateField, System.Nullable`1[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& OldValue, System.Nullable`1[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& NewValue, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& UpdateTime)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPromotionPushData..ctor(System.Nullable<System.Int64> ShopId = default, System.Nullable<System.Int64> ItemId = default, System.Nullable<System.Int64> VariationId = default, System.String PromotionType = default, System.Nullable<System.Int64> PromotionId = default, System.String Action = default, System.Nullable<System.Int64> UpdateTime = default, System.Nullable<System.Int64> StartTime = default, System.Nullable<System.Int64> EndTime = default, System.Nullable<System.Int64> ReservedStock = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPromotionPushData.property System.String Action
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPromotionPushData.property System.Nullable<System.Int64> EndTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPromotionPushData.property System.Nullable<System.Int64> ItemId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPromotionPushData.property System.Nullable<System.Int64> PromotionId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPromotionPushData.property System.String PromotionType
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPromotionPushData.property System.Nullable<System.Int64> ReservedStock
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPromotionPushData.property System.Nullable<System.Int64> ShopId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPromotionPushData.property System.Nullable<System.Int64> StartTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPromotionPushData.property System.Nullable<System.Int64> UpdateTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPromotionPushData.property System.Nullable<System.Int64> VariationId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPromotionPushData.method ShopeeSdk.Generated.Webhooks.ItemPromotionPushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPromotionPushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.ItemPromotionPushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPromotionPushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPromotionPushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPromotionPushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemPromotionPushData.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShopId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ItemId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& VariationId, System.String& PromotionType, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& PromotionId, System.String& Action, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& UpdateTime, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& StartTime, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& EndTime, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ReservedStock)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemScheduledPublishFailedPushData..ctor(System.Nullable<System.Int64> ShopId = default, System.Nullable<System.Int64> ItemId = default, System.Nullable<System.Int64> ScheduledPublishTime = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemScheduledPublishFailedPushData.property System.Nullable<System.Int64> ItemId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemScheduledPublishFailedPushData.property System.Nullable<System.Int64> ScheduledPublishTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemScheduledPublishFailedPushData.property System.Nullable<System.Int64> ShopId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemScheduledPublishFailedPushData.method ShopeeSdk.Generated.Webhooks.ItemScheduledPublishFailedPushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemScheduledPublishFailedPushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.ItemScheduledPublishFailedPushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemScheduledPublishFailedPushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemScheduledPublishFailedPushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemScheduledPublishFailedPushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ItemScheduledPublishFailedPushData.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShopId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ItemId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ScheduledPublishTime)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OpenApiAuthorizationExpiryData..ctor()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OpenApiAuthorizationExpiryDataItem..ctor(System.Collections.Generic.IReadOnlyList<System.Int64> MerchantExpireSoon = default, System.Collections.Generic.IReadOnlyList<System.Int64> ShopExpireSoon = default, System.Collections.Generic.IReadOnlyList<System.Int64> UserExpireSoon = default, System.Nullable<System.Int64> ExpireBefore = default, System.Nullable<System.Int64> PageNo = default, System.Nullable<System.Int64> TotalPage = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OpenApiAuthorizationExpiryDataItem.property System.Nullable<System.Int64> ExpireBefore
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OpenApiAuthorizationExpiryDataItem.property System.Collections.Generic.IReadOnlyList<System.Int64> MerchantExpireSoon
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OpenApiAuthorizationExpiryDataItem.property System.Nullable<System.Int64> PageNo
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OpenApiAuthorizationExpiryDataItem.property System.Collections.Generic.IReadOnlyList<System.Int64> ShopExpireSoon
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OpenApiAuthorizationExpiryDataItem.property System.Nullable<System.Int64> TotalPage
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OpenApiAuthorizationExpiryDataItem.property System.Collections.Generic.IReadOnlyList<System.Int64> UserExpireSoon
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OpenApiAuthorizationExpiryDataItem.method ShopeeSdk.Generated.Webhooks.OpenApiAuthorizationExpiryDataItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OpenApiAuthorizationExpiryDataItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.OpenApiAuthorizationExpiryDataItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OpenApiAuthorizationExpiryDataItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OpenApiAuthorizationExpiryDataItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OpenApiAuthorizationExpiryDataItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OpenApiAuthorizationExpiryDataItem.method System.Void Deconstruct(System.Collections.Generic.IReadOnlyList`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& MerchantExpireSoon, System.Collections.Generic.IReadOnlyList`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShopExpireSoon, System.Collections.Generic.IReadOnlyList`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& UserExpireSoon, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ExpireBefore, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& PageNo, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& TotalPage)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OrderStatusPushData..ctor(System.String OrderSn = default, System.String Status = default, System.String CompletedScenario = default, System.Nullable<System.Int64> UpdateTime = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OrderStatusPushData.property System.String CompletedScenario
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OrderStatusPushData.property System.String OrderSn
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OrderStatusPushData.property System.String Status
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OrderStatusPushData.property System.Nullable<System.Int64> UpdateTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OrderStatusPushData.method ShopeeSdk.Generated.Webhooks.OrderStatusPushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OrderStatusPushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.OrderStatusPushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OrderStatusPushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OrderStatusPushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OrderStatusPushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OrderStatusPushData.method System.Void Deconstruct(System.String& OrderSn, System.String& Status, System.String& CompletedScenario, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& UpdateTime)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OrderTrackingnoPushData..ctor(System.String OrderSn = default, System.String ForderId = default, System.String PackageNumber = default, System.String TrackingNo = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OrderTrackingnoPushData.property System.String ForderId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OrderTrackingnoPushData.property System.String OrderSn
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OrderTrackingnoPushData.property System.String PackageNumber
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OrderTrackingnoPushData.property System.String TrackingNo
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OrderTrackingnoPushData.method ShopeeSdk.Generated.Webhooks.OrderTrackingnoPushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OrderTrackingnoPushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.OrderTrackingnoPushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OrderTrackingnoPushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OrderTrackingnoPushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OrderTrackingnoPushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.OrderTrackingnoPushData.method System.Void Deconstruct(System.String& OrderSn, System.String& ForderId, System.String& PackageNumber, System.String& TrackingNo)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageFulfillmentStatusPushData..ctor(System.String OrderSn = default, System.String PackageNumber = default, System.String FulfillmentStatus = default, System.Nullable<System.Int64> UpdateTime = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageFulfillmentStatusPushData.property System.String FulfillmentStatus
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageFulfillmentStatusPushData.property System.String OrderSn
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageFulfillmentStatusPushData.property System.String PackageNumber
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageFulfillmentStatusPushData.property System.Nullable<System.Int64> UpdateTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageFulfillmentStatusPushData.method ShopeeSdk.Generated.Webhooks.PackageFulfillmentStatusPushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageFulfillmentStatusPushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.PackageFulfillmentStatusPushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageFulfillmentStatusPushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageFulfillmentStatusPushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageFulfillmentStatusPushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageFulfillmentStatusPushData.method System.Void Deconstruct(System.String& OrderSn, System.String& PackageNumber, System.String& FulfillmentStatus, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& UpdateTime)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushData..ctor(System.String OrderSn = default, System.String PackageNumber = default, System.Collections.Generic.IReadOnlyList<System.String> ChangedFields = default, ShopeeSdk.Generated.Webhooks.PackageInfoPushDataOldItem Old = default, ShopeeSdk.Generated.Webhooks.PackageInfoPushDataNewItem New = default, System.Nullable<System.Int64> UpdateTime = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushData.property System.Collections.Generic.IReadOnlyList<System.String> ChangedFields
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushData.property ShopeeSdk.Generated.Webhooks.PackageInfoPushDataNewItem New
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushData.property ShopeeSdk.Generated.Webhooks.PackageInfoPushDataOldItem Old
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushData.property System.String OrderSn
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushData.property System.String PackageNumber
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushData.property System.Nullable<System.Int64> UpdateTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushData.method ShopeeSdk.Generated.Webhooks.PackageInfoPushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.PackageInfoPushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushData.method System.Void Deconstruct(System.String& OrderSn, System.String& PackageNumber, System.Collections.Generic.IReadOnlyList`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ChangedFields, ShopeeSdk.Generated.Webhooks.PackageInfoPushDataOldItem& Old, ShopeeSdk.Generated.Webhooks.PackageInfoPushDataNewItem& New, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& UpdateTime)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushDataNewItem..ctor(System.Nullable<System.Int64> LogisticsChannelId = default, System.Nullable<System.Int64> ShipByDate = default, System.String ReturnCode = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushDataNewItem.property System.Nullable<System.Int64> LogisticsChannelId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushDataNewItem.property System.String ReturnCode
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushDataNewItem.property System.Nullable<System.Int64> ShipByDate
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushDataNewItem.method ShopeeSdk.Generated.Webhooks.PackageInfoPushDataNewItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushDataNewItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.PackageInfoPushDataNewItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushDataNewItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushDataNewItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushDataNewItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushDataNewItem.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& LogisticsChannelId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShipByDate, System.String& ReturnCode)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushDataOldItem..ctor(System.Nullable<System.Int64> LogisticsChannelId = default, System.Nullable<System.Int64> ShipByDate = default, System.String ReturnCode = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushDataOldItem.property System.Nullable<System.Int64> LogisticsChannelId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushDataOldItem.property System.String ReturnCode
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushDataOldItem.property System.Nullable<System.Int64> ShipByDate
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushDataOldItem.method ShopeeSdk.Generated.Webhooks.PackageInfoPushDataOldItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushDataOldItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.PackageInfoPushDataOldItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushDataOldItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushDataOldItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushDataOldItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PackageInfoPushDataOldItem.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& LogisticsChannelId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShipByDate, System.String& ReturnCode)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PromotionUpdatePushData..ctor(System.Nullable<System.Int64> ShopId = default, System.Nullable<System.Int64> PromotionId = default, System.String PromotionType = default, System.Nullable<System.Int64> EndTime = default, System.String Action = default, System.Nullable<System.Int64> ItemId = default, System.Nullable<System.Int64> VariationId = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PromotionUpdatePushData.property System.String Action
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PromotionUpdatePushData.property System.Nullable<System.Int64> EndTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PromotionUpdatePushData.property System.Nullable<System.Int64> ItemId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PromotionUpdatePushData.property System.Nullable<System.Int64> PromotionId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PromotionUpdatePushData.property System.String PromotionType
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PromotionUpdatePushData.property System.Nullable<System.Int64> ShopId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PromotionUpdatePushData.property System.Nullable<System.Int64> VariationId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PromotionUpdatePushData.method ShopeeSdk.Generated.Webhooks.PromotionUpdatePushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PromotionUpdatePushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.PromotionUpdatePushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PromotionUpdatePushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PromotionUpdatePushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PromotionUpdatePushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PromotionUpdatePushData.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShopId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& PromotionId, System.String& PromotionType, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& EndTime, System.String& Action, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ItemId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& VariationId)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PurchaseOrderPushData..ctor()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PurchaseOrderPushDataItem..ctor(System.String PurchaseOrderId = default, System.String PurchaseOrderStatus = default, System.String PurchaseReason = default, System.Collections.Generic.IReadOnlyList<System.String> PurchaseFunctionTagList = default, System.Nullable<System.Int64> CreateTime = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PurchaseOrderPushDataItem.property System.Nullable<System.Int64> CreateTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PurchaseOrderPushDataItem.property System.Collections.Generic.IReadOnlyList<System.String> PurchaseFunctionTagList
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PurchaseOrderPushDataItem.property System.String PurchaseOrderId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PurchaseOrderPushDataItem.property System.String PurchaseOrderStatus
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PurchaseOrderPushDataItem.property System.String PurchaseReason
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PurchaseOrderPushDataItem.method ShopeeSdk.Generated.Webhooks.PurchaseOrderPushDataItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PurchaseOrderPushDataItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.PurchaseOrderPushDataItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PurchaseOrderPushDataItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PurchaseOrderPushDataItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PurchaseOrderPushDataItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.PurchaseOrderPushDataItem.method System.Void Deconstruct(System.String& PurchaseOrderId, System.String& PurchaseOrderStatus, System.String& PurchaseReason, System.Collections.Generic.IReadOnlyList`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& PurchaseFunctionTagList, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& CreateTime)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushData..ctor(System.Nullable<System.Int64> ShopId = default, System.Nullable<System.Int64> ItemId = default, System.Nullable<System.Int64> VariationId = default, System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.ReservedStockChangePushDataChangedValuesItem> ChangedValues = default, System.String PromotionType = default, System.Nullable<System.Int64> PromotionId = default, System.String Action = default, System.String OrderSn = default, System.Nullable<System.Int64> UpdateTime = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushData.property System.String Action
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushData.property System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.ReservedStockChangePushDataChangedValuesItem> ChangedValues
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushData.property System.Nullable<System.Int64> ItemId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushData.property System.String OrderSn
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushData.property System.Nullable<System.Int64> PromotionId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushData.property System.String PromotionType
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushData.property System.Nullable<System.Int64> ShopId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushData.property System.Nullable<System.Int64> UpdateTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushData.property System.Nullable<System.Int64> VariationId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushData.method ShopeeSdk.Generated.Webhooks.ReservedStockChangePushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.ReservedStockChangePushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushData.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShopId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ItemId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& VariationId, System.Collections.Generic.IReadOnlyList`1[[ShopeeSdk.Generated.Webhooks.ReservedStockChangePushDataChangedValuesItem, ShopeeSdk.Generated, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]& ChangedValues, System.String& PromotionType, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& PromotionId, System.String& Action, System.String& OrderSn, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& UpdateTime)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushDataChangedValuesItem..ctor(System.String Name = default, System.Nullable<System.Int64> Old = default, System.Nullable<System.Int64> New = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushDataChangedValuesItem.property System.String Name
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushDataChangedValuesItem.property System.Nullable<System.Int64> New
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushDataChangedValuesItem.property System.Nullable<System.Int64> Old
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushDataChangedValuesItem.method ShopeeSdk.Generated.Webhooks.ReservedStockChangePushDataChangedValuesItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushDataChangedValuesItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.ReservedStockChangePushDataChangedValuesItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushDataChangedValuesItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushDataChangedValuesItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushDataChangedValuesItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReservedStockChangePushDataChangedValuesItem.method System.Void Deconstruct(System.String& Name, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& Old, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& New)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushData..ctor(System.String OrderSn = default, System.String ReturnSn = default, System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushDataUpdatedValuesItem> UpdatedValues = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushData.property System.String OrderSn
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushData.property System.String ReturnSn
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushData.property System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushDataUpdatedValuesItem> UpdatedValues
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushData.method ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushData.method System.Void Deconstruct(System.String& OrderSn, System.String& ReturnSn, System.Collections.Generic.IReadOnlyList`1[[ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushDataUpdatedValuesItem, ShopeeSdk.Generated, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]& UpdatedValues)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushDataUpdatedValuesItem..ctor(System.String UpdateField = default, System.String OldValue = default, System.String NewValue = default, System.Nullable<System.Int64> UpdateTime = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushDataUpdatedValuesItem.property System.String NewValue
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushDataUpdatedValuesItem.property System.String OldValue
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushDataUpdatedValuesItem.property System.String UpdateField
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushDataUpdatedValuesItem.property System.Nullable<System.Int64> UpdateTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushDataUpdatedValuesItem.method ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushDataUpdatedValuesItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushDataUpdatedValuesItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushDataUpdatedValuesItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushDataUpdatedValuesItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushDataUpdatedValuesItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushDataUpdatedValuesItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ReturnUpdatesPushDataUpdatedValuesItem.method System.Void Deconstruct(System.String& UpdateField, System.String& OldValue, System.String& NewValue, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& UpdateTime)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShippingDocumentStatusPushData..ctor(System.String OrderSn = default, System.String PackageNumber = default, System.String Status = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShippingDocumentStatusPushData.property System.String OrderSn
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShippingDocumentStatusPushData.property System.String PackageNumber
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShippingDocumentStatusPushData.property System.String Status
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShippingDocumentStatusPushData.method ShopeeSdk.Generated.Webhooks.ShippingDocumentStatusPushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShippingDocumentStatusPushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.ShippingDocumentStatusPushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShippingDocumentStatusPushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShippingDocumentStatusPushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShippingDocumentStatusPushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShippingDocumentStatusPushData.method System.Void Deconstruct(System.String& OrderSn, System.String& PackageNumber, System.String& Status)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationCanceledPushData..ctor()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationCanceledPushDataItem..ctor(System.Nullable<System.Int64> ShopId = default, System.Collections.Generic.IReadOnlyList<System.Int64> ShopIdList = default, System.Nullable<System.Int64> MerchantId = default, System.Collections.Generic.IReadOnlyList<System.Int64> MerchantIdList = default, System.Nullable<System.Int64> UserId = default, System.Collections.Generic.IReadOnlyList<System.Int64> UserIdList = default, System.String AuthorizeType = default, System.String Extra = default, System.Nullable<System.Int64> MainAccountId = default, System.Nullable<System.Int64> Success = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationCanceledPushDataItem.property System.String AuthorizeType
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationCanceledPushDataItem.property System.String Extra
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationCanceledPushDataItem.property System.Nullable<System.Int64> MainAccountId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationCanceledPushDataItem.property System.Nullable<System.Int64> MerchantId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationCanceledPushDataItem.property System.Collections.Generic.IReadOnlyList<System.Int64> MerchantIdList
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationCanceledPushDataItem.property System.Nullable<System.Int64> ShopId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationCanceledPushDataItem.property System.Collections.Generic.IReadOnlyList<System.Int64> ShopIdList
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationCanceledPushDataItem.property System.Nullable<System.Int64> Success
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationCanceledPushDataItem.property System.Nullable<System.Int64> UserId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationCanceledPushDataItem.property System.Collections.Generic.IReadOnlyList<System.Int64> UserIdList
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationCanceledPushDataItem.method ShopeeSdk.Generated.Webhooks.ShopAuthorizationCanceledPushDataItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationCanceledPushDataItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.ShopAuthorizationCanceledPushDataItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationCanceledPushDataItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationCanceledPushDataItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationCanceledPushDataItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationCanceledPushDataItem.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShopId, System.Collections.Generic.IReadOnlyList`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShopIdList, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& MerchantId, System.Collections.Generic.IReadOnlyList`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& MerchantIdList, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& UserId, System.Collections.Generic.IReadOnlyList`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& UserIdList, System.String& AuthorizeType, System.String& Extra, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& MainAccountId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& Success)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationPushData..ctor()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationPushDataItem..ctor(System.Nullable<System.Int64> ShopId = default, System.Collections.Generic.IReadOnlyList<System.Int64> ShopIdList = default, System.Nullable<System.Int64> MerchantId = default, System.Collections.Generic.IReadOnlyList<System.Int64> MerchantIdList = default, System.String AuthorizeType = default, System.String Extra = default, System.Nullable<System.Int64> MainAccountId = default, System.Nullable<System.Int64> Success = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationPushDataItem.property System.String AuthorizeType
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationPushDataItem.property System.String Extra
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationPushDataItem.property System.Nullable<System.Int64> MainAccountId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationPushDataItem.property System.Nullable<System.Int64> MerchantId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationPushDataItem.property System.Collections.Generic.IReadOnlyList<System.Int64> MerchantIdList
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationPushDataItem.property System.Nullable<System.Int64> ShopId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationPushDataItem.property System.Collections.Generic.IReadOnlyList<System.Int64> ShopIdList
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationPushDataItem.property System.Nullable<System.Int64> Success
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationPushDataItem.method ShopeeSdk.Generated.Webhooks.ShopAuthorizationPushDataItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationPushDataItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.ShopAuthorizationPushDataItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationPushDataItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationPushDataItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationPushDataItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopAuthorizationPushDataItem.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShopId, System.Collections.Generic.IReadOnlyList`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShopIdList, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& MerchantId, System.Collections.Generic.IReadOnlyList`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& MerchantIdList, System.String& AuthorizeType, System.String& Extra, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& MainAccountId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& Success)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushData..ctor(System.Nullable<System.Int64> ActionType = default, ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsIssuedDataItem PointsIssuedData = default, ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsRemovedDataItem PointsRemovedData = default, ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataTierUpdateDataItem TierUpdateData = default, System.Nullable<System.Int64> UpdateTime = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushData.property System.Nullable<System.Int64> ActionType
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushData.property ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsIssuedDataItem PointsIssuedData
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushData.property ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsRemovedDataItem PointsRemovedData
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushData.property ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataTierUpdateDataItem TierUpdateData
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushData.property System.Nullable<System.Int64> UpdateTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushData.method ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushData.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ActionType, ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsIssuedDataItem& PointsIssuedData, ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsRemovedDataItem& PointsRemovedData, ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataTierUpdateDataItem& TierUpdateData, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& UpdateTime)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsIssuedDataItem..ctor(System.Nullable<System.Int64> IssuedPoints = default, System.Nullable<System.Int64> ViolationType = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsIssuedDataItem.property System.Nullable<System.Int64> IssuedPoints
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsIssuedDataItem.property System.Nullable<System.Int64> ViolationType
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsIssuedDataItem.method ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsIssuedDataItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsIssuedDataItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsIssuedDataItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsIssuedDataItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsIssuedDataItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsIssuedDataItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsIssuedDataItem.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& IssuedPoints, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ViolationType)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsRemovedDataItem..ctor(System.Nullable<System.Int64> RemovedPoints = default, System.Nullable<System.Int64> ViolationType = default, System.Nullable<System.Int64> RemovedReason = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsRemovedDataItem.property System.Nullable<System.Int64> RemovedPoints
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsRemovedDataItem.property System.Nullable<System.Int64> RemovedReason
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsRemovedDataItem.property System.Nullable<System.Int64> ViolationType
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsRemovedDataItem.method ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsRemovedDataItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsRemovedDataItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsRemovedDataItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsRemovedDataItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsRemovedDataItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsRemovedDataItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataPointsRemovedDataItem.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& RemovedPoints, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ViolationType, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& RemovedReason)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataTierUpdateDataItem..ctor(System.Nullable<System.Int64> OldTier = default, System.Nullable<System.Int64> NewTier = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataTierUpdateDataItem.property System.Nullable<System.Int64> NewTier
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataTierUpdateDataItem.property System.Nullable<System.Int64> OldTier
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataTierUpdateDataItem.method ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataTierUpdateDataItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataTierUpdateDataItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataTierUpdateDataItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataTierUpdateDataItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataTierUpdateDataItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataTierUpdateDataItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopPenaltyUpdatePushDataTierUpdateDataItem.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& OldTier, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& NewTier)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeUpdatesData..ctor()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItem..ctor(System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItemActionsItem> Actions = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItem.property System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItemActionsItem> Actions
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItem.method ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItem.method System.Void Deconstruct(System.Collections.Generic.IReadOnlyList`1[[ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItemActionsItem, ShopeeSdk.Generated, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]& Actions)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItemActionsItem..ctor(System.String Content = default, System.Nullable<System.Int64> UpdateTime = default, System.String Title = default, System.String Url = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItemActionsItem.property System.String Content
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItemActionsItem.property System.String Title
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItemActionsItem.property System.Nullable<System.Int64> UpdateTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItemActionsItem.property System.String Url
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItemActionsItem.method ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItemActionsItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItemActionsItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItemActionsItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItemActionsItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItemActionsItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItemActionsItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeUpdatesDataItemActionsItem.method System.Void Deconstruct(System.String& Content, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& UpdateTime, System.String& Title, System.String& Url)
 ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookCatalog.property System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism> All
 ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookCatalog.method ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism FindByCode(System.Int32 code)
 ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookCatalog.method ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism FindByName(System.String name)
@@ -21359,3 +21817,248 @@ ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism.method S
 ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism.method System.Int32 GetHashCode()
 ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism.method System.String ToString()
 ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookMechanism.method System.Void Deconstruct(System.Int32& PushApiId, System.String& Name, System.Int32& CategoryId, System.String& CategoryName, System.Int32& Code, System.String& Description, System.Int32& TimeoutSeconds, System.Boolean& SequenceGuaranteed, System.Collections.Generic.IReadOnlyList`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& RetrySeconds)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookUnknownData..ctor(System.Collections.Generic.IDictionary<System.String, System.Text.Json.JsonElement> ExtensionData = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookUnknownData.property System.Collections.Generic.IDictionary<System.String, System.Text.Json.JsonElement> ExtensionData
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookUnknownData.method ShopeeSdk.Generated.Webhooks.ShopeeWebhookUnknownData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookUnknownData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.ShopeeWebhookUnknownData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookUnknownData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookUnknownData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookUnknownData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ShopeeWebhookUnknownData.method System.Void Deconstruct(System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Text.Json.JsonElement, System.Text.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51]]& ExtensionData)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierCreateProductPushData..ctor()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierCreateProductPushDataItem..ctor(System.String SupplierProductId = default, System.Collections.Generic.IReadOnlyList<System.String> SupplierProductModelIdList = default, System.Nullable<System.Int64> CreateTime = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierCreateProductPushDataItem.property System.Nullable<System.Int64> CreateTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierCreateProductPushDataItem.property System.String SupplierProductId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierCreateProductPushDataItem.property System.Collections.Generic.IReadOnlyList<System.String> SupplierProductModelIdList
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierCreateProductPushDataItem.method ShopeeSdk.Generated.Webhooks.SupplierCreateProductPushDataItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierCreateProductPushDataItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.SupplierCreateProductPushDataItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierCreateProductPushDataItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierCreateProductPushDataItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierCreateProductPushDataItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierCreateProductPushDataItem.method System.Void Deconstruct(System.String& SupplierProductId, System.Collections.Generic.IReadOnlyList`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& SupplierProductModelIdList, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& CreateTime)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierProductReviewResultPushData..ctor()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierProductReviewResultPushDataItem..ctor(System.String SupplierProductId = default, System.String SupplierProductModelId = default, System.String ApprovalResult = default, System.Nullable<System.Int64> ApprovalTime = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierProductReviewResultPushDataItem.property System.String ApprovalResult
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierProductReviewResultPushDataItem.property System.Nullable<System.Int64> ApprovalTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierProductReviewResultPushDataItem.property System.String SupplierProductId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierProductReviewResultPushDataItem.property System.String SupplierProductModelId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierProductReviewResultPushDataItem.method ShopeeSdk.Generated.Webhooks.SupplierProductReviewResultPushDataItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierProductReviewResultPushDataItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.SupplierProductReviewResultPushDataItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierProductReviewResultPushDataItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierProductReviewResultPushDataItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierProductReviewResultPushDataItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.SupplierProductReviewResultPushDataItem.method System.Void Deconstruct(System.String& SupplierProductId, System.String& SupplierProductModelId, System.String& ApprovalResult, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ApprovalTime)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushData..ctor(System.String VideoUploadId = default, System.String Status = default, System.String Message = default, ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItem VideoInfo = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushData.property System.String Message
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushData.property System.String Status
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushData.property ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItem VideoInfo
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushData.property System.String VideoUploadId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushData.method ShopeeSdk.Generated.Webhooks.VideoUploadPushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.VideoUploadPushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushData.method System.Void Deconstruct(System.String& VideoUploadId, System.String& Status, System.String& Message, ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItem& VideoInfo)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItem..ctor(System.String VideoId = default, System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemVideoUrlItem> VideoUrl = default, System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemThumbnailUrlItem> ThumbnailUrl = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItem.property System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemThumbnailUrlItem> ThumbnailUrl
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItem.property System.String VideoId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItem.property System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemVideoUrlItem> VideoUrl
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItem.method ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItem.method System.Void Deconstruct(System.String& VideoId, System.Collections.Generic.IReadOnlyList`1[[ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemVideoUrlItem, ShopeeSdk.Generated, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]& VideoUrl, System.Collections.Generic.IReadOnlyList`1[[ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemThumbnailUrlItem, ShopeeSdk.Generated, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]& ThumbnailUrl)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemThumbnailUrlItem..ctor(System.String ImageUrlRegion = default, System.String ImageUrl = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemThumbnailUrlItem.property System.String ImageUrl
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemThumbnailUrlItem.property System.String ImageUrlRegion
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemThumbnailUrlItem.method ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemThumbnailUrlItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemThumbnailUrlItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemThumbnailUrlItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemThumbnailUrlItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemThumbnailUrlItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemThumbnailUrlItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemThumbnailUrlItem.method System.Void Deconstruct(System.String& ImageUrlRegion, System.String& ImageUrl)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemVideoUrlItem..ctor(System.String VideoUrlRegion = default, System.String VideoUrl = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemVideoUrlItem.property System.String VideoUrl
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemVideoUrlItem.property System.String VideoUrlRegion
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemVideoUrlItem.method ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemVideoUrlItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemVideoUrlItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemVideoUrlItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemVideoUrlItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemVideoUrlItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemVideoUrlItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadPushDataVideoInfoItemVideoUrlItem.method System.Void Deconstruct(System.String& VideoUrlRegion, System.String& VideoUrl)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushData..ctor(System.String VideoUploadId = default, System.String Status = default, System.String Reason = default, ShopeeSdk.Generated.Webhooks.VideoUploadResultPushDataVideoInfoItem VideoInfo = default, System.Nullable<System.Int64> UpdateTime = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushData.property System.String Reason
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushData.property System.String Status
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushData.property System.Nullable<System.Int64> UpdateTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushData.property ShopeeSdk.Generated.Webhooks.VideoUploadResultPushDataVideoInfoItem VideoInfo
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushData.property System.String VideoUploadId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushData.method ShopeeSdk.Generated.Webhooks.VideoUploadResultPushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.VideoUploadResultPushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushData.method System.Void Deconstruct(System.String& VideoUploadId, System.String& Status, System.String& Reason, ShopeeSdk.Generated.Webhooks.VideoUploadResultPushDataVideoInfoItem& VideoInfo, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& UpdateTime)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushDataVideoInfoItem..ctor(System.String VideoUrl = default, System.String VideoThumbnailUrl = default, System.Nullable<System.Int64> ThumbnailWidth = default, System.Nullable<System.Int64> ThumbnailHeight = default, System.Nullable<System.Int64> Duration = default, System.String Resolution = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushDataVideoInfoItem.property System.Nullable<System.Int64> Duration
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushDataVideoInfoItem.property System.String Resolution
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushDataVideoInfoItem.property System.Nullable<System.Int64> ThumbnailHeight
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushDataVideoInfoItem.property System.Nullable<System.Int64> ThumbnailWidth
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushDataVideoInfoItem.property System.String VideoThumbnailUrl
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushDataVideoInfoItem.property System.String VideoUrl
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushDataVideoInfoItem.method ShopeeSdk.Generated.Webhooks.VideoUploadResultPushDataVideoInfoItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushDataVideoInfoItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.VideoUploadResultPushDataVideoInfoItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushDataVideoInfoItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushDataVideoInfoItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushDataVideoInfoItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.VideoUploadResultPushDataVideoInfoItem.method System.Void Deconstruct(System.String& VideoUrl, System.String& VideoThumbnailUrl, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ThumbnailWidth, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ThumbnailHeight, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& Duration, System.String& Resolution)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushData..ctor(System.Nullable<System.Int64> ItemId = default, System.String ItemName = default, System.String ItemStatus = default, System.Nullable<System.Boolean> Deboost = default, System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.ViolationItemPushDataItemStatusDetailsItem> ItemStatusDetails = default, System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItem> DeboostDetails = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushData.property System.Nullable<System.Boolean> Deboost
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushData.property System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItem> DeboostDetails
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushData.property System.Nullable<System.Int64> ItemId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushData.property System.String ItemName
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushData.property System.String ItemStatus
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushData.property System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.ViolationItemPushDataItemStatusDetailsItem> ItemStatusDetails
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushData.method ShopeeSdk.Generated.Webhooks.ViolationItemPushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.ViolationItemPushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushData.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ItemId, System.String& ItemName, System.String& ItemStatus, System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& Deboost, System.Collections.Generic.IReadOnlyList`1[[ShopeeSdk.Generated.Webhooks.ViolationItemPushDataItemStatusDetailsItem, ShopeeSdk.Generated, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]& ItemStatusDetails, System.Collections.Generic.IReadOnlyList`1[[ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItem, ShopeeSdk.Generated, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]& DeboostDetails)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItem..ctor(System.String ViolationType = default, System.String ViolationReason = default, System.String Suggestion = default, System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItemSuggestedCategoryItem> SuggestedCategory = default, System.Nullable<System.Int64> FixDeadlineTime = default, System.Nullable<System.Int64> UpdateTime = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItem.property System.Nullable<System.Int64> FixDeadlineTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItem.property System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItemSuggestedCategoryItem> SuggestedCategory
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItem.property System.String Suggestion
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItem.property System.Nullable<System.Int64> UpdateTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItem.property System.String ViolationReason
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItem.property System.String ViolationType
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItem.method ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItem.method System.Void Deconstruct(System.String& ViolationType, System.String& ViolationReason, System.String& Suggestion, System.Collections.Generic.IReadOnlyList`1[[ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItemSuggestedCategoryItem, ShopeeSdk.Generated, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]& SuggestedCategory, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& FixDeadlineTime, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& UpdateTime)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItemSuggestedCategoryItem..ctor(System.Nullable<System.Int64> CategoryId = default, System.String CategoryName = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItemSuggestedCategoryItem.property System.Nullable<System.Int64> CategoryId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItemSuggestedCategoryItem.property System.String CategoryName
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItemSuggestedCategoryItem.method ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItemSuggestedCategoryItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItemSuggestedCategoryItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItemSuggestedCategoryItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItemSuggestedCategoryItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItemSuggestedCategoryItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItemSuggestedCategoryItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataDeboostDetailsItemSuggestedCategoryItem.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& CategoryId, System.String& CategoryName)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataItemStatusDetailsItem..ctor(System.String ViolationType = default, System.String ViolationReason = default, System.String Suggestion = default, System.Nullable<System.Int64> FixDeadlineTime = default, System.Nullable<System.Int64> UpdateTime = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataItemStatusDetailsItem.property System.Nullable<System.Int64> FixDeadlineTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataItemStatusDetailsItem.property System.String Suggestion
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataItemStatusDetailsItem.property System.Nullable<System.Int64> UpdateTime
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataItemStatusDetailsItem.property System.String ViolationReason
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataItemStatusDetailsItem.property System.String ViolationType
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataItemStatusDetailsItem.method ShopeeSdk.Generated.Webhooks.ViolationItemPushDataItemStatusDetailsItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataItemStatusDetailsItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.ViolationItemPushDataItemStatusDetailsItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataItemStatusDetailsItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataItemStatusDetailsItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataItemStatusDetailsItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.ViolationItemPushDataItemStatusDetailsItem.method System.Void Deconstruct(System.String& ViolationType, System.String& ViolationReason, System.String& Suggestion, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& FixDeadlineTime, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& UpdateTime)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushData..ctor(System.String Type = default, System.String Region = default, ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem Content = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushData.property ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem Content
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushData.property System.String Region
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushData.property System.String Type
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushData.method ShopeeSdk.Generated.Webhooks.WebchatPushData <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushData.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.WebchatPushData other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushData.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushData.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushData.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushData.method System.Void Deconstruct(System.String& Type, System.String& Region, ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem& Content)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem..ctor(System.String UserId = default, System.String ConversationId = default, System.String Type = default, System.Nullable<System.Int64> Timestamp = default, System.Nullable<System.Int64> MsgId = default, System.Nullable<System.Int64> BizId = default, System.String MessageId = default, System.Nullable<System.Int64> ShopId = default, System.String RequestId = default, System.String FromUserName = default, System.Nullable<System.Int64> FromId = default, System.Nullable<System.Int64> ToId = default, System.String ToUserName = default, System.String MessageType = default, ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem Content = default, System.Nullable<System.Int64> CreatedTimestamp = default, System.String Region = default, System.Nullable<System.Boolean> IsInChatbotSession = default, ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemSourceContentItem SourceContent = default, System.Nullable<System.Int64> SubAccountId = default, System.String SubAccountName = default, System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemQuotedMsgItem> QuotedMsg = default, System.Nullable<System.Int64> BusinessType = default, System.Nullable<System.Int64> ToShopId = default, System.Nullable<System.Int64> FromShopId = default, System.String Status = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.Nullable<System.Int64> BizId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.Nullable<System.Int64> BusinessType
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem Content
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.String ConversationId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.Nullable<System.Int64> CreatedTimestamp
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.Nullable<System.Int64> FromId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.Nullable<System.Int64> FromShopId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.String FromUserName
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.Nullable<System.Boolean> IsInChatbotSession
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.String MessageId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.String MessageType
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.Nullable<System.Int64> MsgId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.Collections.Generic.IReadOnlyList<ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemQuotedMsgItem> QuotedMsg
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.String Region
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.String RequestId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.Nullable<System.Int64> ShopId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemSourceContentItem SourceContent
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.String Status
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.Nullable<System.Int64> SubAccountId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.String SubAccountName
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.Nullable<System.Int64> Timestamp
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.Nullable<System.Int64> ToId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.Nullable<System.Int64> ToShopId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.String ToUserName
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.String Type
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.property System.String UserId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.method ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItem.method System.Void Deconstruct(System.String& UserId, System.String& ConversationId, System.String& Type, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& Timestamp, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& MsgId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& BizId, System.String& MessageId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShopId, System.String& RequestId, System.String& FromUserName, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& FromId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ToId, System.String& ToUserName, System.String& MessageType, ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem& Content, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& CreatedTimestamp, System.String& Region, System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& IsInChatbotSession, ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemSourceContentItem& SourceContent, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& SubAccountId, System.String& SubAccountName, System.Collections.Generic.IReadOnlyList`1[[ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemQuotedMsgItem, ShopeeSdk.Generated, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]& QuotedMsg, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& BusinessType, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ToShopId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& FromShopId, System.String& Status)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem..ctor(System.Nullable<System.Int64> Text = default, ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemTranslationItem Translation = default, ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemMidItem Mid = default, System.String Url = default, System.String ThumbUrl = default, System.Nullable<System.Int64> ThumbHeight = default, System.Nullable<System.Int64> ThumbWidth = default, System.Nullable<System.Int64> FileServerId = default, System.String VideoUrl = default, System.Nullable<System.Int64> DurationSeconds = default, System.Nullable<System.Int64> ShopId = default, System.Nullable<System.Int64> ItemId = default, System.String PassThroughData = default, System.Collections.Generic.IReadOnlyList<System.String> Messages = default, System.Nullable<System.Boolean> ShopeeChatbotReplied = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem.property System.Nullable<System.Int64> DurationSeconds
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem.property System.Nullable<System.Int64> FileServerId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem.property System.Nullable<System.Int64> ItemId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem.property System.Collections.Generic.IReadOnlyList<System.String> Messages
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem.property ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemMidItem Mid
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem.property System.String PassThroughData
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem.property System.Nullable<System.Int64> ShopId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem.property System.Nullable<System.Boolean> ShopeeChatbotReplied
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem.property System.Nullable<System.Int64> Text
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem.property System.Nullable<System.Int64> ThumbHeight
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem.property System.String ThumbUrl
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem.property System.Nullable<System.Int64> ThumbWidth
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem.property ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemTranslationItem Translation
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem.property System.String Url
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem.property System.String VideoUrl
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem.method ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItem.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& Text, ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemTranslationItem& Translation, ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemMidItem& Mid, System.String& Url, System.String& ThumbUrl, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ThumbHeight, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ThumbWidth, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& FileServerId, System.String& VideoUrl, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& DurationSeconds, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShopId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ItemId, System.String& PassThroughData, System.Collections.Generic.IReadOnlyList`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& Messages, System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShopeeChatbotReplied)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemMidItem..ctor(System.String Text = default, System.String Source = default, System.String TargetLanguage = default, System.String SourceLanguage = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemMidItem.property System.String Source
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemMidItem.property System.String SourceLanguage
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemMidItem.property System.String TargetLanguage
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemMidItem.property System.String Text
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemMidItem.method ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemMidItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemMidItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemMidItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemMidItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemMidItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemMidItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemMidItem.method System.Void Deconstruct(System.String& Text, System.String& Source, System.String& TargetLanguage, System.String& SourceLanguage)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemTranslationItem..ctor(System.String Text = default, System.String Source = default, System.String TargetLanguage = default, System.String SourceLanguage = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemTranslationItem.property System.String Source
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemTranslationItem.property System.String SourceLanguage
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemTranslationItem.property System.String TargetLanguage
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemTranslationItem.property System.String Text
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemTranslationItem.method ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemTranslationItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemTranslationItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemTranslationItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemTranslationItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemTranslationItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemTranslationItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemContentItemTranslationItem.method System.Void Deconstruct(System.String& Text, System.String& Source, System.String& TargetLanguage, System.String& SourceLanguage)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemQuotedMsgItem..ctor(System.Nullable<System.Int64> MessageId = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemQuotedMsgItem.property System.Nullable<System.Int64> MessageId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemQuotedMsgItem.method ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemQuotedMsgItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemQuotedMsgItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemQuotedMsgItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemQuotedMsgItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemQuotedMsgItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemQuotedMsgItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemQuotedMsgItem.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& MessageId)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemSourceContentItem..ctor(System.Nullable<System.Int64> ItemId = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemSourceContentItem.property System.Nullable<System.Int64> ItemId
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemSourceContentItem.method ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemSourceContentItem <Clone>$()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemSourceContentItem.method System.Boolean Equals(ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemSourceContentItem other)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemSourceContentItem.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemSourceContentItem.method System.Int32 GetHashCode()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemSourceContentItem.method System.String ToString()
+ShopeeSdk.Generated:ShopeeSdk.Generated.Webhooks.WebchatPushDataContentItemSourceContentItem.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ItemId)
