@@ -25,6 +25,39 @@ Shopee
 
 The captured Shopee push mechanism reference is stored at `docs/webhooks/shopee-push-mechanisms.yaml`.
 
+## Options
+
+Webhook verification options can be configured through `AddShopeeSdk`:
+
+```csharp
+builder.Services.AddShopeeSdk(
+    options =>
+    {
+        options.PartnerId = partnerId;
+        options.PartnerKey = partnerKey;
+    },
+    webhooks =>
+    {
+        webhooks.SignatureHeaderName = "authorization";
+        webhooks.TimestampTolerance = TimeSpan.FromMinutes(10);
+    });
+```
+
+The default signature header name is `authorization`. The captured Shopee push mechanism specs describe callback payloads and retry behavior, but do not state a signature header name, so keep this configurable and verify it against a real callback capture for the target Shopee app/region.
+
+To verify a captured callback end-to-end, run the webhook canary with the exact raw request body and signature value received from Shopee:
+
+```bash
+SHOPEE_RUN_SANDBOX=true \
+SHOPEE_PARTNER_ID=... \
+SHOPEE_PARTNER_KEY=... \
+SHOPEE_WEBHOOK_PAYLOAD_PATH=/path/to/raw-callback.json \
+SHOPEE_WEBHOOK_SIGNATURE=... \
+dotnet test tests/ShopeeSdk.IntegrationTests/ShopeeSdk.IntegrationTests.csproj --filter "FullyQualifiedName~ShopeeWebhookCallbackCanaryTests"
+```
+
+If the callback is old enough to fail timestamp tolerance, also set `SHOPEE_WEBHOOK_RECEIVED_AT_UNIX` to the Unix timestamp when the callback was received.
+
 ## Responsibilities
 
 SDK responsibilities:

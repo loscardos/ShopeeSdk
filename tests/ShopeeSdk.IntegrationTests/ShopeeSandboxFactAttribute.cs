@@ -42,6 +42,14 @@ public sealed class ShopeeSandboxOrderFactAttribute : FactAttribute
     }
 }
 
+public sealed class ShopeeWebhookCallbackFactAttribute : FactAttribute
+{
+    public ShopeeWebhookCallbackFactAttribute()
+    {
+        Skip = ShopeeSandboxSkip.WebhookCallback();
+    }
+}
+
 internal static class ShopeeSandboxSkip
 {
     public static string? BaseCredentials()
@@ -88,6 +96,14 @@ internal static class ShopeeSandboxSkip
         return TokenCredentials()
             ?? (Missing("SHOPEE_SANDBOX_ORDER_SN")
                 ? "SHOPEE_SANDBOX_ORDER_SN is not configured for order-specific read-only checks."
+                : null);
+    }
+
+    public static string? WebhookCallback()
+    {
+        return BaseCredentials()
+            ?? (Missing("SHOPEE_WEBHOOK_PAYLOAD_PATH") || Missing("SHOPEE_WEBHOOK_SIGNATURE")
+                ? "Set SHOPEE_WEBHOOK_PAYLOAD_PATH and SHOPEE_WEBHOOK_SIGNATURE to verify a captured Shopee callback."
                 : null);
     }
 

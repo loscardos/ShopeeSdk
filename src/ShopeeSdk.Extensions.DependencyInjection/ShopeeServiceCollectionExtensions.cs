@@ -18,7 +18,15 @@ public static class ShopeeServiceCollectionExtensions
     public static IServiceCollection AddShopeeSdk(
         this IServiceCollection services,
         Action<ShopeeOptions> configure)
+        => services.AddShopeeSdk(configure, _ => { });
+
+    public static IServiceCollection AddShopeeSdk(
+        this IServiceCollection services,
+        Action<ShopeeOptions> configure,
+        Action<ShopeeWebhookOptions> configureWebhooks)
     {
+        ArgumentNullException.ThrowIfNull(configureWebhooks);
+
         services.Configure(configure);
         services.AddSingleton<IShopeeClock, SystemShopeeClock>();
         services.AddScoped<ShopeeAuthApi>();
@@ -31,10 +39,11 @@ public static class ShopeeServiceCollectionExtensions
         services.AddScoped<IPaymentApi, PaymentApi>();
         services.AddScoped<IReturnsApi, ReturnsApi>();
         services.AddSingleton<IShopeeWebhookIdempotencyKeyFactory, ShopeeWebhookIdempotencyKeyFactory>();
-        services.AddSingleton(_ => new ShopeeWebhookOptions
+        services.AddSingleton(_ =>
         {
-            TimestampTolerance = TimeSpan.FromMinutes(10),
-            SignatureHeaderName = "authorization"
+            var options = new ShopeeWebhookOptions();
+            configureWebhooks(options);
+            return options;
         });
         services.AddSingleton<ShopeeWebhookTimestampValidator>();
         services.AddSingleton<IShopeeWebhookParser, ShopeeWebhookParser>();

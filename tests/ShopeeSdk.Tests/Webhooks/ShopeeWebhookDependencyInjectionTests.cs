@@ -1,6 +1,7 @@
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using ShopeeSdk.Abstractions.Webhooks;
+using ShopeeSdk.Core.Webhooks;
 using ShopeeSdk.Extensions.DependencyInjection;
 
 namespace ShopeeSdk.Tests.Webhooks;
@@ -21,5 +22,28 @@ public sealed class ShopeeWebhookDependencyInjectionTests
 
         provider.GetRequiredService<IShopeeWebhookParser>().Should().NotBeNull();
         provider.GetRequiredService<IShopeeWebhookIdempotencyKeyFactory>().Should().NotBeNull();
+    }
+
+    [Fact]
+    public void AddShopeeSdk_AppliesWebhookOptions()
+    {
+        var services = new ServiceCollection();
+        services.AddShopeeSdk(
+            options =>
+            {
+                options.PartnerId = 1;
+                options.PartnerKey = "partner-key";
+            },
+            webhooks =>
+            {
+                webhooks.TimestampTolerance = TimeSpan.FromMinutes(2);
+                webhooks.SignatureHeaderName = "x-shopee-signature";
+            });
+
+        using var provider = services.BuildServiceProvider();
+
+        var options = provider.GetRequiredService<ShopeeWebhookOptions>();
+        options.TimestampTolerance.Should().Be(TimeSpan.FromMinutes(2));
+        options.SignatureHeaderName.Should().Be("x-shopee-signature");
     }
 }

@@ -80,12 +80,13 @@ Use the SDK to verify and parse Shopee webhook callbacks, then persist or enqueu
 app.MapPost("/webhooks/shopee", async (
     HttpRequest request,
     IShopeeWebhookParser parser,
+    ShopeeWebhookOptions webhookOptions,
     IShopeeWebhookQueue queue,
     CancellationToken cancellationToken) =>
 {
     using var reader = new StreamReader(request.Body);
     var rawBody = await reader.ReadToEndAsync(cancellationToken);
-    var signature = request.Headers["authorization"].ToString();
+    var signature = request.Headers[webhookOptions.SignatureHeaderName].ToString();
     var result = parser.TryReceive(rawBody, signature, DateTimeOffset.UtcNow);
 
     if (!result.Accepted)
@@ -96,6 +97,22 @@ app.MapPost("/webhooks/shopee", async (
     await queue.EnqueueAsync(result.Envelope!, cancellationToken);
     return Results.Ok();
 });
+```
+
+`ShopeeWebhookOptions` is configurable from `AddShopeeSdk`. The SDK default signature header is `authorization`; override it if your Shopee callback capture or region-specific setup uses a different header:
+
+```csharp
+builder.Services.AddShopeeSdk(
+    options =>
+    {
+        options.PartnerId = partnerId;
+        options.PartnerKey = partnerKey;
+    },
+    webhooks =>
+    {
+        webhooks.SignatureHeaderName = "authorization";
+        webhooks.TimestampTolerance = TimeSpan.FromMinutes(10);
+    });
 ```
 
 ## Calling Endpoints

@@ -48,6 +48,24 @@ public sealed class ShopeeWebhookParserTests
             .Which.OrderSn.Should().Be("220810QSK8S7BX");
     }
 
+    [Fact]
+    public void TryReceive_ParsesOfficialOrderStatusCallbackFixture()
+    {
+        var rawBody = File.ReadAllText(Path.Combine(
+            "Fixtures",
+            "Webhooks",
+            "official-order-status-callback.json"));
+        var parser = CreateParser();
+
+        var result = parser.TryReceive(rawBody, Sign(rawBody), DateTimeOffset.FromUnixTimeSeconds(1_660_123_187));
+        var payload = parser.ParseData(result.Envelope!.Event);
+
+        result.Accepted.Should().BeTrue();
+        result.Envelope.Event.ShopId.Should().Be(727720655);
+        payload.Should().BeOfType<OrderStatusPushData>()
+            .Which.CompletedScenario.Should().BeEmpty();
+    }
+
     private static ShopeeWebhookParser CreateParser()
         => new(
             new ShopeeWebhookVerifier(Options.Create(new ShopeeOptions { PartnerKey = "partner-key" })),

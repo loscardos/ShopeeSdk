@@ -35,4 +35,8 @@
     <ProjectReference Include="..\..\samples\ShopeeSdk.SampleConsole\ShopeeSdk.SampleConsole.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Fixtures\Webhooks\*.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>
