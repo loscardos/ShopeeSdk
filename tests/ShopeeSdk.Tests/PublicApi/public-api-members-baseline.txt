@@ -530,11 +530,31 @@ ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Managers.IProductApi.method System
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Managers.IProductApi.method System.Threading.Tasks.Task<ShopeeSdk.Generated.Product.UpdateStockResponse> UpdateStockAsync(System.Int64 shopId, ShopeeSdk.Generated.Product.UpdateStockRequest request, System.Threading.CancellationToken cancellationToken)
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Managers.IReturnsApi.method System.Threading.Tasks.Task<ShopeeSdk.Generated.Returns.GetReturnListResponse> GetReturnListAsync(System.Int64 shopId, ShopeeSdk.Generated.Returns.GetReturnListRequest request, System.Threading.CancellationToken cancellationToken)
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.RateLimiting.IShopeeRateLimiter.method System.Threading.Tasks.Task<System.Boolean> TryAcquireAsync(ShopeeSdk.Abstractions.Http.ShopeeRequest request, System.Threading.CancellationToken cancellationToken)
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.IShopeeWebhookIdempotencyKeyFactory.method System.String Create(System.String rawBody, ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent webhookEvent)
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.IShopeeWebhookParser.method ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookReceiveResult TryReceive(System.String rawBody, System.String signature, System.DateTimeOffset receivedAt)
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.IShopeeWebhookParser.method System.Object ParseData(ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent webhookEvent)
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.IShopeeWebhookParser.method TData ParseData(ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent webhookEvent)
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.IShopeeWebhookQueue.method System.Threading.Tasks.Task EnqueueAsync(ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEnvelope envelope, System.Threading.CancellationToken cancellationToken)
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.IShopeeWebhookRawPayloadSink.method System.Threading.Tasks.Task SaveAsync(ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEnvelope envelope, System.Threading.CancellationToken cancellationToken)
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.IShopeeWebhookVerifier.method ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent ParseVerified(System.String rawBody, System.String signature)
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.IShopeeWebhookVerifier.method System.Boolean Verify(System.String rawBody, System.String signature)
-ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent..ctor(System.Nullable<System.Int64> ShopId, System.Int32 Code, System.Text.Json.JsonElement Data, System.Nullable<System.Int64> Timestamp)
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEnvelope..ctor(System.String Marketplace, System.String RawBody, System.String Signature, System.String IdempotencyKey, System.DateTimeOffset ReceivedAt, ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent Event)
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEnvelope.property ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent Event
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEnvelope.property System.String IdempotencyKey
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEnvelope.property System.String Marketplace
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEnvelope.property System.String RawBody
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEnvelope.property System.DateTimeOffset ReceivedAt
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEnvelope.property System.String Signature
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEnvelope.method ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEnvelope <Clone>$()
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEnvelope.method System.Boolean Equals(ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEnvelope other)
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEnvelope.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEnvelope.method System.Int32 GetHashCode()
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEnvelope.method System.String ToString()
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEnvelope.method System.Void Deconstruct(System.String& Marketplace, System.String& RawBody, System.String& Signature, System.String& IdempotencyKey, System.DateTimeOffset& ReceivedAt, ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent& Event)
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent..ctor(System.Nullable<System.Int64> ShopId, System.Nullable<System.Int64> MerchantId, System.Int32 Code, System.Text.Json.JsonElement Data, System.Nullable<System.Int64> Timestamp)
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent.property System.Int32 Code
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent.property System.Text.Json.JsonElement Data
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent.property System.Nullable<System.Int64> MerchantId
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent.property System.Nullable<System.Int64> ShopId
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent.property System.Nullable<System.Int64> Timestamp
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent.method ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent <Clone>$()
@@ -542,7 +562,19 @@ ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent.method
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent.method System.Boolean Equals(System.Object obj)
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent.method System.Int32 GetHashCode()
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent.method System.String ToString()
-ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShopId, System.Int32& Code, System.Text.Json.JsonElement& Data, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& Timestamp)
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent.method System.Void Deconstruct(System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& ShopId, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& MerchantId, System.Int32& Code, System.Text.Json.JsonElement& Data, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& Timestamp)
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookReceiveResult..ctor(System.Boolean Accepted, System.String Reason, ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEnvelope Envelope)
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookReceiveResult.property System.Boolean Accepted
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookReceiveResult.property ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEnvelope Envelope
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookReceiveResult.property System.String Reason
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookReceiveResult.method ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookReceiveResult <Clone>$()
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookReceiveResult.method ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookReceiveResult Accept(ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEnvelope envelope)
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookReceiveResult.method ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookReceiveResult Reject(System.String reason)
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookReceiveResult.method System.Boolean Equals(ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookReceiveResult other)
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookReceiveResult.method System.Boolean Equals(System.Object obj)
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookReceiveResult.method System.Int32 GetHashCode()
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookReceiveResult.method System.String ToString()
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookReceiveResult.method System.Void Deconstruct(System.Boolean& Accepted, System.String& Reason, ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEnvelope& Envelope)
 ShopeeSdk.Core:ShopeeSdk.Core.Auth.ShopeeAuthApi..ctor(ShopeeSdk.Abstractions.Http.IShopeeClient client, Microsoft.Extensions.Options.IOptions<ShopeeSdk.Abstractions.Configuration.ShopeeOptions> options, ShopeeSdk.Core.Time.IShopeeClock clock, ShopeeSdk.Abstractions.Auth.IShopeeTokenStore tokenStore)
 ShopeeSdk.Core:ShopeeSdk.Core.Auth.ShopeeAuthApi.method System.Threading.Tasks.Task<ShopeeSdk.Abstractions.Auth.ShopeeToken> ExchangeCodeAsync(System.String code, System.Nullable<System.Int64> shopId, System.Nullable<System.Int64> merchantId, System.Threading.CancellationToken cancellationToken)
 ShopeeSdk.Core:ShopeeSdk.Core.Auth.ShopeeAuthApi.method System.Threading.Tasks.Task<ShopeeSdk.Abstractions.Auth.ShopeeToken> RefreshAsync(System.Nullable<System.Int64> shopId, System.Nullable<System.Int64> merchantId, System.Threading.CancellationToken cancellationToken)

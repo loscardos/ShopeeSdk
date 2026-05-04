@@ -47,8 +47,14 @@ ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Managers.IPaymentApi
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Managers.IProductApi
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Managers.IReturnsApi
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.RateLimiting.IShopeeRateLimiter
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.IShopeeWebhookIdempotencyKeyFactory
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.IShopeeWebhookParser
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.IShopeeWebhookQueue
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.IShopeeWebhookRawPayloadSink
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.IShopeeWebhookVerifier
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEnvelope
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookEvent
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Webhooks.ShopeeWebhookReceiveResult
 ShopeeSdk.Core:ShopeeSdk.Core.Auth.ShopeeAuthApi
 ShopeeSdk.Core:ShopeeSdk.Core.Auth.ShopeeTokenService
 ShopeeSdk.Core:ShopeeSdk.Core.Crypto.ShopeeSigner
