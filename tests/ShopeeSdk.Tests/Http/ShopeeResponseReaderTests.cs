@@ -1,6 +1,7 @@
 using FluentAssertions;
 using ShopeeSdk.Core.Http;
 using ShopeeSdk.Generated.Ads;
+using ShopeeSdk.Generated.Order;
 using ShopeeSdk.Generated.Payment;
 using ShopeeSdk.Generated.Product;
 
@@ -160,6 +161,63 @@ public sealed class ShopeeResponseReaderTests
             .Which.StockInfoV2!.ShopeeStock.Should().ContainSingle()
             .Which.Stock;
         ((object?)stock).Should().Be(12);
+    }
+
+    [Fact]
+    public void ReadJsonEnvelope_MapsOrderProductLocationIdWhenProviderReturnsNumber()
+    {
+        var envelope =
+            ShopeeResponseReader
+                .ReadJsonEnvelope<OrderGetOrderDetailResponse>("""
+        {
+          "request_id": "req-order-location",
+          "error": "",
+          "message": "",
+          "response": {
+            "order_list": [
+              {
+                "order_sn": "SHP-1",
+                "item_list": [
+                  {
+                    "product_location_id": 123456789
+                  }
+                ]
+              }
+            ]
+          }
+        }
+        """);
+
+        envelope.Response!.OrderList.Should().ContainSingle()
+            .Which.ItemList.Should().ContainSingle()
+            .Which.ProductLocationId.Should().Be("123456789");
+    }
+
+    [Fact]
+    public void ReadJsonEnvelope_MapsOrderProductLocationIdWhenProviderReturnsSingletonArray()
+    {
+        var envelope =
+            ShopeeResponseReader
+                .ReadJsonEnvelope<OrderGetOrderDetailResponse>("""
+        {
+          "response": {
+            "order_list": [
+              {
+                "order_sn": "SHP-1",
+                "item_list": [
+                  {
+                    "product_location_id": [123456789]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+        """);
+
+        envelope.Response!.OrderList.Should().ContainSingle()
+            .Which.ItemList.Should().ContainSingle()
+            .Which.ProductLocationId.Should().Be("123456789");
     }
 
     private sealed record TestPayload(string Value);

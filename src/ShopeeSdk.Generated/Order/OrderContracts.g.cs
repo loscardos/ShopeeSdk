@@ -86,7 +86,7 @@ public sealed record OrderGetBookingDetailResponseBookingListItemItemListItem(
     [property: JsonPropertyName("model_sku")] string? ModelSku = null,
     [property: JsonPropertyName("model_quantity_purchased")] long? ModelQuantityPurchased = null,
     [property: JsonPropertyName("weight")] decimal? Weight = null,
-    [property: JsonPropertyName("product_location_id")] string? ProductLocationId = null,
+    [property: JsonPropertyName("product_location_id"), JsonConverter(typeof(ShopeeFlexibleIdentifierJsonConverter))] string? ProductLocationId = null,
     [property: JsonPropertyName("image_info")] OrderGetBookingDetailResponseBookingListItemItemListItemImageInfoItem? ImageInfo = null
 );
 
@@ -210,7 +210,7 @@ public sealed record OrderGetOrderDetailResponseOrderListItemItemListItem(
     [property: JsonPropertyName("order_item_id")] long? OrderItemId = null,
     [property: JsonPropertyName("promotion_group_id")] int? PromotionGroupId = null,
     [property: JsonPropertyName("image_info")] OrderGetOrderDetailResponseOrderListItemItemListItemImageInfoItem? ImageInfo = null,
-    [property: JsonPropertyName("product_location_id")] string? ProductLocationId = null,
+    [property: JsonPropertyName("product_location_id"), JsonConverter(typeof(ShopeeFlexibleIdentifierJsonConverter))] string? ProductLocationId = null,
     [property: JsonPropertyName("is_prescription_item")] bool? IsPrescriptionItem = null,
     [property: JsonPropertyName("consultation_id")] string? ConsultationId = null,
     [property: JsonPropertyName("is_b2c_owned_item")] bool? IsB2cOwnedItem = null,
@@ -224,7 +224,7 @@ public sealed record OrderGetOrderDetailResponseOrderListItemPackageListItemItem
     [property: JsonPropertyName("model_quantity")] int? ModelQuantity = null,
     [property: JsonPropertyName("order_item_id")] long? OrderItemId = null,
     [property: JsonPropertyName("promotion_group_id")] int? PromotionGroupId = null,
-    [property: JsonPropertyName("product_location_id")] string? ProductLocationId = null
+    [property: JsonPropertyName("product_location_id"), JsonConverter(typeof(ShopeeFlexibleIdentifierJsonConverter))] string? ProductLocationId = null
 );
 
 public sealed record OrderGetOrderDetailResponseOrderListItemPackageListItem(
@@ -358,7 +358,7 @@ public sealed record OrderGetPackageDetailResponsePackageListItemItemListItem(
     [property: JsonPropertyName("model_quantity")] long? ModelQuantity = null,
     [property: JsonPropertyName("order_item_id")] long? OrderItemId = null,
     [property: JsonPropertyName("promotion_group_id")] long? PromotionGroupId = null,
-    [property: JsonPropertyName("product_location_id")] string? ProductLocationId = null,
+    [property: JsonPropertyName("product_location_id"), JsonConverter(typeof(ShopeeFlexibleIdentifierJsonConverter))] string? ProductLocationId = null,
     [property: JsonPropertyName("consultation_id")] string? ConsultationId = null
 );
 
@@ -475,7 +475,7 @@ public sealed record OrderGetWarehouseFilterConfigRequest(
 public sealed record OrderGetWarehouseFilterConfigResponseWarehouseFiltersItem(
     [property: JsonPropertyName("warehouse_name")] string? WarehouseName = null,
     [property: JsonPropertyName("warehouse_type")] int? WarehouseType = null,
-    [property: JsonPropertyName("product_location_id")] string? ProductLocationId = null,
+    [property: JsonPropertyName("product_location_id"), JsonConverter(typeof(ShopeeFlexibleIdentifierJsonConverter))] string? ProductLocationId = null,
     [property: JsonPropertyName("address_id")] long? AddressId = null,
     [property: JsonPropertyName("address")] string? Address = null
 );
@@ -544,7 +544,7 @@ public sealed record OrderSearchPackageListResponsePackagesListItem(
     [property: JsonPropertyName("order_sn")] string? OrderSn = null,
     [property: JsonPropertyName("package_number")] string? PackageNumber = null,
     [property: JsonPropertyName("logistics_channel_id")] int? LogisticsChannelId = null,
-    [property: JsonPropertyName("product_location_id")] string? ProductLocationId = null,
+    [property: JsonPropertyName("product_location_id"), JsonConverter(typeof(ShopeeFlexibleIdentifierJsonConverter))] string? ProductLocationId = null,
     [property: JsonPropertyName("sorting_group")] string? SortingGroup = null,
     [property: JsonPropertyName("is_shipment_arranged")] bool? IsShipmentArranged = null
 );
@@ -624,4 +624,3 @@ public sealed record OrderUploadInvoiceDocRequest(
 
 public sealed record OrderUploadInvoiceDocResponse(
 );
-
