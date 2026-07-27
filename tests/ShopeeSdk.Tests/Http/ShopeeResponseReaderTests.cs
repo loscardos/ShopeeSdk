@@ -128,5 +128,39 @@ public sealed class ShopeeResponseReaderTests
         item.Deboost.Should().BeFalse();
     }
 
+    [Fact]
+    public void ReadJsonEnvelope_MapsModelShopeeStockWhenProviderReturnsNumber()
+    {
+        var envelope =
+            ShopeeResponseReader
+                .ReadJsonEnvelope<ProductGetModelListResponse>("""
+        {
+          "request_id": "req-model-stock",
+          "error": "",
+          "message": "",
+          "response": {
+            "model": [
+              {
+                "model_id": 1,
+                "stock_info_v2": {
+                  "shopee_stock": [
+                    {
+                      "location_id": "IDZ",
+                      "stock": 12
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+        """);
+
+        var stock = envelope.Response!.Model.Should().ContainSingle()
+            .Which.StockInfoV2!.ShopeeStock.Should().ContainSingle()
+            .Which.Stock;
+        ((object?)stock).Should().Be(12);
+    }
+
     private sealed record TestPayload(string Value);
 }

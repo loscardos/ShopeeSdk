@@ -16289,15 +16289,15 @@ ShopeeSdk.Generated:ShopeeSdk.Generated.Product.ProductGetModelListResponseModel
 ShopeeSdk.Generated:ShopeeSdk.Generated.Product.ProductGetModelListResponseModelItemStockInfoV2ItemSellerStockItem.method System.Int32 GetHashCode()
 ShopeeSdk.Generated:ShopeeSdk.Generated.Product.ProductGetModelListResponseModelItemStockInfoV2ItemSellerStockItem.method System.String ToString()
 ShopeeSdk.Generated:ShopeeSdk.Generated.Product.ProductGetModelListResponseModelItemStockInfoV2ItemSellerStockItem.method System.Void Deconstruct(System.String& LocationId, System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& Stock, System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& IfSaleable)
-ShopeeSdk.Generated:ShopeeSdk.Generated.Product.ProductGetModelListResponseModelItemStockInfoV2ItemShopeeStockItem..ctor(System.String LocationId = default, System.String Stock = default)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Product.ProductGetModelListResponseModelItemStockInfoV2ItemShopeeStockItem..ctor(System.String LocationId = default, System.Nullable<System.Int32> Stock = default)
 ShopeeSdk.Generated:ShopeeSdk.Generated.Product.ProductGetModelListResponseModelItemStockInfoV2ItemShopeeStockItem.property System.String LocationId
-ShopeeSdk.Generated:ShopeeSdk.Generated.Product.ProductGetModelListResponseModelItemStockInfoV2ItemShopeeStockItem.property System.String Stock
+ShopeeSdk.Generated:ShopeeSdk.Generated.Product.ProductGetModelListResponseModelItemStockInfoV2ItemShopeeStockItem.property System.Nullable<System.Int32> Stock
 ShopeeSdk.Generated:ShopeeSdk.Generated.Product.ProductGetModelListResponseModelItemStockInfoV2ItemShopeeStockItem.method ShopeeSdk.Generated.Product.ProductGetModelListResponseModelItemStockInfoV2ItemShopeeStockItem <Clone>$()
 ShopeeSdk.Generated:ShopeeSdk.Generated.Product.ProductGetModelListResponseModelItemStockInfoV2ItemShopeeStockItem.method System.Boolean Equals(ShopeeSdk.Generated.Product.ProductGetModelListResponseModelItemStockInfoV2ItemShopeeStockItem other)
 ShopeeSdk.Generated:ShopeeSdk.Generated.Product.ProductGetModelListResponseModelItemStockInfoV2ItemShopeeStockItem.method System.Boolean Equals(System.Object obj)
 ShopeeSdk.Generated:ShopeeSdk.Generated.Product.ProductGetModelListResponseModelItemStockInfoV2ItemShopeeStockItem.method System.Int32 GetHashCode()
 ShopeeSdk.Generated:ShopeeSdk.Generated.Product.ProductGetModelListResponseModelItemStockInfoV2ItemShopeeStockItem.method System.String ToString()
-ShopeeSdk.Generated:ShopeeSdk.Generated.Product.ProductGetModelListResponseModelItemStockInfoV2ItemShopeeStockItem.method System.Void Deconstruct(System.String& LocationId, System.String& Stock)
+ShopeeSdk.Generated:ShopeeSdk.Generated.Product.ProductGetModelListResponseModelItemStockInfoV2ItemShopeeStockItem.method System.Void Deconstruct(System.String& LocationId, System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& Stock)
 ShopeeSdk.Generated:ShopeeSdk.Generated.Product.ProductGetModelListResponseModelItemStockInfoV2ItemSummaryInfoItem..ctor(System.Nullable<System.Int32> TotalReservedStock = default, System.Nullable<System.Int32> TotalAvailableStock = default)
 ShopeeSdk.Generated:ShopeeSdk.Generated.Product.ProductGetModelListResponseModelItemStockInfoV2ItemSummaryInfoItem.property System.Nullable<System.Int32> TotalAvailableStock
 ShopeeSdk.Generated:ShopeeSdk.Generated.Product.ProductGetModelListResponseModelItemStockInfoV2ItemSummaryInfoItem.property System.Nullable<System.Int32> TotalReservedStock

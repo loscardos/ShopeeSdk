@@ -1721,7 +1721,7 @@ public sealed record ProductGetModelListResponseModelItemStockInfoV2ItemSellerSt
 
 public sealed record ProductGetModelListResponseModelItemStockInfoV2ItemShopeeStockItem(
     [property: JsonPropertyName("location_id")] string? LocationId = null,
-    [property: JsonPropertyName("stock")] string? Stock = null
+    [property: JsonPropertyName("stock")] int? Stock = null
 );
 
 public sealed record ProductGetModelListResponseModelItemStockInfoV2ItemAdvanceStockItem(
