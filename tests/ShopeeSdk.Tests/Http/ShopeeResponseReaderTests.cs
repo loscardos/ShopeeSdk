@@ -2,6 +2,7 @@ using FluentAssertions;
 using ShopeeSdk.Core.Http;
 using ShopeeSdk.Generated.Ads;
 using ShopeeSdk.Generated.Payment;
+using ShopeeSdk.Generated.Product;
 
 namespace ShopeeSdk.Tests.Http;
 
@@ -81,6 +82,48 @@ public sealed class ShopeeResponseReaderTests
         envelope.RequestId.Should().Be("req-payment");
         envelope.Response!.Items.Should().ContainSingle()
             .Which.PaymentMethod.Should().Contain("COD");
+    }
+
+    [Fact]
+    public void ReadJsonEnvelope_MapsItemLevelStockInfoV2()
+    {
+        var envelope =
+            ShopeeResponseReader
+                .ReadJsonEnvelope<ProductGetItemBaseInfoResponse>("""
+        {
+          "request_id": "req-stock",
+          "error": "",
+          "message": "",
+          "response": {
+            "item_list": [
+              {
+                "item_id": 56414886051,
+                "item_sku": "SPE1010583390",
+                "has_model": false,
+                "stock_info_v2": {
+                  "summary_info": {
+                    "total_available_stock": 12
+                  },
+                  "seller_stock": [
+                    {
+                      "location_id": "IDZ",
+                      "stock": 12,
+                      "if_saleable": true
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+        """);
+
+        var item = envelope.Response!.ItemList.Should()
+            .ContainSingle()
+            .Which;
+        item.StockInfoV2!.SummaryInfo!.TotalAvailableStock.Should().Be(12);
+        item.StockInfoV2.SellerStock.Should().ContainSingle()
+            .Which.LocationId.Should().Be("IDZ");
     }
 
     private sealed record TestPayload(string Value);

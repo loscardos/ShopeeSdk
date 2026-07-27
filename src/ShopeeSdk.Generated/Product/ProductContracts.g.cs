@@ -1039,6 +1039,7 @@ public sealed record ProductGetItemBaseInfoResponseItemListItem(
     [property: JsonPropertyName("deboost")] bool? Deboost = null,
     [property: JsonPropertyName("has_model")] bool? HasModel = null,
     [property: JsonPropertyName("has_promotion")] bool? HasPromotion = null,
+    [property: JsonPropertyName("stock_info_v2")] ProductGetItemBaseInfoResponseStockInfoV2Item? StockInfoV2 = null,
     [property: JsonPropertyName("video_info")] IReadOnlyList<ProductGetItemBaseInfoResponseItemListItemVideoInfoItem>? VideoInfo = null,
     [property: JsonPropertyName("brand")] ProductGetItemBaseInfoResponseItemListItemBrandItem? Brand = null,
     [property: JsonPropertyName("item_dangerous")] int? ItemDangerous = null,
@@ -2945,4 +2946,3 @@ public sealed record ProductUpdateTierVariationRequest(
 
 public sealed record ProductUpdateTierVariationResponse(
 );
-
