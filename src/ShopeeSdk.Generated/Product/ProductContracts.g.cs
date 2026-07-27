@@ -1036,7 +1036,9 @@ public sealed record ProductGetItemBaseInfoResponseItemListItem(
     [property: JsonPropertyName("condition")] string? Condition = null,
     [property: JsonPropertyName("size_chart")] string? SizeChart = null,
     [property: JsonPropertyName("item_status")] string? ItemStatus = null,
-    [property: JsonPropertyName("deboost")] bool? Deboost = null,
+    [property: JsonPropertyName("deboost")]
+    [property: JsonConverter(typeof(ShopeeBooleanStringJsonConverter))]
+    bool? Deboost = null,
     [property: JsonPropertyName("has_model")] bool? HasModel = null,
     [property: JsonPropertyName("has_promotion")] bool? HasPromotion = null,
     [property: JsonPropertyName("stock_info_v2")] ProductGetItemBaseInfoResponseStockInfoV2Item? StockInfoV2 = null,

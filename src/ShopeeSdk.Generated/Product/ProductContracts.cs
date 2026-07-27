@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace ShopeeSdk.Generated.Product;
@@ -70,3 +71,37 @@ public sealed record UpdatePriceItem(
 public sealed record UpdatePriceResponse(
     [property: JsonPropertyName("success_list")] IReadOnlyList<long>? SuccessList,
     [property: JsonPropertyName("failure_list")] IReadOnlyList<long>? FailureList);
+
+internal sealed class ShopeeBooleanStringJsonConverter
+    : JsonConverter<bool?>
+{
+    public override bool? Read(
+        ref Utf8JsonReader reader,
+        Type typeToConvert,
+        JsonSerializerOptions options) =>
+        reader.TokenType switch
+        {
+            JsonTokenType.True => true,
+            JsonTokenType.False => false,
+            JsonTokenType.String
+                when bool.TryParse(
+                    reader.GetString(),
+                    out var value) => value,
+            JsonTokenType.Null => null,
+            _ => throw new JsonException(
+                "Shopee boolean value must be true, false, or a boolean string.")
+        };
+
+    public override void Write(
+        Utf8JsonWriter writer,
+        bool? value,
+        JsonSerializerOptions options)
+    {
+        if (value.HasValue)
+        {
+            writer.WriteBooleanValue(value.Value);
+            return;
+        }
+        writer.WriteNullValue();
+    }
+}

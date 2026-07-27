@@ -100,6 +100,7 @@ public sealed class ShopeeResponseReaderTests
                 "item_id": 56414886051,
                 "item_sku": "SPE1010583390",
                 "has_model": false,
+                "deboost": "FALSE",
                 "stock_info_v2": {
                   "summary_info": {
                     "total_available_stock": 12
@@ -124,6 +125,7 @@ public sealed class ShopeeResponseReaderTests
         item.StockInfoV2!.SummaryInfo!.TotalAvailableStock.Should().Be(12);
         item.StockInfoV2.SellerStock.Should().ContainSingle()
             .Which.LocationId.Should().Be("IDZ");
+        item.Deboost.Should().BeFalse();
     }
 
     private sealed record TestPayload(string Value);
