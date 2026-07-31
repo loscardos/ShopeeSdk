@@ -1375,7 +1375,7 @@ public sealed record ProductGetItemPromotionResponseSuccessListItemPromotionItem
 );
 
 public sealed record ProductGetItemPromotionResponseSuccessListItem(
-    [property: JsonPropertyName("item_id")] int? ItemId = null,
+    [property: JsonPropertyName("item_id")] long? ItemId = null,
     [property: JsonPropertyName("promotion")] IReadOnlyList<ProductGetItemPromotionResponseSuccessListItemPromotionItem>? Promotion = null
 );
 

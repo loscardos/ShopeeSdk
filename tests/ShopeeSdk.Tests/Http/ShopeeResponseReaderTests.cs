@@ -164,6 +164,31 @@ public sealed class ShopeeResponseReaderTests
     }
 
     [Fact]
+    public void ReadJsonEnvelope_MapsPromotionItemIdBeyondInt32()
+    {
+        var envelope =
+            ShopeeResponseReader
+                .ReadJsonEnvelope<ProductGetItemPromotionResponse>("""
+        {
+          "request_id": "req-promotion",
+          "error": "",
+          "message": "",
+          "response": {
+            "success_list": [
+              {
+                "item_id": 24261332641,
+                "promotion": []
+              }
+            ]
+          }
+        }
+        """);
+
+        envelope.Response!.SuccessList.Should().ContainSingle()
+            .Which.ItemId.Should().Be(24261332641);
+    }
+
+    [Fact]
     public void ReadJsonEnvelope_MapsOrderProductLocationIdWhenProviderReturnsNumber()
     {
         var envelope =
