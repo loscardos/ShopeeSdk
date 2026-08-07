@@ -1880,6 +1880,7 @@ ShopeeSdk.Generated:ShopeeSdk.Generated.Shop.ShopGetShopNotificationRequest
 ShopeeSdk.Generated:ShopeeSdk.Generated.Shop.ShopGetShopNotificationResponse
 ShopeeSdk.Generated:ShopeeSdk.Generated.Shop.ShopGetWarehouseDetailRequest
 ShopeeSdk.Generated:ShopeeSdk.Generated.Shop.ShopGetWarehouseDetailResponse
+ShopeeSdk.Generated:ShopeeSdk.Generated.Shop.ShopGetWarehouseDetailResponseItem
 ShopeeSdk.Generated:ShopeeSdk.Generated.Shop.ShopSetShopHolidayModeRequest
 ShopeeSdk.Generated:ShopeeSdk.Generated.Shop.ShopSetShopHolidayModeResponse
 ShopeeSdk.Generated:ShopeeSdk.Generated.Shop.ShopUpdateProfileRequest

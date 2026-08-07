@@ -4,11 +4,64 @@ using ShopeeSdk.Generated.Ads;
 using ShopeeSdk.Generated.Order;
 using ShopeeSdk.Generated.Payment;
 using ShopeeSdk.Generated.Product;
+using ShopeeSdk.Generated.Shop;
 
 namespace ShopeeSdk.Tests.Http;
 
 public sealed class ShopeeResponseReaderTests
 {
+    [Fact]
+    public void ReadJsonEnvelope_HandlesWarehouseDetailArrayPayload()
+    {
+        var envelope = ShopeeResponseReader.ReadJsonEnvelope<ShopGetWarehouseDetailResponse>("""
+        {
+          "request_id": "req-warehouse",
+          "error": "",
+          "message": "",
+          "response": [
+            {
+              "warehouse_id": 1,
+              "warehouse_name": "Jakarta Warehouse",
+              "location_id": "ID017XDCZ"
+            },
+            {
+              "warehouse_id": 2,
+              "warehouse_name": "Surabaya Warehouse",
+              "location_id": "ID0186JOZ"
+            }
+          ]
+        }
+        """);
+
+        envelope.Response!.WarehouseName.Should().Be("Jakarta Warehouse");
+        var items = envelope.Response.GetType().GetProperty("Items")?.GetValue(envelope.Response)
+            .Should().BeAssignableTo<IReadOnlyList<ShopGetWarehouseDetailResponseItem>>()
+            .Subject;
+        items.Should().HaveCount(2);
+        items[1].LocationId.Should().Be("ID0186JOZ");
+    }
+
+    [Fact]
+    public void ReadJsonEnvelope_KeepsWarehouseDetailObjectPayloadCompatible()
+    {
+        var envelope = ShopeeResponseReader.ReadJsonEnvelope<ShopGetWarehouseDetailResponse>("""
+        {
+          "request_id": "req-warehouse-object",
+          "error": "",
+          "message": "",
+          "response": {
+            "warehouse_id": 1,
+            "warehouse_name": "Jakarta Warehouse",
+            "location_id": "ID017XDCZ"
+          }
+        }
+        """);
+
+        envelope.Response!.WarehouseName.Should().Be("Jakarta Warehouse");
+        envelope.Response.LocationId.Should().Be("ID017XDCZ");
+        envelope.Response.Items.Should().ContainSingle();
+    }
+
     [Fact]
     public void ReadJsonEnvelope_HandlesResponseWrappedPayload()
     {

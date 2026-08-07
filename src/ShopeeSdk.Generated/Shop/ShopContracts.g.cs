@@ -95,7 +95,7 @@ public sealed record ShopGetWarehouseDetailRequest(
     [property: JsonPropertyName("warehouse_type")] int? WarehouseType = null
 );
 
-public sealed record ShopGetWarehouseDetailResponse(
+public sealed record ShopGetWarehouseDetailResponseItem(
     [property: JsonPropertyName("warehouse_id")] long? WarehouseId = null,
     [property: JsonPropertyName("warehouse_name")] string? WarehouseName = null,
     [property: JsonPropertyName("warehouse_type")] int? WarehouseType = null,
@@ -110,6 +110,25 @@ public sealed record ShopGetWarehouseDetailResponse(
     [property: JsonPropertyName("town")] string? Town = null,
     [property: JsonPropertyName("state_code")] string? StateCode = null,
     [property: JsonPropertyName("holiday_mode_state")] int? HolidayModeState = null
+);
+
+[JsonConverter(typeof(ShopGetWarehouseDetailResponseJsonConverter))]
+public sealed record ShopGetWarehouseDetailResponse(
+    [property: JsonIgnore] long? WarehouseId = null,
+    [property: JsonIgnore] string? WarehouseName = null,
+    [property: JsonIgnore] int? WarehouseType = null,
+    [property: JsonIgnore] string? LocationId = null,
+    [property: JsonIgnore] long? AddressId = null,
+    [property: JsonIgnore] string? Region = null,
+    [property: JsonIgnore] string? State = null,
+    [property: JsonIgnore] string? City = null,
+    [property: JsonIgnore] string? Address = null,
+    [property: JsonIgnore] string? Zipcode = null,
+    [property: JsonIgnore] string? District = null,
+    [property: JsonIgnore] string? Town = null,
+    [property: JsonIgnore] string? StateCode = null,
+    [property: JsonIgnore] int? HolidayModeState = null,
+    [property: JsonPropertyName("items")] IReadOnlyList<ShopGetWarehouseDetailResponseItem>? Items = null
 );
 
 public sealed record ShopSetShopHolidayModeRequest(
@@ -135,4 +154,3 @@ public sealed record ShopUpdateProfileResponse(
     [property: JsonPropertyName("description")] string? Description = null,
     [property: JsonPropertyName("shop_name")] string? ShopName = null
 );
-
