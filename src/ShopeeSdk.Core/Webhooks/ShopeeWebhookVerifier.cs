@@ -20,8 +20,12 @@ public sealed class ShopeeWebhookVerifier(IOptions<ShopeeOptions> options) : ISh
             return false;
         }
 
+        var pushPartnerKey = string.IsNullOrWhiteSpace(_options.PushPartnerKey)
+            ? _options.PartnerKey
+            : _options.PushPartnerKey;
+
         var expected = Convert.ToHexString(HMACSHA256.HashData(
-            Encoding.UTF8.GetBytes(_options.PartnerKey),
+            Encoding.UTF8.GetBytes(pushPartnerKey),
             Encoding.UTF8.GetBytes(rawBody))).ToLowerInvariant();
 
         return CryptographicOperations.FixedTimeEquals(

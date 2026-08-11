@@ -20,6 +20,7 @@ ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Configuration.ShopeeOptions.proper
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Configuration.ShopeeOptions.property System.Int32 MaxTransientRetries
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Configuration.ShopeeOptions.property System.Int64 PartnerId
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Configuration.ShopeeOptions.property System.String PartnerKey
+ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Configuration.ShopeeOptions.property System.String PushPartnerKey
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Configuration.ShopeeOptions.property System.Int32 RateLimitPermitLimit
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Configuration.ShopeeOptions.property System.Int32 RateLimitQueueLimit
 ShopeeSdk.Abstractions:ShopeeSdk.Abstractions.Configuration.ShopeeOptions.property System.TimeSpan RateLimitWindow

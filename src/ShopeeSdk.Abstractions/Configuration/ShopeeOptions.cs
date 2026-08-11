@@ -6,6 +6,7 @@ public sealed class ShopeeOptions
 {
     public long PartnerId { get; set; }
     public string PartnerKey { get; set; } = string.Empty;
+    public string PushPartnerKey { get; set; } = string.Empty;
     public ShopeeRegion Region { get; set; } = ShopeeRegion.Global;
     public Uri? BaseUrl { get; set; }
     public TimeSpan TokenRefreshSkew { get; set; } = TimeSpan.FromMinutes(5);
