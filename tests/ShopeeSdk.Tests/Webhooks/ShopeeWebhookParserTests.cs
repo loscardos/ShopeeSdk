@@ -24,10 +24,21 @@ public sealed class ShopeeWebhookParserTests
     }
 
     [Fact]
-    public void TryReceive_ReturnsRejectedEnvelopeForStaleTimestamp()
+    public void TryReceive_AcceptsAuthenticStaleTimestampByDefaultForProviderRetriesAndTestPush()
     {
         const string rawBody = """{"shop_id":1274495,"code":3,"timestamp":1700000000,"data":{"ordersn":"220810QSK8S7BX","status":"PROCESSED","update_time":1700000000}}""";
         var parser = CreateParser();
+
+        var result = parser.TryReceive(rawBody, Sign(rawBody), DateTimeOffset.FromUnixTimeSeconds(1_700_001_000));
+
+        result.Accepted.Should().BeTrue();
+    }
+
+    [Fact]
+    public void TryReceive_RejectsStaleTimestampWhenFreshnessIsExplicitlyRequired()
+    {
+        const string rawBody = """{"shop_id":1274495,"code":3,"timestamp":1700000000,"data":{"ordersn":"220810QSK8S7BX","status":"PROCESSED","update_time":1700000000}}""";
+        var parser = CreateParser(requireFreshTimestamp: true);
 
         var result = parser.TryReceive(rawBody, Sign(rawBody), DateTimeOffset.FromUnixTimeSeconds(1_700_001_000));
 
@@ -66,10 +77,13 @@ public sealed class ShopeeWebhookParserTests
             .Which.CompletedScenario.Should().BeEmpty();
     }
 
-    private static ShopeeWebhookParser CreateParser()
+    private static ShopeeWebhookParser CreateParser(bool requireFreshTimestamp = false)
         => new(
             new ShopeeWebhookVerifier(Options.Create(new ShopeeOptions { PartnerKey = "partner-key" })),
-            new ShopeeWebhookTimestampValidator(new ShopeeWebhookOptions()),
+            new ShopeeWebhookTimestampValidator(new ShopeeWebhookOptions
+            {
+                RequireFreshTimestamp = requireFreshTimestamp
+            }),
             new ShopeeWebhookIdempotencyKeyFactory());
 
     private static string Sign(string rawBody)

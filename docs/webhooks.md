@@ -16,7 +16,7 @@ Recommended receiver flow:
 Shopee
   -> ASP.NET webhook endpoint
   -> verify signature
-  -> validate timestamp tolerance
+  -> optionally validate timestamp tolerance
   -> compute idempotency key
   -> save or enqueue raw verified envelope
   -> return 200
@@ -35,15 +35,20 @@ builder.Services.AddShopeeSdk(
     {
         options.PartnerId = partnerId;
         options.PartnerKey = partnerKey;
+        options.PushPartnerKey = pushPartnerKey;
+        options.PushCallbackUrl = "https://example.com/webhooks/shopee";
     },
     webhooks =>
     {
         webhooks.SignatureHeaderName = "authorization";
+        webhooks.RequireFreshTimestamp = false;
         webhooks.TimestampTolerance = TimeSpan.FromMinutes(10);
     });
 ```
 
-The default signature header name is `authorization`. The captured Shopee push mechanism specs describe callback payloads and retry behavior, but do not state a signature header name, so keep this configurable and verify it against a real callback capture for the target Shopee app/region.
+The default signature header name is `authorization`. Set `PushCallbackUrl` to the exact public callback URL registered with Shopee; the push signature base is `callbackUrl + "|" + rawBody`. The callback URL is case-sensitive and the raw body must not be parsed and re-serialized before verification. The captured Shopee push mechanism specs describe callback payloads and retry behavior, but do not state a signature header name, so keep the header configurable and verify it against a real callback capture for the target Shopee app/region.
+
+Timestamp freshness rejection is disabled by default. Shopee can retry the same signed message hours later and the console Test Push can carry a fixed sample timestamp. Use signature verification plus durable idempotency for replay safety. Enable `RequireFreshTimestamp` only when the target integration has a separately verified freshness contract and a tolerance that covers provider retries.
 
 To verify a captured callback end-to-end, run the webhook canary with the exact raw request body and signature value received from Shopee:
 
@@ -63,7 +68,7 @@ If the callback is old enough to fail timestamp tolerance, also set `SHOPEE_WEBH
 SDK responsibilities:
 
 - verify Shopee signature
-- validate callback timestamp
+- optionally validate callback timestamp when explicitly configured
 - compute idempotency key
 - parse known Shopee push payloads
 - expose raw envelope interfaces

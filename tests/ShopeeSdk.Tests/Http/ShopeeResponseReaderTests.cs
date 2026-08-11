@@ -139,6 +139,32 @@ public sealed class ShopeeResponseReaderTests
     }
 
     [Fact]
+    public void ReadJsonEnvelope_HandlesEscrowTenureInfoListArrayPayload()
+    {
+        var envelope = ShopeeResponseReader.ReadJsonEnvelope<PaymentGetEscrowDetailResponse>("""
+        {
+          "request_id": "req-escrow",
+          "error": "",
+          "message": "",
+          "response": {
+            "order_sn": "SHP-1",
+            "order_income": {
+              "tenure_info_list": [
+                {
+                  "payment_channel_name": "Credit Card",
+                  "instalment_plan": "3 months"
+                }
+              ]
+            }
+          }
+        }
+        """);
+
+        envelope.Response!.OrderIncome!.TenureInfoList.Should().ContainSingle()
+            .Which.InstalmentPlan.Should().Be("3 months");
+    }
+
+    [Fact]
     public void ReadJsonEnvelope_MapsItemLevelStockInfoV2()
     {
         var envelope =

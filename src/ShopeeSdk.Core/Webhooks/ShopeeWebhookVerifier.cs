@@ -24,9 +24,12 @@ public sealed class ShopeeWebhookVerifier(IOptions<ShopeeOptions> options) : ISh
             ? _options.PartnerKey
             : _options.PushPartnerKey;
 
+        var signatureBase = string.IsNullOrWhiteSpace(_options.PushCallbackUrl)
+            ? rawBody
+            : $"{_options.PushCallbackUrl}|{rawBody}";
         var expected = Convert.ToHexString(HMACSHA256.HashData(
             Encoding.UTF8.GetBytes(pushPartnerKey),
-            Encoding.UTF8.GetBytes(rawBody))).ToLowerInvariant();
+            Encoding.UTF8.GetBytes(signatureBase))).ToLowerInvariant();
 
         return CryptographicOperations.FixedTimeEquals(
             Encoding.UTF8.GetBytes(expected),

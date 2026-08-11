@@ -1,4 +1,5 @@
 using System.Net.Http.Json;
+using System.Text.Json;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using ShopeeSdk.Abstractions.Configuration;
@@ -147,7 +148,33 @@ public sealed class ShopeeClient(
 
         using var response = await httpClient.SendAsync(httpRequest, timeoutCts.Token);
         var payload = await response.Content.ReadAsStringAsync(cancellationToken);
-        var envelope = ShopeeResponseReader.ReadJsonEnvelope<TResponse>(payload);
+        ShopeeEnvelope<TResponse> envelope;
+        try
+        {
+            envelope = ShopeeResponseReader.ReadJsonEnvelope<TResponse>(payload);
+        }
+        catch (Exception exception) when (
+            exception is JsonException or InvalidOperationException)
+        {
+            var shape = DescribeJsonShape(payload);
+            _logger.LogError(
+                "Shopee response JSON contract invalid Path={Path} ShopId={ShopId} StatusCode={StatusCode} ExceptionType={ExceptionType} JsonPath={JsonPath} ResponseType={ResponseType} ContentType={ContentType} BodyLength={BodyLength} RootKind={RootKind} ResponseKind={ResponseKind} ErrorKind={ErrorKind} MessageKind={MessageKind}",
+                request.Path,
+                request.Auth?.ShopId,
+                (int)response.StatusCode,
+                exception.GetType().Name,
+                (exception as JsonException)?.Path ?? "$",
+                typeof(TResponse).Name,
+                response.Content.Headers.ContentType?.MediaType ?? "unknown",
+                payload.Length,
+                shape.RootKind,
+                shape.ResponseKind,
+                shape.ErrorKind,
+                shape.MessageKind);
+            throw new ShopeeSdkException(
+                $"Shopee response JSON contract invalid at {(exception as JsonException)?.Path ?? "$"}.",
+                exception);
+        }
 
         ShopeeErrorCategory? category = string.IsNullOrWhiteSpace(envelope.Error)
             ? null
@@ -180,6 +207,36 @@ public sealed class ShopeeClient(
 
         return envelope;
     }
+
+    private static JsonShape DescribeJsonShape(string payload)
+    {
+        try
+        {
+            using var document = JsonDocument.Parse(payload);
+            var root = document.RootElement;
+            return new(
+                root.ValueKind.ToString(),
+                PropertyKind(root, "response"),
+                PropertyKind(root, "error"),
+                PropertyKind(root, "message"));
+        }
+        catch (JsonException)
+        {
+            return new("Invalid", "Unknown", "Unknown", "Unknown");
+        }
+    }
+
+    private static string PropertyKind(JsonElement root, string name) =>
+        root.ValueKind == JsonValueKind.Object
+        && root.TryGetProperty(name, out var value)
+            ? value.ValueKind.ToString()
+            : "Missing";
+
+    private sealed record JsonShape(
+        string RootKind,
+        string ResponseKind,
+        string ErrorKind,
+        string MessageKind);
 
     private async Task EnsureRateLimitPermitAsync(ShopeeRequest request, CancellationToken cancellationToken)
     {
