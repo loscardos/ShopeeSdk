@@ -1,7 +1,7 @@
 using FluentAssertions;
-using ShopeeSdk.Generator;
+using Loscardos.ShopeeSdk.Generator;
 
-namespace ShopeeSdk.Tests.Generator;
+namespace Loscardos.ShopeeSdk.Tests.Generator;
 
 public sealed class GeneratedAuthScopeTests
 {

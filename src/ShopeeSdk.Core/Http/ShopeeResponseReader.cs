@@ -1,8 +1,8 @@
 using System.Text.Json;
-using ShopeeSdk.Abstractions.Errors;
-using ShopeeSdk.Abstractions.Http;
+using Loscardos.ShopeeSdk.Abstractions.Errors;
+using Loscardos.ShopeeSdk.Abstractions.Http;
 
-namespace ShopeeSdk.Core.Http;
+namespace Loscardos.ShopeeSdk.Core.Http;
 
 public static class ShopeeResponseReader
 {

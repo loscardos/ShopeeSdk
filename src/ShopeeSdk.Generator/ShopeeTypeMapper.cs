@@ -1,4 +1,4 @@
-namespace ShopeeSdk.Generator;
+namespace Loscardos.ShopeeSdk.Generator;
 
 public static class ShopeeTypeMapper
 {

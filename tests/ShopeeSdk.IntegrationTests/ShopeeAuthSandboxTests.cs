@@ -1,6 +1,6 @@
 using FluentAssertions;
 
-namespace ShopeeSdk.IntegrationTests;
+namespace Loscardos.ShopeeSdk.IntegrationTests;
 
 public sealed class ShopeeAuthSandboxTests
 {

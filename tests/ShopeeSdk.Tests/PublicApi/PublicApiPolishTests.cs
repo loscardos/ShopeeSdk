@@ -1,10 +1,10 @@
 using System.Reflection;
 using FluentAssertions;
-using ShopeeSdk.Abstractions.Configuration;
-using ShopeeSdk.Core.Http;
-using ShopeeSdk.Generated.Product;
+using Loscardos.ShopeeSdk.Abstractions.Configuration;
+using Loscardos.ShopeeSdk.Core.Http;
+using Loscardos.ShopeeSdk.Generated.Product;
 
-namespace ShopeeSdk.Tests.PublicApi;
+namespace Loscardos.ShopeeSdk.Tests.PublicApi;
 
 public sealed class PublicApiPolishTests
 {
@@ -39,7 +39,7 @@ public sealed class PublicApiPolishTests
             .Select(type => type.Namespace)
             .Distinct()
             .Should()
-            .OnlyContain(ns => ns != null && ns.StartsWith("ShopeeSdk.Generated.", StringComparison.Ordinal));
+            .OnlyContain(ns => ns != null && ns.StartsWith("Loscardos.ShopeeSdk.Generated.", StringComparison.Ordinal));
     }
 
     [Fact]
@@ -47,7 +47,7 @@ public sealed class PublicApiPolishTests
     {
         var abstractionAssembly = typeof(ShopeeOptions).Assembly;
         var generatedManagerInterfaces = abstractionAssembly.ExportedTypes
-            .Where(type => type.Namespace == "ShopeeSdk.Abstractions.Managers.Generated")
+            .Where(type => type.Namespace == "Loscardos.ShopeeSdk.Abstractions.Managers.Generated")
             .Where(type => type.IsInterface)
             .Select(type => type.Name)
             .ToArray();

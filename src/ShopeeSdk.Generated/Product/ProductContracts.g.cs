@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.Product;
+namespace Loscardos.ShopeeSdk.Generated.Product;
 
 public sealed record ProductAddItemRequestLogisticInfoItem(
     [property: JsonPropertyName("enabled")] bool Enabled,

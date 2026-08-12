@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.TopPicks;
+namespace Loscardos.ShopeeSdk.Generated.TopPicks;
 
 public sealed record TopPicksAddTopPicksRequest(
     [property: JsonPropertyName("name")] string Name,

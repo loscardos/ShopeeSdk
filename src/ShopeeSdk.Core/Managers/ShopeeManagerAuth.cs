@@ -1,6 +1,6 @@
-using ShopeeSdk.Core.Auth;
+using Loscardos.ShopeeSdk.Core.Auth;
 
-namespace ShopeeSdk.Core.Managers;
+namespace Loscardos.ShopeeSdk.Core.Managers;
 
 internal static class ShopeeManagerAuth
 {

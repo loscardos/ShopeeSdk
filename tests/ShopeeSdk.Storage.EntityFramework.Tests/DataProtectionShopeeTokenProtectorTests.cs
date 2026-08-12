@@ -1,14 +1,14 @@
 using FluentAssertions;
 using Microsoft.AspNetCore.DataProtection;
 
-namespace ShopeeSdk.Storage.EntityFramework.Tests;
+namespace Loscardos.ShopeeSdk.Storage.EntityFramework.Tests;
 
 public sealed class DataProtectionShopeeTokenProtectorTests
 {
     [Fact]
     public void Protect_RoundTripsWithoutStoringPlainText()
     {
-        var provider = DataProtectionProvider.Create("ShopeeSdk.Tests");
+        var provider = DataProtectionProvider.Create("Loscardos.ShopeeSdk.Tests");
         var protector = new DataProtectionShopeeTokenProtector(provider);
 
         var protectedValue = protector.Protect("secret-token");

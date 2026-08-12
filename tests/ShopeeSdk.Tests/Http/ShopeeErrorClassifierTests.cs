@@ -1,8 +1,8 @@
 using FluentAssertions;
-using ShopeeSdk.Abstractions.Http;
-using ShopeeSdk.Core.Http;
+using Loscardos.ShopeeSdk.Abstractions.Http;
+using Loscardos.ShopeeSdk.Core.Http;
 
-namespace ShopeeSdk.Tests.Http;
+namespace Loscardos.ShopeeSdk.Tests.Http;
 
 public sealed class ShopeeErrorClassifierTests
 {

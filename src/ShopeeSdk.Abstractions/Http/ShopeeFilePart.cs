@@ -1,4 +1,4 @@
-namespace ShopeeSdk.Abstractions.Http;
+namespace Loscardos.ShopeeSdk.Abstractions.Http;
 
 public sealed record ShopeeFilePart(
     string FileName,

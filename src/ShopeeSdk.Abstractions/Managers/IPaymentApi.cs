@@ -1,6 +1,6 @@
-using ShopeeSdk.Generated.Payment;
+using Loscardos.ShopeeSdk.Generated.Payment;
 
-namespace ShopeeSdk.Abstractions.Managers;
+namespace Loscardos.ShopeeSdk.Abstractions.Managers;
 
 public interface IPaymentApi
 {

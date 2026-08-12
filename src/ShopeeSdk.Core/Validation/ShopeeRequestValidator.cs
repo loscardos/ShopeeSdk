@@ -1,6 +1,6 @@
-using ShopeeSdk.Abstractions.Errors;
+using Loscardos.ShopeeSdk.Abstractions.Errors;
 
-namespace ShopeeSdk.Core.Validation;
+namespace Loscardos.ShopeeSdk.Core.Validation;
 
 public static class ShopeeRequestValidator
 {

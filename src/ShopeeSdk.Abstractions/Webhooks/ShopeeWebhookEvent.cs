@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace ShopeeSdk.Abstractions.Webhooks;
+namespace Loscardos.ShopeeSdk.Abstractions.Webhooks;
 
 public sealed record ShopeeWebhookEvent(
     [property: JsonPropertyName("shop_id")] long? ShopId,

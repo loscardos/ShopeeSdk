@@ -1,4 +1,4 @@
-namespace ShopeeSdk.SampleConsole;
+namespace Loscardos.ShopeeSdk.SampleConsole;
 
 public static class SandboxEnvFile
 {

@@ -1,21 +1,21 @@
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
-using ShopeeSdk.Abstractions.Auth;
-using ShopeeSdk.Abstractions.Configuration;
-using ShopeeSdk.Abstractions.Errors;
-using ShopeeSdk.Abstractions.Http;
-using ShopeeSdk.Abstractions.Managers;
-using ShopeeSdk.Core.Auth;
-using ShopeeSdk.Core.Http;
-using ShopeeSdk.Core.Managers;
-using ShopeeSdk.Core.RateLimiting;
-using ShopeeSdk.Core.Time;
-using ShopeeSdk.Generated.Order;
-using ShopeeSdk.Generated.Product;
-using ShopeeSdk.Generated.Shop;
-using ShopeeSdk.SampleConsole;
-using GeneratedProductApi = ShopeeSdk.Core.Managers.Generated.ProductApi;
-using GeneratedShopApi = ShopeeSdk.Core.Managers.Generated.ShopApi;
+using Loscardos.ShopeeSdk.Abstractions.Auth;
+using Loscardos.ShopeeSdk.Abstractions.Configuration;
+using Loscardos.ShopeeSdk.Abstractions.Errors;
+using Loscardos.ShopeeSdk.Abstractions.Http;
+using Loscardos.ShopeeSdk.Abstractions.Managers;
+using Loscardos.ShopeeSdk.Core.Auth;
+using Loscardos.ShopeeSdk.Core.Http;
+using Loscardos.ShopeeSdk.Core.Managers;
+using Loscardos.ShopeeSdk.Core.RateLimiting;
+using Loscardos.ShopeeSdk.Core.Time;
+using Loscardos.ShopeeSdk.Generated.Order;
+using Loscardos.ShopeeSdk.Generated.Product;
+using Loscardos.ShopeeSdk.Generated.Shop;
+using Loscardos.ShopeeSdk.SampleConsole;
+using GeneratedProductApi = Loscardos.ShopeeSdk.Core.Managers.Generated.ProductApi;
+using GeneratedShopApi = Loscardos.ShopeeSdk.Core.Managers.Generated.ShopApi;
 
 static string Required(string name)
 {

@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.BundleDeal;
+namespace Loscardos.ShopeeSdk.Generated.BundleDeal;
 
 public sealed record BundleDealAddBundleDealRequestAdditionalTiersItem(
     [property: JsonPropertyName("min_amount")] int MinAmount,

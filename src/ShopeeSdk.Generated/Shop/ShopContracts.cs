@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace ShopeeSdk.Generated.Shop;
+namespace Loscardos.ShopeeSdk.Generated.Shop;
 
 internal sealed class ShopGetWarehouseDetailResponseJsonConverter
     : JsonConverter<ShopGetWarehouseDetailResponse>

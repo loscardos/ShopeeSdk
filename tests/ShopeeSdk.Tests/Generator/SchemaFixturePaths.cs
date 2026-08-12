@@ -1,4 +1,4 @@
-namespace ShopeeSdk.Tests.Generator;
+namespace Loscardos.ShopeeSdk.Tests.Generator;
 
 internal static class SchemaFixturePaths
 {

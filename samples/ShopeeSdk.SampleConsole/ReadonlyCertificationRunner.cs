@@ -1,9 +1,9 @@
 using System.Globalization;
 using System.Reflection;
-using ShopeeSdk.Abstractions.Http;
-using ShopeeSdk.Core.Auth;
+using Loscardos.ShopeeSdk.Abstractions.Http;
+using Loscardos.ShopeeSdk.Core.Auth;
 
-namespace ShopeeSdk.SampleConsole;
+namespace Loscardos.ShopeeSdk.SampleConsole;
 
 public sealed class ReadonlyCertificationRunner(
     IShopeeClient client,
@@ -146,7 +146,7 @@ public sealed class ReadonlyCertificationRunner(
 
     private object CreateApi(string area)
     {
-        var type = Type.GetType($"ShopeeSdk.Core.Managers.Generated.{area}Api, ShopeeSdk.Core")
+        var type = Type.GetType($"Loscardos.ShopeeSdk.Core.Managers.Generated.{area}Api, Loscardos.ShopeeSdk.Core")
             ?? throw new InvalidOperationException($"Generated API type for {area} was not found.");
         var constructor = type.GetConstructors().Single();
         var parameters = constructor.GetParameters();
@@ -165,7 +165,7 @@ public sealed class ReadonlyCertificationRunner(
     private object? TryCreateRequest(GeneratedEndpoint endpoint, out string skipReason)
     {
         skipReason = string.Empty;
-        var requestType = Type.GetType($"ShopeeSdk.Generated.{endpoint.Area}.{endpoint.RequestTypeName}, ShopeeSdk.Generated");
+        var requestType = Type.GetType($"Loscardos.ShopeeSdk.Generated.{endpoint.Area}.{endpoint.RequestTypeName}, Loscardos.ShopeeSdk.Generated");
         if (requestType is null)
         {
             skipReason = $"Request type {endpoint.RequestTypeName} was not found.";

@@ -1,8 +1,8 @@
 using System.Security.Cryptography;
 using System.Text;
-using ShopeeSdk.Abstractions.Webhooks;
+using Loscardos.ShopeeSdk.Abstractions.Webhooks;
 
-namespace ShopeeSdk.Core.Webhooks;
+namespace Loscardos.ShopeeSdk.Core.Webhooks;
 
 public sealed class ShopeeWebhookIdempotencyKeyFactory : IShopeeWebhookIdempotencyKeyFactory
 {

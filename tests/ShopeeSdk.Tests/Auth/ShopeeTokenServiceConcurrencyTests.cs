@@ -1,13 +1,13 @@
 using FluentAssertions;
 using Microsoft.Extensions.Options;
 using Moq;
-using ShopeeSdk.Abstractions.Auth;
-using ShopeeSdk.Abstractions.Configuration;
-using ShopeeSdk.Abstractions.Managers;
-using ShopeeSdk.Core.Auth;
-using ShopeeSdk.Tests.TestDoubles;
+using Loscardos.ShopeeSdk.Abstractions.Auth;
+using Loscardos.ShopeeSdk.Abstractions.Configuration;
+using Loscardos.ShopeeSdk.Abstractions.Managers;
+using Loscardos.ShopeeSdk.Core.Auth;
+using Loscardos.ShopeeSdk.Tests.TestDoubles;
 
-namespace ShopeeSdk.Tests.Auth;
+namespace Loscardos.ShopeeSdk.Tests.Auth;
 
 public sealed class ShopeeTokenServiceConcurrencyTests
 {

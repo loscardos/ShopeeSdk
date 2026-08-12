@@ -1,6 +1,6 @@
-using ShopeeSdk.Generated.Product;
+using Loscardos.ShopeeSdk.Generated.Product;
 
-namespace ShopeeSdk.Abstractions.Managers;
+namespace Loscardos.ShopeeSdk.Abstractions.Managers;
 
 public interface IProductApi
 {

@@ -1,7 +1,7 @@
-using ShopeeSdk.Abstractions.Http;
-using ShopeeSdk.Abstractions.RateLimiting;
+using Loscardos.ShopeeSdk.Abstractions.Http;
+using Loscardos.ShopeeSdk.Abstractions.RateLimiting;
 
-namespace ShopeeSdk.Core.RateLimiting;
+namespace Loscardos.ShopeeSdk.Core.RateLimiting;
 
 public sealed class NoopShopeeRateLimiter : IShopeeRateLimiter
 {

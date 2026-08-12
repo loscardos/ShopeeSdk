@@ -1,0 +1,34 @@
+name: private-package
+
+on:
+  push:
+    branches:
+      - production
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: shopee-sdk-package-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Restore package projects
+        run: |
+          mkdir -p artifacts/packages
+          dotnet restore ShopeeSdk.sln
+      - name: Pack immutable Loscardos packages
+        run: bash scripts/pack-local.sh
+      - name: Publish to private GitHub Packages feed
+        run: >-
+          dotnet nuget push "artifacts/packages/*.nupkg"
+          --source https://nuget.pkg.github.com/loscardos/index.json
+          --api-key "${{ secrets.GITHUB_TOKEN }}"

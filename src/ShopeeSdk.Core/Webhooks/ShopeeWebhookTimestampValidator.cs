@@ -1,11 +1,16 @@
-using ShopeeSdk.Abstractions.Webhooks;
+using Loscardos.ShopeeSdk.Abstractions.Webhooks;
 
-namespace ShopeeSdk.Core.Webhooks;
+namespace Loscardos.ShopeeSdk.Core.Webhooks;
 
 public sealed class ShopeeWebhookTimestampValidator(ShopeeWebhookOptions options)
 {
     public bool IsFresh(ShopeeWebhookEvent webhookEvent, DateTimeOffset receivedAt)
     {
+        if (!options.RequireFreshTimestamp)
+        {
+            return true;
+        }
+
         if (webhookEvent.Timestamp is null)
         {
             return false;

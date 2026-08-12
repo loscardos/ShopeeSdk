@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.Payment;
+namespace Loscardos.ShopeeSdk.Generated.Payment;
 
 public sealed record PaymentGenerateIncomeReportRequest(
     [property: JsonPropertyName("release_time_from")] long ReleaseTimeFrom,
@@ -207,7 +207,7 @@ public sealed record PaymentGetEscrowDetailResponseOrderIncomeItem(
     [property: JsonPropertyName("prorated_payment_channel_promo_shopee_offset_return_items")] decimal? ProratedPaymentChannelPromoShopeeOffsetReturnItems = null,
     [property: JsonPropertyName("fsf_seller_protection_fee_claim_amount")] decimal? FsfSellerProtectionFeeClaimAmount = null,
     [property: JsonPropertyName("vat_on_imported_goods")] decimal? VatOnImportedGoods = null,
-    [property: JsonPropertyName("tenure_info_list")] PaymentGetEscrowDetailResponseOrderIncomeItemTenureInfoListItem? TenureInfoList = null,
+    [property: JsonPropertyName("tenure_info_list")] IReadOnlyList<PaymentGetEscrowDetailResponseOrderIncomeItemTenureInfoListItem>? TenureInfoList = null,
     [property: JsonPropertyName("withholding_vat_tax")] decimal? WithholdingVatTax = null,
     [property: JsonPropertyName("withholding_pit_tax")] decimal? WithholdingPitTax = null,
     [property: JsonPropertyName("tax_registration_code")] string? TaxRegistrationCode = null,

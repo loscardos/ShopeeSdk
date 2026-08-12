@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace ShopeeSdk.Generated.Returns;
+namespace Loscardos.ShopeeSdk.Generated.Returns;
 
 public sealed record GetReturnListRequest(
     [property: JsonPropertyName("page_no")] int PageNo,

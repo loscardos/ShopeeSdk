@@ -1,16 +1,16 @@
 using FluentAssertions;
 using Microsoft.Extensions.Options;
 using Moq;
-using ShopeeSdk.Abstractions.Auth;
-using ShopeeSdk.Abstractions.Configuration;
-using ShopeeSdk.Abstractions.Http;
-using ShopeeSdk.Abstractions.Managers;
-using ShopeeSdk.Core.Auth;
-using ShopeeSdk.Core.Managers;
-using ShopeeSdk.Generated.Product;
-using ShopeeSdk.Tests.TestDoubles;
+using Loscardos.ShopeeSdk.Abstractions.Auth;
+using Loscardos.ShopeeSdk.Abstractions.Configuration;
+using Loscardos.ShopeeSdk.Abstractions.Http;
+using Loscardos.ShopeeSdk.Abstractions.Managers;
+using Loscardos.ShopeeSdk.Core.Auth;
+using Loscardos.ShopeeSdk.Core.Managers;
+using Loscardos.ShopeeSdk.Generated.Product;
+using Loscardos.ShopeeSdk.Tests.TestDoubles;
 
-namespace ShopeeSdk.Tests.Managers;
+namespace Loscardos.ShopeeSdk.Tests.Managers;
 
 public sealed class ProductApiTests
 {

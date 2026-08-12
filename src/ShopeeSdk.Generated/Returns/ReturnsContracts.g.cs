@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.Returns;
+namespace Loscardos.ShopeeSdk.Generated.Returns;
 
 public sealed record ReturnsAcceptOfferRequest(
     [property: JsonPropertyName("return_sn")] string ReturnSn

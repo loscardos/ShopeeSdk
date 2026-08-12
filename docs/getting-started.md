@@ -26,9 +26,9 @@ dotnet add package Loscardos.ShopeeSdk.Generated --prerelease
 ## Configure ASP.NET Core
 
 ```csharp
-using ShopeeSdk.Abstractions.Configuration;
-using ShopeeSdk.Extensions.DependencyInjection;
-using ShopeeSdk.Storage.EntityFramework;
+using Loscardos.ShopeeSdk.Abstractions.Configuration;
+using Loscardos.ShopeeSdk.Extensions.DependencyInjection;
+using Loscardos.ShopeeSdk.Storage.EntityFramework;
 
 builder.Services.AddShopeeSdk(options =>
 {

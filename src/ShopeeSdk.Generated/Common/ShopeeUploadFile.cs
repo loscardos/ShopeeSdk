@@ -1,4 +1,4 @@
-namespace ShopeeSdk.Generated.Common;
+namespace Loscardos.ShopeeSdk.Generated.Common;
 
 public sealed record ShopeeUploadFile(
     string FileName,

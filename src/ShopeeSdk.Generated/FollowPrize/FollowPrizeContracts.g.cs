@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.FollowPrize;
+namespace Loscardos.ShopeeSdk.Generated.FollowPrize;
 
 public sealed record FollowPrizeAddFollowPrizeRequest(
     [property: JsonPropertyName("follow_prize_name")] string FollowPrizeName,

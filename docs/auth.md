@@ -5,7 +5,7 @@ Shopee Open API uses an authorization code flow. The SDK provides `IAuthApi` for
 ## Build the Authorization URL
 
 ```csharp
-using ShopeeSdk.Abstractions.Managers;
+using Loscardos.ShopeeSdk.Abstractions.Managers;
 
 var redirectUri = new Uri("https://example.com/shopee/callback");
 var url = authApi.BuildAuthorizationUrl(redirectUri);

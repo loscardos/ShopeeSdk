@@ -3,14 +3,14 @@ using System.Text;
 using FluentAssertions;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
-using ShopeeSdk.Abstractions.Configuration;
-using ShopeeSdk.Abstractions.Http;
-using ShopeeSdk.Core.Http;
-using ShopeeSdk.Core.RateLimiting;
-using ShopeeSdk.Generated.Common;
-using ShopeeSdk.Tests.TestDoubles;
+using Loscardos.ShopeeSdk.Abstractions.Configuration;
+using Loscardos.ShopeeSdk.Abstractions.Http;
+using Loscardos.ShopeeSdk.Core.Http;
+using Loscardos.ShopeeSdk.Core.RateLimiting;
+using Loscardos.ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Tests.TestDoubles;
 
-namespace ShopeeSdk.Tests.Http;
+namespace Loscardos.ShopeeSdk.Tests.Http;
 
 public sealed class ShopeeClientMultipartTests
 {
