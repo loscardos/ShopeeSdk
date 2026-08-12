@@ -1,10 +1,10 @@
-using ShopeeSdk.Abstractions.Http;
-using ShopeeSdk.Abstractions.Managers;
-using ShopeeSdk.Core.Auth;
-using ShopeeSdk.Core.Validation;
-using ShopeeSdk.Generated.Returns;
+using Loscardos.ShopeeSdk.Abstractions.Http;
+using Loscardos.ShopeeSdk.Abstractions.Managers;
+using Loscardos.ShopeeSdk.Core.Auth;
+using Loscardos.ShopeeSdk.Core.Validation;
+using Loscardos.ShopeeSdk.Generated.Returns;
 
-namespace ShopeeSdk.Core.Managers;
+namespace Loscardos.ShopeeSdk.Core.Managers;
 
 public sealed class ReturnsApi(IShopeeClient client, ShopeeTokenService tokenService) : IReturnsApi
 {

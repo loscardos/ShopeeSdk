@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.ShopCategory;
+namespace Loscardos.ShopeeSdk.Generated.ShopCategory;
 
 public sealed record ShopCategoryAddItemListRequest(
     [property: JsonPropertyName("shop_category_id")] int ShopCategoryId,

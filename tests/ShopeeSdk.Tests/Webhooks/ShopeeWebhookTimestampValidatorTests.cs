@@ -1,8 +1,8 @@
 using FluentAssertions;
-using ShopeeSdk.Abstractions.Webhooks;
-using ShopeeSdk.Core.Webhooks;
+using Loscardos.ShopeeSdk.Abstractions.Webhooks;
+using Loscardos.ShopeeSdk.Core.Webhooks;
 
-namespace ShopeeSdk.Tests.Webhooks;
+namespace Loscardos.ShopeeSdk.Tests.Webhooks;
 
 public sealed class ShopeeWebhookTimestampValidatorTests
 {
@@ -11,6 +11,7 @@ public sealed class ShopeeWebhookTimestampValidatorTests
     {
         var validator = new ShopeeWebhookTimestampValidator(new ShopeeWebhookOptions
         {
+            RequireFreshTimestamp = true,
             TimestampTolerance = TimeSpan.FromMinutes(5)
         });
         var receivedAt = DateTimeOffset.FromUnixTimeSeconds(1_700_000_000);
@@ -24,6 +25,7 @@ public sealed class ShopeeWebhookTimestampValidatorTests
     {
         var validator = new ShopeeWebhookTimestampValidator(new ShopeeWebhookOptions
         {
+            RequireFreshTimestamp = true,
             TimestampTolerance = TimeSpan.FromMinutes(5)
         });
         var receivedAt = DateTimeOffset.FromUnixTimeSeconds(1_700_000_000);
@@ -35,7 +37,10 @@ public sealed class ShopeeWebhookTimestampValidatorTests
     [Fact]
     public void IsFresh_ReturnsFalseWhenTimestampIsMissing()
     {
-        var validator = new ShopeeWebhookTimestampValidator(new ShopeeWebhookOptions());
+        var validator = new ShopeeWebhookTimestampValidator(new ShopeeWebhookOptions
+        {
+            RequireFreshTimestamp = true
+        });
         var webhookEvent = new ShopeeWebhookEvent(123, null, 3, default, null);
 
         validator.IsFresh(webhookEvent, DateTimeOffset.UtcNow).Should().BeFalse();

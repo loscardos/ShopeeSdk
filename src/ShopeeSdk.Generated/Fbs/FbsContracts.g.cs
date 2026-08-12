@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.Fbs;
+namespace Loscardos.ShopeeSdk.Generated.Fbs;
 
 public sealed record FbsQueryBrShopBlockStatusRequest(
 );

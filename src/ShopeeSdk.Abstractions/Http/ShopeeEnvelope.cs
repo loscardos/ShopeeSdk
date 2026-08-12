@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace ShopeeSdk.Abstractions.Http;
+namespace Loscardos.ShopeeSdk.Abstractions.Http;
 
 public sealed record ShopeeEnvelope<T>(
     [property: JsonPropertyName("request_id")] string? RequestId,

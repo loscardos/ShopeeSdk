@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace ShopeeSdk.Storage.EntityFramework;
+namespace Loscardos.ShopeeSdk.Storage.EntityFramework;
 
 public class ShopeeTokenDbContext(DbContextOptions<ShopeeTokenDbContext> options) : DbContext(options)
 {

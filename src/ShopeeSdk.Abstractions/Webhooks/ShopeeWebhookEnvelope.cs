@@ -1,4 +1,4 @@
-namespace ShopeeSdk.Abstractions.Webhooks;
+namespace Loscardos.ShopeeSdk.Abstractions.Webhooks;
 
 public sealed record ShopeeWebhookEnvelope(
     string Marketplace,

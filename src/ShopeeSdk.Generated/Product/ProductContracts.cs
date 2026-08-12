@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace ShopeeSdk.Generated.Product;
+namespace Loscardos.ShopeeSdk.Generated.Product;
 
 public sealed record GetItemListRequest(
     [property: JsonPropertyName("offset")] long Offset,

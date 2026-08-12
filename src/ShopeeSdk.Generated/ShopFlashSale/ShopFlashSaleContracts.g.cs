@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.ShopFlashSale;
+namespace Loscardos.ShopeeSdk.Generated.ShopFlashSale;
 
 public sealed record ShopFlashSaleAddShopFlashSaleItemsRequestItemsItemModelsItem(
     [property: JsonPropertyName("model_id")] long ModelId,

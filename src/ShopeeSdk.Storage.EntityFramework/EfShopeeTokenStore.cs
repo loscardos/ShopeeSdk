@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using ShopeeSdk.Abstractions.Auth;
+using Loscardos.ShopeeSdk.Abstractions.Auth;
 
-namespace ShopeeSdk.Storage.EntityFramework;
+namespace Loscardos.ShopeeSdk.Storage.EntityFramework;
 
 public sealed class EfShopeeTokenStore(
     ShopeeTokenDbContext dbContext,

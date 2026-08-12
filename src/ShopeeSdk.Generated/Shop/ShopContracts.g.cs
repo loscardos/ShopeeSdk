@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.Shop;
+namespace Loscardos.ShopeeSdk.Generated.Shop;
 
 public sealed record ShopGetAuthorisedResellerBrandRequest(
     [property: JsonPropertyName("page_no")] int PageNo,

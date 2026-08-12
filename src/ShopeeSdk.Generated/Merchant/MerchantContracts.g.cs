@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.Merchant;
+namespace Loscardos.ShopeeSdk.Generated.Merchant;
 
 public sealed record MerchantGetMerchantInfoRequest(
 );

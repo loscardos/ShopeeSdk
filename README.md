@@ -35,9 +35,9 @@ dotnet add package Loscardos.ShopeeSdk.Generated --prerelease
 ## Quick Start
 
 ```csharp
-using ShopeeSdk.Abstractions.Configuration;
-using ShopeeSdk.Extensions.DependencyInjection;
-using ShopeeSdk.Storage.EntityFramework;
+using Loscardos.ShopeeSdk.Abstractions.Configuration;
+using Loscardos.ShopeeSdk.Extensions.DependencyInjection;
+using Loscardos.ShopeeSdk.Storage.EntityFramework;
 
 builder.Services.AddShopeeSdk(options =>
 {
@@ -55,7 +55,7 @@ Applications must register an `IShopeeTokenStore`. The EF storage package is pro
 ## Auth Flow
 
 ```csharp
-using ShopeeSdk.Abstractions.Managers;
+using Loscardos.ShopeeSdk.Abstractions.Managers;
 
 var authorizeUrl = authApi.BuildAuthorizationUrl(new Uri("https://example.com/shopee/callback"));
 ```
@@ -111,6 +111,7 @@ builder.Services.AddShopeeSdk(
     webhooks =>
     {
         webhooks.SignatureHeaderName = "authorization";
+        webhooks.RequireFreshTimestamp = false;
         webhooks.TimestampTolerance = TimeSpan.FromMinutes(10);
     });
 ```
@@ -120,13 +121,13 @@ builder.Services.AddShopeeSdk(
 The SDK exposes two API surfaces:
 
 - Polished managers for common ERP workflows: product, order, logistics, payment, and returns.
-- Generated managers for full SDK endpoint coverage. Generated managers live under `ShopeeSdk.Abstractions.Managers.Generated` and use DTOs from `ShopeeSdk.Generated.<Module>`.
+- Generated managers for full SDK endpoint coverage. Generated managers live under `Loscardos.ShopeeSdk.Abstractions.Managers.Generated` and use DTOs from `Loscardos.ShopeeSdk.Generated.<Module>`.
 
 Example using a generated product manager:
 
 ```csharp
-using ShopeeSdk.Generated.Product;
-using GeneratedProductApi = ShopeeSdk.Abstractions.Managers.Generated.IProductApi;
+using Loscardos.ShopeeSdk.Generated.Product;
+using GeneratedProductApi = Loscardos.ShopeeSdk.Abstractions.Managers.Generated.IProductApi;
 
 public sealed class CategorySync(GeneratedProductApi productApi)
 {

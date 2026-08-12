@@ -1,20 +1,20 @@
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 using Moq;
-using ShopeeSdk.Abstractions.Managers;
-using ShopeeSdk.Core.Auth;
-using ShopeeSdk.Core.Http;
-using ShopeeSdk.Core.Managers.Generated;
-using ShopeeSdk.Core.RateLimiting;
-using ShopeeSdk.Core.Time;
-using ShopeeSdk.Tests.TestDoubles;
-using GeneratedLogisticsApi = ShopeeSdk.Abstractions.Managers.Generated.ILogisticsApi;
-using GeneratedOrderApi = ShopeeSdk.Abstractions.Managers.Generated.IOrderApi;
-using GeneratedPaymentApi = ShopeeSdk.Abstractions.Managers.Generated.IPaymentApi;
-using GeneratedProductApi = ShopeeSdk.Abstractions.Managers.Generated.IProductApi;
-using GeneratedShopApi = ShopeeSdk.Abstractions.Managers.Generated.IShopApi;
+using Loscardos.ShopeeSdk.Abstractions.Managers;
+using Loscardos.ShopeeSdk.Core.Auth;
+using Loscardos.ShopeeSdk.Core.Http;
+using Loscardos.ShopeeSdk.Core.Managers.Generated;
+using Loscardos.ShopeeSdk.Core.RateLimiting;
+using Loscardos.ShopeeSdk.Core.Time;
+using Loscardos.ShopeeSdk.Tests.TestDoubles;
+using GeneratedLogisticsApi = Loscardos.ShopeeSdk.Abstractions.Managers.Generated.ILogisticsApi;
+using GeneratedOrderApi = Loscardos.ShopeeSdk.Abstractions.Managers.Generated.IOrderApi;
+using GeneratedPaymentApi = Loscardos.ShopeeSdk.Abstractions.Managers.Generated.IPaymentApi;
+using GeneratedProductApi = Loscardos.ShopeeSdk.Abstractions.Managers.Generated.IProductApi;
+using GeneratedShopApi = Loscardos.ShopeeSdk.Abstractions.Managers.Generated.IShopApi;
 
-namespace ShopeeSdk.IntegrationTests;
+namespace Loscardos.ShopeeSdk.IntegrationTests;
 
 public sealed class ShopeeSandboxFixture
 {
@@ -32,7 +32,7 @@ public sealed class ShopeeSandboxFixture
         TokenService = new ShopeeTokenService(TokenStore, Mock.Of<IAuthApi>(), Options, new SystemShopeeClock());
     }
 
-    public IOptions<ShopeeSdk.Abstractions.Configuration.ShopeeOptions> Options { get; }
+    public IOptions<Loscardos.ShopeeSdk.Abstractions.Configuration.ShopeeOptions> Options { get; }
     public InMemoryShopeeTokenStore TokenStore { get; }
     public ShopeeClient Client { get; }
     public ShopeeAuthApi AuthApi { get; }

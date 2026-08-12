@@ -1,14 +1,16 @@
+using System.Security.Cryptography;
+using System.Text;
 using FluentAssertions;
 using Microsoft.Extensions.Options;
 using RichardSzalay.MockHttp;
-using ShopeeSdk.Abstractions.Configuration;
-using ShopeeSdk.Core.Auth;
-using ShopeeSdk.Core.Http;
-using ShopeeSdk.Core.RateLimiting;
-using ShopeeSdk.Tests.TestDoubles;
+using Loscardos.ShopeeSdk.Abstractions.Configuration;
+using Loscardos.ShopeeSdk.Core.Auth;
+using Loscardos.ShopeeSdk.Core.Http;
+using Loscardos.ShopeeSdk.Core.RateLimiting;
+using Loscardos.ShopeeSdk.Tests.TestDoubles;
 using Microsoft.Extensions.Logging.Abstractions;
 
-namespace ShopeeSdk.Tests.Auth;
+namespace Loscardos.ShopeeSdk.Tests.Auth;
 
 public sealed class ShopeeAuthApiTests
 {
@@ -24,6 +26,23 @@ public sealed class ShopeeAuthApiTests
         url.Query.Should().Contain("timestamp=1610000000");
         url.Query.Should().Contain("redirect=https%3A%2F%2Fomni.example.test%2Fshopee%2Fcallback");
         url.Query.Should().Contain("sign=");
+    }
+
+    [Fact]
+    public void BuildAuthorizationUrl_UsesApiPartnerKeyWhenPushPartnerKeyDiffers()
+    {
+        var api = CreateApi(
+            new MockHttpMessageHandler(),
+            pushPartnerKey: "different-push-partner-key");
+        var expectedSignature = Convert.ToHexString(HMACSHA256.HashData(
+            Encoding.UTF8.GetBytes("test_partner_key"),
+            Encoding.UTF8.GetBytes("123456/api/v2/shop/auth_partner1610000000")))
+            .ToLowerInvariant();
+
+        var url = api.BuildAuthorizationUrl(
+            new Uri("https://omni.example.test/shopee/callback"));
+
+        url.Query.Should().Contain($"sign={expectedSignature}");
     }
 
     [Fact]
@@ -53,12 +72,16 @@ public sealed class ShopeeAuthApiTests
         stored.Should().NotBeNull();
     }
 
-    private static ShopeeAuthApi CreateApi(MockHttpMessageHandler mockHttp, InMemoryShopeeTokenStore? store = null)
+    private static ShopeeAuthApi CreateApi(
+        MockHttpMessageHandler mockHttp,
+        InMemoryShopeeTokenStore? store = null,
+        string pushPartnerKey = "")
     {
         var options = Options.Create(new ShopeeOptions
         {
             PartnerId = 123456,
             PartnerKey = "test_partner_key",
+            PushPartnerKey = pushPartnerKey,
             Region = ShopeeRegion.TestGlobal
         });
 

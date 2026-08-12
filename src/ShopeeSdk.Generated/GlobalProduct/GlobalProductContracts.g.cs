@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.GlobalProduct;
+namespace Loscardos.ShopeeSdk.Generated.GlobalProduct;
 
 public sealed record GlobalProductAddGlobalItemRequestPreOrderItem(
     [property: JsonPropertyName("days_to_ship")] long DaysToShip

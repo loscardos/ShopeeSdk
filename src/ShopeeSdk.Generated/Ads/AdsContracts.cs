@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace ShopeeSdk.Generated.Ads;
+namespace Loscardos.ShopeeSdk.Generated.Ads;
 
 internal sealed class AdsGetRecommendedItemListResponseJsonConverter : JsonConverter<AdsGetRecommendedItemListResponse>
 {

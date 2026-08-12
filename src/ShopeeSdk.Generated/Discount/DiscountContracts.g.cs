@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.Discount;
+namespace Loscardos.ShopeeSdk.Generated.Discount;
 
 public sealed record DiscountAddDiscountRequest(
     [property: JsonPropertyName("discount_name")] string DiscountName,

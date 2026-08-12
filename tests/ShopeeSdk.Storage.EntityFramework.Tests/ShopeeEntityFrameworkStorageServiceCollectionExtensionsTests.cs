@@ -2,9 +2,9 @@ using FluentAssertions;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using ShopeeSdk.Abstractions.Auth;
+using Loscardos.ShopeeSdk.Abstractions.Auth;
 
-namespace ShopeeSdk.Storage.EntityFramework.Tests;
+namespace Loscardos.ShopeeSdk.Storage.EntityFramework.Tests;
 
 public sealed class ShopeeEntityFrameworkStorageServiceCollectionExtensionsTests
 {

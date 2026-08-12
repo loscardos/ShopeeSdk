@@ -1,7 +1,7 @@
 using FluentAssertions;
-using ShopeeSdk.Tests.Generator;
+using Loscardos.ShopeeSdk.Tests.Generator;
 
-namespace ShopeeSdk.Tests.Managers;
+namespace Loscardos.ShopeeSdk.Tests.Managers;
 
 public sealed class ErpEndpointCoverageTests
 {

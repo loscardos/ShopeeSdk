@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.FirstMile;
+namespace Loscardos.ShopeeSdk.Generated.FirstMile;
 
 public sealed record FirstMileBindCourierDeliveryFirstMileTrackingNumberRequestOrderListItem(
     [property: JsonPropertyName("order_sn")] string OrderSn,

@@ -1,7 +1,7 @@
 using FluentAssertions;
-using ShopeeSdk.Generator;
+using Loscardos.ShopeeSdk.Generator;
 
-namespace ShopeeSdk.Tests.Generator;
+namespace Loscardos.ShopeeSdk.Tests.Generator;
 
 public sealed class GeneratorGoldenFileTests
 {
@@ -26,7 +26,7 @@ public sealed class GeneratorGoldenFileTests
 
         var output = new ContractsWriter().WriteModule("Product", "product", [endpoint]);
 
-        output.Should().Contain("namespace ShopeeSdk.Generated.Product;");
+        output.Should().Contain("namespace Loscardos.ShopeeSdk.Generated.Product;");
         output.Should().Contain("public sealed record ProductGetCategoryRequest(");
         output.Should().Contain("[property: JsonPropertyName(\"language\")] string? Language = null");
         output.Should().Contain("public sealed record ProductGetCategoryResponse(");

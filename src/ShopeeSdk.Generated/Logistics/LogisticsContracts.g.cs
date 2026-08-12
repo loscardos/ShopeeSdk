@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.Logistics;
+namespace Loscardos.ShopeeSdk.Generated.Logistics;
 
 public sealed record LogisticsBatchShipOrderRequestOrderListItem(
     [property: JsonPropertyName("order_sn")] string OrderSn,

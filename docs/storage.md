@@ -5,7 +5,7 @@ Authenticated Shopee API calls require an access token for a shop or merchant. T
 ## Interface
 
 ```csharp
-using ShopeeSdk.Abstractions.Auth;
+using Loscardos.ShopeeSdk.Abstractions.Auth;
 
 public interface IShopeeTokenStore
 {
@@ -29,7 +29,7 @@ The `Loscardos.ShopeeSdk.Storage.EntityFramework` package provides:
 Register it with:
 
 ```csharp
-using ShopeeSdk.Storage.EntityFramework;
+using Loscardos.ShopeeSdk.Storage.EntityFramework;
 
 builder.Services.AddShopeeEntityFrameworkTokenStorage();
 ```

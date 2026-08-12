@@ -2,11 +2,11 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using Microsoft.Extensions.Options;
-using ShopeeSdk.Abstractions.Configuration;
-using ShopeeSdk.Abstractions.Errors;
-using ShopeeSdk.Abstractions.Webhooks;
+using Loscardos.ShopeeSdk.Abstractions.Configuration;
+using Loscardos.ShopeeSdk.Abstractions.Errors;
+using Loscardos.ShopeeSdk.Abstractions.Webhooks;
 
-namespace ShopeeSdk.Core.Webhooks;
+namespace Loscardos.ShopeeSdk.Core.Webhooks;
 
 public sealed class ShopeeWebhookVerifier(IOptions<ShopeeOptions> options) : IShopeeWebhookVerifier
 {
@@ -20,9 +20,16 @@ public sealed class ShopeeWebhookVerifier(IOptions<ShopeeOptions> options) : ISh
             return false;
         }
 
+        var pushPartnerKey = string.IsNullOrWhiteSpace(_options.PushPartnerKey)
+            ? _options.PartnerKey
+            : _options.PushPartnerKey;
+
+        var signatureBase = string.IsNullOrWhiteSpace(_options.PushCallbackUrl)
+            ? rawBody
+            : $"{_options.PushCallbackUrl}|{rawBody}";
         var expected = Convert.ToHexString(HMACSHA256.HashData(
-            Encoding.UTF8.GetBytes(_options.PartnerKey),
-            Encoding.UTF8.GetBytes(rawBody))).ToLowerInvariant();
+            Encoding.UTF8.GetBytes(pushPartnerKey),
+            Encoding.UTF8.GetBytes(signatureBase))).ToLowerInvariant();
 
         return CryptographicOperations.FixedTimeEquals(
             Encoding.UTF8.GetBytes(expected),

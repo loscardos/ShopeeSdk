@@ -1,4 +1,4 @@
-namespace ShopeeSdk.Abstractions.Configuration;
+namespace Loscardos.ShopeeSdk.Abstractions.Configuration;
 
 public enum ShopeeRegion
 {

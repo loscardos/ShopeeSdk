@@ -1,7 +1,7 @@
 using FluentAssertions;
-using ShopeeSdk.Generated.Webhooks;
+using Loscardos.ShopeeSdk.Generated.Webhooks;
 
-namespace ShopeeSdk.Tests.Webhooks;
+namespace Loscardos.ShopeeSdk.Tests.Webhooks;
 
 public sealed class ShopeeWebhookCatalogTests
 {

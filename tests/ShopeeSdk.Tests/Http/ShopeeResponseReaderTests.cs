@@ -1,12 +1,12 @@
 using FluentAssertions;
-using ShopeeSdk.Core.Http;
-using ShopeeSdk.Generated.Ads;
-using ShopeeSdk.Generated.Order;
-using ShopeeSdk.Generated.Payment;
-using ShopeeSdk.Generated.Product;
-using ShopeeSdk.Generated.Shop;
+using Loscardos.ShopeeSdk.Core.Http;
+using Loscardos.ShopeeSdk.Generated.Ads;
+using Loscardos.ShopeeSdk.Generated.Order;
+using Loscardos.ShopeeSdk.Generated.Payment;
+using Loscardos.ShopeeSdk.Generated.Product;
+using Loscardos.ShopeeSdk.Generated.Shop;
 
-namespace ShopeeSdk.Tests.Http;
+namespace Loscardos.ShopeeSdk.Tests.Http;
 
 public sealed class ShopeeResponseReaderTests
 {
@@ -136,6 +136,32 @@ public sealed class ShopeeResponseReaderTests
         envelope.RequestId.Should().Be("req-payment");
         envelope.Response!.Items.Should().ContainSingle()
             .Which.PaymentMethod.Should().Contain("COD");
+    }
+
+    [Fact]
+    public void ReadJsonEnvelope_HandlesEscrowTenureInfoListArrayPayload()
+    {
+        var envelope = ShopeeResponseReader.ReadJsonEnvelope<PaymentGetEscrowDetailResponse>("""
+        {
+          "request_id": "req-escrow",
+          "error": "",
+          "message": "",
+          "response": {
+            "order_sn": "SHP-1",
+            "order_income": {
+              "tenure_info_list": [
+                {
+                  "payment_channel_name": "Credit Card",
+                  "instalment_plan": "3 months"
+                }
+              ]
+            }
+          }
+        }
+        """);
+
+        envelope.Response!.OrderIncome!.TenureInfoList.Should().ContainSingle()
+            .Which.InstalmentPlan.Should().Be("3 months");
     }
 
     [Fact]

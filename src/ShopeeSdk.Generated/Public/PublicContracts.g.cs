@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.Public;
+namespace Loscardos.ShopeeSdk.Generated.Public;
 
 public sealed record PublicGetAccessTokenRequest(
     [property: JsonPropertyName("code")] string Code,

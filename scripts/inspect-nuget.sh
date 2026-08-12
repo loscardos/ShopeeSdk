@@ -28,7 +28,7 @@ for package in "${packages[@]}"; do
   mkdir -p "$package_dir"
   unzip -qq "$nupkg" -d "$package_dir"
 
-  assembly="${package#Loscardos.}"
+  assembly="$package"
   nuspec="$package_dir/$package.nuspec"
 
   [[ -f "$package_dir/README.md" ]] || { echo "$package is missing README.md"; exit 1; }

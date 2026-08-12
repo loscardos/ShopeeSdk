@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.Video;
+namespace Loscardos.ShopeeSdk.Generated.Video;
 
 public sealed record VideoDeleteVideoRequest(
     [property: JsonPropertyName("video_upload_id_list")] IReadOnlyList<string>? VideoUploadIdList = null,

@@ -1,11 +1,13 @@
-using ShopeeSdk.Abstractions.Errors;
+using Loscardos.ShopeeSdk.Abstractions.Errors;
 
-namespace ShopeeSdk.Abstractions.Configuration;
+namespace Loscardos.ShopeeSdk.Abstractions.Configuration;
 
 public sealed class ShopeeOptions
 {
     public long PartnerId { get; set; }
     public string PartnerKey { get; set; } = string.Empty;
+    public string PushPartnerKey { get; set; } = string.Empty;
+    public string PushCallbackUrl { get; set; } = string.Empty;
     public ShopeeRegion Region { get; set; } = ShopeeRegion.Global;
     public Uri? BaseUrl { get; set; }
     public TimeSpan TokenRefreshSkew { get; set; } = TimeSpan.FromMinutes(5);

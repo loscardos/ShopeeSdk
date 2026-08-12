@@ -3,7 +3,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace ShopeeSdk.Generated.Webhooks;
+namespace Loscardos.ShopeeSdk.Generated.Webhooks;
 
 public sealed record ShopeeWebhookUnknownData(
     [property: JsonExtensionData] IDictionary<string, JsonElement>? ExtensionData = null);
