@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+using System.Text;
 using FluentAssertions;
 using Microsoft.Extensions.Options;
 using RichardSzalay.MockHttp;
@@ -27,6 +29,23 @@ public sealed class ShopeeAuthApiTests
     }
 
     [Fact]
+    public void BuildAuthorizationUrl_UsesApiPartnerKeyWhenPushPartnerKeyDiffers()
+    {
+        var api = CreateApi(
+            new MockHttpMessageHandler(),
+            pushPartnerKey: "different-push-partner-key");
+        var expectedSignature = Convert.ToHexString(HMACSHA256.HashData(
+            Encoding.UTF8.GetBytes("test_partner_key"),
+            Encoding.UTF8.GetBytes("123456/api/v2/shop/auth_partner1610000000")))
+            .ToLowerInvariant();
+
+        var url = api.BuildAuthorizationUrl(
+            new Uri("https://omni.example.test/shopee/callback"));
+
+        url.Query.Should().Contain($"sign={expectedSignature}");
+    }
+
+    [Fact]
     public async Task ExchangeCodeAsync_StoresToken()
     {
         var mockHttp = new MockHttpMessageHandler();
@@ -53,12 +72,16 @@ public sealed class ShopeeAuthApiTests
         stored.Should().NotBeNull();
     }
 
-    private static ShopeeAuthApi CreateApi(MockHttpMessageHandler mockHttp, InMemoryShopeeTokenStore? store = null)
+    private static ShopeeAuthApi CreateApi(
+        MockHttpMessageHandler mockHttp,
+        InMemoryShopeeTokenStore? store = null,
+        string pushPartnerKey = "")
     {
         var options = Options.Create(new ShopeeOptions
         {
             PartnerId = 123456,
             PartnerKey = "test_partner_key",
+            PushPartnerKey = pushPartnerKey,
             Region = ShopeeRegion.TestGlobal
         });
 

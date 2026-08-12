@@ -111,6 +111,7 @@ builder.Services.AddShopeeSdk(
     webhooks =>
     {
         webhooks.SignatureHeaderName = "authorization";
+        webhooks.RequireFreshTimestamp = false;
         webhooks.TimestampTolerance = TimeSpan.FromMinutes(10);
     });
 ```
