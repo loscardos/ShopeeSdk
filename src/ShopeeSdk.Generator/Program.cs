@@ -1,4 +1,4 @@
-using ShopeeSdk.Generator;
+using Loscardos.ShopeeSdk.Generator;
 
 var mode = args.Length > 0 ? args[0] : "summary";
 var schemaDirectory = args.Length > 1 ? args[1] : Path.Combine("tests", "ShopeeSdk.Tests", "Fixtures", "Schemas");

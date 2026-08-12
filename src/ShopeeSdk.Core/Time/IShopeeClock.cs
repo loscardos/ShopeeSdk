@@ -1,4 +1,4 @@
-namespace ShopeeSdk.Core.Time;
+namespace Loscardos.ShopeeSdk.Core.Time;
 
 public interface IShopeeClock
 {

@@ -1,8 +1,8 @@
 using FluentAssertions;
-using ShopeeSdk.Abstractions.Webhooks;
-using ShopeeSdk.Core.Webhooks;
+using Loscardos.ShopeeSdk.Abstractions.Webhooks;
+using Loscardos.ShopeeSdk.Core.Webhooks;
 
-namespace ShopeeSdk.Tests.Webhooks;
+namespace Loscardos.ShopeeSdk.Tests.Webhooks;
 
 public sealed class ShopeeWebhookIdempotencyKeyFactoryTests
 {

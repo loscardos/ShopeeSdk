@@ -1,7 +1,7 @@
-using ShopeeSdk.Abstractions.Auth;
-using ShopeeSdk.Abstractions.Configuration;
+using Loscardos.ShopeeSdk.Abstractions.Auth;
+using Loscardos.ShopeeSdk.Abstractions.Configuration;
 
-namespace ShopeeSdk.IntegrationTests;
+namespace Loscardos.ShopeeSdk.IntegrationTests;
 
 public static class ShopeeSandboxConfiguration
 {

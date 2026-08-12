@@ -2,9 +2,9 @@ name: ci
 
 on:
   push:
-    branches: [ master, main ]
+    branches: [ development, staging ]
   pull_request:
-    branches: [ master, main ]
+    branches: [ development, staging, production ]
 
 jobs:
   build-test-pack:
@@ -20,9 +20,9 @@ jobs:
         env:
           SHOPEE_PARTNER_ID: ${{ secrets.SHOPEE_PARTNER_ID }}
           SHOPEE_PARTNER_KEY: ${{ secrets.SHOPEE_PARTNER_KEY }}
-      - run: ./scripts/pack-local.sh
-      - run: ./scripts/inspect-nuget.sh
-      - run: ./scripts/test-local-nuget.sh
+      - run: bash scripts/pack-local.sh
+      - run: bash scripts/inspect-nuget.sh
+      - run: bash scripts/test-local-nuget.sh
       - name: Verify generated SDK surface
-        run: ./scripts/verify-generated.sh
+        run: bash scripts/verify-generated.sh
       - run: dotnet run --project samples/ShopeeSdk.SampleConsole -- certify-matrix

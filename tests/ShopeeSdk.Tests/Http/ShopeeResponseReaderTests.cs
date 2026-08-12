@@ -1,12 +1,12 @@
 using FluentAssertions;
-using ShopeeSdk.Core.Http;
-using ShopeeSdk.Generated.Ads;
-using ShopeeSdk.Generated.Order;
-using ShopeeSdk.Generated.Payment;
-using ShopeeSdk.Generated.Product;
-using ShopeeSdk.Generated.Shop;
+using Loscardos.ShopeeSdk.Core.Http;
+using Loscardos.ShopeeSdk.Generated.Ads;
+using Loscardos.ShopeeSdk.Generated.Order;
+using Loscardos.ShopeeSdk.Generated.Payment;
+using Loscardos.ShopeeSdk.Generated.Product;
+using Loscardos.ShopeeSdk.Generated.Shop;
 
-namespace ShopeeSdk.Tests.Http;
+namespace Loscardos.ShopeeSdk.Tests.Http;
 
 public sealed class ShopeeResponseReaderTests
 {

@@ -1,11 +1,11 @@
 using System.Collections.Concurrent;
 using System.Threading.RateLimiting;
 using Microsoft.Extensions.Options;
-using ShopeeSdk.Abstractions.Configuration;
-using ShopeeSdk.Abstractions.Http;
-using ShopeeSdk.Abstractions.RateLimiting;
+using Loscardos.ShopeeSdk.Abstractions.Configuration;
+using Loscardos.ShopeeSdk.Abstractions.Http;
+using Loscardos.ShopeeSdk.Abstractions.RateLimiting;
 
-namespace ShopeeSdk.Core.RateLimiting;
+namespace Loscardos.ShopeeSdk.Core.RateLimiting;
 
 public sealed class PartitionedShopeeRateLimiter(IOptions<ShopeeOptions> options) : IShopeeRateLimiter
 {

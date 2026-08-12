@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.Media;
+namespace Loscardos.ShopeeSdk.Generated.Media;
 
 public sealed record MediaCancelVideoUploadRequest(
     [property: JsonPropertyName("video_upload_id")] string VideoUploadId

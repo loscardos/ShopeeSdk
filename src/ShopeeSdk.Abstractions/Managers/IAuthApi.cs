@@ -1,6 +1,6 @@
-using ShopeeSdk.Abstractions.Auth;
+using Loscardos.ShopeeSdk.Abstractions.Auth;
 
-namespace ShopeeSdk.Abstractions.Managers;
+namespace Loscardos.ShopeeSdk.Abstractions.Managers;
 
 public interface IAuthApi
 {

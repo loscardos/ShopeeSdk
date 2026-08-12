@@ -1,6 +1,6 @@
-using ShopeeSdk.Abstractions.Auth;
+using Loscardos.ShopeeSdk.Abstractions.Auth;
 
-namespace ShopeeSdk.Tests.TestDoubles;
+namespace Loscardos.ShopeeSdk.Tests.TestDoubles;
 
 public sealed class InMemoryShopeeTokenStore : IShopeeTokenStore
 {

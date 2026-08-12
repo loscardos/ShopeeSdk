@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.Payment;
+namespace Loscardos.ShopeeSdk.Generated.Payment;
 
 public sealed record PaymentGenerateIncomeReportRequest(
     [property: JsonPropertyName("release_time_from")] long ReleaseTimeFrom,

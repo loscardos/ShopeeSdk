@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Net;
 
-namespace ShopeeSdk.Core.Http;
+namespace Loscardos.ShopeeSdk.Core.Http;
 
 public static class ShopeeQueryString
 {

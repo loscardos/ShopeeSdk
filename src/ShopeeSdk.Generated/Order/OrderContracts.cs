@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace ShopeeSdk.Generated.Order;
+namespace Loscardos.ShopeeSdk.Generated.Order;
 
 public sealed record GetOrderListRequest(
     [property: JsonPropertyName("time_range_field")] string TimeRangeField,

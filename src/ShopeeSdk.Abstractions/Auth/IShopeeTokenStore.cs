@@ -1,4 +1,4 @@
-namespace ShopeeSdk.Abstractions.Auth;
+namespace Loscardos.ShopeeSdk.Abstractions.Auth;
 
 public interface IShopeeTokenStore
 {

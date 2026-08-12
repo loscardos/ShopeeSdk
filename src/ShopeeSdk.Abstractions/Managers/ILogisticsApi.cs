@@ -1,6 +1,6 @@
-using ShopeeSdk.Generated.Logistics;
+using Loscardos.ShopeeSdk.Generated.Logistics;
 
-namespace ShopeeSdk.Abstractions.Managers;
+namespace Loscardos.ShopeeSdk.Abstractions.Managers;
 
 public interface ILogisticsApi
 {

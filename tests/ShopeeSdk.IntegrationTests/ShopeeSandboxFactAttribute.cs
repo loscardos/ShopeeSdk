@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace ShopeeSdk.IntegrationTests;
+namespace Loscardos.ShopeeSdk.IntegrationTests;
 
 public sealed class ShopeeSandboxFactAttribute : FactAttribute
 {

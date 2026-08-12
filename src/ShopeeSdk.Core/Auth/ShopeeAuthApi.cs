@@ -1,15 +1,15 @@
 using System.Text.Json.Serialization;
 using Microsoft.Extensions.Options;
-using ShopeeSdk.Abstractions.Auth;
-using ShopeeSdk.Abstractions.Configuration;
-using ShopeeSdk.Abstractions.Errors;
-using ShopeeSdk.Abstractions.Http;
-using ShopeeSdk.Abstractions.Managers;
-using ShopeeSdk.Core.Crypto;
-using ShopeeSdk.Core.Http;
-using ShopeeSdk.Core.Time;
+using Loscardos.ShopeeSdk.Abstractions.Auth;
+using Loscardos.ShopeeSdk.Abstractions.Configuration;
+using Loscardos.ShopeeSdk.Abstractions.Errors;
+using Loscardos.ShopeeSdk.Abstractions.Http;
+using Loscardos.ShopeeSdk.Abstractions.Managers;
+using Loscardos.ShopeeSdk.Core.Crypto;
+using Loscardos.ShopeeSdk.Core.Http;
+using Loscardos.ShopeeSdk.Core.Time;
 
-namespace ShopeeSdk.Core.Auth;
+namespace Loscardos.ShopeeSdk.Core.Auth;
 
 public sealed class ShopeeAuthApi(
     IShopeeClient client,

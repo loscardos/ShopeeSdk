@@ -1,8 +1,8 @@
 using FluentAssertions;
-using ShopeeSdk.Abstractions.Errors;
-using ShopeeSdk.Core.Validation;
+using Loscardos.ShopeeSdk.Abstractions.Errors;
+using Loscardos.ShopeeSdk.Core.Validation;
 
-namespace ShopeeSdk.Tests.Validation;
+namespace Loscardos.ShopeeSdk.Tests.Validation;
 
 public sealed class ShopeeRequestValidatorTests
 {

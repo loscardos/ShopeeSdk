@@ -1,8 +1,8 @@
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
-using ShopeeSdk.Abstractions.Auth;
+using Loscardos.ShopeeSdk.Abstractions.Auth;
 
-namespace ShopeeSdk.Storage.EntityFramework.Tests;
+namespace Loscardos.ShopeeSdk.Storage.EntityFramework.Tests;
 
 public sealed class EfShopeeTokenStoreTests
 {

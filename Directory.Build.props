@@ -11,9 +11,12 @@
     <Company>Loscardos</Company>
     <Product>ShopeeSdk</Product>
     <PackageId>Loscardos.$(MSBuildProjectName)</PackageId>
+    <AssemblyName>Loscardos.$(MSBuildProjectName)</AssemblyName>
+    <RootNamespace>Loscardos.$(MSBuildProjectName)</RootNamespace>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>shopee;openapi;sdk;aspnet;omnichannel;ecommerce</PackageTags>
+    <RepositoryUrl>https://github.com/loscardos/ShopeeSdk</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>

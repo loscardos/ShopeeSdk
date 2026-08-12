@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.AccountHealth;
+namespace Loscardos.ShopeeSdk.Generated.AccountHealth;
 
 public sealed record AccountHealthGetLateOrdersRequest(
     [property: JsonPropertyName("page_no")] int? PageNo = null,

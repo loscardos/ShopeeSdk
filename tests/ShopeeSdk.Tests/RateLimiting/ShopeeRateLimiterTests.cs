@@ -1,10 +1,10 @@
 using FluentAssertions;
 using Microsoft.Extensions.Options;
-using ShopeeSdk.Abstractions.Configuration;
-using ShopeeSdk.Abstractions.Http;
-using ShopeeSdk.Core.RateLimiting;
+using Loscardos.ShopeeSdk.Abstractions.Configuration;
+using Loscardos.ShopeeSdk.Abstractions.Http;
+using Loscardos.ShopeeSdk.Core.RateLimiting;
 
-namespace ShopeeSdk.Tests.RateLimiting;
+namespace Loscardos.ShopeeSdk.Tests.RateLimiting;
 
 public sealed class ShopeeRateLimiterTests
 {

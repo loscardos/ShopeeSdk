@@ -1,11 +1,11 @@
 using FluentAssertions;
-using ShopeeSdk.Generated.Logistics;
-using ShopeeSdk.Generated.Order;
-using ShopeeSdk.Generated.Payment;
-using ShopeeSdk.Generated.Product;
-using ShopeeSdk.Generated.Shop;
+using Loscardos.ShopeeSdk.Generated.Logistics;
+using Loscardos.ShopeeSdk.Generated.Order;
+using Loscardos.ShopeeSdk.Generated.Payment;
+using Loscardos.ShopeeSdk.Generated.Product;
+using Loscardos.ShopeeSdk.Generated.Shop;
 
-namespace ShopeeSdk.IntegrationTests;
+namespace Loscardos.ShopeeSdk.IntegrationTests;
 
 public sealed class ShopeeReadOnlySandboxTests
 {

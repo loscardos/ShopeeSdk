@@ -1,11 +1,11 @@
 using System.Collections.Concurrent;
-using ShopeeSdk.Abstractions.Auth;
-using ShopeeSdk.Abstractions.Configuration;
-using ShopeeSdk.Abstractions.Errors;
-using ShopeeSdk.Abstractions.Managers;
-using ShopeeSdk.Core.Time;
+using Loscardos.ShopeeSdk.Abstractions.Auth;
+using Loscardos.ShopeeSdk.Abstractions.Configuration;
+using Loscardos.ShopeeSdk.Abstractions.Errors;
+using Loscardos.ShopeeSdk.Abstractions.Managers;
+using Loscardos.ShopeeSdk.Core.Time;
 
-namespace ShopeeSdk.Core.Auth;
+namespace Loscardos.ShopeeSdk.Core.Auth;
 
 public sealed class ShopeeTokenService(
     IShopeeTokenStore tokenStore,

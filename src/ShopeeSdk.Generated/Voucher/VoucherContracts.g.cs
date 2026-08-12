@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.Voucher;
+namespace Loscardos.ShopeeSdk.Generated.Voucher;
 
 public sealed record VoucherAddVoucherRequest(
     [property: JsonPropertyName("voucher_name")] string VoucherName,

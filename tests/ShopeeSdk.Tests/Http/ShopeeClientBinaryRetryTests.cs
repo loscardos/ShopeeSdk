@@ -2,13 +2,13 @@ using FluentAssertions;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 using RichardSzalay.MockHttp;
-using ShopeeSdk.Abstractions.Configuration;
-using ShopeeSdk.Abstractions.Http;
-using ShopeeSdk.Core.Http;
-using ShopeeSdk.Core.RateLimiting;
-using ShopeeSdk.Tests.TestDoubles;
+using Loscardos.ShopeeSdk.Abstractions.Configuration;
+using Loscardos.ShopeeSdk.Abstractions.Http;
+using Loscardos.ShopeeSdk.Core.Http;
+using Loscardos.ShopeeSdk.Core.RateLimiting;
+using Loscardos.ShopeeSdk.Tests.TestDoubles;
 
-namespace ShopeeSdk.Tests.Http;
+namespace Loscardos.ShopeeSdk.Tests.Http;
 
 public sealed class ShopeeClientBinaryRetryTests
 {
@@ -54,7 +54,7 @@ public sealed class ShopeeClientBinaryRetryTests
             new ShopeeRequest(ShopeeRequestMethod.Get, "/logistics/download_shipping_document", new Dictionary<string, object?>(), null, null),
             CancellationToken.None);
 
-        var exception = await act.Should().ThrowAsync<ShopeeSdk.Abstractions.Errors.ShopeeApiException>();
+        var exception = await act.Should().ThrowAsync<Loscardos.ShopeeSdk.Abstractions.Errors.ShopeeApiException>();
         exception.Which.Category.Should().Be(ShopeeErrorCategory.RateLimit);
         exception.Which.Path.Should().Be("/logistics/download_shipping_document");
     }

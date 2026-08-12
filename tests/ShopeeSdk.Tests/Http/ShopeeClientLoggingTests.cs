@@ -1,14 +1,14 @@
 using FluentAssertions;
 using Microsoft.Extensions.Options;
 using RichardSzalay.MockHttp;
-using ShopeeSdk.Abstractions.Configuration;
-using ShopeeSdk.Abstractions.Http;
-using ShopeeSdk.Core.Http;
-using ShopeeSdk.Core.RateLimiting;
-using ShopeeSdk.Generated.Order;
-using ShopeeSdk.Tests.TestDoubles;
+using Loscardos.ShopeeSdk.Abstractions.Configuration;
+using Loscardos.ShopeeSdk.Abstractions.Http;
+using Loscardos.ShopeeSdk.Core.Http;
+using Loscardos.ShopeeSdk.Core.RateLimiting;
+using Loscardos.ShopeeSdk.Generated.Order;
+using Loscardos.ShopeeSdk.Tests.TestDoubles;
 
-namespace ShopeeSdk.Tests.Http;
+namespace Loscardos.ShopeeSdk.Tests.Http;
 
 public sealed class ShopeeClientLoggingTests
 {
@@ -79,7 +79,7 @@ public sealed class ShopeeClientLoggingTests
                 null),
             CancellationToken.None);
 
-        await act.Should().ThrowAsync<ShopeeSdk.Abstractions.Errors.ShopeeSdkException>();
+        await act.Should().ThrowAsync<Loscardos.ShopeeSdk.Abstractions.Errors.ShopeeSdkException>();
         logger.Messages.Should().Contain(message =>
             message.Contains("JsonPath=$.more", StringComparison.Ordinal)
             && message.Contains("ResponseType=OrderGetOrderListResponse", StringComparison.Ordinal)
@@ -127,7 +127,7 @@ public sealed class ShopeeClientLoggingTests
                 null),
             CancellationToken.None);
 
-        await act.Should().ThrowAsync<ShopeeSdk.Abstractions.Errors.ShopeeSdkException>();
+        await act.Should().ThrowAsync<Loscardos.ShopeeSdk.Abstractions.Errors.ShopeeSdkException>();
         logger.Messages.Should().Contain(message =>
             message.Contains("ExceptionType=InvalidOperationException", StringComparison.Ordinal)
             && message.Contains("RootKind=Object", StringComparison.Ordinal)

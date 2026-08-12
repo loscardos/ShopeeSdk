@@ -1,6 +1,6 @@
-using ShopeeSdk.Generated.Order;
+using Loscardos.ShopeeSdk.Generated.Order;
 
-namespace ShopeeSdk.Abstractions.Managers;
+namespace Loscardos.ShopeeSdk.Abstractions.Managers;
 
 public interface IOrderApi
 {

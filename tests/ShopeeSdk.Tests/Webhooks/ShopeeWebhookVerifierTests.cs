@@ -2,10 +2,10 @@ using System.Security.Cryptography;
 using System.Text;
 using FluentAssertions;
 using Microsoft.Extensions.Options;
-using ShopeeSdk.Abstractions.Configuration;
-using ShopeeSdk.Core.Webhooks;
+using Loscardos.ShopeeSdk.Abstractions.Configuration;
+using Loscardos.ShopeeSdk.Core.Webhooks;
 
-namespace ShopeeSdk.Tests.Webhooks;
+namespace Loscardos.ShopeeSdk.Tests.Webhooks;
 
 public sealed class ShopeeWebhookVerifierTests
 {

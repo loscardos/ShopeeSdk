@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace ShopeeSdk.SampleConsole;
+namespace Loscardos.ShopeeSdk.SampleConsole;
 
 public enum EndpointClassification
 {

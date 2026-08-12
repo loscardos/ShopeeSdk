@@ -1,7 +1,7 @@
 using FluentAssertions;
-using ShopeeSdk.SampleConsole;
+using Loscardos.ShopeeSdk.SampleConsole;
 
-namespace ShopeeSdk.Tests.SampleConsole;
+namespace Loscardos.ShopeeSdk.Tests.SampleConsole;
 
 public sealed class EndpointCertificationMatrixTests
 {

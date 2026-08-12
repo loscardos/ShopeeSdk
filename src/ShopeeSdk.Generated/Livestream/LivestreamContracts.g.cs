@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.Livestream;
+namespace Loscardos.ShopeeSdk.Generated.Livestream;
 
 public sealed record LivestreamAddItemListRequestItemListItem(
     [property: JsonPropertyName("item_id")] long ItemId,
