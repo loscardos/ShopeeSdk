@@ -1,4 +1,4 @@
-namespace ShopeeSdk.Abstractions.Errors;
+namespace Loscardos.ShopeeSdk.Abstractions.Errors;
 
 public class ShopeeSdkException : Exception
 {

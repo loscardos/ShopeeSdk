@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace ShopeeSdk.Core.Crypto;
+namespace Loscardos.ShopeeSdk.Core.Crypto;
 
 public static class ShopeeSigner
 {

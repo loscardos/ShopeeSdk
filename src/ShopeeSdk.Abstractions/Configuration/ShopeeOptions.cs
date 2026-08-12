@@ -1,6 +1,6 @@
-using ShopeeSdk.Abstractions.Errors;
+using Loscardos.ShopeeSdk.Abstractions.Errors;
 
-namespace ShopeeSdk.Abstractions.Configuration;
+namespace Loscardos.ShopeeSdk.Abstractions.Configuration;
 
 public sealed class ShopeeOptions
 {

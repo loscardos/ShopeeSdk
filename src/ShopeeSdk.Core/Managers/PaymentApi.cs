@@ -1,9 +1,9 @@
-using ShopeeSdk.Abstractions.Http;
-using ShopeeSdk.Abstractions.Managers;
-using ShopeeSdk.Core.Auth;
-using ShopeeSdk.Generated.Payment;
+using Loscardos.ShopeeSdk.Abstractions.Http;
+using Loscardos.ShopeeSdk.Abstractions.Managers;
+using Loscardos.ShopeeSdk.Core.Auth;
+using Loscardos.ShopeeSdk.Generated.Payment;
 
-namespace ShopeeSdk.Core.Managers;
+namespace Loscardos.ShopeeSdk.Core.Managers;
 
 public sealed class PaymentApi(IShopeeClient client, ShopeeTokenService tokenService) : IPaymentApi
 {

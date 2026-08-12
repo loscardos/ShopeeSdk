@@ -8,9 +8,9 @@ TMP="$ROOT/.tmp/local-nuget-consumer"
 rm -rf "$TMP"
 mkdir -p "$ARTIFACTS"
 find "$ARTIFACTS" -maxdepth 1 -type f -name '*.nupkg' -delete
-rm -rf "$HOME/.nuget/packages/loscardos.shopeesdk."*
-"$ROOT/scripts/pack-local.sh" "$ARTIFACTS"
-"$ROOT/scripts/inspect-nuget.sh" "$ARTIFACTS"
+export NUGET_PACKAGES="$TMP/packages"
+bash "$ROOT/scripts/pack-local.sh" "$ARTIFACTS"
+bash "$ROOT/scripts/inspect-nuget.sh" "$ARTIFACTS"
 
 mkdir -p "$TMP"
 dotnet new console -n LocalNuGetConsumer -o "$TMP"
@@ -33,12 +33,12 @@ dotnet add "$TMP/LocalNuGetConsumer.csproj" package Microsoft.Extensions.Depende
 
 cat > "$TMP/Program.cs" <<'CS'
 using Microsoft.Extensions.DependencyInjection;
-using ShopeeSdk.Abstractions.Auth;
-using ShopeeSdk.Abstractions.Configuration;
-using ShopeeSdk.Abstractions.Http;
-using ShopeeSdk.Abstractions.Managers.Generated;
-using ShopeeSdk.Extensions.DependencyInjection;
-using ShopeeSdk.Generated.Product;
+using Loscardos.ShopeeSdk.Abstractions.Auth;
+using Loscardos.ShopeeSdk.Abstractions.Configuration;
+using Loscardos.ShopeeSdk.Abstractions.Http;
+using Loscardos.ShopeeSdk.Abstractions.Managers.Generated;
+using Loscardos.ShopeeSdk.Extensions.DependencyInjection;
+using Loscardos.ShopeeSdk.Generated.Product;
 
 var services = new ServiceCollection();
 services.AddSingleton<IShopeeTokenStore, SmokeTokenStore>();

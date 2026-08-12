@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace ShopeeSdk.Generator;
+namespace Loscardos.ShopeeSdk.Generator;
 
 public static class ShopeeName
 {

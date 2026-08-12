@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace ShopeeSdk.Generated.Logistics;
+namespace Loscardos.ShopeeSdk.Generated.Logistics;
 
 public sealed record GetShippingParameterRequest(
     [property: JsonPropertyName("order_sn")] string OrderSn);

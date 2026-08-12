@@ -1,7 +1,7 @@
 using FluentAssertions;
-using ShopeeSdk.Core.Crypto;
+using Loscardos.ShopeeSdk.Core.Crypto;
 
-namespace ShopeeSdk.Tests.Crypto;
+namespace Loscardos.ShopeeSdk.Tests.Crypto;
 
 public sealed class ShopeeSignerTests
 {

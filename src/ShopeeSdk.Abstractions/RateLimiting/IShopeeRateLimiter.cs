@@ -1,6 +1,6 @@
-using ShopeeSdk.Abstractions.Http;
+using Loscardos.ShopeeSdk.Abstractions.Http;
 
-namespace ShopeeSdk.Abstractions.RateLimiting;
+namespace Loscardos.ShopeeSdk.Abstractions.RateLimiting;
 
 public interface IShopeeRateLimiter
 {

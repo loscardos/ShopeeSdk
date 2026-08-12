@@ -2,15 +2,15 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using ShopeeSdk.Abstractions.Configuration;
-using ShopeeSdk.Abstractions.Errors;
-using ShopeeSdk.Abstractions.Http;
-using ShopeeSdk.Abstractions.RateLimiting;
-using ShopeeSdk.Core.Crypto;
-using ShopeeSdk.Core.Time;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Abstractions.Configuration;
+using Loscardos.ShopeeSdk.Abstractions.Errors;
+using Loscardos.ShopeeSdk.Abstractions.Http;
+using Loscardos.ShopeeSdk.Abstractions.RateLimiting;
+using Loscardos.ShopeeSdk.Core.Crypto;
+using Loscardos.ShopeeSdk.Core.Time;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Core.Http;
+namespace Loscardos.ShopeeSdk.Core.Http;
 
 public sealed class ShopeeClient(
     HttpClient httpClient,

@@ -1,6 +1,6 @@
-using ShopeeSdk.Abstractions.Http;
+using Loscardos.ShopeeSdk.Abstractions.Http;
 
-namespace ShopeeSdk.Core.Http;
+namespace Loscardos.ShopeeSdk.Core.Http;
 
 public static class ShopeeErrorClassifier
 {

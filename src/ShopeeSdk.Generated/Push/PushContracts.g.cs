@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.Push;
+namespace Loscardos.ShopeeSdk.Generated.Push;
 
 public sealed record PushConfirmConsumedLostPushMessageRequest(
     [property: JsonPropertyName("last_message_id")] int LastMessageId

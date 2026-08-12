@@ -1,10 +1,10 @@
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
-using ShopeeSdk.Abstractions.Webhooks;
-using ShopeeSdk.Core.Webhooks;
-using ShopeeSdk.Extensions.DependencyInjection;
+using Loscardos.ShopeeSdk.Abstractions.Webhooks;
+using Loscardos.ShopeeSdk.Core.Webhooks;
+using Loscardos.ShopeeSdk.Extensions.DependencyInjection;
 
-namespace ShopeeSdk.Tests.Webhooks;
+namespace Loscardos.ShopeeSdk.Tests.Webhooks;
 
 public sealed class ShopeeWebhookDependencyInjectionTests
 {

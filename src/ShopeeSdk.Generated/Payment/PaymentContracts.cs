@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace ShopeeSdk.Generated.Payment;
+namespace Loscardos.ShopeeSdk.Generated.Payment;
 
 public sealed record GetEscrowDetailRequest(
     [property: JsonPropertyName("order_sn")] string OrderSn);

@@ -3,17 +3,17 @@ using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 using Moq;
 using RichardSzalay.MockHttp;
-using ShopeeSdk.Abstractions.Auth;
-using ShopeeSdk.Abstractions.Configuration;
-using ShopeeSdk.Abstractions.Managers;
-using ShopeeSdk.Core.Auth;
-using ShopeeSdk.Core.Http;
-using ShopeeSdk.Core.Managers;
-using ShopeeSdk.Core.RateLimiting;
-using ShopeeSdk.Generated.Logistics;
-using ShopeeSdk.Tests.TestDoubles;
+using Loscardos.ShopeeSdk.Abstractions.Auth;
+using Loscardos.ShopeeSdk.Abstractions.Configuration;
+using Loscardos.ShopeeSdk.Abstractions.Managers;
+using Loscardos.ShopeeSdk.Core.Auth;
+using Loscardos.ShopeeSdk.Core.Http;
+using Loscardos.ShopeeSdk.Core.Managers;
+using Loscardos.ShopeeSdk.Core.RateLimiting;
+using Loscardos.ShopeeSdk.Generated.Logistics;
+using Loscardos.ShopeeSdk.Tests.TestDoubles;
 
-namespace ShopeeSdk.Tests.Managers;
+namespace Loscardos.ShopeeSdk.Tests.Managers;
 
 public sealed class LogisticsBinaryDownloadTests
 {

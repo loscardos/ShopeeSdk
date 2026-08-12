@@ -1,8 +1,8 @@
 using System.Text.Json;
-using ShopeeSdk.Abstractions.Webhooks;
-using ShopeeSdk.Generated.Webhooks;
+using Loscardos.ShopeeSdk.Abstractions.Webhooks;
+using Loscardos.ShopeeSdk.Generated.Webhooks;
 
-namespace ShopeeSdk.Core.Webhooks;
+namespace Loscardos.ShopeeSdk.Core.Webhooks;
 
 public sealed class ShopeeWebhookParser(
     IShopeeWebhookVerifier verifier,

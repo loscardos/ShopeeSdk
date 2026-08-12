@@ -1,6 +1,6 @@
-using ShopeeSdk.Abstractions.Webhooks;
+using Loscardos.ShopeeSdk.Abstractions.Webhooks;
 
-namespace ShopeeSdk.Core.Webhooks;
+namespace Loscardos.ShopeeSdk.Core.Webhooks;
 
 public sealed class ShopeeWebhookTimestampValidator(ShopeeWebhookOptions options)
 {

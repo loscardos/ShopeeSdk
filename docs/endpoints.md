@@ -4,7 +4,7 @@ The SDK exposes two manager surfaces.
 
 ## Polished Managers
 
-Polished managers live in `ShopeeSdk.Abstractions.Managers` and focus on early ERP workflows:
+Polished managers live in `Loscardos.ShopeeSdk.Abstractions.Managers` and focus on early ERP workflows:
 
 - `IProductApi`
 - `IOrderApi`
@@ -17,7 +17,7 @@ Use these when the method shape has been curated for common integration flows.
 
 ## Generated Managers
 
-Generated managers live in `ShopeeSdk.Abstractions.Managers.Generated`. They provide broad coverage across the generated SDK endpoint surface. DTOs live in `ShopeeSdk.Generated.<Module>`.
+Generated managers live in `Loscardos.ShopeeSdk.Abstractions.Managers.Generated`. They provide broad coverage across the generated SDK endpoint surface. DTOs live in `Loscardos.ShopeeSdk.Generated.<Module>`.
 
 Generated modules include:
 
@@ -53,8 +53,8 @@ Generated modules include:
 ## Example: Product Categories
 
 ```csharp
-using ShopeeSdk.Generated.Product;
-using GeneratedProductApi = ShopeeSdk.Abstractions.Managers.Generated.IProductApi;
+using Loscardos.ShopeeSdk.Generated.Product;
+using GeneratedProductApi = Loscardos.ShopeeSdk.Abstractions.Managers.Generated.IProductApi;
 
 public sealed class CategorySync(GeneratedProductApi productApi)
 {
@@ -73,8 +73,8 @@ public sealed class CategorySync(GeneratedProductApi productApi)
 ## Example: Orders
 
 ```csharp
-using ShopeeSdk.Generated.Order;
-using GeneratedOrderApi = ShopeeSdk.Abstractions.Managers.Generated.IOrderApi;
+using Loscardos.ShopeeSdk.Generated.Order;
+using GeneratedOrderApi = Loscardos.ShopeeSdk.Abstractions.Managers.Generated.IOrderApi;
 
 var now = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 

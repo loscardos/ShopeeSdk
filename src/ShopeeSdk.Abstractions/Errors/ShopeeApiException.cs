@@ -1,6 +1,6 @@
-using ShopeeSdk.Abstractions.Http;
+using Loscardos.ShopeeSdk.Abstractions.Http;
 
-namespace ShopeeSdk.Abstractions.Errors;
+namespace Loscardos.ShopeeSdk.Abstractions.Errors;
 
 public sealed class ShopeeApiException : ShopeeSdkException
 {

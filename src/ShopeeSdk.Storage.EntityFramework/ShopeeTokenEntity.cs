@@ -1,4 +1,4 @@
-namespace ShopeeSdk.Storage.EntityFramework;
+namespace Loscardos.ShopeeSdk.Storage.EntityFramework;
 
 public sealed class ShopeeTokenEntity
 {

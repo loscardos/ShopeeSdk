@@ -1,3 +1,3 @@
-namespace ShopeeSdk.Abstractions.Http;
+namespace Loscardos.ShopeeSdk.Abstractions.Http;
 
 public sealed record ShopeeRequestAuth(long? ShopId, long? MerchantId);

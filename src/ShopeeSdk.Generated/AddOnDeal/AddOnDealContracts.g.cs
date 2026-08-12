@@ -2,9 +2,9 @@
 #nullable enable
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ShopeeSdk.Generated.Common;
+using Loscardos.ShopeeSdk.Generated.Common;
 
-namespace ShopeeSdk.Generated.AddOnDeal;
+namespace Loscardos.ShopeeSdk.Generated.AddOnDeal;
 
 public sealed record AddOnDealAddAddOnDealRequest(
     [property: JsonPropertyName("add_on_deal_name")] string AddOnDealName,

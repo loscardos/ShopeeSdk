@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Logging;
 
-namespace ShopeeSdk.Tests.TestDoubles;
+namespace Loscardos.ShopeeSdk.Tests.TestDoubles;
 
 public sealed class ListLogger<T> : ILogger<T>
 {
