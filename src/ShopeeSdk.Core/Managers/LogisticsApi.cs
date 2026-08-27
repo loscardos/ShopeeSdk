@@ -91,12 +91,12 @@ public sealed class LogisticsApi(IShopeeClient client, ShopeeTokenService tokenS
         ShopeeRequestValidator.EnsureRequiredString(request.OrderSn, "order_sn");
 
         var query = await ShopeeManagerAuth.CreateAuthQueryAsync(tokenService, shopId, cancellationToken);
-        query["order_sn"] = request.OrderSn;
-        query["package_number"] = request.PackageNumber;
-        query["shipping_document_type"] = request.ShippingDocumentType;
+        var body = new LogisticsDownloadShippingDocumentRequest(
+            [new(request.OrderSn, request.PackageNumber)],
+            request.ShippingDocumentType);
 
         var file = await client.SendForBytesAsync(
-            new ShopeeRequest(ShopeeRequestMethod.Get, "/logistics/download_shipping_document", query, null, new ShopeeRequestAuth(shopId, null)),
+            new ShopeeRequest(ShopeeRequestMethod.Post, "/logistics/download_shipping_document", query, body, new ShopeeRequestAuth(shopId, null)),
             cancellationToken);
 
         return new DownloadShippingDocumentFile(file.Content, file.ContentType, file.FileName);
