@@ -26,9 +26,9 @@ cat > "$TMP/NuGet.config" <<EOF
 </configuration>
 EOF
 
-dotnet add "$TMP/LocalNuGetConsumer.csproj" package Loscardos.ShopeeSdk.Core --version 0.1.0-preview --no-restore
-dotnet add "$TMP/LocalNuGetConsumer.csproj" package Loscardos.ShopeeSdk.Extensions.DependencyInjection --version 0.1.0-preview --no-restore
-dotnet add "$TMP/LocalNuGetConsumer.csproj" package Loscardos.ShopeeSdk.Storage.EntityFramework --version 0.1.0-preview --no-restore
+dotnet add "$TMP/LocalNuGetConsumer.csproj" package Loscardos.ShopeeSdk.Core --version 0.1.1-preview --no-restore
+dotnet add "$TMP/LocalNuGetConsumer.csproj" package Loscardos.ShopeeSdk.Extensions.DependencyInjection --version 0.1.1-preview --no-restore
+dotnet add "$TMP/LocalNuGetConsumer.csproj" package Loscardos.ShopeeSdk.Storage.EntityFramework --version 0.1.1-preview --no-restore
 dotnet add "$TMP/LocalNuGetConsumer.csproj" package Microsoft.Extensions.DependencyInjection --version 10.0.7 --no-restore
 
 cat > "$TMP/Program.cs" <<'CS'
