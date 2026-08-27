@@ -3,7 +3,7 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 ARTIFACTS="${1:-$ROOT/artifacts/packages}"
-VERSION="${SHOPEE_SDK_PACKAGE_VERSION:-0.1.0-preview}"
+VERSION="${SHOPEE_SDK_PACKAGE_VERSION:-0.1.1-preview}"
 TMP="$ROOT/.tmp/nuget-inspect"
 
 packages=(

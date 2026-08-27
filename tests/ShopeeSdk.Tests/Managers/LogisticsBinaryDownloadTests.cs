@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 using Moq;
 using RichardSzalay.MockHttp;
+using System.Text.Json;
 using Loscardos.ShopeeSdk.Abstractions.Auth;
 using Loscardos.ShopeeSdk.Abstractions.Configuration;
 using Loscardos.ShopeeSdk.Abstractions.Managers;
@@ -21,14 +22,19 @@ public sealed class LogisticsBinaryDownloadTests
     public async Task DownloadShippingDocumentFileAsync_ReturnsBinaryContent()
     {
         var mockHttp = new MockHttpMessageHandler();
+        string? requestBody = null;
         mockHttp
-            .When(HttpMethod.Get, "https://openplatform.sandbox.test-stable.shopee.sg/api/v2/logistics/download_shipping_document*")
-            .Respond(_ => new HttpResponseMessage
+            .When(HttpMethod.Post, "https://openplatform.sandbox.test-stable.shopee.sg/api/v2/logistics/download_shipping_document*")
+            .Respond(request =>
             {
-                Content = new ByteArrayContent([1, 2, 3])
+                requestBody = request.Content!.ReadAsStringAsync().GetAwaiter().GetResult();
+                return new HttpResponseMessage
                 {
-                    Headers = { ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/pdf") }
-                }
+                    Content = new ByteArrayContent([1, 2, 3])
+                    {
+                        Headers = { ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/pdf") }
+                    }
+                };
             });
 
         var tokenStore = new InMemoryShopeeTokenStore();
@@ -50,10 +56,16 @@ public sealed class LogisticsBinaryDownloadTests
 
         var file = await api.DownloadShippingDocumentFileAsync(
             600000,
-            new DownloadShippingDocumentRequest("ORDER-1"),
+            new DownloadShippingDocumentRequest("ORDER-1", "PACKAGE-1", "NORMAL_AIR_WAYBILL"),
             CancellationToken.None);
 
         file.Content.Should().Equal([1, 2, 3]);
         file.ContentType.Should().Be("application/pdf");
+        using var json = JsonDocument.Parse(requestBody!);
+        json.RootElement.GetProperty("shipping_document_type").GetString()
+            .Should().Be("NORMAL_AIR_WAYBILL");
+        var order = json.RootElement.GetProperty("order_list")[0];
+        order.GetProperty("order_sn").GetString().Should().Be("ORDER-1");
+        order.GetProperty("package_number").GetString().Should().Be("PACKAGE-1");
     }
 }

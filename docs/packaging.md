@@ -32,7 +32,7 @@ Local packages are written to `artifacts/packages`, which is also registered as 
 
 Shared package metadata is configured in `Directory.Build.props`:
 
-- Version: `0.1.0-preview`
+- Version: `0.1.1-preview`
 - Authors: `Loscardos`
 - License expression: `MIT`
 - Tags: `shopee;openapi;sdk;aspnet;omnichannel;ecommerce`
