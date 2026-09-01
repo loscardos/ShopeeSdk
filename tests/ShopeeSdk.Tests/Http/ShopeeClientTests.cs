@@ -1,4 +1,5 @@
 using System.Net;
+using System.Diagnostics;
 using FluentAssertions;
 using Microsoft.Extensions.Options;
 using RichardSzalay.MockHttp;
@@ -97,6 +98,41 @@ public sealed class ShopeeClientTests
             CancellationToken.None);
 
         response.RequestId.Should().Be("req-ok");
+        mockHttp.VerifyNoOutstandingExpectation();
+    }
+
+    [Fact]
+    public async Task SendAsync_RespectsRetryAfterBeforeRateLimitRetry()
+    {
+        var mockHttp = new MockHttpMessageHandler();
+        mockHttp
+            .Expect(HttpMethod.Get, "https://openplatform.sandbox.test-stable.shopee.sg/api/v2/product/get_item_list*")
+            .Respond(_ =>
+            {
+                var response = new HttpResponseMessage(HttpStatusCode.TooManyRequests)
+                {
+                    Content = new StringContent("""
+                    { "request_id": "req-rate", "error": "rate_limit", "message": "slow down" }
+                    """, System.Text.Encoding.UTF8, "application/json")
+                };
+                response.Headers.RetryAfter = new System.Net.Http.Headers.RetryConditionHeaderValue(
+                    TimeSpan.FromSeconds(1));
+                return response;
+            });
+        mockHttp
+            .Expect(HttpMethod.Get, "https://openplatform.sandbox.test-stable.shopee.sg/api/v2/product/get_item_list*")
+            .Respond("application/json", """
+            { "request_id": "req-ok", "error": "", "message": "", "response": {} }
+            """);
+        var client = CreateClient(mockHttp, maxRetries: 1);
+        var stopwatch = Stopwatch.StartNew();
+
+        await client.SendAsync<object>(
+            new ShopeeRequest(ShopeeRequestMethod.Get, "/product/get_item_list",
+                new Dictionary<string, object?>(), null, null),
+            CancellationToken.None);
+
+        stopwatch.Elapsed.Should().BeGreaterThanOrEqualTo(TimeSpan.FromMilliseconds(900));
         mockHttp.VerifyNoOutstandingExpectation();
     }
 
