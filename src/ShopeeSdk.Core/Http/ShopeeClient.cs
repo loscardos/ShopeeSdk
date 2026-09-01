@@ -41,7 +41,7 @@ public sealed class ShopeeClient(
                     "Retrying Shopee request {Path} after transient error {Error}",
                     request.Path,
                     exception.Error);
-                await Task.Delay(_options.RetryBaseDelay * (attempt + 1), cancellationToken);
+                await Task.Delay(RetryDelay(exception, attempt), cancellationToken);
             }
             catch (HttpRequestException) when (attempt < _options.MaxTransientRetries)
             {
@@ -75,7 +75,7 @@ public sealed class ShopeeClient(
                     request.Auth?.ShopId,
                     exception.Error,
                     exception.Category);
-                await Task.Delay(_options.RetryBaseDelay * (attempt + 1), cancellationToken);
+                await Task.Delay(RetryDelay(exception, attempt), cancellationToken);
             }
             catch (HttpRequestException exception) when (attempt < _options.MaxTransientRetries)
             {
@@ -115,7 +115,8 @@ public sealed class ShopeeClient(
                 $"http_{(int)response.StatusCode}",
                 $"Shopee binary request failed with HTTP status {(int)response.StatusCode}.",
                 category,
-                request.Path);
+                request.Path,
+                RetryAfter(response));
         }
 
         var bytes = await response.Content.ReadAsByteArrayAsync(cancellationToken);
@@ -202,7 +203,8 @@ public sealed class ShopeeClient(
                 envelope.Error,
                 envelope.Message,
                 category ?? ShopeeErrorCategory.Unknown,
-                request.Path);
+                request.Path,
+                RetryAfter(response));
         }
 
         return envelope;
@@ -237,6 +239,25 @@ public sealed class ShopeeClient(
         string ResponseKind,
         string ErrorKind,
         string MessageKind);
+
+    private TimeSpan? RetryAfter(HttpResponseMessage response)
+    {
+        var retryAfter = response.Headers.RetryAfter;
+        if (retryAfter?.Delta is { } delta)
+            return delta > TimeSpan.Zero ? delta : null;
+        if (retryAfter?.Date is not { } date)
+            return null;
+        var delay = date - DateTimeOffset.FromUnixTimeSeconds(clock.UnixTimeSeconds);
+        return delay > TimeSpan.Zero ? delay : null;
+    }
+
+    private TimeSpan RetryDelay(ShopeeApiException exception, int attempt)
+    {
+        var configured = _options.RetryBaseDelay * (attempt + 1);
+        return exception.RetryAfter is { } retryAfter && retryAfter > configured
+            ? retryAfter
+            : configured;
+    }
 
     private async Task EnsureRateLimitPermitAsync(ShopeeRequest request, CancellationToken cancellationToken)
     {

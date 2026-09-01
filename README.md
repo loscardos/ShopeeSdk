@@ -4,7 +4,7 @@ ASP.NET-friendly Shopee Open API SDK for .NET.
 
 ShopeeSdk provides signed Shopee Open API requests, OAuth helpers, token refresh support, ASP.NET Core dependency injection, encrypted Entity Framework token storage, and generated endpoint clients for the Shopee API surface.
 
-> Status: `0.1.1-preview`. The package is ready for sandbox validation and early integration work. Review behavior against your own Shopee app permissions before live rollout.
+> Status: `0.1.2-preview`. The package is ready for sandbox validation and early integration work. Review behavior against your own Shopee app permissions before live rollout.
 
 ## Packages
 
