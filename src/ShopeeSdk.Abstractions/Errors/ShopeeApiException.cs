@@ -10,7 +10,8 @@ public sealed class ShopeeApiException : ShopeeSdkException
         string error,
         string? message,
         ShopeeErrorCategory category = ShopeeErrorCategory.Unknown,
-        string? path = null)
+        string? path = null,
+        TimeSpan? retryAfter = null)
         : base($"Shopee API error {error}: {message}")
     {
         StatusCode = statusCode;
@@ -19,6 +20,7 @@ public sealed class ShopeeApiException : ShopeeSdkException
         ApiMessage = message;
         Category = category;
         Path = path;
+        RetryAfter = retryAfter;
     }
 
     public int StatusCode { get; }
@@ -27,4 +29,5 @@ public sealed class ShopeeApiException : ShopeeSdkException
     public string? ApiMessage { get; }
     public ShopeeErrorCategory Category { get; }
     public string? Path { get; }
+    public TimeSpan? RetryAfter { get; }
 }

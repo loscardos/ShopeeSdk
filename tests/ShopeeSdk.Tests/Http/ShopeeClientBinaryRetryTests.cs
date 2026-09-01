@@ -46,7 +46,13 @@ public sealed class ShopeeClientBinaryRetryTests
         var mockHttp = new MockHttpMessageHandler();
         mockHttp
             .Expect(HttpMethod.Get, "https://openplatform.sandbox.test-stable.shopee.sg/api/v2/logistics/download_shipping_document*")
-            .Respond(System.Net.HttpStatusCode.TooManyRequests);
+            .Respond(_ =>
+            {
+                var response = new HttpResponseMessage(System.Net.HttpStatusCode.TooManyRequests);
+                response.Headers.RetryAfter = new System.Net.Http.Headers.RetryConditionHeaderValue(
+                    TimeSpan.FromMinutes(3));
+                return response;
+            });
 
         var client = CreateClient(mockHttp, maxRetries: 0);
 
@@ -57,6 +63,7 @@ public sealed class ShopeeClientBinaryRetryTests
         var exception = await act.Should().ThrowAsync<Loscardos.ShopeeSdk.Abstractions.Errors.ShopeeApiException>();
         exception.Which.Category.Should().Be(ShopeeErrorCategory.RateLimit);
         exception.Which.Path.Should().Be("/logistics/download_shipping_document");
+        exception.Which.RetryAfter.Should().Be(TimeSpan.FromMinutes(3));
     }
 
     private static ShopeeClient CreateClient(MockHttpMessageHandler mockHttp, int maxRetries)
